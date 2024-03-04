@@ -1,29 +1,28 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Sellix for Developers",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#6a32e6",
+    "light": "#dbd8fc",
+    "dark": "#6a32e6",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#6a32e6",
+      "to": "#dbd8fc"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@sellix.io"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://dashboard.sellix.io"
   },
   "tabs": [
     {
@@ -33,19 +32,19 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
       "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "icon": "discord",
+      "url": "https://sellix.io/discord"
     },
     {
-      "name": "Blog",
+      "name": "Help Docs",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://help.sellix.io"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/sellix"
     }
   ],
   "navigation": [
@@ -71,21 +70,123 @@
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/introduction"
+        "api-reference/introduction",
+        "api-reference/authentication",
+        "api-reference/pagination",
+        "api-reference/errors",
+        "api-reference/webhooks",
+        "api-reference/dynamic-products",
+        "api-reference/payment-methods",
+        "api-reference/prefilled-links",
+        "api-reference/subscriptions",
+        "api-reference/licenses"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Sellix Pay",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/payments"
+      ]
+    },
+    {
+      "group": "Payments",
+      "pages": [
+        "api-reference/orders/get-order",
+        "api-reference/payments/post-payments",
+        "api-reference/orders/list-orders",
+        "api-reference/payments/delete-payments"
+      ]
+    },
+    {
+      "group": "Customers",
+      "pages": [
+        "api-reference/customers/get-customer",
+        "api-reference/customers/post-customers",
+        "api-reference/customers/list-customers",
+        "api-reference/customers/put-customers"
+      ]
+    },
+    {
+      "group": "Subscriptions",
+      "pages": [
+        "api-reference/subscriptions/get-subscription",
+        "api-reference/subscriptions/post-subscriptions",
+        "api-reference/subscriptions/list-subscriptions",
+        "api-reference/subscriptions/delete-subscriptions"
+      ]
+    },
+    {
+      "group": "Blacklists",
+      "pages": [
+        "api-reference/blacklists/get-blacklist",
+        "api-reference/blacklists/post-blacklists",
+        "api-reference/blacklists/list-blacklists",
+        "api-reference/blacklists/put-blacklists",
+        "api-reference/blacklists/delete-blacklists"
+      ]
+    },
+    {
+      "group": "Whitelists",
+      "pages": [
+        "api-reference/whitelists/get-whitelist",
+        "api-reference/whitelists/post-whitelists",
+        "api-reference/whitelists/list-whitelists",
+        "api-reference/whitelists/put-whitelists",
+        "api-reference/whitelists/delete-whitelists"
+      ]
+    },
+    {
+      "group": "Products",
+      "pages": [
+        "api-reference/products/get-product",
+        "api-reference/products/post-products",
+        "api-reference/products/list-products",
+        "api-reference/products/put-products",
+        "api-reference/products/delete-products"
+      ]
+    },
+    {
+      "group": "Categories",
+      "pages": [
+        "api-reference/categories/get-category",
+        "api-reference/categories/post-categories",
+        "api-reference/categories/list-categories",
+        "api-reference/categories/put-categories",
+        "api-reference/categories/delete-categories"
+      ]
+    },
+    {
+      "group": "Coupons",
+      "pages": [
+        "api-reference/coupons/get-coupon",
+        "api-reference/coupons/post-coupons",
+        "api-reference/coupons/list-coupons",
+        "api-reference/coupons/put-coupons",
+        "api-reference/coupons/delete-coupons"
+      ]
+    },
+    {
+      "group": "Feedback",
+      "pages": [
+        "api-reference/feedback/get-feedback",
+        "api-reference/feedback/list-feedback",
+        "api-reference/feedback/post-feedbackreply"
+      ]
+    },
+    {
+      "group": "Queries",
+      "pages": [
+        "api-reference/queries/get-query",
+        "api-reference/queries/list-queries",
+        "api-reference/queries/post-queriesreply",
+        "api-reference/queries/post-queriesclose",
+        "api-reference/queries/post-queriesreopen"
       ]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/SellixEcommerce",
+    "github": "https://github.com/sellix",
+    "linkedin": "https://www.linkedin.com/company/sellix-srl"
   }
 }
