@@ -1,0 +1,35 @@
+---
+title: 'Prefilled Links'
+description: 'Share pre-filled links of your products and payment links to improve conversions'
+---
+
+## Storefront
+
+You can share links of your products that are either unlisted or present in your website, but at the same time prefill certain fields that might be known, or simply useless and thus skipped.
+
+The prefilled fields are present in the querystring, such as `https://<YOUR_DOMAIN>/product/<PRODUCT_SLUG>?quantity=5&gateway=LITECOIN&step=1`
+
+`YOUR_DOMAIN` is either your Sellix store name (`YourStoreName.mysellix.io`) and `PRODUCT_SLUG` is either the uniqid of the product you want to share, or its slug (taken from the title).
+
+### Available querystring parameters
+
+Here is a list of all available querystring parameters, along with a brief description of each
+
+| Parameter | Description |
+| --------- | ----------- |
+| quantity | Specifies the number of the same product to purchase |
+| gateway | Specifies which payment gateway should be selected ([see full list of available payment methods ENUM](/api-reference/payment-methods)) |
+| step | Specifies which step of the checkout process should be displayed. |
+| email | The customer's email address |
+| couponCode | The code of a coupon that should be applied automatically to the purchase |
+
+**Step**
+
+The available step number to be configured on links is one of
+- `0`, the default checkout step (product details)
+- `1`, the gateway choice step
+- `3`, the email and pay button step
+
+## Payment Links
+
+The same logic is valid for [payment links](https://dashboard.sellix.io/links), however they natively support the "Generate Prefilled Link" button that helps you creating a pre-filled querystring sharable link that you can send to your customers.
