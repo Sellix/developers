@@ -5,16 +5,19 @@ description: 'Host the product on your own server, then let us handle deliveries
 
 ## How they work
 
-If you do not want to specify the product's value with the serials type, you can setup your own webhook and dynamically return to us the product you want to ship to your customers. Specify a URL where we will send the request to retrieve the product, please note that your webhook must support our payload (we will return the invoice quantity in the payload object along with all the other info) in order to retrieve the exact amount of products bought.
+If you do not want to specify the product's value with the serials type, you can setup your own webhook and dynamically return to us the product you want to ship to your customers.
 
-We have an additional webhook event for dynamic products: `product:dynamic`.
-This webhook will have as payload the [order object](/api-reference/get-order).
-You can find the quantity for which we expect the response as `payload.data.quantity`.
+When creating a product [through our dashboard](https://dashboard.sellix.io/products), choose the "Dynamic" type and specify a URL where we will send the request to retrieve it.
 
-The request sent by our system will also have an additional header, `X-Sellix-Product-Id`, referring to the exact product uniqid that it's being sent for. It is particularly useful if the invoice type is a `SHOPPING_CART`, containing multiple dynamic products.
+The webhook event we will send is `product:dynamic`, which will have as payload the [order object](/api-reference/get-order).
+
+You can find the quantity for which we expect the response as `payload.data.quantity`, or, in the case of cart orders (`order.type === SHOPPING_CART`), in the `payload.data.cart[].unit_quantity` field.
+
+The request sent by our system will also have an additional header, `X-Sellix-Product-Id`, referring to the exact product uniqid that it's being sent for.
+<Info>This is particularly useful if the invoice type is a `SHOPPING_CART`, containing multiple dynamic products. In this case we will send more than one `product:dynamic` events, one for each product present in the shopping cart.</Info>
 
 Any other logic works as expected following our [webhooks](/api-reference/webhooks).
-Please note that we will only send one request (no retries) to provide the best experience to your customers, therefore it’s on you providing the uptime of your API.
+Please note that **we will only send one request (no retries)** to provide the best experience to your customers, therefore it’s on you providing the uptime of your API.
 
-When we send the request, **the whole response body will be taken and used as the product**.
-If you’re returning a PDF, for example, we will provide the PDF to the customer. If you need to sell an activation key or tokens, return raw text.
+<Note>When we send the request, **the whole response body will be taken and used as the product**.
+If you’re returning a PDF, for example, we will provide the PDF to the customer. If you need to sell an activation key or tokens, return raw text.</Note>
