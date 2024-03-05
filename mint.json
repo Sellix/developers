@@ -52,19 +52,26 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "no-code",
+        "sellix-hosted"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Products",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "products/platforms",
+        "products/wallet-and-crypto",
+        "products/commerce",
+        "products/communities",
+        "products/embed",
+        "products/plugins",
+        "products/links",
+        "products/subscriptions",
+        "products/pos",
+        "products/licenses",
+        "products/marketing",
+        "products/analytics",
+        "products/fraud-shield"
       ]
     },
     {
