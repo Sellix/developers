@@ -1,0 +1,10 @@
+---
+title: "Check License"
+openapi: post /products/licensing/check
+---
+
+Issue a check license request, for example, every time your application is started from a customer device
+
+<Info> You can then check for both the license key and hardware id, being sure that the customer has paid for it.</Info>
+
+<Note>Everytime you call this endpoint, the `license.uses` field will increase by `1`</Note>
