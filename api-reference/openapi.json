@@ -61,6 +61,10 @@
     {
       "name": "Subscriptions",
       "description": "Subscription endpoints"
+    },
+    {
+      "name": "Licenses",
+      "description": "License endpoints"
     }
   ],
   "paths": {
@@ -1920,6 +1924,32 @@
             "$ref": "#/components/responses/404"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Payments"
+        ],
+        "operationId": "completePayment",
+        "description": "Flag an invoice as paid and process it, sending the purchased product to the customer.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/uniqid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
       }
     },
     "/customers": {
@@ -2204,7 +2234,7 @@
                   "product_id": {
                     "type": "string",
                     "description": "ID of the subscription product.",
-                    "example": "sample8de6277597"
+                    "example": "5eb6b2bde8a50"
                   },
                   "coupon_code": {
                     "type": "string",
@@ -2300,6 +2330,117 @@
             "$ref": "#/components/parameters/id"
           }
         ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/products/licensing/hardware_id": {
+      "put": {
+        "tags": [
+          "Licenses"
+        ],
+        "operationId": "updateHardwareId",
+        "description": "Assign an hardware ID to a license.",
+        "requestBody": {
+          "description": "product licensing assign hardware ID JSON",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "product_id",
+                  "key",
+                  "hardware_id"
+                ],
+                "properties": {
+                  "product_id": {
+                    "type": "string",
+                    "description": "Uniqid of the license product.",
+                    "example": "5eb6b2bde8a50"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "License key purchase by the customer.",
+                    "example": "LICENSE-SAMPLE-00"
+                  },
+                  "hardware_id": {
+                    "type": "string",
+                    "description": "Hardware ID to be assigned to the license.",
+                    "example": "098H52ST479QE053V2"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/license"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/products/licensing/check": {
+      "post": {
+        "tags": [
+          "Licenses"
+        ],
+        "operationId": "checkLicense",
+        "description": "Checks the validity of a license key and its hardware ID.",
+        "requestBody": {
+          "description": "product licensing assign hardware ID JSON",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "product_id",
+                  "key"
+                ],
+                "properties": {
+                  "product_id": {
+                    "type": "string",
+                    "description": "Uniqid of the license product.",
+                    "example": "5eb6b2bde8a50"
+                  },
+                  "key": {
+                    "type": "string",
+                    "description": "License key purchase by the customer.",
+                    "example": "LICENSE-SAMPLE-00"
+                  },
+                  "hardware_id": {
+                    "type": "string",
+                    "description": "Hardware ID to be assigned to the license. If passed, the hardware ID will be checked against the license key.",
+                    "example": "098H52ST479QE053V2"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "$ref": "#/components/responses/200"
@@ -5719,6 +5860,71 @@
             "description": "When the message was sent."
           }
         }
+      },
+      "license": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 0,
+            "description": "ID of the resource"
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "546f3ede4f1ad",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 0,
+            "description": "The shop ID to which this license belongs."
+          },
+          "product_id": {
+            "type": "integer",
+            "example": 0,
+            "description": "The product ID to which this license belongs."
+          },
+          "invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": null,
+            "description": "Unique ID of the invoice this license is linked to."
+          },
+          "license_key": {
+            "type": "string",
+            "example": "LICENSE-SAMPLE-00",
+            "description": "License key."
+          },
+          "hardware_id": {
+            "type": "string",
+            "example": "098H52ST479QE053V2",
+            "description": "Hardware ID."
+          },
+          "uses": {
+            "type": "integer",
+            "example": 0,
+            "description": "Number of uses for this license, this value is increased at every license check."
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-09-02 12:09:00",
+            "description": "Expiration date of the license."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-05-25 07:21:57",
+            "description": "Creation date of the license."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-05-25 07:21:57",
+            "description": "Date, available if the license has been updated."
+          }
+        }
       }
     },
     "parameters": {
@@ -5745,7 +5951,7 @@
     },
     "responses": {
       "200": {
-        "description": "The request has succeeded",
+        "description": "SUCCESS_MESSAGE",
         "content": {
           "application/json": {
             "schema": {
@@ -5781,7 +5987,7 @@
         }
       },
       "401": {
-        "description": "unauthorized to access the resource",
+        "description": "UNAUTHORIZED",
         "content": {
           "application/json": {
             "schema": {
@@ -5817,7 +6023,7 @@
         }
       },
       "403": {
-        "description": "access to the resource is not available",
+        "description": "FORBIDDEN",
         "content": {
           "application/json": {
             "schema": {
@@ -5853,7 +6059,7 @@
         }
       },
       "404": {
-        "description": "resource not found",
+        "description": "NOT_FOUND",
         "content": {
           "application/json": {
             "schema": {
@@ -5877,7 +6083,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "resource not found"
+                  "example": "NOT_FOUND"
                 },
                 "env": {
                   "type": "string",
@@ -6813,6 +7019,46 @@
                       "items": {
                         "$ref": "#/components/schemas/subscriptionListing"
                       }
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "license": {
+        "description": "license object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "order": {
+                      "$ref": "#/components/schemas/license"
                     }
                   }
                 },

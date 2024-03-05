@@ -84,32 +84,32 @@ Each webhook request will feature a `X-Sellix-Event` header containing the webho
 
 | Event | Description |
 | ----- | ----------- |
-| order:created | The order has been created. |
-| order:updated | The order status has changed. |
-| order:partial | The order status is now partial, indicating a cryptocurrency payment that has been sent but not covering the whole amount. |
-| order:paid | The order has been flagged as paid, this is the final state. |
-| order:cancelled | The order has been cancelled either by the fraud shield, the merchant, or due to not receiving a payment within the time window. |
-| order:disputed | A Stripe/PayPal dispute has been opened against one of your stores. |
-| product:created | A product has been created. |
-| product:stock | A product's stock has fallen below the warning range. |
-| product:edited | A product has been edited. |
-| product:dynamic | This event is issued only for dynamic products, to learn more about dynamic products, [click here](/api-reference/dynamic-products). |
-| query:created | A query has been created for one of your shops. |
-| query:replied | A reply has been received for one of your queries. |
-| feedback:received | One of your customers left a feedback for you. |
-| subscription:trial:started | A trial has been started for one of your subscriptions. |
-| subscription:trial:ended | A trial has ended for one of your subscriptions, this is usually followed by an order:created event. |
-| subscription:created | A subscription has been created, to learn how to better handle subscriptions, please [see this guide](/api-reference/subscriptions). |
-| subscription:updated | A subscription has been updated. |
-| subscription:renewed | A subscription has been renewed, after receiving a new payment. |
-| subscription:cancelled | A subscription has been cancelled, either due to not receiving a payment or by a manual action of the customer. |
-| subscription:upcoming | A customer will have to pay one of your subscriptions in the next 72 hours. |
-| order:paid:product | This event is the same as order:paid, however :products indicates that it originates from a webhook URL configured within a product, which is now deprecated |
-| order:partial:product | Similar to order:paid, this event is the same as its parent. |
-| order:created:product | Similar to order:paid, this event is the same as its parent. |
-| order:disputed:product | Similar to order:paid, this event is the same as its parent. |
-| order:cancelled:product | Similar to order:paid, this event is the same as its parent. |
-| order:updated:product | Similar to order:paid, this event is the same as its parent. |
+| `order:created` | The order has been created. |
+| `order:updated` | The order status has changed. |
+| `order:partial` | The order status is now partial, indicating a cryptocurrency payment that has been sent but not covering the whole amount. |
+| `order:paid` | The order has been flagged as paid, this is the final state. |
+| `order:cancelled` | The order has been cancelled either by the fraud shield, the merchant, or due to not receiving a payment within the time window. |
+| `order:disputed` | A Stripe/PayPal dispute has been opened against one of your stores. |
+| `product:created` | A product has been created. |
+| `product:stock` | A product's stock has fallen below the warning range. |
+| `product:edited` | A product has been edited. |
+| `product:dynamic` | This event is issued only for dynamic products, to learn more about dynamic products, [click here](/api-reference/dynamic-products). |
+| `query:created` | A query has been created for one of your shops. |
+| `query:replied` | A reply has been received for one of your queries. |
+| `feedback:received` | One of your customers left a feedback for you. |
+| `subscription:trial:started` | A trial has been started for one of your subscriptions. |
+| `subscription:trial:ended` | A trial has ended for one of your subscriptions, this is usually followed by an order:created event. |
+| `subscription:created` | A subscription has been created, to learn how to better handle subscriptions, please [see this guide](/api-reference/subscriptions). |
+| `subscription:updated` | A subscription has been updated. |
+| `subscription:renewed` | A subscription has been renewed, after receiving a new payment. |
+| `subscription:cancelled` | A subscription has been cancelled, either due to not receiving a payment or by a manual action of the customer. |
+| `subscription:upcoming` | A customer will have to pay one of your subscriptions in the next 72 hours. |
+| `order:paid:product` | This event is the same as order:paid, however :products indicates that it originates from a webhook URL configured within a product, which is now deprecated |
+| `order:partial:product` | Similar to order:paid, this event is the same as its parent. |
+| `order:created:product` | Similar to order:paid, this event is the same as its parent. |
+| `order:disputed:product` | Similar to order:paid, this event is the same as its parent. |
+| `order:cancelled:product` | Similar to order:paid, this event is the same as its parent. |
+| `order:updated:product` | Similar to order:paid, this event is the same as its parent. |
 
 ## Logs
 
