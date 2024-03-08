@@ -1,15 +1,19 @@
 ---
-title: 'Errors'
-description: 'Learn through the errors that could happen whilst using the API'
+title: 'Errors and Limits'
+description: 'Learn through the errors and rate-limits that could happen whilst using the API'
 ---
 
 ## Types
 
 Errors will only ever be present with a `400` to `503` response status.
 
-<Warning>`4xx` will be inside the response JSON (`response.data.status`), whilst `5xx` errors are sent as an HTTP status code.</Warning>
+<Warning>
+  `4xx` will be inside the response JSON (`response.status`), whilst `5xx` errors are sent as an HTTP status code.
 
-All errors will include an `error` attribute detailing the error message.
+  With the exception of rate-limiting errors (`429`), which are served by Cloudflare and have both a `response.status` JSON and the HTTP `429` status code.
+</Warning>
+
+All errors will include an `response.error` attribute detailing the error message.
 
 The Sellix API uses the following error codes:
 
@@ -23,3 +27,41 @@ The Sellix API uses the following error codes:
 | `429` | Too Many Requests - You have reached the rate limit. |
 | `500` | Internal Server Error - We had a problem with our server. Try again later. These are rare. |
 | `503` | Service Unavailable - We're temporarily offline for maintenance. Please try again later. |
+
+## Rate-limits
+
+Rate-limiting errors (`429`) happen when you are sending too many requests to the developers API.
+
+### How it works
+
+Our rate-limiting system is based on 10-seconds intervals rather than 1, meaning that you can do a burst of API call within the first second, then wait 9 seconds and do it again.
+
+<Info>For example, if you are on the `Standard` tier with 50 req/10s, you can send 50 requests within a second, then wait 9 seconds to send the others and it would work.</Info>
+
+If you go over the allowed rate-limit for your tier, we <Tooltip tip="The WAF will block any requests exceeding the configured rate, and the remaining requests will be allowed. For example, if you send 60 requests in 10 seconds when you're only allowed to send 50, 10 will be blocked. You will not be rate-limited for X minutes after this, you will be able to immediately send other requests.">throttle your requests over the maximum configured rate for that tier</Tooltip>.
+
+### General endpoints
+
+All Sellix API endpoints are rate-limited. Based on your tier, you have access to different rate-limiting values.
+
+<Note>To upgrade to an higher tier, please reach out to us at sales@sellix.io or through our [Discord community](https://sellix.io/discord)</Note>
+
+| Tier | Limits |
+| ---- | ------ |
+| `Standard` | 50 req/10s |
+| `Tier 1` | 75 req/10s |
+| `Tier 2` | 100 req/10s |
+| `Tier 3` | 500 req/10s |
+
+### Payment endpoints
+
+If you are on the standard version, payment endpoints are highly restricted compared to standard ones.
+
+<Note>To upgrade to an higher tier, please reach out to us at sales@sellix.io or through our [Discord community](https://sellix.io/discord)</Note>
+
+| Tier | Limits |
+| ---- | ------ |
+| `Standard` | 5 req/10s |
+| `Tier 1` | 75 req/10s |
+| `Tier 2` | 100 req/10s |
+| `Tier 3` | 500 req/10s |
