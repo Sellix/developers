@@ -9,7 +9,7 @@ If you do not want to specify the product's value with the serials type, you can
 
 When creating a product [through our dashboard](https://dashboard.sellix.io/products), choose the "Dynamic" type and specify a URL where we will send the request to retrieve it.
 
-The webhook event we will send is `product:dynamic`, which will have as payload the [order object](/api-reference/get-order).
+The webhook event we will send is `product:dynamic`, which will have as payload the [order object](/api-reference/orders/get-order).
 
 You can find the quantity for which we expect the response as `payload.data.quantity`, or, in the case of cart orders (`order.type === SHOPPING_CART`), in the `payload.data.cart[].unit_quantity` field.
 
