@@ -7,9 +7,9 @@ description: 'Accept recurring through Sellix with Cryptocurrencies and Fiat'
 
 Also referred as <Tooltip tip="You might see them referenced as this throughout the code, schema, or other places.">recurring_billings</Tooltip>, subscriptions enable you to bill your customers at a customized interval decided by you.
 
-We take care of the logic and backend operations as well as managing and updating your customers, you only have to create the products and setup a webhook endpoint.
+We take care of the logic and backend operations as well as managing and updating your customers; you only have to create the products and set up a webhook endpoint.
 
-We currently support `Daily`, `Weekly`, `Monthly` and `Yearly` intervals with a minimum interval count of `1`. Subscription invoices to be paid are sent within 60 seconds of an expiration and webhook events retried up to 5 times without delay from when an update or creation occurs.
+We currently support `Daily`, `Weekly`, `Monthly` and `Yearly` intervals with a minimum interval count of `1`. Subscription invoices to be paid are sent within 60 seconds of expiration, and webhook events are retried up to 5 times without delay from when an update or creation occurs.
 
 <CardGroup cols={2}>
   <Card title="Get Subscriptions" icon="bars-staggered" href="/api-reference/subscriptions/get-subscription">
@@ -33,12 +33,12 @@ The events that you need to handle for Subscriptions are the following
 | Event | Description |
 | ----- | ----------- |
 | `subscription:trial:started` | A trial for the subscription has started |
-| `subscription:trial:ended` | A trial has ended, this is usually followed by an `order:created` event |
+| `subscription:trial:ended` | A trial has ended. This is usually followed by an `order:created` event |
 | `subscription:created` | A subscription has been created |
 | `subscription:updated` | A subscription status changed |
 | `subscription:renewed` | A subscription has been renewed after successfully receiving a payment |
-| `subscription:cancelled` | A subscription has been cancelled by the customer or the merhcant |
-| `subscription:upcoming` | A customer will be charged for his subscription in the next 72h |
+| `subscription:cancelled` | A subscription has been cancelled by the customer or the merchant |
+| `subscription:upcoming` | A customer will be charged for his subscription in the next 72 hours |
 
 ## Subscription journey
 
@@ -48,12 +48,12 @@ The events that you need to handle for Subscriptions are the following
     
     Optional, sent only if the product has a trial period enabled.
 
-    A trial for one of your product subscription has been started, we will not create any invoice in relation to this event.
+    A trial for one of your product subscriptions has been started. We will not create an invoice for this event.
 
     If this webhook is sent, it’s preceded by a `subscription:created` event with a unique status
 
     <Card title="Keep in mind" icon="lightbulb" iconType="duotone" color="#ca8b04">
-      A subscription has been created, an invoice for this subscription has not been created. `TRIALING` means that the subscription has been created in a trialing state, waiting for `subscription:trial:ended`.
+      Although a subscription has been created, an invoice for it has not been created. `TRIALING` means that the subscription has been created in a trialing state, waiting for `subscription:trial:ended`.
     </Card>
 
     <Info>Please note that if the product has a trial period, the trial period must be used.</Info>
@@ -68,11 +68,11 @@ The events that you need to handle for Subscriptions are the following
   <Step title="Subscription Created">
     Event `subscription:created`
 
-    This webhook has been already sent if the product has a trial period. If not, this webhook is sent right after an invoice `PRODUCT_SUBSCRIPTION` has been successfully paid.
+    If the product has a trial period, this webhook has already been sent. If not, it is sent right after an invoice `PRODUCT_SUBSCRIPTION` has been successfully paid.
 
-    The subscription has been started for your customer and the payment succeeded, you should implement there any logic that you might deem necessary to activate your customer’s subscription.
+    Once your customer's subscription has been started and the payment has succeeded, you should implement any logic that you might deem necessary to activate the subscription.
 
-    We highly suggest the usage of our custom fields to act as a metadata object in order to recognize which customer purchased your subscription and activate it to them.
+    We highly suggest the usage of our custom fields to act as a metadata object in order to recognize which customer purchased your subscription and activate it for them.
   </Step>
   <Step title="Subscription Updated">
     Event `subscription:updated`
@@ -84,12 +84,12 @@ The events that you need to handle for Subscriptions are the following
     
     Should you or the customer decide to cancel the subscription, this webhook event is sent.
 
-    A subscription is cancelled if the payment fails or is not sent within your settings’ grace period (in days). We handle every email for payment failures and renewal updates. You can also update customer notification settings on the [Subscription settings page](https://dashboard.sellix.io/settings/subscriptions) (access it through your Profile > Settings).
+    A subscription is canceled if the payment fails, or is not sent within your settings’ grace period (in days). We handle every email for payment failures and renewal updates. You can also update customer notification settings on the [Subscription settings page](https://dashboard.sellix.io/settings/subscriptions) (access it through your Profile > Settings).
   </Step>
   <Step title="Subscription Upcoming">
     Event `subscription:upcoming`
     
-    Event sent a few days before a subscription is about to be renewed
+    The event is sent a few days before a subscription is about to be renewed
   </Step>
   <Step title="Subscription Renewed">
     Event `subscription:renewed`
@@ -100,7 +100,7 @@ The events that you need to handle for Subscriptions are the following
 
 ## Customer Billing Portal
 
-Every customer will have access to their customer billing portal where they will be able to see, cancel and update any active subscription purchased from you or any other business on our platform.
+Every customer will have access to their customer billing portal, where they can view, cancel, and update any active subscription purchased from you or any other business on our platform.
 
 ![customer portal](https://cdn.sellix.io/static/documentation/images/customer-portal.png)
 
@@ -108,21 +108,21 @@ They will authenticate using their personal email address, used to purchase your
 
 ## Integrations
 
-Three ways to integrate subscriptions in your website.
+Three ways to integrate subscriptions into your website.
 
 <Card title="Sellix Hosted Experience" icon="browser" href="https://dashboard.sellix.io/products">
-  You will be using our hosted experience through `YOUR_DOMAIN`, asking customers their own ID/Email/Username through product custom fields in order to then activate the subscription on their account.
+  You will be using our hosted experience through `YOUR_DOMAIN`, asking customers for their ID/Email/Username through product custom fields to activate the subscription on their account.
 </Card>
 
 <Card title="Customized embeds" icon="frame" href="https://dashboard.sellix.io/developer/embed">
   Through product embeds.
-  You can embed subscription products on your website and automatically set hidden custom fields to uniquely identify your customers when the webhook events are sent.
+  You can embed subscription products on your website, and automatically set hidden custom fields to uniquely identify your customers when the webhook events are sent.
 </Card>
 
 <Card title="Developers API" icon="code" href="/api-reference/subscriptions/post-subscriptions">
   Brandless implementation with our API.
   Use your own logo and website to manage customers and subscriptions.
-  Currently, the documentation is hosted on dev-openapi.sellix.io, it will soon be available on this page as well with an improved doc.
+  Currently, the documentation is hosted on dev-openapi.sellix.io. However, it will soon be available on this page as well, with an improved document.
 </Card>
 
 ## Cryptocurrencies
@@ -131,4 +131,4 @@ From the get-go, we support subscriptions billed automatically through cryptocur
 
 ![customer portal](https://cdn.sellix.io/static/documentation/images/crypto-subscriptions.png)
 
-This works by approving X recurring payments on the cryptocurrency wallet of the customer, and automatically sending a transaction for each renewal period.
+This works by approving X recurring payments on the customer's cryptocurrency wallet and automatically sending a transaction for each renewal period.
