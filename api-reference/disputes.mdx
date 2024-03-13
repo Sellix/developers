@@ -5,16 +5,16 @@ description: 'What happens when a customer opens a dispute on one of your PayPal
 
 ## Dispute Reason
 
-Occasionally, something goes wrong with a customer's order. To dispute a charge, a customer can create a dispute with PayPal. A customer can also ask his or her bank or credit card company to dispute and reverse a charge, which is known as a chargeback.
+Occasionally, something goes wrong with a customer's order. To dispute a charge, a customer can create a dispute with PayPal or ask his or her bank or credit card company to dispute and reverse a charge, which is known as a chargeback.
 
-When a customer disputes a charge, we will notify you with an email and Discord notification (if you have setup our Bot).
+When a customer disputes a charge, we will notify you by email and Discord (if you have set up our Bot).
 The dispute reason is why the customer has opened a dispute against your order.
 
 | Dispute Reason | Description |
 | -------------- | ----------- |
 | `MERCHANDISE_OR_SERVICE_NOT_RECEIVED` | The customer did not receive the merchandise or service. |
 | `MERCHANDISE_OR_SERVICE_NOT_AS_DESCRIBED` | The customer reports that the merchandise or service is not as described. |
-| `UNAUTHORISED` | The customer did not authorize purchase of the merchandise or service. |
+| `UNAUTHORISED` | The customer did not authorize the purchase of the merchandise or service. |
 | `CREDIT_NOT_PROCESSED` | The refund or credit was not processed for the customer. |
 | `DUPLICATE_TRANSACTION` | The transaction was a duplicate. |
 | `INCORRECT_AMOUNT` | The customer was charged an incorrect amount. |
@@ -25,7 +25,7 @@ The dispute reason is why the customer has opened a dispute against your order.
 
 ## Dispute Status
 
-Each dispute is automatically updated when we receive an update from PayPal, the status indicates how it is going.
+Each dispute is automatically updated when we receive an update from PayPal. The status indicates how it is going.
 
 | Dispute Reason | Description |
 | -------------- | ----------- |
@@ -56,10 +56,10 @@ The stage in the dispute lifecycle
 
 | Dispute Reason | Description |
 | -------------- | ----------- |
-| `INQUIRY` | A customer and merchant interact in an attempt to resolve a dispute without escalation to PayPal. Occurs when the customer: Has not received goods or a service. Reports that the received goods or service are not as described. Needs more details, such as a copy of the transaction or a receipt. |
-| `CHARGEBACK` | A customer or merchant escalates an inquiry to a claim, which authorizes PayPal to investigate the case and make a determination. Occurs only when the dispute channel is INTERNAL. This stage is a PayPal dispute lifecycle stage and not a credit card or debit card chargeback. All notes that the customer sends in this stage are visible to PayPal agents only. The customer must wait for PayPal’s response before the customer can take further action. In this stage, PayPal shares dispute details with the merchant, who can complete one of these actions: Accept the claim. Submit evidence to challenge the claim. Make an offer to the customer to resolve the claim. |
+| `INQUIRY` | A customer and merchant interact in an attempt to resolve a dispute without escalation to PayPal. Occurs when the customer: Has not received goods or a service. Reports that the received goods or services are not as described. Needs more details, such as a copy of the transaction or a receipt. |
+| `CHARGEBACK` | A customer or merchant escalates an inquiry to a claim, which authorizes PayPal to investigate the case and make a determination. Occurs only when the dispute channel is INTERNAL. This stage is a PayPal dispute lifecycle stage and not a credit card or debit card chargeback. All notes that the customer sends in this stage are visible to PayPal agents only. The customer must wait for PayPal’s response before the customer can take further action. In this stage, PayPal shares dispute details with the merchant, who can complete one of these actions: accept the claim, submit evidence to challenge the claim, make an offer to the customer to resolve the claim. |
 | `PRE_ARBITRATION` | The first appeal stage for merchants. A merchant can appeal a chargeback if PayPal's decision is not in the merchant's favor. If the merchant does not appeal within the appeal period, PayPal considers the case resolved. |
-| `ARBITRATION` | The second appeal stage for merchants. A merchant can appeal a dispute for a second time if the first appeal was denied. If the merchant does not appeal within the appeal period, the case returns to a resolved status in pre-arbitration stage. |
+| `ARBITRATION` | The second appeal stage for merchants. A merchant can appeal a dispute for a second time if the first appeal was denied. If the merchant does not appeal within the appeal period, the case returns to a resolved status in a pre-arbitration stage. |
 
 ## Dispute Message Posted By
 
