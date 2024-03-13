@@ -5,11 +5,11 @@ description: 'Webhooks can be used to receive real-time notifications about even
 
 ## General guidance
 
-Sellix provides a webhooks system allowing you to subscribe to to events with Webhook Endpoints, alongside Product/Payment Order status webhooks and Dynamic Product webhooks.
+Sellix provides a webhooks system allowing you to subscribe to events with Webhook Endpoints such as Product/Payment Order status webhooks and Dynamic Product webhooks.
 
 <Warning>Please note only HTTPS webhook URLs are supported.</Warning>
 
-A [webhook simulator](https://dashboard.sellix.io/developer/webhooks/logs) is available allowing you to simulate webhooks to a URL.
+A [webhook simulator](https://dashboard.sellix.io/developer/webhooks/logs) is available allowing you to simulate webhook events to a specified URL.
 ## Signing/Validating
 
 To verify the authenticity of a webhook request and its payload, each webhook request includes a `X-Sellix-Signature` header with a HMAC signature comprised of the JSON encoded request body and your webhook secret. Your webhook secret can be changed in your [settings page](https://dashboard.sellix.io/settings/shop/general).
@@ -101,9 +101,9 @@ Each webhook request will feature a `X-Sellix-Event` header containing the webho
 | `subscription:created` | A subscription has been created, to learn how to better handle subscriptions, please [see this guide](/api-reference/subscriptions). |
 | `subscription:updated` | A subscription has been updated. |
 | `subscription:renewed` | A subscription has been renewed, after receiving a new payment. |
-| `subscription:cancelled` | A subscription has been cancelled, either due to not receiving a payment or by a manual action of the customer. |
-| `subscription:upcoming` | A customer will have to pay one of your subscriptions in the next 72 hours. |
-| `order:paid:product` | This event is the same as order:paid, however :products indicates that it originates from a webhook URL configured within a product, which is now deprecated |
+| `subscription:cancelled` | A subscription has been canceled, either due to not receiving a payment or by a manual action of the customer. |
+| `subscription:upcoming` | A customer will have to pay for one of your subscriptions in the next 72 hours. |
+| `order:paid:product` | This event is the same as order:paid, however the :product segment indicates that it originates from a webhook URL configured within a product, which is now deprecated |
 | `order:partial:product` | Similar to order:paid, this event is the same as its parent. |
 | `order:created:product` | Similar to order:paid, this event is the same as its parent. |
 | `order:disputed:product` | Similar to order:paid, this event is the same as its parent. |
@@ -112,9 +112,9 @@ Each webhook request will feature a `X-Sellix-Event` header containing the webho
 
 ## Logs
 
-Each webhook request will create a [Webhook Log](https://dashboard.sellix.io/developer/webhooks/all). The object is created by the request has been sent. Before the request response has actually been received, the `response_code` will be 0, indicating it is pending.
+Each webhook request will create a [Webhook Log](https://dashboard.sellix.io/developer/webhooks/all). The object is created by the request that has been sent. Before the request's response has been received, the `response_code` will be 0, indicating it is pending.
 
-<Warning>Logs will only be kept for up to 30 days, after this period they will be deleted</Warning>
+<Warning>Logs will only be kept for up to 30 days. After this period they will be deleted</Warning>
 
 ## Whitelist Us
 
