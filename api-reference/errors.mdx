@@ -1,19 +1,19 @@
 ---
 title: 'Errors and Limits'
-description: 'Learn through the errors and rate-limits that could happen whilst using the API'
+description: 'Explore the errors and rate-limits that you could encounter whilst using the API'
 ---
 
 ## Types
 
-Errors will only ever be present with a `400` to `503` response status.
+Errors will only ever be present within the `400` to `503` response status range.
 
 <Warning>
-  `4xx` will be inside the response JSON (`response.status`), whilst `5xx` errors are sent as an HTTP status code.
+  `4xx` errors will be inside the response JSON (`response.status`), whilst `5xx` errors are sent as an HTTP status code.
 
-  With the exception of rate-limiting errors (`429`), which are served by Cloudflare and have both a `response.status` JSON and the HTTP `429` status code.
+  With the exception of rate-limiting errors (`429`), which are served by Cloudflare, and have both a `response.status` JSON and the HTTP `429` status code.
 </Warning>
 
-All errors will include an `response.error` attribute detailing the error message.
+All errors will include a `response.error` attribute detailing the error message.
 
 The Sellix API uses the following error codes:
 
@@ -34,7 +34,7 @@ Rate-limiting errors (`429`) happen when you are sending too many requests to th
 
 ### How it works
 
-Our rate-limiting system is based on 10-seconds intervals rather than 1, meaning that you can do a burst of API call within the first second, then wait 9 seconds and do it again.
+Our rate-limiting system is based on 10-second intervals rather than 1, meaning that you can make a burst of API calls within the first second, then wait 9 seconds and do it again.
 
 <Info>For example, if you are on the `Standard` tier with 50 req/10s, you can send 50 requests within a second, then wait 9 seconds to send the others and it would work.</Info>
 
@@ -44,7 +44,7 @@ If you go over the allowed rate-limit for your tier, we <Tooltip tip="The WAF wi
 
 All Sellix API endpoints are rate-limited. Based on your tier, you have access to different rate-limiting values.
 
-<Note>To upgrade to an higher tier, please reach out to us at sales@sellix.io or through our [Discord community](https://sellix.io/discord)</Note>
+<Note>To upgrade to a higher tier, please reach out to us at sales@sellix.io or through our [Discord community](https://sellix.io/discord)</Note>
 
 | Tier | Limits |
 | ---- | ------ |
@@ -55,9 +55,9 @@ All Sellix API endpoints are rate-limited. Based on your tier, you have access t
 
 ### Payment endpoints
 
-If you are on the standard version, payment endpoints are highly restricted compared to standard ones.
+If you are on the standard version, payment endpoints are highly restricted compared to the general endpoints.
 
-<Note>To upgrade to an higher tier, please reach out to us at sales@sellix.io or through our [Discord community](https://sellix.io/discord)</Note>
+<Note>To upgrade to a higher tier, please reach out to us at sales@sellix.io or through our [Discord community](https://sellix.io/discord)</Note>
 
 | Tier | Limits |
 | ---- | ------ |

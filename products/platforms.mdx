@@ -1,6 +1,6 @@
 ---
 title: 'Platforms'
-description: 'Use Sellix for Platforms to create on-demand non-custodial wallets to your users, create payments and collect fees'
+description: 'Use Sellix for Platforms to create on-demand, non-custodial wallets for your users, create payments, and collect fees'
 icon: 'layer-group'
 ---
 
@@ -10,7 +10,7 @@ One of the latest features we have released is the Wallet for Platform.
 
 It enables platforms and marketplaces to issue non-custodial wallets to their merchants, then create payments from those wallets and charge merchants any custom fee whilst doing so.
 
-**It essentially is Stripe Connect, but for Cryptocurrencies.**
+**It essentially is Stripe Connect but for Cryptocurrencies.**
 
 <Card
   title="GitHub Repository"
@@ -26,12 +26,12 @@ It enables platforms and marketplaces to issue non-custodial wallets to their me
 - implementation [here](https://github.com/Sellix/platform-wallet-demo/blob/main/server/index.js)
 - the platform frontend calls the platform server to create a new user that will be associated with the Sellix `merchant_id`
 - the platform server calls Sellix API using the `Sellix API key` (`/wallet/createWalletMerchant`) that returns a `merchant_id` and a `merchant_token` that will be used to authenticate the merchant
-- the platform frontend will render Sellix wallet `/setup` page in an iframe with the `merchant_token` as query param
+- the platform frontend will render Sellix Wallet's `/setup` page in an iframe with the `merchant_token` as a query param
 - the merchant will proceed with a regular wallet setup
 - when the setup is completed the wallet makes a call directly to Sellix API (instead of using postMessage) to upload the addresses using the `merchant_token`:
   - `/wallet/address` for all the primary addresses
   - `/wallet/reusable_addresses` for NANO and SOLANA reusable addresses
-- concordium will not be setup at this point because it requires a different setup flow (see below)
+- Concordium will not be set up at this point because it requires a different setup flow (see below)
 
 <img
   className="block"
@@ -41,12 +41,12 @@ It enables platforms and marketplaces to issue non-custodial wallets to their me
 
 ### `getMerchantDashboard` (merchant sees his wallet/dashboard)
 - implementation [here](https://github.com/Sellix/platform-wallet-demo/blob/main/server/index.js)
-- the merchant calls the platform server to get the wallet url
+- the merchant calls the platform server to get the wallet URL
 - the platform server calls Sellix API using the `Sellix API key` (`/wallet/getWalletMerchant`) that returns a `merchant_id` and a `merchant_token` that will be used to authenticate the merchant
-- the platform frontend renders the wallet iframe using the wallet url with the merchant token
+- the platform frontend renders the wallet iframe using the wallet URL with the merchant token
 - the wallet uses the merchant token (instead of receiving postMessage) to make the `/wallet/self` API call to get the merchant addresses created during the setup phase
-- the wallet uses the merchant token (instead of receiving postMessage) to make the `/wallet/estimate/<currency>/reusable_addresses` API call to check if there is the need to upload new addresses
-- now the wallet is able to perform the following operations in a seameless way like you would do in the Sellix dashboard:
+- the wallet uses the merchant token (instead of receiving postMessage) to make the `/wallet/estimate/<currency>/reusable_addresses` API call to check if there is a need to upload new addresses
+- now the wallet is able to perform the following operations in a seamless way like you would do in the Sellix dashboard:
 
 <img
   className="block"

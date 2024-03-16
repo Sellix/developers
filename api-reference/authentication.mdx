@@ -5,7 +5,7 @@ description: 'Use your Sellix API Key to authenticate your requests'
 
 ## Bearer Token
 
-Sellix's API uses a Bearer authentication with your API Secret Key. You will have to send your API Secret Key via theAuthorization header.
+Sellix's API uses Bearer authentication with your API Secret Key. You will have to send your API Secret Key via the Authorization header.
 
 <Note>Your API Key is the same for all the stores you have under your account.</Note>
 
@@ -19,6 +19,6 @@ Your API key can be accessed and re-generated [in the security tab](https://dash
 
 ## Multiple Shops
 
-If you have more than one shop (merchant) under your Sellix account, you can send API requests with their authorization by passing the `X-Sellix-Merchant` header to each request.
+If you have more than one shop (merchant) under your Sellix account, you can send API requests for non-primary merchants by passing the `X-Sellix-Merchant` header to each request.
 
-The `X-Sellix-Merchant` header must be equal to the merchant you want to authorize. For example if your Sellix account has two merchants (1. Jack, 2. James) and you want to make API requests as James, you need to pass the `X-Sellix-Merchant` header with value James.
+The `X-Sellix-Merchant` header must be equal to the merchant you want to authorize. For example, if your Sellix account has two merchants (1. Jack, 2. James) and you want to make API requests as James, you need to pass the `X-Sellix-Merchant` header with the value "James".
