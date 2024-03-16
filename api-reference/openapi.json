@@ -747,7 +747,7 @@
                       "TOTAL",
                       "QUANTITY"
                     ],
-                    "example": "TOTAL",
+                    "description": "DEPRECATED",
                     "deprecated": true
                   },
                   "disabled_with_volume_discounts": {
@@ -881,7 +881,7 @@
                       "TOTAL",
                       "QUANTITY"
                     ],
-                    "example": "TOTAL",
+                    "description": "DEPRECATED",
                     "deprecated": true
                   },
                   "disabled_with_volume_discounts": {
@@ -1763,8 +1763,7 @@
                   },
                   "lex_payment_method": {
                     "type": "string",
-                    "example": null,
-                    "description": "If gateway is LEX_HOLDINGS_GROUP, method to be used for the customer to pay.",
+                    "description": "DEPRECATED: If gateway is LEX_HOLDINGS_GROUP, method to be used for the customer to pay.",
                     "deprecated": true
                   },
                   "value": {
@@ -2696,8 +2695,7 @@
           },
           "image_attachment": {
             "type": "string",
-            "example": null,
-            "description": "Unique id of the image attachment for this group.",
+            "description": "DEPRECATED: Unique id of the image attachment for this group.",
             "deprecated": true
           },
           "created_at": {
@@ -2764,8 +2762,7 @@
           },
           "currency": {
             "type": "string",
-            "example": null,
-            "description": "Currency of the coupon discount value.",
+            "description": "DEPRECATED: Currency of the coupon discount value.",
             "deprecated": true
           },
           "used": {
@@ -2887,14 +2884,12 @@
           },
           "product_image_name": {
             "type": "string",
-            "example": null,
-            "description": "Unique id of the image attachment for this product with the image extension included.",
+            "description": "DEPRECATED: Unique id of the image attachment for this product with the image extension included.",
             "deprecated": true
           },
           "product_image_storage": {
             "type": "string",
-            "example": null,
-            "description": "Where the image is stored in our self-hosted CDN.",
+            "description": "DEPRECATED: Where the image is stored in our self-hosted CDN.",
             "deprecated": true
           },
           "cloudflare_image_id": {
@@ -3072,8 +3067,7 @@
           },
           "image_attachment": {
             "type": "string",
-            "example": null,
-            "description": "Unique id of the image attachment for this product.",
+            "description": "DEPRECATED: Unique id of the image attachment for this product.",
             "deprecated": true
           },
           "file_attachment": {
@@ -3253,14 +3247,12 @@
           },
           "image_name": {
             "type": "string",
-            "example": null,
-            "description": "Unique id of the image attachment for this product with the image extension included.",
+            "description": "DEPRECATED: Unique id of the image attachment for this product with the image extension included.",
             "deprecated": true
           },
           "image_storage": {
             "type": "string",
-            "example": null,
-            "description": "Where the image is stored in our self-hosted CDN.",
+            "description": "DEPRECATED: Where the image is stored in our self-hosted CDN.",
             "deprecated": true
           },
           "cloudflare_image_id": {
@@ -3341,8 +3333,7 @@
             "items": {
               "type": "string"
             },
-            "example": [],
-            "description": "Available payment methods for gateway LEX_HOLDINGS_GROUP.",
+            "description": "DEPRECATED: Available payment methods for gateway LEX_HOLDINGS_GROUP.",
             "deprecated": true
           },
           "created_at": {
@@ -3849,14 +3840,12 @@
           },
           "shop_image_name": {
             "type": "string",
-            "example": null,
-            "description": "Unique id of the image attachment for this merchant with the image extension included.",
+            "description": "DEPRECATED: Unique id of the image attachment for this merchant with the image extension included.",
             "deprecated": true
           },
           "shop_image_storage": {
             "type": "string",
-            "example": null,
-            "description": "Where the image is stored in our self-hosted CDN.",
+            "description": "DEPRECATED: Where the image is stored in our self-hosted CDN.",
             "deprecated": true
           },
           "cloudflare_image_id": {
@@ -3964,8 +3953,7 @@
           },
           "paypal_email": {
             "type": "string",
-            "example": null,
-            "description": "Merchant PayPal email.",
+            "description": "DEPRECATED: Merchant PayPal email.",
             "deprecated": true
           },
           "paypal_order_id": {
@@ -3995,20 +3983,17 @@
           },
           "lex_order_id": {
             "type": "string",
-            "example": null,
-            "description": "Unique ID of the LEX_HOLDINGS_GROUP order linked to this invoice.",
+            "description": "DEPRECATED: Unique ID of the LEX_HOLDINGS_GROUP order linked to this invoice.",
             "deprecated": true
           },
           "lex_payment_method": {
             "type": "string",
-            "example": null,
-            "description": "Gateway used over LEX_HOLDINGS_GROUP.",
+            "description": "DEPRECATED: Gateway used over LEX_HOLDINGS_GROUP.",
             "deprecated": true
           },
           "paydash_paymentID": {
             "type": "string",
-            "example": null,
-            "description": "Unique ID of the PAYDASH order linked to this invoice.",
+            "description": "DEPRECATED: Unique ID of the PAYDASH order linked to this invoice.",
             "deprecated": true
           },
           "stripe_client_secret": {
@@ -4243,8 +4228,7 @@
               },
               "storage": {
                 "type": "string",
-                "example": null,
-                "description": "Where the image is stored in our self-hosted CDN.",
+                "description": "DEPRECATED: Where the image is stored in our self-hosted CDN.",
                 "deprecated": true
               },
               "name": {
@@ -4408,26 +4392,22 @@
           },
           "day_value": {
             "type": "integer",
-            "example": 29,
-            "description": "Day value, number.",
+            "description": "DEPRECATED: Day value, number.",
             "deprecated": true
           },
           "day": {
             "type": "string",
-            "example": "Wed",
-            "description": "First three letters of the day name.",
+            "description": "DEPRECATED: First three letters of the day name.",
             "deprecated": true
           },
           "month": {
             "type": "string",
-            "example": "Dec",
-            "description": "First three letters of the month name.",
+            "description": "DEPRECATED: First three letters of the month name.",
             "deprecated": true
           },
           "year": {
             "type": "integer",
-            "example": 2021,
-            "description": "Year number.",
+            "description": "DEPRECATED: Year number.",
             "deprecated": true
           },
           "created_at": {
@@ -4582,8 +4562,7 @@
           },
           "paypal_email": {
             "type": "string",
-            "example": null,
-            "description": "Merchant PayPal email.",
+            "description": "DEPRECATED: Merchant PayPal email.",
             "deprecated": true
           },
           "paypal_order_id": {
@@ -4869,26 +4848,22 @@
           },
           "day_value": {
             "type": "integer",
-            "example": 29,
-            "description": "Day value, number.",
+            "description": "DEPRECATED: Day value, number.",
             "deprecated": true
           },
           "day": {
             "type": "string",
-            "example": "Wed",
-            "description": "First three letters of the day name.",
+            "description": "DEPRECATED: First three letters of the day name.",
             "deprecated": true
           },
           "month": {
             "type": "string",
-            "example": "Dec",
-            "description": "First three letters of the month name.",
+            "description": "DEPRECATED: First three letters of the month name.",
             "deprecated": true
           },
           "year": {
             "type": "integer",
-            "example": 2021,
-            "description": "Year number.",
+            "description": "DEPRECATED: Year number.",
             "deprecated": true
           },
           "created_at": {
@@ -4964,26 +4939,22 @@
           },
           "day_value": {
             "type": "integer",
-            "example": 29,
-            "description": "Day value, number.",
+            "description": "DEPRECATED: Day value, number.",
             "deprecated": true
           },
           "day": {
             "type": "string",
-            "example": "Wed",
-            "description": "First three letters of the day name.",
+            "description": "DEPRECATED: First three letters of the day name.",
             "deprecated": true
           },
           "month": {
             "type": "string",
-            "example": "Dec",
-            "description": "First three letters of the month name.",
+            "description": "DEPRECATED: First three letters of the month name.",
             "deprecated": true
           },
           "year": {
             "type": "integer",
-            "example": 2021,
-            "description": "Year number.",
+            "description": "DEPRECATED: Year number.",
             "deprecated": true
           },
           "created_at": {
@@ -5053,26 +5024,22 @@
           },
           "day_value": {
             "type": "integer",
-            "example": 29,
-            "description": "Day value, number.",
+            "description": "DEPRECATED: Day value, number.",
             "deprecated": true
           },
           "day": {
             "type": "string",
-            "example": "Wed",
-            "description": "First three letters of the day name.",
+            "description": "DEPRECATED: First three letters of the day name.",
             "deprecated": true
           },
           "month": {
             "type": "string",
-            "example": "Dec",
-            "description": "First three letters of the month name.",
+            "description": "DEPRECATED: First three letters of the month name.",
             "deprecated": true
           },
           "year": {
             "type": "integer",
-            "example": 2021,
-            "description": "Year number.",
+            "description": "DEPRECATED: Year number.",
             "deprecated": true
           },
           "created_at": {
