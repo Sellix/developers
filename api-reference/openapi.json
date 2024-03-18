@@ -1574,6 +1574,26 @@
         ],
         "operationId": "replyQuery",
         "description": "Add a reply to a query.",
+        "requestBody": {
+          "description": "JSON that contains the reply",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "reply"
+                ],
+                "properties": {
+                  "reply": {
+                    "type": "string",
+                    "example": "This is a query reply."
+                  }
+                }
+              }
+            }
+          }
+        },
         "parameters": [
           {
             "$ref": "#/components/parameters/uniqid"
@@ -4472,8 +4492,8 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 0,
-            "description": "The shop ID to which this invoice belongs."
+            "description": "The shop ID to which this invoice belongs.",
+            "example": null
           },
           "name": {
             "type": "string",
@@ -4888,11 +4908,6 @@
       "query": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "example": 0,
-            "description": "ID of the resource"
-          },
           "uniqid": {
             "type": "string",
             "format": "uuid",
@@ -4901,7 +4916,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "The shop ID to which this query belongs."
           },
           "invoice_id": {
@@ -4931,31 +4946,20 @@
             "example": "PENDING",
             "description": "Status of the query. PENDING if the query has been created and awaits a reply from the merchant. CLOSED if the query has been closed by the merchant or the customer. SHOP_REPLY if the query has been replied by the merchant, CUSTOMER_REPLY if the query has been replied by the customer."
           },
-          "messages": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/query_message"
-            }
-          },
           "day_value": {
             "type": "integer",
-            "description": "DEPRECATED: Day value, number.",
-            "deprecated": true
-          },
-          "day": {
-            "type": "string",
-            "description": "DEPRECATED: First three letters of the day name.",
-            "deprecated": true
+            "description": "Day value, number.",
+            "example": 31
           },
           "month": {
             "type": "string",
-            "description": "DEPRECATED: First three letters of the month name.",
-            "deprecated": true
+            "description": "First three letters of the month name.",
+            "example": "Dec"
           },
           "year": {
             "type": "integer",
-            "description": "DEPRECATED: Year number.",
-            "deprecated": true
+            "description": "Year number.",
+            "example": 2023
           },
           "created_at": {
             "type": "integer",
@@ -4973,6 +4977,12 @@
             "type": "integer",
             "example": 0,
             "description": "User ID, available if the query has been edited."
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/query_message"
+            }
           }
         }
       },
@@ -4981,7 +4991,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -4992,13 +5002,13 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "The shop ID to which this query belongs."
           },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": null,
+            "example": "null",
             "description": "Unique ID of the invoice this query is linked to, if specified by the customer."
           },
           "customer_email": {
@@ -5024,23 +5034,18 @@
           },
           "day_value": {
             "type": "integer",
-            "description": "DEPRECATED: Day value, number.",
-            "deprecated": true
-          },
-          "day": {
-            "type": "string",
-            "description": "DEPRECATED: First three letters of the day name.",
-            "deprecated": true
+            "description": "Day value, number.",
+            "example": 31
           },
           "month": {
             "type": "string",
-            "description": "DEPRECATED: First three letters of the month name.",
-            "deprecated": true
+            "description": "First three letters of the month name.",
+            "example": "Dec"
           },
           "year": {
             "type": "integer",
-            "description": "DEPRECATED: Year number.",
-            "deprecated": true
+            "description": "Year number.",
+            "example": 2023
           },
           "created_at": {
             "type": "integer",
@@ -5051,12 +5056,12 @@
           "updated_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 162857125819,
+            "example": "0",
             "description": "Date, available if the query has been updated."
           },
           "updated_by": {
             "type": "integer",
-            "example": 0,
+            "example": "0",
             "description": "User ID, available if the query has been edited."
           }
         }
@@ -5930,19 +5935,15 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": null
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "message": {
                   "type": "string",
                   "example": "<success-message>"
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -5966,23 +5967,23 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
+                  "example": "null"
                 },
                 "error": {
                   "type": "string",
-                  "example": "unauthorized"
+                  "example": "Unauthorized (#003)."
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
                   "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": "null"
                 }
               }
             }
@@ -6002,23 +6003,23 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
+                  "example": "null"
                 },
                 "error": {
                   "type": "string",
                   "example": "forbidden"
                 },
+                "message": {
+                  "type": "string",
+                  "example": "null"
+                },
                 "env": {
                   "type": "string",
                   "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": "null"
                 }
               }
             }
@@ -6038,23 +6039,23 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
+                  "example": "null"
                 },
                 "error": {
                   "type": "string",
                   "example": "NOT_FOUND"
                 },
+                "message": {
+                  "type": "string",
+                  "example": "null"
+                },
                 "env": {
                   "type": "string",
                   "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": "null"
                 }
               }
             }
@@ -6664,17 +6665,13 @@
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
@@ -6704,15 +6701,11 @@
                     }
                   }
                 },
-                "message": {
+                "error": {
                   "type": "string",
                   "example": null
                 },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
+                "message": {
                   "type": "string",
                   "example": null
                 },
