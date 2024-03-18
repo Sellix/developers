@@ -2842,11 +2842,6 @@
       "feedback": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "example": 0,
-            "description": "ID of the resource"
-          },
           "uniqid": {
             "type": "string",
             "format": "uuid",
@@ -2877,7 +2872,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "The shop ID to which this feedback belongs."
           },
           "message": {
@@ -2897,30 +2892,6 @@
             "minimum": 0,
             "description": "Score left by the customer, if 0 no score has been left."
           },
-          "product_title": {
-            "type": "string",
-            "example": "Digital Good",
-            "description": "Product title for which this feedback has been created"
-          },
-          "product_image_name": {
-            "type": "string",
-            "description": "DEPRECATED: Unique id of the image attachment for this product with the image extension included.",
-            "deprecated": true
-          },
-          "product_image_storage": {
-            "type": "string",
-            "description": "DEPRECATED: Where the image is stored in our self-hosted CDN.",
-            "deprecated": true
-          },
-          "cloudflare_image_id": {
-            "$ref": "#/components/schemas/cloudflare_image_id"
-          },
-          "invoice": {
-            "$ref": "#/components/schemas/invoice"
-          },
-          "product": {
-            "$ref": "#/components/schemas/product"
-          },
           "created_at": {
             "type": "integer",
             "format": "timestamp",
@@ -2932,6 +2903,30 @@
             "format": "timestamp",
             "example": 162857125819,
             "description": "Date, available if the product has been edited."
+          },
+          "product_title": {
+            "type": "string",
+            "example": "Digital Good",
+            "description": "Product title for which this feedback has been created"
+          },
+          "product_image_name": {
+            "type": "string",
+            "description": "Unique id of the image attachment for this product with the image extension included.",
+            "example": "product_image_name2834u5y4291u89u1.png"
+          },
+          "product_image_storage": {
+            "type": "string",
+            "description": "Where the image is stored in our self-hosted CDN.",
+            "example": "PRODUCTS"
+          },
+          "cloudflare_image_id": {
+            "$ref": "#/components/schemas/cloudflare_image_id"
+          },
+          "invoice": {
+            "$ref": "#/components/schemas/invoice"
+          },
+          "product": {
+            "$ref": "#/components/schemas/product"
           },
           "updated_by": {
             "type": "integer",
@@ -2954,27 +2949,22 @@
             "example": "sample-a0bb9d70a9-9e852a",
             "description": "Unique ID of the resource, used as reference across the API."
           },
-          "product_id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "samplea0bb9d70a9",
-            "description": "Unique ID of the product for which this feedback has been posted."
-          },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
             "example": "sample-cc39109624-03b70b",
             "description": "Unique ID of the invoice for which this feedback has been posted."
           },
-          "blocked": {
-            "type": "boolean",
-            "example": false,
-            "description": "If true, this feedback has been blocked after an appeal."
+          "product_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "samplea0bb9d70a9",
+            "description": "Unique ID of the product for which this feedback has been posted."
           },
-          "appealed": {
-            "type": "boolean",
-            "example": false,
-            "description": "If true, an appeal has been created for this feedback."
+          "product_title": {
+            "type": "string",
+            "example": "Product Title",
+            "description": "Title of the product for which this feedback has been posted."
           },
           "shop_id": {
             "type": "integer",
@@ -2998,6 +2988,16 @@
             "minimum": 0,
             "description": "Score left by the customer, if 0 no score has been left."
           },
+          "appealed": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, an appeal has been created for this feedback."
+          },
+          "appeal_outcome": {
+            "type": "string",
+            "example": "NO_APPEAL_AVAILABLE",
+            "description": "The outcome of the appeal."
+          },
           "created_at": {
             "type": "integer",
             "format": "timestamp",
@@ -3010,10 +3010,10 @@
             "example": 162857125819,
             "description": "Date, available if the product has been edited."
           },
-          "updated_by": {
-            "type": "integer",
-            "example": 0,
-            "description": "User ID, available if the product has been edited."
+          "blocked": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, this feedback has been blocked after an appeal."
           }
         }
       },
@@ -6413,20 +6413,41 @@
                       "items": {
                         "$ref": "#/components/schemas/feedbackListing"
                       }
+                    },
+                    "details": {
+                      "type": "object",
+                      "properties": {
+                        "positive": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "neutral": {
+                          "type": "number",
+                          "example": "0"
+                        },
+                        "negative": {
+                          "type": "number",
+                          "example": "0"
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 1
+                        }
+                      }
                     }
                   }
                 },
                 "message": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
                 },
                 "log": {
                   "type": "object",
-                  "example": null
+                  "example": "null"
                 },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
@@ -6456,15 +6477,11 @@
                     }
                   }
                 },
-                "message": {
+                "error": {
                   "type": "string",
                   "example": null
                 },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
+                "message": {
                   "type": "string",
                   "example": null
                 },
