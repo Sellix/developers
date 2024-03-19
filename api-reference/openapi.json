@@ -724,15 +724,6 @@
                     "type": "integer",
                     "example": 50
                   },
-                  "products_bound": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": [
-                      "sample8718521"
-                    ]
-                  },
                   "discount_type": {
                     "type": "string",
                     "enum": [
@@ -741,15 +732,6 @@
                     ],
                     "example": "PERCENTAGE"
                   },
-                  "discount_order_type": {
-                    "type": "string",
-                    "enum": [
-                      "TOTAL",
-                      "QUANTITY"
-                    ],
-                    "description": "DEPRECATED",
-                    "deprecated": true
-                  },
                   "disabled_with_volume_discounts": {
                     "type": "boolean",
                     "example": true
@@ -757,6 +739,15 @@
                   "all_recurring_bill_invoices": {
                     "type": "boolean",
                     "example": false
+                  },
+                  "products_bound": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "sample8718521"
+                    ]
                   }
                 }
               }
@@ -765,8 +756,8 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
-          },
+            "$ref": "#/components/responses/createCoupon"
+          },  
           "401": {
             "$ref": "#/components/responses/401"
           },
@@ -819,7 +810,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/deleteCoupon"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -858,15 +849,6 @@
                     "type": "integer",
                     "example": 50
                   },
-                  "products_bound": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": [
-                      "sample8718521"
-                    ]
-                  },
                   "discount_type": {
                     "type": "string",
                     "enum": [
@@ -875,18 +857,22 @@
                     ],
                     "example": "PERCENTAGE"
                   },
-                  "discount_order_type": {
-                    "type": "string",
-                    "enum": [
-                      "TOTAL",
-                      "QUANTITY"
-                    ],
-                    "description": "DEPRECATED",
-                    "deprecated": true
-                  },
                   "disabled_with_volume_discounts": {
                     "type": "boolean",
                     "example": true
+                  },
+                  "all_recurring_bill_invoices": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "products_bound": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "sample8718521"
+                    ]
                   }
                 }
               }
@@ -900,7 +886,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/editCoupon"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1601,7 +1587,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/queryReply"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1629,7 +1615,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/queryClose"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1657,7 +1643,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/queryReopen"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2737,7 +2723,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2748,7 +2734,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "The shop ID to which this coupon belongs."
           },
           "type": {
@@ -2760,10 +2746,25 @@
             "example": "PRODUCT",
             "description": "Coupon type, whether it's for a product or subscription. SUBSCRIPTION coupons are only for Sellix-own subscriptions, this field will always return PRODUCT."
           },
+          "coupon_type": {
+            "type": "string",
+            "enum": [
+              "CLASSIC"
+            ],
+            "example": "CLASSIC"
+          },
           "code": {
             "type": "string",
             "example": "CHRISTMAS25",
             "description": "Coupon code to be used during the checkout phase."
+          },
+          "stripe_promo_id": {
+            "type": "string",
+            "example": "null"
+          },
+          "stripe_coupon_id": {
+            "type": "string",
+            "example": "null"
           },
           "use_type": {
             "type": "string",
@@ -2782,8 +2783,8 @@
           },
           "currency": {
             "type": "string",
-            "description": "DEPRECATED: Currency of the coupon discount value.",
-            "deprecated": true
+            "description": "Currency of the coupon discount value.",
+            "example": "EUR"
           },
           "used": {
             "type": "integer",
@@ -2805,20 +2806,23 @@
             "example": 25,
             "description": "Maximum usage for this coupon."
           },
-          "products_bound": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Array of product uniqids. Differs from the categories API as this endpoint does not need specific details about a product. Use the products API to get details about a single product.",
-            "example": [
-              "sample56f391049"
-            ]
+          "smart_contract_address": {
+            "type": "string",
+            "example": "null"
           },
-          "products_count": {
-            "type": "integer",
-            "example": 1,
-            "description": "How many products are present in the products_bound array"
+          "token_id": {
+            "type": "string",
+            "example": "null"
+          },
+          "blockchain": {
+            "type": "string",
+            "description": "The blockchain the coupon is active for",
+            "example": "null"
+          },
+          "expire_at": {
+            "type": "string",
+            "description": "The datetime object corresponding to the expiration time of the coupon",
+            "example": "2023-12-31 23:59:59"
           },
           "created_at": {
             "type": "integer",
@@ -2834,8 +2838,171 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 0,
+            "example": 1,
             "description": "User ID, available if the category has been edited."
+          },
+          "products_bound": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of product uniqids. Differs from the categories API as this endpoint does not need specific details about a product. Use the products API to get details about a single product.",
+            "example": [
+              "sample56f391049"
+            ]
+          },
+          "products_bound_extended": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Details about the products in the products_bound field.",
+            "example": [
+              {
+                "uniqid": "sample56f391049",
+                "title": "Sample Product",
+                "price": "1.00",
+                "price_display": "1.00",
+                "currency": "EUR",
+                "slug": "sample-product",
+                "type": "SERVICE"
+              }
+            ]
+          },
+          "products_count": {
+            "type": "integer",
+            "example": 1,
+            "description": "How many products are present in the products_bound array"
+          }
+        }
+      },
+      "couponListing": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 123,
+            "description": "ID of the resource"
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample29a0e39d",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 123,
+            "description": "The shop ID to which this coupon belongs."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PRODUCT",
+              "SUBSCRIPTION"
+            ],
+            "example": "PRODUCT",
+            "description": "Coupon type, whether it's for a product or subscription. SUBSCRIPTION coupons are only for Sellix-own subscriptions, this field will always return PRODUCT."
+          },
+          "coupon_type": {
+            "type": "string",
+            "enum": [
+              "CLASSIC"
+            ],
+            "example": "CLASSIC"
+          },
+          "code": {
+            "type": "string",
+            "example": "CHRISTMAS25",
+            "description": "Coupon code to be used during the checkout phase."
+          },
+          "stripe_promo_id": {
+            "type": "string",
+            "example": "null"
+          },
+          "stripe_coupon_id": {
+            "type": "string",
+            "example": "null"
+          },
+          "use_type": {
+            "type": "string",
+            "enum": [
+              "LIMITED",
+              "ANY"
+            ],
+            "example": "LIMITED",
+            "description": "If LIMITED, an array of products must be specified as this coupon will be used only with them."
+          },
+          "discount": {
+            "type": "number",
+            "format": "double",
+            "example": 25,
+            "description": "Discount value for this coupon."
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency of the coupon discount value.",
+            "example": "EUR"
+          },
+          "used": {
+            "type": "integer",
+            "example": 15,
+            "description": "How many times this coupon has been used."
+          },
+          "disabled_with_volume_discounts": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not this coupon is valid if a volume discount is applied."
+          },
+          "all_recurring_bill_invoices": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether or not this coupon should be applied for each product SUBSCRIPTION renewal."
+          },
+          "max_uses": {
+            "type": "integer",
+            "example": 25,
+            "description": "Maximum usage for this coupon."
+          },
+          "smart_contract_address": {
+            "type": "string",
+            "example": "null"
+          },
+          "token_id": {
+            "type": "string",
+            "example": "null"
+          },
+          "blockchain": {
+            "type": "string",
+            "description": "The blockchain the coupon is active for",
+            "example": "null"
+          },
+          "expire_at": {
+            "type": "string",
+            "description": "The datetime object corresponding to the expiration time of the coupon",
+            "example": "2023-12-31 23:59:59"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Creation date of the category."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the category has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 1,
+            "description": "User ID, available if the category has been edited."
+          },
+          "products_count": {
+            "type": "integer",
+            "example": 1,
+            "description": "How many products are present in the products_bound array"
           }
         }
       },
@@ -6328,22 +6495,18 @@
                     "coupons": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/coupon"
+                        "$ref": "#/components/schemas/couponListing"
                       }
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
@@ -6373,17 +6536,127 @@
                     }
                   }
                 },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
                 "message": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
                 },
-                "log": {
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "createCoupon": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
                   "type": "object",
-                  "example": null
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "description": "The ID of the new coupon",
+                      "example": "sample29a0e39d"
+                    }
+                  }
                 },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Coupon Created Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "editCoupon": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "description": "The ID of the new coupon",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Coupon Edited Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "deleteCoupon": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "description": "The ID of the new coupon",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Coupon Deleted Successfully"
                 },
                 "env": {
                   "type": "string",
@@ -6725,6 +6998,102 @@
                 "message": {
                   "type": "string",
                   "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "queryReply": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Reply Sent Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "queryClose": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Query Closed Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "queryReopen": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Query Reopened Successfully."
                 },
                 "env": {
                   "type": "string",
