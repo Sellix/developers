@@ -3669,6 +3669,7 @@
           },
           "pay_what_you_want": {
             "type": "number",
+            "enum": [0, 1],
             "example": 1,
             "description": "Whether or not pay-what-you-want pricing is enabled."
           },
@@ -3705,6 +3706,7 @@
           },
           "licensing_enabled": {
             "type": "number", 
+            "enum": [0, 1],
             "example": 1,
             "description": "Whether product licenses are generated on successful payments"
           },
@@ -3774,7 +3776,7 @@
           },
           "trial_period": {
             "type": "integer",
-            "example": 0,
+            "example": "0",
             "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION."
           },
           "paypal_product_id": {
@@ -3794,16 +3796,19 @@
           },
           "discord_integration": {
             "type": "number",
+            "enum": [0, 1],
             "example": 1,
             "description": "Whether or not the discord integeration is enabled for this product."
           },
           "discord_optional": {
             "type": "number",
+            "enum": [0, 1],
             "example": 1,
             "description": "Whether or not the discord integration is optional."
           },
           "discord_set_role": {
             "type": "number",
+            "enum": [0, 1],
             "example": 1,
             "description": "Whether to give users a role when added to the discord server."
           },
@@ -3819,6 +3824,7 @@
           },
           "discord_remove_role": {
             "type": "number",
+            "enum": [0, 1],
             "example": "0",
             "description": "Whether to remove a role from the user when added to the discord server."
           },
@@ -4212,6 +4218,7 @@
           },
           "dark_mode": {
             "type": "number",
+            "enum": [0, 1],
             "example": 1
           },
           "vat_percentage": {
@@ -4367,7 +4374,6 @@
           }
         }
       },
-
       "listedProduct": {
         "type": "object",
         "properties": {
