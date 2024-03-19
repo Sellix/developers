@@ -503,6 +503,10 @@
                     "type": "boolean",
                     "example": false
                   },
+                  "sort_priority": {
+                    "type": "integer",
+                    "example": 0
+                  },
                   "products_bound": {
                     "type": "array",
                     "items": {
@@ -520,10 +524,6 @@
                     "example": [
                       "5f42ada2b38a5"
                     ]
-                  },
-                  "sort_priority": {
-                    "type": "integer",
-                    "example": 0
                   }
                 }
               }
@@ -532,7 +532,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/createCategory"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -586,7 +586,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/deleteCategory"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -629,6 +629,10 @@
                     "type": "boolean",
                     "example": false
                   },
+                  "sort_priority": {
+                    "type": "integer",
+                    "example": 0
+                  },
                   "products_bound": {
                     "type": "array",
                     "items": {
@@ -646,10 +650,6 @@
                     "example": [
                       "5f42ada2b38a5"
                     ]
-                  },
-                  "sort_priority": {
-                    "type": "integer",
-                    "example": 0
                   }
                 }
               }
@@ -2613,7 +2613,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2624,7 +2624,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "The shop ID to which this category belongs."
           },
           "title": {
@@ -2641,6 +2641,24 @@
             "type": "integer",
             "example": 1,
             "description": "Sort order of this category."
+          },
+
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Creation date of the category."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the category has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 0,
+            "description": "User ID, available if the category has been edited."
           },
           "products_bound": {
             "type": "array",
@@ -2665,34 +2683,27 @@
             "type": "integer",
             "example": 1,
             "description": "How many groups are present in the groups_bound array"
-          },
-          "created_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 162857125819,
-            "description": "Creation date of the category."
-          },
-          "updated_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 162857125819,
-            "description": "Date, available if the category has been edited."
-          },
-          "updated_by": {
-            "type": "integer",
-            "example": 0,
-            "description": "User ID, available if the category has been edited."
           }
         }
       },
       "group": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "number",
+            "example": 123,
+            "description": "The ID of the resource"
+          },
           "uniqid": {
             "type": "string",
             "format": "uuid",
             "example": "sample29a0e39d",
             "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 123,
+            "description": "The unique identifyer for the shop."
           },
           "title": {
             "type": "string",
@@ -2701,8 +2712,18 @@
           },
           "image_attachment": {
             "type": "string",
-            "description": "DEPRECATED: Unique id of the image attachment for this group.",
-            "deprecated": true
+            "description": "Unique id of the image attachment for this group.",
+            "example": ""
+          },
+          "unlisted": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not the product is unlisted."
+          },
+          "sort_priority": {
+            "type": "number",
+            "example": 1,
+            "description": "The priority of the group on the storefront."
           },
           "created_at": {
             "type": "integer",
@@ -2715,6 +2736,16 @@
             "format": "timestamp",
             "example": 162857125819,
             "description": "Date, available if the group has been edited."
+          },
+          "category_id": {
+            "type": "string",
+            "example": "sample29a0e39d",
+            "description": "The category the group is a part of"
+          },
+          "group_id": {
+            "type": "string",
+            "example": "sample29a0e39d",
+            "description": "The unique identifyer of the current group"
           }
         }
       },
@@ -3187,21 +3218,16 @@
       "product": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "example": 0,
-            "description": "ID of the resource"
-          },
           "uniqid": {
             "type": "string",
             "format": "uuid",
             "example": "sample29a0e39d",
             "description": "Unique ID of the resource, used as reference across the API."
           },
-          "shop_id": {
-            "type": "integer",
-            "example": 0,
-            "description": "The shop ID to which this resource belongs."
+          "slug": {
+            "type": "string",
+            "example": "digital-good-to-download",
+            "description": "The slug used to navigate to the product page on a storefront."
           },
           "type": {
             "type": "string",
@@ -3235,61 +3261,66 @@
           "currency": {
             "$ref": "#/components/schemas/currency"
           },
+          "pay_what_you_want": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not pay-what-you-want pricing is enabled."
+          },
           "price": {
             "type": "number",
             "format": "double",
-            "example": 5,
+            "example": "5",
             "description": "Product price."
           },
           "price_display": {
             "type": "number",
             "format": "double",
-            "example": 4.5,
+            "example": "4.5",
             "description": "Product price in currency."
+          },
+          "price_discount": {
+            "type": "number",
+            "example": "0"
+          },
+          "affiliate_revenue_percent": {
+            "type": "number",
+            "example": 15,
+            "description": "The percentage of revenue to give to affiliates. -1 for disabled, 0 for default (10%), other number for a custom percent."
+          },
+          "price_variants": {
+            "type": "object",
+            "example": "null",
+            "description": "Variants in pricing for the product."
           },
           "description": {
             "type": "string",
             "example": "Product description",
             "description": "Product description."
           },
+          "licensing_enabled": {
+            "type": "number", 
+            "example": 1,
+            "description": "Whether product licenses are generated on successful payments"
+          },
+          "license_period": {
+            "type": "string",
+            "example": "7",
+            "description": "Amount in days that licenses will be valid for"
+          },
           "image_attachment": {
             "type": "string",
-            "description": "DEPRECATED: Unique id of the image attachment for this product.",
-            "deprecated": true
+            "description": "Unique id of the image attachment for this product.",
+            "example": ""
           },
-          "file_attachment": {
+          "youtube_link": {
             "type": "string",
-            "format": "uuid",
-            "example": null,
-            "description": "Unique id of the file attachment for this product if the product type is FILE."
+            "example": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "description": "The url for the YouTube video of the product"
           },
           "volume_discounts": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "PERCENTAGE",
-                    "FIXED"
-                  ],
-                  "example": "PERCENTAGE",
-                  "description": "Whether the discount value is a percentage or a fixed amount."
-                },
-                "value": {
-                  "type": "integer",
-                  "example": 5,
-                  "description": "Value of a percentage or fixed discount."
-                },
-                "quantity": {
-                  "type": "integer",
-                  "example": 10,
-                  "description": "How much of this product needs to be purchased in order to be eligible for this volume discount."
-                }
-              }
-            },
-            "description": "Array of volume discounts."
+            "type": "string",
+            "example": "{\"volume_discounts\": [{\"type\": \"PERCENTAGE\", \"value\": \"5\", \"quantity\": \"10\"}]}",
+            "description": "Stringified array of volume discounts."
           },
           "recurring_interval": {
             "type": "string",
@@ -3327,6 +3358,36 @@
             "example": "price_sample2X7rAeMb7AM5APEU",
             "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
           },
+          "discord_integration": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not the discord integeration is enabled for this product."
+          },
+          "discord_optional": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not the discord integration is optional."
+          },
+          "discord_set_role": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether to give users a role when added to the discord server."
+          },
+          "discord_server_id": {
+            "type": "string",
+            "example": "742768752180854827",
+            "description": "The id of the discord server the bot will add users to."
+          },
+          "discord_role_id": {
+            "type": "number",
+            "example": "742772275698335765",
+            "description": "The role to give users when added by the discord integration."
+          },
+          "discord_remove_role": {
+            "type": "number",
+            "example": "0",
+            "description": "Whether to remove a role from the user when added to the discord server."
+          },
           "quantity_min": {
             "type": "integer",
             "minimum": 1,
@@ -3341,7 +3402,7 @@
           },
           "quantity_warning": {
             "type": "integer",
-            "example": 0,
+            "example": "0",
             "description": "At which product quantity should we send a webhook and email warning the merchant."
           },
           "gateways": {
@@ -3355,27 +3416,9 @@
             "example": 3,
             "description": "Minimum number of confirmations for a crypto payment to be accepted."
           },
-          "max_risk_level": {
-            "type": "integer",
-            "example": 85,
-            "maximum": 100,
-            "minimum": 0,
-            "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
-          },
-          "block_vpn_proxies": {
-            "type": "boolean",
-            "example": true,
-            "description": "Block VPN and Proxy purchases if the gateway is PAYPAL or STRIPE."
-          },
-          "delivery_text": {
+          "delivery_time": {
             "type": "string",
-            "example": "Thank you for purchasing this subscription!",
-            "description": "Text sent to the customer after the purchase."
-          },
-          "service_text": {
-            "type": "string",
-            "example": "In order to get you services, please contact us at..",
-            "description": "Text sent to the customer if product type is SERVICE."
+            "example": "null"
           },
           "stock_delimiter": {
             "type": "string",
@@ -3387,10 +3430,9 @@
             "example": -1,
             "description": "Stock of the current product, can be -1 for unlimited stock."
           },
-          "dynamic_webhook": {
-            "type": "string",
-            "example": null,
-            "description": "Product webhook for prouct type DYNAMIC. We will send here a request for a COMPLETED invoice in order to get the product for the customer."
+          "bestseller": {
+            "type": "number",
+            "example": "0"
           },
           "sort_priority": {
             "type": "integer",
@@ -3422,106 +3464,25 @@
             "example": "This warranty covers..",
             "description": "Clear explanation of what the warranty covers."
           },
+          "watermark_enabled": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether sellix should add a watermark to your product image."
+          },
+          "watermark_text": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The watermark to add to the product image."
+          },
+          "redirect_link": {
+            "type": "string",
+            "example": "https://sellix.io",
+            "description": "The url to redirect a customer to on successful payment"
+          },
           "private": {
             "type": "boolean",
             "example": false,
             "description": "If private is true, the product is hidden on the storefront and cannot be bought with a direct link."
-          },
-          "name": {
-            "type": "string",
-            "example": "Sellix",
-            "description": "Name of the merchant who owns this product."
-          },
-          "image_name": {
-            "type": "string",
-            "description": "DEPRECATED: Unique id of the image attachment for this product with the image extension included.",
-            "deprecated": true
-          },
-          "image_storage": {
-            "type": "string",
-            "description": "DEPRECATED: Where the image is stored in our self-hosted CDN.",
-            "deprecated": true
-          },
-          "cloudflare_image_id": {
-            "$ref": "#/components/schemas/cloudflare_image_id"
-          },
-          "serials": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "example": [],
-            "description": "Array of the serials in stock for this product."
-          },
-          "webhooks": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "example": [],
-            "description": "Array of the webhook URLs for this product."
-          },
-          "feedback": {
-            "type": "object",
-            "properties": {
-              "total": {
-                "type": "integer",
-                "example": 10,
-                "description": "Count of all the feedback."
-              },
-              "positive": {
-                "type": "integer",
-                "example": 8,
-                "description": "Count of positive feedback."
-              },
-              "neutral": {
-                "type": "integer",
-                "example": 1,
-                "description": "Count of neutral feedback."
-              },
-              "negative": {
-                "type": "integer",
-                "example": 0,
-                "description": "Count of negative feedback."
-              }
-            }
-          },
-          "theme": {
-            "type": "string",
-            "enum": [
-              "dark",
-              "light"
-            ],
-            "example": "light",
-            "description": "Whether this product uses the dark or light theme."
-          },
-          "dark_mode": {
-            "type": "integer",
-            "enum": [
-              1,
-              0
-            ],
-            "example": 0,
-            "description": "(duplicate, present only in some API requests) Whether this product uses the dark or light theme."
-          },
-          "average_score": {
-            "type": "number",
-            "format": "double",
-            "example": 4.5,
-            "description": "Average feedback score for this product."
-          },
-          "sold_count": {
-            "type": "integer",
-            "example": 5,
-            "description": "How many times this product has been sold."
-          },
-          "lex_payment_methods": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "DEPRECATED: Available payment methods for gateway LEX_HOLDINGS_GROUP.",
-            "deprecated": true
           },
           "created_at": {
             "type": "integer",
@@ -3539,6 +3500,32 @@
             "type": "integer",
             "example": 0,
             "description": "User ID, available if the product has been edited."
+          },
+          "marketplace_category_id": {
+            "type": "string",
+            "example": "0"
+          },
+          "telegram_group_id": {
+            "type": "string",
+            "example": "none"
+          },
+          "telegram_integration": {
+            "type": "number",
+            "example": "0"
+          },
+          "telegram_optional": {
+            "type": "number",
+            "example": "0"
+          },
+          "category_id": {
+            "type": "string",
+            "example": "sample29a0e39d",
+            "description": "The category the product is a part of"
+          },
+          "product_id": {
+            "type": "string",
+            "example": "sample29a0e39d",
+            "description": "The id of the current product"
           }
         }
       },
@@ -6417,17 +6404,13 @@
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
@@ -6457,17 +6440,124 @@
                     }
                   }
                 },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
                 "message": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
                 },
-                "log": {
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "createCategory": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
                   "type": "object",
-                  "example": null
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
                 },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Category Created Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "editCategory": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Category Edited Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "deleteCategory": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Category Deleted Successfully."
                 },
                 "env": {
                   "type": "string",
