@@ -658,7 +658,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/editCategory"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1113,7 +1113,16 @@
                   },
                   "type": {
                     "type": "string",
-                    "example": "SERIALS"
+                    "enum": [
+                      "SERIALS",
+                      "FILE",
+                      "SERVICE",
+                      "DYNAMIC",
+                      "INFO_CARD",
+                      "SUBSCRIPTION"
+                    ],
+                    "example": "SERIALS",
+                    "description": "Product type."
                   },
                   "serials": {
                     "type": "array",
@@ -1204,7 +1213,8 @@
                   },
                   "warranty": {
                     "type": "integer",
-                    "example": 86400
+                    "example": 86400,
+                    "description": "The length of the warranty in seconds"
                   },
                   "warranty_text": {
                     "type": "string",
@@ -1244,7 +1254,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/createProduct"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1298,7 +1308,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/deleteProduct"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1329,12 +1339,6 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "title",
-                  "price",
-                  "description",
-                  "type"
-                ],
                 "properties": {
                   "title": {
                     "type": "string",
@@ -1357,7 +1361,16 @@
                   },
                   "type": {
                     "type": "string",
-                    "example": "SERIALS"
+                    "enum": [
+                      "SERIALS",
+                      "FILE",
+                      "SERVICE",
+                      "DYNAMIC",
+                      "INFO_CARD",
+                      "SUBSCRIPTION"
+                    ],
+                    "example": "SERIALS",
+                    "description": "Product type."
                   },
                   "serials": {
                     "type": "array",
@@ -1448,7 +1461,8 @@
                   },
                   "warranty": {
                     "type": "integer",
-                    "example": 86400
+                    "example": 86400,
+                    "description": "The length of the warranty in seconds"
                   },
                   "warranty_text": {
                     "type": "string",
@@ -1488,7 +1502,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/editProduct"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1723,20 +1737,54 @@
                     "type": "string",
                     "enum": [
                       "PAYPAL",
-                      "ETHEREUM",
-                      "BITCOIN",
-                      "BITCOIN_CASH",
-                      "LITECOIN",
-                      "SKRILL",
                       "STRIPE",
+                      "SKRILL",
                       "PERFECT_MONEY",
                       "CASH_APP",
-                      "LEX_HOLDINGS_GROUP",
-                      "PAYDASH",
-                      "MONERO",
+                      "BINANCE",
+                      "BITCOIN",
+                      "LITECOIN",
+                      "ETHEREUM",
+                      "BITCOIN_CASH",
                       "NANO",
+                      "MONERO",
                       "SOLANA",
-                      "RIPPLE"
+                      "RIPPLE",
+                      "BINANCE_COIN",
+                      "USDC:ERC20",
+                      "USDC:BEP20",
+                      "USDC:MATIC",
+                      "USDC:SOL",
+                      "USDT:ERC20",
+                      "USDT:BEP20",
+                      "USDT:MATIC",
+                      "USDT:SOL",
+                      "USDT:TRC20",
+                      "TRON",
+                      "BITCOIN_LN",
+                      "CONCORDIUM",
+                      "POLYGON",
+                      "PEPE:ERC20",
+                      "DAI:ERC20",
+                      "DAI:BEP20",
+                      "DAI:MATIC",
+                      "WETH:BEP20",
+                      "WETH:MATIC",
+                      "APE:ERC20",
+                      "APE:MATIC",
+                      "SHIB:ERC20",
+                      "SHIB:BEP20",
+                      "SHIB:MATIC",
+                      "USDC_NATIVE:MATIC",
+                      "DOGECOIN",
+                      "PYTH:SOL",
+                      "BONK:SOL",
+                      "JUP:SOL",
+                      "JITO:SOL",
+                      "WEN:SOL",
+                      "RENDER:SOL",
+                      "MOBILE:SOL",
+                      "HNT:SOL"
                     ],
                     "example": null,
                     "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page. If product_id is specified, the gateway must be on in the product's gateways array."
@@ -2258,20 +2306,54 @@
                     "type": "string",
                     "enum": [
                       "PAYPAL",
-                      "ETHEREUM",
-                      "BITCOIN",
-                      "BITCOIN_CASH",
-                      "LITECOIN",
-                      "SKRILL",
                       "STRIPE",
+                      "SKRILL",
                       "PERFECT_MONEY",
                       "CASH_APP",
-                      "LEX_HOLDINGS_GROUP",
-                      "PAYDASH",
-                      "MONERO",
+                      "BINANCE",
+                      "BITCOIN",
+                      "LITECOIN",
+                      "ETHEREUM",
+                      "BITCOIN_CASH",
                       "NANO",
+                      "MONERO",
                       "SOLANA",
-                      "RIPPLE"
+                      "RIPPLE",
+                      "BINANCE_COIN",
+                      "USDC:ERC20",
+                      "USDC:BEP20",
+                      "USDC:MATIC",
+                      "USDC:SOL",
+                      "USDT:ERC20",
+                      "USDT:BEP20",
+                      "USDT:MATIC",
+                      "USDT:SOL",
+                      "USDT:TRC20",
+                      "TRON",
+                      "BITCOIN_LN",
+                      "CONCORDIUM",
+                      "POLYGON",
+                      "PEPE:ERC20",
+                      "DAI:ERC20",
+                      "DAI:BEP20",
+                      "DAI:MATIC",
+                      "WETH:BEP20",
+                      "WETH:MATIC",
+                      "APE:ERC20",
+                      "APE:MATIC",
+                      "SHIB:ERC20",
+                      "SHIB:BEP20",
+                      "SHIB:MATIC",
+                      "USDC_NATIVE:MATIC",
+                      "DOGECOIN",
+                      "PYTH:SOL",
+                      "BONK:SOL",
+                      "JUP:SOL",
+                      "JITO:SOL",
+                      "WEN:SOL",
+                      "RENDER:SOL",
+                      "MOBILE:SOL",
+                      "HNT:SOL"
                     ],
                     "example": null,
                     "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page."
@@ -4007,20 +4089,54 @@
                   "type": "string",
                   "enum": [
                     "PAYPAL",
-                    "ETHEREUM",
-                    "BITCOIN",
-                    "BITCOIN_CASH",
-                    "LITECOIN",
-                    "SKRILL",
                     "STRIPE",
+                    "SKRILL",
                     "PERFECT_MONEY",
                     "CASH_APP",
-                    "LEX_HOLDINGS_GROUP",
-                    "PAYDASH",
-                    "MONERO",
+                    "BINANCE",
+                    "BITCOIN",
+                    "LITECOIN",
+                    "ETHEREUM",
+                    "BITCOIN_CASH",
                     "NANO",
+                    "MONERO",
                     "SOLANA",
-                    "RIPPLE"
+                    "RIPPLE",
+                    "BINANCE_COIN",
+                    "USDC:ERC20",
+                    "USDC:BEP20",
+                    "USDC:MATIC",
+                    "USDC:SOL",
+                    "USDT:ERC20",
+                    "USDT:BEP20",
+                    "USDT:MATIC",
+                    "USDT:SOL",
+                    "USDT:TRC20",
+                    "TRON",
+                    "BITCOIN_LN",
+                    "CONCORDIUM",
+                    "POLYGON",
+                    "PEPE:ERC20",
+                    "DAI:ERC20",
+                    "DAI:BEP20",
+                    "DAI:MATIC",
+                    "WETH:BEP20",
+                    "WETH:MATIC",
+                    "APE:ERC20",
+                    "APE:MATIC",
+                    "SHIB:ERC20",
+                    "SHIB:BEP20",
+                    "SHIB:MATIC",
+                    "USDC_NATIVE:MATIC",
+                    "DOGECOIN",
+                    "PYTH:SOL",
+                    "BONK:SOL",
+                    "JUP:SOL",
+                    "JITO:SOL",
+                    "WEN:SOL",
+                    "RENDER:SOL",
+                    "MOBILE:SOL",
+                    "HNT:SOL"
                   ],
                   "example": "STRIPE"
                 },
@@ -4251,6 +4367,559 @@
           }
         }
       },
+
+      "listedProduct": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": "123",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample29a0e39d",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "slug": {
+            "type": "string",
+            "example": "digital-good-to-download",
+            "description": "The slug used to navigate to the product page on a storefront."
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 123,
+            "description": "The shop ID to which this resource belongs."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC",
+              "INFO_CARD",
+              "SUBSCRIPTION"
+            ],
+            "example": "SUBSCRIPTION",
+            "description": "Product type."
+          },
+          "subtype": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC"
+            ],
+            "example": "null",
+            "description": "Product subtype, can be used only with type SUBSCRIPTION."
+          },
+          "title": {
+            "type": "string",
+            "example": "Digital good to download",
+            "description": "Product title."
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "pay_what_you_want": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not pay-what-you-want pricing is enabled."
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "example": "5.00",
+            "description": "Product price."
+          },
+          "price_display": {
+            "type": "number",
+            "format": "double",
+            "example": "5.00",
+            "description": "Product price in currency."
+          },
+          "price_discount": {
+            "type": "number",
+            "example": "0"
+          },
+          "affiliate_revenue_percent": {
+            "type": "number",
+            "example": 15,
+            "description": "The percentage of revenue to give to affiliates. -1 for disabled, 0 for default (10%), other number for a custom percent."
+          },
+          "price_variants": {
+            "type": "object",
+            "example": "null",
+            "description": "Variants in pricing for the product."
+          },
+          "description": {
+            "type": "string",
+            "example": "Product description",
+            "description": "Product description."
+          },
+          "licensing_enabled": {
+            "type": "number", 
+            "example": 1,
+            "description": "Whether product licenses are generated on successful payments"
+          },
+          "license_period": {
+            "type": "string",
+            "example": "7",
+            "description": "Amount in days that licenses will be valid for"
+          },
+          "image_attachment": {
+            "type": "string",
+            "description": "Unique id of the image attachment for this product.",
+            "example": ""
+          },
+          "file_attachment": {
+            "type": "string",
+            "description": "Unique id of the file attachment for this product if the product type is FILE.",
+            "example": "null"
+          },
+          "youtube_link": {
+            "type": "string",
+            "example": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "description": "The url for the YouTube video of the product"
+          },
+          "volume_discounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "PERCENTAGE",
+                    "FIXED"
+                  ],
+                  "example": "PERCENTAGE",
+                  "description": "Whether the discount value is a percentage or a fixed amount."
+                },
+                "value": {
+                  "type": "integer",
+                  "example": 5,
+                  "description": "Value of a percentage or fixed discount."
+                },
+                "quantity": {
+                  "type": "integer",
+                  "example": 10,
+                  "description": "How much of this product needs to be purchased in order to be eligible for this volume discount."
+                }
+              }
+            },
+            "description": "Array of volume discounts."
+          },
+          "recurring_interval": {
+            "type": "string",
+            "enum": [
+              "DAY",
+              "WEEK",
+              "MONTH",
+              "YEAR"
+            ],
+            "example": "MONTH",
+            "description": "At which frequency the customer is billed for product type SUBSCRIPTION."
+          },
+          "recurring_interval_count": {
+            "type": "integer",
+            "example": 1,
+            "description": "How many recurring_interval before the customer is billed for product type SUBSCRIPTION."
+          },
+          "trial_period": {
+            "type": "integer",
+            "example": 0,
+            "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION."
+          },
+          "paypal_product_id": {
+            "type": "string",
+            "example": null,
+            "description": "When a product SUBSCRIPTION is created and the gateway PAYPAL chosen, a PayPal product is automatically created on the connected account."
+          },
+          "paypal_plan_id": {
+            "type": "string",
+            "example": null,
+            "description": "When a product SUBSCRIPTION is created and the gateway PAYPAL chosen, a PayPal plan is automatically created on the connected account."
+          },
+          "stripe_price_id": {
+            "type": "string",
+            "example": "price_sample2X7rAeMb7AM5APEU",
+            "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
+          },
+          "discord_integration": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not the discord integeration is enabled for this product."
+          },
+          "discord_optional": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not the discord integration is optional."
+          },
+          "discord_set_role": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether to give users a role when added to the discord server."
+          },
+          "discord_server_id": {
+            "type": "string",
+            "example": "742768752180854827",
+            "description": "The id of the discord server the bot will add users to."
+          },
+          "discord_role_id": {
+            "type": "number",
+            "example": "742772275698335765",
+            "description": "The role to give users when added by the discord integration."
+          },
+          "discord_remove_role": {
+            "type": "number",
+            "example": "0",
+            "description": "Whether to remove a role from the user when added to the discord server."
+          },
+          "quantity_min": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 1,
+            "description": "Minimum quantity purchasable of this product."
+          },
+          "quantity_max": {
+            "type": "integer",
+            "minimum": -1,
+            "example": -1,
+            "description": "Maximum quantity purchasable of this product."
+          },
+          "quantity_warning": {
+            "type": "integer",
+            "example": "0",
+            "description": "At which product quantity should we send a webhook and email warning the merchant."
+          },
+          "gateways": {
+            "$ref": "#/components/schemas/gateways"
+          },
+          "custom_fields": {
+            "$ref": "#/components/schemas/custom_fields_array"
+          },
+          "crypto_confirmations_needed": {
+            "type": "integer",
+            "example": 3,
+            "description": "Minimum number of confirmations for a crypto payment to be accepted."
+          },
+          "max_risk_level": {
+            "type": "number",
+            "example": 85,
+            "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
+          },
+          "block_vpn_proxies": {
+            "type": "boolean",
+            "example": true,
+            "description": "Block VPN and Proxy purchases if the gateway is PAYPAL or STRIPE."
+          },
+          "delivery_text": {
+            "type": "string",
+            "example": "Thank you for purchasing this subscription!",
+            "description": "The text to be delivered to the customer after payment"
+          },
+          "delivery_time": {
+            "type": "string",
+            "example": "null"
+          },
+          "service_text": {
+            "type": "string",
+            "example": "In order to get you services, please contact us at..",
+            "description": "The text to be delivered to the customer after payment for a service"
+          },
+          "stock_delimiter": {
+            "type": "string",
+            "example": ",",
+            "description": "How to delimit the stock if product type is SERIALS, for example with stock_delimiter \",\" and serials value first,second; the stock would have two different serials \"first\" and \"second\"."
+          },
+          "stock": {
+            "type": "integer",
+            "example": -1,
+            "description": "Stock of the current product, can be -1 for unlimited stock."
+          },
+          "dynamic_webhook": {
+            "type": "object",
+            "example": "null"
+          },
+          "bestseller": {
+            "type": "number",
+            "example": "0"
+          },
+          "sort_priority": {
+            "type": "integer",
+            "example": 1,
+            "description": "Sort order of this product."
+          },
+          "unlisted": {
+            "type": "boolean",
+            "example": false,
+            "description": "If unlisted is true, the product is not shown in the storefront but can be bought through a direct link."
+          },
+          "on_hold": {
+            "type": "boolean",
+            "example": false,
+            "description": "If on_hold is true, the product cannot be bought but is shown in the storefront."
+          },
+          "terms_of_service": {
+            "type": "string",
+            "example": null,
+            "description": "Text containing the product's terms of service."
+          },
+          "warranty": {
+            "type": "integer",
+            "example": 86400,
+            "description": "Time, in seconds, of how much the warranty for this product lasts."
+          },
+          "warranty_text": {
+            "type": "string",
+            "example": "This warranty covers..",
+            "description": "Clear explanation of what the warranty covers."
+          },
+          "watermark_enabled": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether sellix should add a watermark to your product image."
+          },
+          "watermark_text": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The watermark to add to the product image."
+          },
+          "redirect_link": {
+            "type": "string",
+            "example": "https://sellix.io",
+            "description": "The url to redirect a customer to on successful payment"
+          },
+          "private": {
+            "type": "boolean",
+            "example": false,
+            "description": "If private is true, the product is hidden on the storefront and cannot be bought with a direct link."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Creation date of the product."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the product has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 0,
+            "description": "User ID, available if the product has been edited."
+          },
+          "marketplace_category_id": {
+            "type": "string",
+            "example": "0"
+          },
+          "telegram_group_id": {
+            "type": "string",
+            "example": "none"
+          },
+          "telegram_integration": {
+            "type": "number",
+            "example": "0"
+          },
+          "telegram_optional": {
+            "type": "number",
+            "example": "0"
+          },
+          "image_name": {
+            "type": "string",
+            "example": null
+          },
+          "image_storage": {
+            "type": "string",
+            "example": null
+          },
+          "cloudflare_image_id": {
+            "type": "string",
+            "example": "sample-c4f1-4f7c-9a1d-89120ed0c800"
+          },
+          "feedback": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "example": 10,
+                "description": "Count of all the feedback."
+              },
+              "positive": {
+                "type": "integer",
+                "example": 8,
+                "description": "Count of positive feedback."
+              },
+              "neutral": {
+                "type": "integer",
+                "example": 1,
+                "description": "Count of neutral feedback."
+              },
+              "negative": {
+                "type": "integer",
+                "example": 1,
+                "description": "Count of negative feedback."
+              },
+              "numbers": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "example": {
+                  "5": 6,
+                  "4": 2,
+                  "3": 1,
+                  "1": 1
+                }
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "score": {
+                      "type": "number",
+                      "example": 5
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nice product!"
+                    },
+                    "reply": {
+                      "type": "string",
+                      "example": "Thank you for the feedback."
+                    },
+                    "created_at": {
+                      "type": "number",
+                      "example": 162857125819
+                    },
+                    "updated_at": {
+                      "type": "number",
+                      "example": 162857125819
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Test Category"
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample29a0e39d"
+                }
+              }
+            }
+          },
+          "payment_gateways_fees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 123
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 123
+                },
+                "gateway": {
+                  "type": "string",
+                  "enum": [
+                    "PAYPAL",
+                    "STRIPE",
+                    "SKRILL",
+                    "PERFECT_MONEY",
+                    "CASH_APP",
+                    "BINANCE",
+                    "BITCOIN",
+                    "LITECOIN",
+                    "ETHEREUM",
+                    "BITCOIN_CASH",
+                    "NANO",
+                    "MONERO",
+                    "SOLANA",
+                    "RIPPLE",
+                    "BINANCE_COIN",
+                    "USDC:ERC20",
+                    "USDC:BEP20",
+                    "USDC:MATIC",
+                    "USDC:SOL",
+                    "USDT:ERC20",
+                    "USDT:BEP20",
+                    "USDT:MATIC",
+                    "USDT:SOL",
+                    "USDT:TRC20",
+                    "TRON",
+                    "BITCOIN_LN",
+                    "CONCORDIUM",
+                    "POLYGON",
+                    "PEPE:ERC20",
+                    "DAI:ERC20",
+                    "DAI:BEP20",
+                    "DAI:MATIC",
+                    "WETH:BEP20",
+                    "WETH:MATIC",
+                    "APE:ERC20",
+                    "APE:MATIC",
+                    "SHIB:ERC20",
+                    "SHIB:BEP20",
+                    "SHIB:MATIC",
+                    "USDC_NATIVE:MATIC",
+                    "DOGECOIN",
+                    "PYTH:SOL",
+                    "BONK:SOL",
+                    "JUP:SOL",
+                    "JITO:SOL",
+                    "WEN:SOL",
+                    "RENDER:SOL",
+                    "MOBILE:SOL",
+                    "HNT:SOL"
+                  ],
+                  "example": "STRIPE"
+                },
+                "percent_amount": {
+                  "type": "integer",
+                  "example": -5
+                },
+                "fixed_amount": {
+                  "type": "integer",
+                  "example": "0"
+                },
+                "fixed_currency": {
+                  "$ref": "#/components/schemas/currency"
+                },
+                "active_type": {
+                  "type": "string",
+                  "enum": ["PERCENT", "FIXED"]
+                },
+                "updated_at": {
+                  "type": "string",
+                  "example": "1970-01-01 00:00:00"
+                },
+                "created_at": {
+                  "type": "string",
+                  "example": "1970-01-01 00:00:00"
+                }
+              }
+            }
+          }
+        }
+      },
       "customer": {
         "type": "object",
         "properties": {
@@ -4349,20 +5018,54 @@
             "type": "string",
             "enum": [
               "PAYPAL",
-              "ETHEREUM",
-              "BITCOIN",
-              "BITCOIN_CASH",
-              "LITECOIN",
-              "SKRILL",
               "STRIPE",
+              "SKRILL",
               "PERFECT_MONEY",
               "CASH_APP",
-              "LEX_HOLDINGS_GROUP",
-              "PAYDASH",
-              "MONERO",
+              "BINANCE",
+              "BITCOIN",
+              "LITECOIN",
+              "ETHEREUM",
+              "BITCOIN_CASH",
               "NANO",
+              "MONERO",
               "SOLANA",
-              "RIPPLE"
+              "RIPPLE",
+              "BINANCE_COIN",
+              "USDC:ERC20",
+              "USDC:BEP20",
+              "USDC:MATIC",
+              "USDC:SOL",
+              "USDT:ERC20",
+              "USDT:BEP20",
+              "USDT:MATIC",
+              "USDT:SOL",
+              "USDT:TRC20",
+              "TRON",
+              "BITCOIN_LN",
+              "CONCORDIUM",
+              "POLYGON",
+              "PEPE:ERC20",
+              "DAI:ERC20",
+              "DAI:BEP20",
+              "DAI:MATIC",
+              "WETH:BEP20",
+              "WETH:MATIC",
+              "APE:ERC20",
+              "APE:MATIC",
+              "SHIB:ERC20",
+              "SHIB:BEP20",
+              "SHIB:MATIC",
+              "USDC_NATIVE:MATIC",
+              "DOGECOIN",
+              "PYTH:SOL",
+              "BONK:SOL",
+              "JUP:SOL",
+              "JITO:SOL",
+              "WEN:SOL",
+              "RENDER:SOL",
+              "MOBILE:SOL",
+              "HNT:SOL"
             ],
             "example": "STRIPE",
             "description": "Gateway chosen for this subscription. A new invoice monthly will be created using this gayeway."
@@ -4535,20 +5238,54 @@
             "type": "string",
             "enum": [
               "PAYPAL",
-              "ETHEREUM",
-              "BITCOIN",
-              "BITCOIN_CASH",
-              "LITECOIN",
-              "SKRILL",
               "STRIPE",
+              "SKRILL",
               "PERFECT_MONEY",
               "CASH_APP",
-              "LEX_HOLDINGS_GROUP",
-              "PAYDASH",
-              "MONERO",
+              "BINANCE",
+              "BITCOIN",
+              "LITECOIN",
+              "ETHEREUM",
+              "BITCOIN_CASH",
               "NANO",
+              "MONERO",
               "SOLANA",
-              "RIPPLE"
+              "RIPPLE",
+              "BINANCE_COIN",
+              "USDC:ERC20",
+              "USDC:BEP20",
+              "USDC:MATIC",
+              "USDC:SOL",
+              "USDT:ERC20",
+              "USDT:BEP20",
+              "USDT:MATIC",
+              "USDT:SOL",
+              "USDT:TRC20",
+              "TRON",
+              "BITCOIN_LN",
+              "CONCORDIUM",
+              "POLYGON",
+              "PEPE:ERC20",
+              "DAI:ERC20",
+              "DAI:BEP20",
+              "DAI:MATIC",
+              "WETH:BEP20",
+              "WETH:MATIC",
+              "APE:ERC20",
+              "APE:MATIC",
+              "SHIB:ERC20",
+              "SHIB:BEP20",
+              "SHIB:MATIC",
+              "USDC_NATIVE:MATIC",
+              "DOGECOIN",
+              "PYTH:SOL",
+              "BONK:SOL",
+              "JUP:SOL",
+              "JITO:SOL",
+              "WEN:SOL",
+              "RENDER:SOL",
+              "MOBILE:SOL",
+              "HNT:SOL"
             ],
             "example": "STRIPE",
             "description": "Gateway chosen for this subscription. A new invoice monthly will be created using this gayeway."
@@ -4824,20 +5561,54 @@
             "type": "string",
             "enum": [
               "PAYPAL",
-              "ETHEREUM",
-              "BITCOIN",
-              "BITCOIN_CASH",
-              "LITECOIN",
-              "SKRILL",
               "STRIPE",
+              "SKRILL",
               "PERFECT_MONEY",
               "CASH_APP",
-              "LEX_HOLDINGS_GROUP",
-              "PAYDASH",
-              "MONERO",
+              "BINANCE",
+              "BITCOIN",
+              "LITECOIN",
+              "ETHEREUM",
+              "BITCOIN_CASH",
               "NANO",
+              "MONERO",
               "SOLANA",
-              "RIPPLE"
+              "RIPPLE",
+              "BINANCE_COIN",
+              "USDC:ERC20",
+              "USDC:BEP20",
+              "USDC:MATIC",
+              "USDC:SOL",
+              "USDT:ERC20",
+              "USDT:BEP20",
+              "USDT:MATIC",
+              "USDT:SOL",
+              "USDT:TRC20",
+              "TRON",
+              "BITCOIN_LN",
+              "CONCORDIUM",
+              "POLYGON",
+              "PEPE:ERC20",
+              "DAI:ERC20",
+              "DAI:BEP20",
+              "DAI:MATIC",
+              "WETH:BEP20",
+              "WETH:MATIC",
+              "APE:ERC20",
+              "APE:MATIC",
+              "SHIB:ERC20",
+              "SHIB:BEP20",
+              "SHIB:MATIC",
+              "USDC_NATIVE:MATIC",
+              "DOGECOIN",
+              "PYTH:SOL",
+              "BONK:SOL",
+              "JUP:SOL",
+              "JITO:SOL",
+              "WEN:SOL",
+              "RENDER:SOL",
+              "MOBILE:SOL",
+              "HNT:SOL"
             ],
             "example": "SOLANA",
             "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
@@ -5438,20 +6209,54 @@
             "type": "string",
             "enum": [
               "PAYPAL",
-              "ETHEREUM",
-              "BITCOIN",
-              "BITCOIN_CASH",
-              "LITECOIN",
-              "SKRILL",
               "STRIPE",
+              "SKRILL",
               "PERFECT_MONEY",
               "CASH_APP",
-              "LEX_HOLDINGS_GROUP",
-              "PAYDASH",
-              "MONERO",
+              "BINANCE",
+              "BITCOIN",
+              "LITECOIN",
+              "ETHEREUM",
+              "BITCOIN_CASH",
               "NANO",
+              "MONERO",
               "SOLANA",
-              "RIPPLE"
+              "RIPPLE",
+              "BINANCE_COIN",
+              "USDC:ERC20",
+              "USDC:BEP20",
+              "USDC:MATIC",
+              "USDC:SOL",
+              "USDT:ERC20",
+              "USDT:BEP20",
+              "USDT:MATIC",
+              "USDT:SOL",
+              "USDT:TRC20",
+              "TRON",
+              "BITCOIN_LN",
+              "CONCORDIUM",
+              "POLYGON",
+              "PEPE:ERC20",
+              "DAI:ERC20",
+              "DAI:BEP20",
+              "DAI:MATIC",
+              "WETH:BEP20",
+              "WETH:MATIC",
+              "APE:ERC20",
+              "APE:MATIC",
+              "SHIB:ERC20",
+              "SHIB:BEP20",
+              "SHIB:MATIC",
+              "USDC_NATIVE:MATIC",
+              "DOGECOIN",
+              "PYTH:SOL",
+              "BONK:SOL",
+              "JUP:SOL",
+              "JITO:SOL",
+              "WEN:SOL",
+              "RENDER:SOL",
+              "MOBILE:SOL",
+              "HNT:SOL"
             ],
             "example": "SOLANA",
             "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
@@ -6515,18 +7320,52 @@
             "PAYPAL",
             "STRIPE",
             "SKRILL",
+            "PERFECT_MONEY",
+            "CASH_APP",
+            "BINANCE",
             "BITCOIN",
             "LITECOIN",
             "ETHEREUM",
             "BITCOIN_CASH",
-            "PERFECT_MONEY",
-            "CASH_APP",
-            "LEX_HOLDINGS_GROUP",
-            "PAYDASH",
             "NANO",
             "MONERO",
             "SOLANA",
-            "RIPPLE"
+            "RIPPLE",
+            "BINANCE_COIN",
+            "USDC:ERC20",
+            "USDC:BEP20",
+            "USDC:MATIC",
+            "USDC:SOL",
+            "USDT:ERC20",
+            "USDT:BEP20",
+            "USDT:MATIC",
+            "USDT:SOL",
+            "USDT:TRC20",
+            "TRON",
+            "BITCOIN_LN",
+            "CONCORDIUM",
+            "POLYGON",
+            "PEPE:ERC20",
+            "DAI:ERC20",
+            "DAI:BEP20",
+            "DAI:MATIC",
+            "WETH:BEP20",
+            "WETH:MATIC",
+            "APE:ERC20",
+            "APE:MATIC",
+            "SHIB:ERC20",
+            "SHIB:BEP20",
+            "SHIB:MATIC",
+            "USDC_NATIVE:MATIC",
+            "DOGECOIN",
+            "PYTH:SOL",
+            "BONK:SOL",
+            "JUP:SOL",
+            "JITO:SOL",
+            "WEN:SOL",
+            "RENDER:SOL",
+            "MOBILE:SOL",
+            "HNT:SOL"
           ]
         },
         "example": [
@@ -7419,7 +8258,7 @@
                   "properties": {
                     "uniqid": {
                       "type": "string",
-                      "description": "The ID of the new coupon",
+                      "description": "The ID of the coupon",
                       "example": "sample29a0e39d"
                     }
                   }
@@ -7679,7 +8518,7 @@
                     "products": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/product"
+                        "$ref": "#/components/schemas/listedProduct"
                       }
                     }
                   }
@@ -7731,6 +8570,126 @@
                 "message": {
                   "type": "string",
                   "example": "null"
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "createProduct": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "description": "The ID of the new product",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Product Created Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "editProduct": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "description": "The ID of the product",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Product Edited Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "deleteProduct": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Product Deleted Successfully."
                 },
                 "env": {
                   "type": "string",
