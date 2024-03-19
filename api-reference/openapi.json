@@ -2663,7 +2663,7 @@
           "products_bound": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/product"
+              "$ref": "#/components/schemas/miniProduct"
             },
             "description": "Array of products. Please note that the product object contains limited fields, to get the full product object please use the Products API endpoint."
           },
@@ -3215,7 +3215,7 @@
           }
         }
       },
-      "product": {
+      "miniProduct": {
         "type": "object",
         "properties": {
           "uniqid": {
@@ -3529,6 +3529,728 @@
           }
         }
       },
+      "product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": "123",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample29a0e39d",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "slug": {
+            "type": "string",
+            "example": "digital-good-to-download",
+            "description": "The slug used to navigate to the product page on a storefront."
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 123,
+            "description": "The shop ID to which this resource belongs."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC",
+              "INFO_CARD",
+              "SUBSCRIPTION"
+            ],
+            "example": "SUBSCRIPTION",
+            "description": "Product type."
+          },
+          "subtype": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC"
+            ],
+            "example": "null",
+            "description": "Product subtype, can be used only with type SUBSCRIPTION."
+          },
+          "title": {
+            "type": "string",
+            "example": "Digital good to download",
+            "description": "Product title."
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "pay_what_you_want": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not pay-what-you-want pricing is enabled."
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "example": "5.00",
+            "description": "Product price."
+          },
+          "price_display": {
+            "type": "number",
+            "format": "double",
+            "example": "5.00",
+            "description": "Product price in currency."
+          },
+          "price_discount": {
+            "type": "number",
+            "example": "0"
+          },
+          "affiliate_revenue_percent": {
+            "type": "number",
+            "example": 15,
+            "description": "The percentage of revenue to give to affiliates. -1 for disabled, 0 for default (10%), other number for a custom percent."
+          },
+          "price_variants": {
+            "type": "object",
+            "example": "null",
+            "description": "Variants in pricing for the product."
+          },
+          "description": {
+            "type": "string",
+            "example": "Product description",
+            "description": "Product description."
+          },
+          "licensing_enabled": {
+            "type": "number", 
+            "example": 1,
+            "description": "Whether product licenses are generated on successful payments"
+          },
+          "license_period": {
+            "type": "string",
+            "example": "7",
+            "description": "Amount in days that licenses will be valid for"
+          },
+          "image_attachment": {
+            "type": "string",
+            "description": "Unique id of the image attachment for this product.",
+            "example": ""
+          },
+          "file_attachment": {
+            "type": "string",
+            "description": "Unique id of the file attachment for this product if the product type is FILE.",
+            "example": "null"
+          },
+          "youtube_link": {
+            "type": "string",
+            "example": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "description": "The url for the YouTube video of the product"
+          },
+          "volume_discounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "PERCENTAGE",
+                    "FIXED"
+                  ],
+                  "example": "PERCENTAGE",
+                  "description": "Whether the discount value is a percentage or a fixed amount."
+                },
+                "value": {
+                  "type": "integer",
+                  "example": 5,
+                  "description": "Value of a percentage or fixed discount."
+                },
+                "quantity": {
+                  "type": "integer",
+                  "example": 10,
+                  "description": "How much of this product needs to be purchased in order to be eligible for this volume discount."
+                }
+              }
+            },
+            "description": "Array of volume discounts."
+          },
+          "recurring_interval": {
+            "type": "string",
+            "enum": [
+              "DAY",
+              "WEEK",
+              "MONTH",
+              "YEAR"
+            ],
+            "example": "MONTH",
+            "description": "At which frequency the customer is billed for product type SUBSCRIPTION."
+          },
+          "recurring_interval_count": {
+            "type": "integer",
+            "example": 1,
+            "description": "How many recurring_interval before the customer is billed for product type SUBSCRIPTION."
+          },
+          "trial_period": {
+            "type": "integer",
+            "example": 0,
+            "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION."
+          },
+          "paypal_product_id": {
+            "type": "string",
+            "example": null,
+            "description": "When a product SUBSCRIPTION is created and the gateway PAYPAL chosen, a PayPal product is automatically created on the connected account."
+          },
+          "paypal_plan_id": {
+            "type": "string",
+            "example": null,
+            "description": "When a product SUBSCRIPTION is created and the gateway PAYPAL chosen, a PayPal plan is automatically created on the connected account."
+          },
+          "stripe_price_id": {
+            "type": "string",
+            "example": "price_sample2X7rAeMb7AM5APEU",
+            "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
+          },
+          "discord_integration": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not the discord integeration is enabled for this product."
+          },
+          "discord_optional": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not the discord integration is optional."
+          },
+          "discord_set_role": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether to give users a role when added to the discord server."
+          },
+          "discord_server_id": {
+            "type": "string",
+            "example": "742768752180854827",
+            "description": "The id of the discord server the bot will add users to."
+          },
+          "discord_role_id": {
+            "type": "number",
+            "example": "742772275698335765",
+            "description": "The role to give users when added by the discord integration."
+          },
+          "discord_remove_role": {
+            "type": "number",
+            "example": "0",
+            "description": "Whether to remove a role from the user when added to the discord server."
+          },
+          "quantity_min": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 1,
+            "description": "Minimum quantity purchasable of this product."
+          },
+          "quantity_max": {
+            "type": "integer",
+            "minimum": -1,
+            "example": -1,
+            "description": "Maximum quantity purchasable of this product."
+          },
+          "quantity_warning": {
+            "type": "integer",
+            "example": "0",
+            "description": "At which product quantity should we send a webhook and email warning the merchant."
+          },
+          "gateways": {
+            "$ref": "#/components/schemas/gateways"
+          },
+          "custom_fields": {
+            "$ref": "#/components/schemas/custom_fields_array"
+          },
+          "crypto_confirmations_needed": {
+            "type": "integer",
+            "example": 3,
+            "description": "Minimum number of confirmations for a crypto payment to be accepted."
+          },
+          "max_risk_level": {
+            "type": "number",
+            "example": 85,
+            "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
+          },
+          "block_vpn_proxies": {
+            "type": "boolean",
+            "example": true,
+            "description": "Block VPN and Proxy purchases if the gateway is PAYPAL or STRIPE."
+          },
+          "delivery_text": {
+            "type": "string",
+            "example": "Thank you for purchasing this subscription!",
+            "description": "The text to be delivered to the customer after payment"
+          },
+          "delivery_time": {
+            "type": "string",
+            "example": "null"
+          },
+          "service_text": {
+            "type": "string",
+            "example": "In order to get you services, please contact us at..",
+            "description": "The text to be delivered to the customer after payment for a service"
+          },
+          "stock_delimiter": {
+            "type": "string",
+            "example": ",",
+            "description": "How to delimit the stock if product type is SERIALS, for example with stock_delimiter \",\" and serials value first,second; the stock would have two different serials \"first\" and \"second\"."
+          },
+          "stock": {
+            "type": "integer",
+            "example": -1,
+            "description": "Stock of the current product, can be -1 for unlimited stock."
+          },
+          "dynamic_webhook": {
+            "type": "object",
+            "example": "null"
+          },
+          "bestseller": {
+            "type": "number",
+            "example": "0"
+          },
+          "sort_priority": {
+            "type": "integer",
+            "example": 1,
+            "description": "Sort order of this product."
+          },
+          "unlisted": {
+            "type": "boolean",
+            "example": false,
+            "description": "If unlisted is true, the product is not shown in the storefront but can be bought through a direct link."
+          },
+          "on_hold": {
+            "type": "boolean",
+            "example": false,
+            "description": "If on_hold is true, the product cannot be bought but is shown in the storefront."
+          },
+          "terms_of_service": {
+            "type": "string",
+            "example": null,
+            "description": "Text containing the product's terms of service."
+          },
+          "warranty": {
+            "type": "integer",
+            "example": 86400,
+            "description": "Time, in seconds, of how much the warranty for this product lasts."
+          },
+          "warranty_text": {
+            "type": "string",
+            "example": "This warranty covers..",
+            "description": "Clear explanation of what the warranty covers."
+          },
+          "watermark_enabled": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether sellix should add a watermark to your product image."
+          },
+          "watermark_text": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The watermark to add to the product image."
+          },
+          "redirect_link": {
+            "type": "string",
+            "example": "https://sellix.io",
+            "description": "The url to redirect a customer to on successful payment"
+          },
+          "private": {
+            "type": "boolean",
+            "example": false,
+            "description": "If private is true, the product is hidden on the storefront and cannot be bought with a direct link."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Creation date of the product."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the product has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 0,
+            "description": "User ID, available if the product has been edited."
+          },
+          "marketplace_category_id": {
+            "type": "string",
+            "example": "0"
+          },
+          "telegram_group_id": {
+            "type": "string",
+            "example": "none"
+          },
+          "telegram_integration": {
+            "type": "number",
+            "example": "0"
+          },
+          "telegram_optional": {
+            "type": "number",
+            "example": "0"
+          },
+          "name": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The name of the product"
+          },
+          "image_name": {
+            "type": "string",
+            "example": null
+          },
+          "image_storage": {
+            "type": "string",
+            "example": null
+          },
+          "cloudflare_image_id": {
+            "type": "string",
+            "example": "sample-c4f1-4f7c-9a1d-89120ed0c800"
+          },
+          "feedback": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "example": 10,
+                "description": "Count of all the feedback."
+              },
+              "positive": {
+                "type": "integer",
+                "example": 8,
+                "description": "Count of positive feedback."
+              },
+              "neutral": {
+                "type": "integer",
+                "example": 1,
+                "description": "Count of neutral feedback."
+              },
+              "negative": {
+                "type": "integer",
+                "example": 1,
+                "description": "Count of negative feedback."
+              },
+              "numbers": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "example": {
+                  "5": 6,
+                  "4": 2,
+                  "3": 1,
+                  "1": 1
+                }
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "score": {
+                      "type": "number",
+                      "example": 5
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nice product!"
+                    },
+                    "reply": {
+                      "type": "string",
+                      "example": "Thank you for the feedback."
+                    },
+                    "created_at": {
+                      "type": "number",
+                      "example": 162857125819
+                    },
+                    "updated_at": {
+                      "type": "number",
+                      "example": 162857125819
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Test Category"
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample29a0e39d"
+                }
+              }
+            }
+          },
+          "payment_gateways_fees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 123
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 123
+                },
+                "gateway": {
+                  "type": "string",
+                  "enum": [
+                    "PAYPAL",
+                    "ETHEREUM",
+                    "BITCOIN",
+                    "BITCOIN_CASH",
+                    "LITECOIN",
+                    "SKRILL",
+                    "STRIPE",
+                    "PERFECT_MONEY",
+                    "CASH_APP",
+                    "LEX_HOLDINGS_GROUP",
+                    "PAYDASH",
+                    "MONERO",
+                    "NANO",
+                    "SOLANA",
+                    "RIPPLE"
+                  ],
+                  "example": "STRIPE"
+                },
+                "percent_amount": {
+                  "type": "integer",
+                  "example": -5
+                },
+                "fixed_amount": {
+                  "type": "integer",
+                  "example": "0"
+                },
+                "fixed_currency": {
+                  "$ref": "#/components/schemas/currency"
+                },
+                "active_type": {
+                  "type": "string",
+                  "enum": ["PERCENT", "FIXED"]
+                },
+                "updated_at": {
+                  "type": "string",
+                  "example": "1970-01-01 00:00:00"
+                },
+                "created_at": {
+                  "type": "string",
+                  "example": "1970-01-01 00:00:00"
+                }
+              }
+            }
+          },
+          "price_conversions": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            },
+            "example": {
+              "CAD": 7.37
+            }
+          },
+          "country_regulations": {
+            "type": "string",
+            "example": "IT"
+          },
+          "available_stripe_apm": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "afterpay_clearpay"
+              },
+              "name": {
+                "type": "string",
+                "example": "Afterpay and Clearpay"
+              }
+            }
+          },
+          "serials": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "webhooks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "theme": {
+            "type": "string",
+            "example": "dark"
+          },
+          "dark_mode": {
+            "type": "number",
+            "example": 1
+          },
+          "vat_percentage": {
+            "type": "string",
+            "example": "0.00"
+          },
+          "tax_details": {
+            "type": "object",
+            "properties": {
+              "vat_percentage": {
+                "type": "string",
+                "example": "0.00"
+              },
+              "tax_configuration": {
+                "type": "string",
+                "example": "NONE"
+              },
+              "tax_configuration_data": {
+                "type": "array",
+                "example": []
+              },
+              "display_tax_on_storefront": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 0
+              },
+              "display_tax_custom_fields": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 0
+              },
+              "validation_only_for_companies": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 1
+              },
+              "validate_vat_number": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 0
+              },
+              "prices_tax_inclusive": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 0
+              }
+            }
+          },
+          "image_attachment_info": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "uniqid": {
+                "type": "string",
+                "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
+              },
+              "cloudflare_image_id": {
+                "type": "string",
+                "example": "samplexx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+              },
+              "storage": {
+                "type": "string",
+                "enum": ["PRODUCTS"],
+                "example": "PRODUCTS"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["IMAGE"],
+                "example": "IMAGE"
+              },
+              "name": {
+                "type": "string",
+                "example": "sample.png"
+              },
+              "original_name": {
+                "type": "string",
+                "example": "file.png"
+              },
+              "extension": {
+                "type": "string",
+                "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
+                "example": "png"
+              },
+              "shop_id": {
+                "type": "integer",
+                "example": 123
+              },
+              "product_id": {
+                "type": "integer",
+                "example": 123
+              },
+              "size": {
+                "type": "integer",
+                "example": 123
+              },
+              "created_at": {
+                "type": "integer",
+                "example": 162857125819
+              }
+            },
+            "required": ["id", "uniqid", "cloudflare_image_id", "storage", "type", "name", "original_name", "extension", "shop_id", "product_id", "size", "created_at"]
+          },
+          "average_score": {
+            "type": "string",
+            "example": "5.0000",
+            "description": "The average rating of the product."
+          },
+          "sold_count": {
+            "type": "number",
+            "example": 236,
+            "description": "The amount of sales for the product."
+          },
+          "addons": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 123
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample29a0e39d"
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 123
+                },
+                "product_types": {
+                  "type": "array",
+                  "example": "null"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Sellix"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A Sellix product description"
+                },
+                "price": {
+                  "type": "string",
+                  "example": "1.00"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                }
+              }
+            }
+          }
+        }
+      },
       "customer": {
         "type": "object",
         "properties": {
@@ -3604,8 +4326,8 @@
           },
           "shop_id": {
             "type": "integer",
-            "description": "ID of the store for which this subscription has been created.",
-            "example": 124
+            "example": 124,
+            "description": "The shop ID to which this subscription belongs."
           },
           "product_id": {
             "type": "string",
@@ -3790,8 +4512,8 @@
           },
           "shop_id": {
             "type": "integer",
-            "description": "ID of the store for which this subscription has been created.",
-            "example": 124
+            "example": 124,
+            "description": "The shop ID to which this subscription belongs."
           },
           "product_id": {
             "type": "string",
@@ -7002,21 +7724,21 @@
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
                   "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
                 }
               }
             }
