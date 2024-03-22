@@ -329,7 +329,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/createWhitelist"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -383,7 +383,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/deleteWhitelist"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -442,7 +442,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/editWhitelist"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2634,7 +2634,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2645,7 +2645,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 0,
+            "example": 123,
             "description": "The shop ID to which this whitelist belongs."
           },
           "type": {
@@ -7888,17 +7888,13 @@
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
@@ -7928,17 +7924,114 @@
                     }
                   }
                 },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
                 "message": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
                 },
-                "log": {
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "createWhitelist": {
+        "description": "SUCCESS_MESSAGE",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Whitelist Created Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "editWhitelist": {
+        "description": "SUCCESS_MESSAGE",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Whitelist Edited Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "deleteWhitelist": {
+        "description": "SUCCESS_MESSAGE",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
                   "type": "object",
                   "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Whitelist Deleted Successfully."
                 },
                 "env": {
                   "type": "string",
