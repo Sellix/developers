@@ -4938,6 +4938,11 @@
             "example": "cst_8761b2g7atm91892",
             "description": "Customer ID"
           },
+          "shop_id": {
+            "type": "number",
+            "example": 123,
+            "description": "The shop ID to which this customer belongs."
+          },
           "email": {
             "type": "string",
             "example": "sample@gmail.com",
@@ -4992,6 +4997,20 @@
             "type": "string",
             "example": "Italy",
             "description": "Customer state"
+          },
+          "affiliate_revenue": {
+            "type": "string",
+            "example": "0.00",
+            "description": "Revenue customer has recieved from the affiliate program"
+          },
+          "affiliate_revenue_currency": {
+            "type": "string",
+            "example": "EUR",
+            "description": "The currency the customer gets reimbursed in for the affiliate program"
+          },
+          "created_at": {
+            "type": "number",
+            "example": "Italy"
           }
         }
       },
@@ -9150,17 +9169,13 @@
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
@@ -9187,22 +9202,51 @@
                   "properties": {
                     "customer_id": {
                       "type": "string",
-                      "example": "cus_87b8as6ba9125",
+                      "example": "cst_87b8as6ba9125",
                       "description": "Customer ID"
                     }
                   }
                 },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
                 "message": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
                 },
-                "log": {
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "customerUpdated": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
                   "type": "object",
-                  "example": null
+                  "example": "null"
                 },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Customer updated"
                 },
                 "env": {
                   "type": "string",
