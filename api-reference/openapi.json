@@ -135,7 +135,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/createBlacklist"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -189,7 +189,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/deleteBlacklist"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -248,7 +248,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/editBlacklist"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2581,6 +2581,10 @@
             ],
             "example": "PRIVATE",
             "description": "Whether it is a PRIVATE or SHARED blacklist. SHARED blacklists are created by Sellix's Fraud Shield to be used across Business and Enterprise merchants."
+          },
+          "scope_details": {
+            "type": "object",
+            "example": "null"
           },
           "shop_id": {
             "type": "integer",
@@ -7805,17 +7809,13 @@
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
@@ -7845,17 +7845,114 @@
                     }
                   }
                 },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
                 "message": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
                 },
-                "log": {
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "createBlacklist": {
+        "description": "SUCCESS_MESSAGE",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Blacklist Created Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "editBlacklist": {
+        "description": "SUCCESS_MESSAGE",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Blacklist Edited Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "deleteBlacklist": {
+        "description": "SUCCESS_MESSAGE",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
                   "type": "object",
                   "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Blacklist Deleted Successfully."
                 },
                 "env": {
                   "type": "string",
