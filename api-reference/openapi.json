@@ -7578,14 +7578,14 @@
             "description": "The shop ID to which this license belongs."
           },
           "product_id": {
-            "type": "integer",
-            "example": 0,
+            "type": "string",
+            "example": "sample29a0e39d",
             "description": "The product ID to which this license belongs."
           },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": null,
+            "example": "sample-3ddfc9dc3d-ab2e3",
             "description": "Unique ID of the invoice this license is linked to."
           },
           "license_key": {
@@ -9370,22 +9370,18 @@
                 "data": {
                   "type": "object",
                   "properties": {
-                    "order": {
+                    "license": {
                       "$ref": "#/components/schemas/license"
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
