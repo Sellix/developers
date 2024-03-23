@@ -5525,7 +5525,7 @@
           "total": {
             "type": "number",
             "format": "double",
-            "example": 2.5,
+            "example": 4.5,
             "description": "Invoice total, unit_price*quantity where quantity is applicable."
           },
           "total_display": {
@@ -5961,9 +5961,7 @@
             "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
           },
           "fee_breakdown": {
-            "type": "string",
-            "example": "null",
-            "description": "Representation of how fees were applied to invoice"
+            "$ref": "#/components/schemas/fee_breakdown"
           },
           "discount_breakdown": {
             "type": "object",
@@ -6576,9 +6574,7 @@
             "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
           },
           "fee_breakdown": {
-            "type": "object",
-            "example": "null",
-            "description": "TODO"
+            "$ref": "#/components/schemas/fee_breakdown"
           },
           "day_value": {
             "type": "integer",
@@ -7779,6 +7775,154 @@
                   }
                 },
                 "description": "A list of the price of the product variant in various cryptocurrencies."
+              }
+            }
+          }
+        },
+        "description": "Product variant object."
+      },
+      "fee_breakdown": {
+        "type": "object",
+        "properties": {
+          "service_fee": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "example": 0.5,
+                "description": "The amount of the service fee."
+              },
+              "currency": {
+                "$ref": "#/components/schemas/currency"
+              },
+              "breakdown": {
+                "type": "object",
+                "properties": {
+                  "flat": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": 0.5,
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  },
+                  "percentage": {
+                    "type": "object",
+                    "properties": {
+                      "plan": {
+                        "type": "string",
+                        "example": "GATEWAY_NO_FEES",
+                        "description": "The plan of the service fee."
+                      },
+                      "value": {
+                        "type": "number",
+                        "example": "0",
+                        "description": "The amount of the service fee."
+                      },
+                      "amount": {
+                        "type": "number",
+                        "example": "0",
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "aml_analysis": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "example": 1,
+                "description": "The amount of the service fee."
+              },
+              "currency": {
+                "$ref": "#/components/schemas/currency"
+              },
+              "breakdown": {
+                "type": "object",
+                "properties": {
+                  "flat": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": "0",
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  },
+                  "percentage": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": 50,
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "platform_fee": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "example": 1,
+                "description": "The amount of the service fee."
+              },
+              "currency": {
+                "$ref": "#/components/schemas/currency"
+              },
+              "breakdown": {
+                "type": "object",
+                "properties": {
+                  "flat": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": 1,
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  },
+                  "percentage": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": "0",
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  }
+                }
               }
             }
           }
