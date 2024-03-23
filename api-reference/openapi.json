@@ -6079,8 +6079,9 @@
           },
           "product_downloads": {
             "type": "array",
-            "example": [],
-            "description": "The items available to download from the invoice"
+            "items": {
+              "$ref": "#/components/schemas/product_download"
+            }
           },
           "payment_link_id": {
             "type": "string",
@@ -8029,6 +8030,48 @@
             "type": "number",
             "example": 162857125819,
             "description": "Timestamp, available if the approved address has been created."
+          }
+        }
+      },
+      "product_download": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1,
+            "description": "ID of the resource."
+          },
+          "invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample-3ddfc9dc3d-ab2e3",
+            "description": "Unique ID of the invoice this download is linked to."
+          },
+          "customer_ip": {
+            "type": "string",
+            "example": "182.219.207.39",
+            "description": "The IP of the customer that downloaded the product."
+          },
+          "customer_isp": {
+            "type": "string",
+            "example": "WINDTRE",
+            "description": "The ISP of the customer that downloaded the product."
+          },
+          "customer_timezone": {
+            "type": "string",
+            "example": "GMT+1",
+            "description": "The timezone of the customer that downloaded the product."
+          },
+          "customer_country": {
+            "type": "string",
+            "example": "IT",
+            "description": "The country of the customer that downloaded the product."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp, available if the download has been created."
           }
         }
       }
