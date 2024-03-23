@@ -6028,7 +6028,10 @@
             }
           },
           "bundle_config": {
-            "example": "null"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/bundle_config"
+            }
           },
           "created_at": {
             "type": "integer",
@@ -7925,6 +7928,56 @@
                 }
               }
             }
+          }
+        }
+      },
+      "bundle_config": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1,
+            "description": "ID of the resource."
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample29a0e39d",
+            "description": "Unique ID of the bundle, used as reference across the API."
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 1,
+            "description": "The shop ID to which this bundle belongs."
+          },
+          "title": {
+            "type": "string",
+            "example": "sampleTitle",
+            "description": "The title of the bundle."
+          },
+          "products": {
+            "type": "string",
+            "example": "PRODUCT_ID_1,PRODUCT_ID_2,PRODUCT_ID_3",
+            "description": "The product IDs of the products in the bundle."
+          },
+          "discount_type": {
+            "type": "string",
+            "enum": [
+              "PERCENTAGE",
+              "FIXED"
+            ],
+            "example": "PERCENTAGE",
+            "description": "The type of discount applied to the bundle."
+          },
+          "discount_amount": {
+            "type": "number",
+            "example": 25,
+            "description": "The amount of the discount applied to the bundle."
+          },
+          "updated_at": {
+            "type": "number",
+            "example": 162857125819,
+            "description": "Timestamp, available if the bundle has been updated."
           }
         }
       }
