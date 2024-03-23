@@ -135,7 +135,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/createBlacklist"
+            "$ref": "#/components/responses/blacklistCreated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -189,7 +189,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/deleteBlacklist"
+            "$ref": "#/components/responses/blacklistDeleted"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -248,7 +248,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/editBlacklist"
+            "$ref": "#/components/responses/blacklistUpdated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -329,7 +329,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/createWhitelist"
+            "$ref": "#/components/responses/whitelistCreated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -383,7 +383,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/deleteWhitelist"
+            "$ref": "#/components/responses/whitelistDeleted"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -442,7 +442,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/editWhitelist"
+            "$ref": "#/components/responses/whitelistUpdated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -532,7 +532,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/createCategory"
+            "$ref": "#/components/responses/categoryCreated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -586,7 +586,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/deleteCategory"
+            "$ref": "#/components/responses/categoryDeleted"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -658,7 +658,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/editCategory"
+            "$ref": "#/components/responses/categoryUpdated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -756,7 +756,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/createCoupon"
+            "$ref": "#/components/responses/couponCreated"
           },  
           "401": {
             "$ref": "#/components/responses/401"
@@ -810,7 +810,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/deleteCoupon"
+            "$ref": "#/components/responses/couponDeleted"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -886,7 +886,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/editCoupon"
+            "$ref": "#/components/responses/couponUpdated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1254,7 +1254,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/createProduct"
+            "$ref": "#/components/responses/productCreated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1308,7 +1308,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/deleteProduct"
+            "$ref": "#/components/responses/productDeleted"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1502,7 +1502,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/editProduct"
+            "$ref": "#/components/responses/productUpdated"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -7881,7 +7881,7 @@
           }
         }
       },
-      "createBlacklist": {
+      "blacklistCreated": {
         "description": "SUCCESS_MESSAGE",
         "content": {
           "application/json": {
@@ -7918,7 +7918,7 @@
           }
         }
       },
-      "editBlacklist": {
+      "blacklistUpdated": {
         "description": "SUCCESS_MESSAGE",
         "content": {
           "application/json": {
@@ -7950,7 +7950,7 @@
           }
         }
       },
-      "deleteBlacklist": {
+      "blacklistDeleted": {
         "description": "SUCCESS_MESSAGE",
         "content": {
           "application/json": {
@@ -8057,7 +8057,7 @@
           }
         }
       },
-      "createWhitelist": {
+      "whitelistCreated": {
         "description": "SUCCESS_MESSAGE",
         "content": {
           "application/json": {
@@ -8094,7 +8094,7 @@
           }
         }
       },
-      "editWhitelist": {
+      "whitelistUpdated": {
         "description": "SUCCESS_MESSAGE",
         "content": {
           "application/json": {
@@ -8126,7 +8126,7 @@
           }
         }
       },
-      "deleteWhitelist": {
+      "whitelistDeleted": {
         "description": "SUCCESS_MESSAGE",
         "content": {
           "application/json": {
@@ -8233,7 +8233,7 @@
           }
         }
       },
-      "createCategory": {
+      "categoryCreated": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -8270,7 +8270,7 @@
           }
         }
       },
-      "editCategory": {
+      "categoryUpdated": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -8307,7 +8307,7 @@
           }
         }
       },
-      "deleteCategory": {
+      "categoryDeleted": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -8419,7 +8419,7 @@
           }
         }
       },
-      "createCoupon": {
+      "couponCreated": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -8457,7 +8457,7 @@
           }
         }
       },
-      "editCoupon": {
+      "couponUpdated": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -8495,7 +8495,7 @@
           }
         }
       },
-      "deleteCoupon": {
+      "couponDeleted": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -8799,7 +8799,7 @@
           }
         }
       },
-      "createProduct": {
+      "productCreated": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -8841,7 +8841,7 @@
           }
         }
       },
-      "editProduct": {
+      "productUpdated": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -8883,7 +8883,7 @@
           }
         }
       },
-      "deleteProduct": {
+      "productDeleted": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -9224,7 +9224,6 @@
           }
         }
       },
-
       "customerUpdated": {
         "description": "resource retrieved",
         "content": {
