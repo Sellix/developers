@@ -8074,6 +8074,111 @@
             "description": "Timestamp, available if the download has been created."
           }
         }
+      },
+      "gateway_fees": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1,
+            "description": "ID of the resource."
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 1,
+            "description": "The shop ID to which this gateway fee belongs."
+          },
+          "gateway": {
+            "$ref": "#/components/schemas/gateway",
+            "example": "BITCOIN"
+          },
+          "percent_amount": {
+            "type": "number",
+            "example": 3,
+            "description": "The percent amount of the gateway fee."
+          },
+          "fixed_amount": {
+            "type": "number",
+            "example": "0",
+            "description": "The fixed amount of the gateway fee."
+          },
+          "fixed_currency": {
+            "$ref": "#/components/schemas/currency",
+            "example": "USD"
+          },
+          "active_type": {
+            "type": "string",
+            "enum": [
+              "PERCENT",
+              "FIXED"
+            ],
+            "example": "PERCENT",
+            "description": "The active type of the gateway fee."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "1975-02-28 15:05:25",
+            "description": "DateTime, available if the gateway fee has been updated."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "1975-02-28 15:05:25",
+            "description": "DateTime, available if the gateway fee has been created."
+          },
+          "conversions": {
+            "type": "object", 
+            "properties": {
+              "AUD": {
+                "type": "number",
+                "example": 12.43,
+                "description": "The price of the product variant in AUD."
+              },
+              "BGN": {
+                "type": "number",
+                "example": 14.66,
+                "description": "The price of the product variant in BGN."
+              },
+              "BRL": {
+                "type": "number",
+                "example": 40.52,
+                "description": "The price of the product variant in BRL."
+              },
+              "ZAR": {
+                "type": "number",
+                "example": 154.37,
+                "description": "The price of the product variant in ZAR."
+              },
+              "crypto": {
+                "type": "object",
+                "properties": {
+                  "APE": {
+                    "type": "string",
+                    "example": "0.00435",
+                    "description": "The price of the product variant in APE."
+                  },
+                  "BCH": {
+                    "type": "string",
+                    "example": "1.062",
+                    "description": "The price of the product variant in BCH."
+                  },
+                  "BNB": {
+                    "type": "string",
+                    "example": "1.265",
+                    "description": "The price of the product variant in BNB."
+                  },
+                  "USDC_NATIVE": {
+                    "type": "string",
+                    "example": "0.00225",
+                    "description": "The price of the product variant in USDC_NATIVE."
+                  }
+                },
+                "description": "A list of the price of the product variant in various cryptocurrencies."
+              }
+            }
+          }
+        }
       }
     },
     "parameters": {
