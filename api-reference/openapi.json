@@ -3522,7 +3522,8 @@
           },
           "bestseller": {
             "type": "number",
-            "example": "0"
+            "example": "null",
+            "description": "DEPRECATED"
           },
           "sort_priority": {
             "type": "integer",
@@ -3881,7 +3882,8 @@
           },
           "delivery_time": {
             "type": "string",
-            "example": "null"
+            "example": "null",
+            "description": "The timestamp for when the invoice was delivered"
           },
           "service_text": {
             "type": "string",
@@ -4707,6 +4709,16 @@
             "type": "string",
             "example": "https://sellix.io",
             "description": "The url to redirect a customer to on successful payment"
+          },
+          "label_singular": {
+            "type": "string",
+            "example": null,
+            "description": "TODO"
+          },
+          "label_plural": {
+            "type": "string",
+            "example": null,
+            "description": "TODO"
           },
           "private": {
             "type": "boolean",
