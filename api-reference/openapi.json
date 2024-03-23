@@ -5536,7 +5536,9 @@
           },
           "product_variants": {
             "type": "array",
-            "example": "null"
+            "items": {
+              "$ref": "#/components/schemas/product_variant"
+            }
           },
           "exchange_rate": {
             "type": "number",
@@ -6269,9 +6271,10 @@
             "description": "Exchange rate between the cryptocurrency chosen (if any) and USD."
           },
           "product_variants": {
-            "type": "object",
-            "example": "null",
-            "description": "TODO"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/product_variant"
+            }
           },
           "currency": {
             "$ref": "#/components/schemas/currency"
@@ -7707,6 +7710,77 @@
             "format": "date-time",
             "example": "1970-01-01 00:00:00",
             "description": "Date, available if the license has been updated."
+          }
+        }
+      },
+      "product_variant": {
+        "type": "object",
+        "properties": {
+          "price": { 
+            "type": "number",
+            "example": 60,
+            "description": "The price of the product variant."
+          },
+          "title": { 
+            "type": "string",
+            "example": "exampleTitle",
+            "description": "The title of the product variant."
+          },
+          "description": { 
+            "type": "string",
+            "example": "exampleDescription",
+            "description": "The description of the product variant."
+          },
+          "price_conversions": {
+            "type": "object", 
+            "properties": {
+              "AUD": {
+                "type": "number",
+                "example": 92.08,
+                "description": "The price of the product variant in AUD."
+              },
+              "BGN": {
+                "type": "number",
+                "example": 108.62,
+                "description": "The price of the product variant in BGN."
+              },
+              "BRL": {
+                "type": "number",
+                "example": 300.17,
+                "description": "The price of the product variant in BRL."
+              },
+              "ZAR": {
+                "type": "number",
+                "example": 1143.49,
+                "description": "The price of the product variant in ZAR."
+              },
+              "crypto": {
+                "type": "object",
+                "properties": {
+                  "APE": {
+                    "type": "string",
+                    "example": "31.0607029506",
+                    "description": "The price of the product variant in APE."
+                  },
+                  "BCH": {
+                    "type": "string",
+                    "example": "0.1271212408",
+                    "description": "The price of the product variant in BCH."
+                  },
+                  "BNB": {
+                    "type": "string",
+                    "example": "0.1067436987",
+                    "description": "The price of the product variant in BNB."
+                  },
+                  "USDC_NATIVE": {
+                    "type": "string",
+                    "example": "60.0000000000",
+                    "description": "The price of the product variant in USDC_NATIVE."
+                  }
+                },
+                "description": "A list of the price of the product variant in various cryptocurrencies."
+              }
+            }
           }
         }
       }
