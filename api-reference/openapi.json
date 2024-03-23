@@ -740,6 +740,10 @@
                     "type": "boolean",
                     "example": false
                   },
+                  "expire_at": {
+                    "type": "number",
+                    "example": 4070937600
+                  },
                   "products_bound": {
                     "type": "array",
                     "items": {
