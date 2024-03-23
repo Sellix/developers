@@ -4165,7 +4165,9 @@
                 },
                 "active_type": {
                   "type": "string",
-                  "enum": ["PERCENT", "FIXED"]
+                  "enum": ["PERCENT", "FIXED"],
+                  "example": "null",
+                  "description": "DEPRECATED"
                 },
                 "updated_at": {
                   "type": "string",
@@ -4925,7 +4927,9 @@
                 },
                 "active_type": {
                   "type": "string",
-                  "enum": ["PERCENT", "FIXED"]
+                  "enum": ["PERCENT", "FIXED"],
+                  "example": "null",
+                  "description": "DEPRECATED"
                 },
                 "updated_at": {
                   "type": "string",
