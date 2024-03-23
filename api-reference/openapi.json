@@ -1965,7 +1965,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/paymentVoided"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1991,7 +1991,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/paymentCompleted"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -5468,6 +5468,46 @@
             "example": null,
             "description": "Unique ID of the recurring bill."
           },
+          "payout_configuration": {
+            "type": "string",
+            "example": "null",
+            "description": "TODO"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PRODUCT",
+              "SUBSCRIPTION",
+              "PUBLIC_REST_API",
+              "MONTHLY_BILL",
+              "SHOPPING_CART",
+              "PRODUCT_SUBSCRIPTION"
+            ],
+            "example": "PRODUCT",
+            "description": "Invoice type. For subscriptions, the invoice type is PRODUCT_SUBSCRIPTION as SUBSCRIPTION is reserved for Sellix-own plans."
+          },
+          "subtype": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC",
+              "INFO_CARD",
+              "SUBSCRIPTION"
+            ],
+            "example": "SERIALS",
+            "description": "Product type."
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "STOREFRONT",
+              "API"
+            ],
+            "example": "STOREFRONT",
+            "description": "How the invoice was created"
+          },
           "total": {
             "type": "number",
             "format": "double",
@@ -5479,6 +5519,10 @@
             "format": "double",
             "example": 2,
             "description": "Invoice total in the currency chosen."
+          },
+          "product_variants": {
+            "type": "array",
+            "example": "null"
           },
           "exchange_rate": {
             "type": "number",
@@ -5518,23 +5562,20 @@
             "example": "Sellix",
             "description": "Name of the merchant."
           },
-          "type": {
-            "type": "string",
-            "enum": [
-              "PRODUCT",
-              "SUBSCRIPTION",
-              "PUBLIC_REST_API",
-              "MONTHLY_BILL",
-              "SHOPPING_CART",
-              "PRODUCT_SUBSCRIPTION"
-            ],
-            "example": "PRODUCT",
-            "description": "Invoice type. For subscriptions, the invoice type is PRODUCT_SUBSCRIPTION as SUBSCRIPTION is reserved for Sellix-own plans."
-          },
           "customer_email": {
             "type": "string",
             "example": "customer@gmail.com",
             "description": "Email of the customer."
+          },
+          "customer_id": {
+            "type": "string",
+            "example": "cst_sample86f8ac433f4a084",
+            "description": "ID of the customer."
+          },
+          "affliate_revenue_customer_id": {
+            "type": "string",
+            "example": "null",
+            "description": "ID of the affiliate"
           },
           "paypal_email_delivery": {
             "type": "boolean",
@@ -5565,17 +5606,6 @@
             "example": "SERIALS",
             "description": "Product type."
           },
-          "subtype": {
-            "type": "string",
-            "enum": [
-              "SERIALS",
-              "FILE",
-              "SERVICE",
-              "DYNAMIC"
-            ],
-            "example": null,
-            "description": "Product subtype, set only with product_type SUBSCRIPTION."
-          },
           "subscription_id": {
             "type": "integer",
             "example": null,
@@ -5604,124 +5634,148 @@
               "SOLANA",
               "RIPPLE",
               "BINANCE_COIN",
-              "USDC:ERC20",
-              "USDC:BEP20",
-              "USDC:MATIC",
-              "USDC:SOL",
-              "USDT:ERC20",
-              "USDT:BEP20",
-              "USDT:MATIC",
-              "USDT:SOL",
-              "USDT:TRC20",
+              "USDC",
+              "USDT",
               "TRON",
               "BITCOIN_LN",
               "CONCORDIUM",
               "POLYGON",
-              "PEPE:ERC20",
-              "DAI:ERC20",
-              "DAI:BEP20",
-              "DAI:MATIC",
-              "WETH:BEP20",
-              "WETH:MATIC",
-              "APE:ERC20",
-              "APE:MATIC",
-              "SHIB:ERC20",
-              "SHIB:BEP20",
-              "SHIB:MATIC",
-              "USDC_NATIVE:MATIC",
+              "PEPE",
+              "DAI",
+              "WETH",
+              "APE",
+              "SHIB",
+              "USDC_NATIVE",
               "DOGECOIN",
-              "PYTH:SOL",
-              "BONK:SOL",
-              "JUP:SOL",
-              "JITO:SOL",
-              "WEN:SOL",
-              "RENDER:SOL",
-              "MOBILE:SOL",
-              "HNT:SOL"
+              "PYTH",
+              "BONK",
+              "JUP",
+              "JITO",
+              "WEN",
+              "RENDER",
+              "MOBILE",
+              "HNT"
             ],
-            "example": "SOLANA",
+            "example": "LITECOIN",
             "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
+          },
+          "blockchain": {
+            "type": "string",
+            "enum": [
+              "ERC20",
+              "BEP20",
+              "TRC20",
+              "MATIC",
+              "SOL"
+            ],
+            "example": "null",
+            "description": "The blockchain the cryptocurrency was sent on"
           },
           "paypal_apm": {
             "type": "string",
-            "example": null,
+            "example": "null",
+            "description": "PayPal Alternative Payment Method name, such as iDEAL, used if gateway is PAYPAL."
+          },
+          "stripe_apm": {
+            "type": "string",
+            "example": "null",
             "description": "PayPal Alternative Payment Method name, such as iDEAL, used if gateway is PAYPAL."
           },
           "paypal_email": {
             "type": "string",
-            "description": "DEPRECATED: Merchant PayPal email.",
-            "deprecated": true
+            "example": "null",
+            "description": "Merchant PayPal email."
           },
           "paypal_order_id": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "This field contains the PayPal order ID."
-          },
-          "paypal_fee": {
-            "type": "string",
-            "example": null,
-            "description": "This field is updated after the invoice is completed with the fee taken by PayPal over the invoice total."
           },
           "paypal_payer_email": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "This field is updated after the invoice is completed with the PayPal's email used for the purchase."
+          },
+          "paypal_fee": {
+            "type": "string",
+            "example": 0,
+            "description": "This field is updated after the invoice is completed with the fee taken by PayPal over the invoice total."
           },
           "paypal_subscription_id": {
             "type": "integer",
-            "example": null,
+            "example": "null",
             "description": "ID of the paypal subscription."
           },
           "paypal_subscription_link": {
             "type": "integer",
-            "example": null,
+            "example": "null",
             "description": "Link for the merchant to purchase the subscription from."
           },
           "lex_order_id": {
             "type": "string",
-            "description": "DEPRECATED: Unique ID of the LEX_HOLDINGS_GROUP order linked to this invoice.",
-            "deprecated": true
+            "example": "null",
+            "description": "Unique ID of the LEX_HOLDINGS_GROUP order linked to this invoice."
           },
           "lex_payment_method": {
             "type": "string",
-            "description": "DEPRECATED: Gateway used over LEX_HOLDINGS_GROUP.",
-            "deprecated": true
+            "example": "null",
+            "description": "Gateway used over LEX_HOLDINGS_GROUP."
           },
           "paydash_paymentID": {
             "type": "string",
-            "description": "DEPRECATED: Unique ID of the PAYDASH order linked to this invoice.",
-            "deprecated": true
+            "example": "null",
+            "description": "Unique ID of the PAYDASH order linked to this invoice."
+          },
+          "virtual_payments_id": {
+            "type": "string",
+            "example": "null",
+            "description": "Unique ID of the Virtual Payments order linked to this invoice."
           },
           "stripe_client_secret": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Client secret used to create the STRIPE paymentIntent."
           },
           "stripe_price_id": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "If the invoice type is PRODUCT_SUBSCRIPTION or SUBSCRIPTION, refers to the STRIPE price ID."
           },
           "skrill_email": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Merchant Skrill email."
           },
           "skrill_sid": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Skrill unique ID linked to the invoice."
           },
           "skrill_link": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Skrill link to redirect the customer to."
           },
           "perfectmoney_id": {
             "type": "string",
             "format": "uuid",
-            "example": null,
+            "example": "null",
             "description": "PerfectMoney payment ID linked to the invoice."
+          },
+          "binance_invoice_id": {
+            "type": "string",
+            "example": "null",
+            "description": "ID for binance invoice"
+          },
+          "binance_qrcode": {
+            "type": "string",
+            "example": "null",
+            "description": "Full Binance QRCODE string"
+          },
+          "binance_checkout_url": {
+            "type": "string",
+            "example": "null",
+            "description": "Checkout URL for Binance invoice"
           },
           "crypto_address": {
             "type": "string",
@@ -5767,24 +5821,24 @@
           },
           "bill_info": {
             "type": "object",
-            "example": null,
+            "example": "null",
             "description": "If invoice type is MONTHLY_BILL, contains a breakdown of the fees that need to be collected."
           },
           "cashapp_qrcode": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Full CashApp QRCODE string."
-          },
-          "cashapp_cashtag": {
-            "type": "string",
-            "example": null,
-            "description": "CashApp cashtag used to create the QRCODE."
           },
           "cashapp_note": {
             "type": "string",
             "format": "uuid",
-            "example": null,
+            "example": "null",
             "description": "Unique note for the customer to leave in the CashApp payment."
+          },
+          "cashapp_cashtag": {
+            "type": "string",
+            "example": "null",
+            "description": "CashApp cashtag used to create the QRCODE."
           },
           "country": {
             "type": "string",
@@ -5819,7 +5873,7 @@
           "coupon_id": {
             "type": "string",
             "format": "uuid",
-            "example": null,
+            "example": "null",
             "description": "Unique ID of the coupon, if used, for the discount."
           },
           "custom_fields": {
@@ -5832,17 +5886,17 @@
           },
           "developer_title": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "If a product_id is not passed through the Developers API, a title must be specified."
           },
           "developer_webhook": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Additional webhook URL to which updates regarding this invoice will be sent."
           },
           "developer_return_url": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "If present, the customer will be redirected to this URL after the invoice has been paid."
           },
           "status": {
@@ -5867,7 +5921,7 @@
             "enum": [
               "CART_PARTIAL_OUT_OF_STOCK"
             ],
-            "example": null,
+            "example": "null",
             "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
           },
           "void_details": {
@@ -5876,7 +5930,7 @@
               "PRODUCT_SOLD_OUT",
               "CART_PRODUCTS_SOLD_OUT"
             ],
-            "example": null,
+            "example": "null",
             "description": "If the invoice is VOIDED and the product (or all the products in the cart) were out of stock, this additional status is set."
           },
           "discount": {
@@ -5890,84 +5944,105 @@
             "example": 5,
             "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
           },
-          "ip_info": {
-            "$ref": "#/components/schemas/ip_info"
+          "fee_breakdown": {
+            "type": "string",
+            "example": "null",
+            "description": "Representation of how fees were applied to invoice"
           },
-          "serials": {
+          "discount_breakdown": {
+            "type": "object",
+            "example": "null",
+            "description": "Representation of how discount was applied to invoice"
+          },
+          "day_value": {
+            "type": "integer",
+            "description": "DEPRECATED: Day value, number.",
+            "deprecated": true
+          },
+          "day": {
+            "type": "string",
+            "description": "DEPRECATED: First three letters of the day name.",
+            "deprecated": true
+          },
+          "month": {
+            "type": "string",
+            "description": "DEPRECATED: First three letters of the month name.",
+            "deprecated": true
+          },
+          "year": {
+            "type": "integer",
+            "description": "DEPRECATED: Year number.",
+            "deprecated": true
+          },
+          "product_addons": {
             "type": "array",
             "items": {
-              "type": "string"
-            },
-            "example": [
-              "activation-key-#1",
-              "activation-key-#2",
-              "activation-key-#3"
-            ],
-            "description": "If product type is SERIALS, provide the serials linked to this invoice."
-          },
-          "file": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer",
-                "example": 0,
-                "description": "ID of the resource."
-              },
-              "uniqid": {
-                "type": "string",
-                "format": "uuid",
-                "example": "sampled79fe5041d379dde2abd180e8cd748bf336d724aa2fc13441646d",
-                "description": "Unique hash of the file."
-              },
-              "cloudflare_image_id": {
-                "$ref": "#/components/schemas/cloudflare_image_id"
-              },
-              "storage": {
-                "type": "string",
-                "description": "DEPRECATED: Where the image is stored in our self-hosted CDN.",
-                "deprecated": true
-              },
-              "name": {
-                "type": "string",
-                "example": "sampled79fe5041d379dde2abd180e8cd748bf336d724aa2fc13441646d.jpg",
-                "description": "Unique hash of the file containing the file extension."
-              },
-              "original_name": {
-                "type": "string",
-                "example": "Photo of a pineapple.",
-                "description": "Original name of the uploaded file."
-              },
-              "extension": {
-                "type": "string",
-                "example": "jpg",
-                "description": "Extension of the uploaded file."
-              },
-              "shop_id": {
-                "type": "integer",
-                "example": 0,
-                "description": "The shop ID to which this attachment belongs."
-              },
-              "size": {
-                "type": "integer",
-                "example": 19391,
-                "description": "Size in bytes of the attachment."
-              },
-              "created_at": {
-                "type": "integer",
-                "example": 1640777744,
-                "description": "Creation date of the crypto payout transaction."
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 123
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample29a0e39d"
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 123
+                },
+                "product_types": {
+                  "type": "array",
+                  "example": "null"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Sellix"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A Sellix product description"
+                },
+                "price": {
+                  "type": "string",
+                  "example": "1.00"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                }
               }
             }
           },
+          "bundle_config": {
+            "example": "null"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Creation date of the blacklist."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the blacklist has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 0,
+            "description": "User ID, available if the blacklist has been edited."
+          },
+          "approved_address": {
+            "example": "null"
+          },
           "service_text": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "If the product type is SERVICE, this field contains additional details on the type of service provided by the merchant."
           },
-          "dynamic_response": {
-            "type": "string",
-            "example": null,
-            "description": "If the product type is DYNAMIC, this field contains the response from the webhook sent to get the product."
+          "ip_info": {
+            "$ref": "#/components/schemas/ip_info"
           },
           "webhooks": {
             "type": "array",
@@ -5988,39 +6063,26 @@
             ],
             "description": "Webhook responses for this invoice."
           },
-          "crypto_payout_transaction": {
-            "type": "object",
-            "properties": {
-              "to_address": {
-                "type": "string",
-                "example": "EqsYv2S6pFXaMBrZ9uZe4F6g32HTgvhPuucRHYpGURx1",
-                "description": "Crypto payout merchant address."
-              },
-              "from_address": {
-                "type": "string",
-                "example": "3RUx8gs74R5KdXrs8wU6Z2xQkS8jmGVCnTVTRpwSoE3B",
-                "description": "Crypto payout invoice address."
-              },
-              "crypto_amount": {
-                "type": "number",
-                "format": "double",
-                "example": 0.0134553,
-                "description": "Crypto payout amount."
-              },
-              "hash": {
-                "type": "string",
-                "example": "4tE8KM2qwzxnMdjJxp419mPRViE9Nv3FvhqBphZS7i2ripj6aCwCosRYfACeCCm8kks7nmHtvoV1uDwvNejJhB2P",
-                "description": "Crypto payout transaction hash."
-              },
-              "created_at": {
-                "type": "integer",
-                "example": 1640777744,
-                "description": "Creation date of the crypto payout transaction."
-              }
-            }
+          "rewards_data": {
+            "example": "null"
           },
           "paypal_dispute": {
             "$ref": "#/components/schemas/paypal_dispute"
+          },
+          "product_downloads": {
+            "type": "array",
+            "example": [],
+            "description": "The items available to download from the invoice"
+          },
+          "payment_link_id": {
+            "type": "string",
+            "example": "null",
+            "description": "The ID for the payment link, if invoice was created by a payment link"
+          },
+          "license": {
+            "type": "boolean",
+            "example": false,
+            "description": "True if the product is of type LICENSE"
           },
           "status_history": {
             "type": "array",
@@ -6045,6 +6107,10 @@
             ],
             "description": "Additional details on the invoice status change."
           },
+          "aml_wallets": {
+            "type": "array",
+            "example": "null"
+          },
           "crypto_transactions": {
             "type": "array",
             "items": {
@@ -6061,6 +6127,26 @@
             ],
             "description": "Crypto transactions received to fulfill this invoice."
           },
+          "product": {
+            "$ref": "#/components/schemas/product"
+          },
+          "total_conversions": {
+            "example": []
+          },
+          "theme": {
+            "type": "string",
+            "example": "dark",
+            "description": "What Sellix theme the shop is set to."
+          },
+          "dark_mode": {
+            "type": "number",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "1 if darkmode is enabled, 0 if it is disabled."
+          },
+          "crypto_mode": {
+            "example": "DEFAULT"
+          },
           "gateways_available": {
             "type": "array",
             "items": {
@@ -6073,6 +6159,42 @@
             ],
             "description": "gateways available for the update invoice Developers API."
           },
+          "country_regulations": {
+            "type": "string",
+            "example": "IT",
+            "description": "The country the shop is opperated in"
+          },
+          "available_stripe_apm": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "afterpay_clearpay",
+                "description": "The stripe ID for the APM"
+              },
+              "name": {
+                "type": "string",
+                "example": "Afterpay and Clearpay",
+                "description": "The stripe name for the APM"
+              }
+            }
+          },
+          "serials": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "activation-key-#1",
+              "activation-key-#2",
+              "activation-key-#3"
+            ],
+            "description": "If product type is SERIALS, provide the serials linked to this invoice."
+          },
+          "shop_payment_gateways_fees": {
+            "type": "array",
+            "example": []
+          },
           "shop_paypal_credit_card": {
             "type": "boolean",
             "example": true,
@@ -6083,45 +6205,14 @@
             "example": true,
             "description": "If true, the merchant has enabled invoice shipment to the PayPal customer email."
           },
-          "product": {
-            "$ref": "#/components/schemas/product"
+          "shop_walletconnect_id": {
+            "example": "null"
           },
-          "day_value": {
-            "type": "integer",
-            "description": "DEPRECATED: Day value, number.",
-            "deprecated": true
+          "rates_snapshot": {
+            "example": "null"
           },
-          "day": {
-            "type": "string",
-            "description": "DEPRECATED: First three letters of the day name.",
-            "deprecated": true
-          },
-          "month": {
-            "type": "string",
-            "description": "DEPRECATED: First three letters of the month name.",
-            "deprecated": true
-          },
-          "year": {
-            "type": "integer",
-            "description": "DEPRECATED: Year number.",
-            "deprecated": true
-          },
-          "created_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 162857125819,
-            "description": "Creation date of the blacklist."
-          },
-          "updated_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 162857125819,
-            "description": "Date, available if the blacklist has been edited."
-          },
-          "updated_by": {
-            "type": "integer",
-            "example": 0,
-            "description": "User ID, available if the blacklist has been edited."
+          "void_times": {
+            "example": "null"
           }
         }
       },
@@ -6163,18 +6254,18 @@
             "example": 176.38,
             "description": "Exchange rate between the cryptocurrency chosen (if any) and USD."
           },
+          "product_variants": {
+            "type": "object",
+            "example": "null",
+            "description": "TODO"
+          },
           "currency": {
             "$ref": "#/components/schemas/currency"
           },
           "shop_id": {
             "type": "integer",
             "description": "The shop ID to which this invoice belongs.",
-            "example": null
-          },
-          "name": {
-            "type": "string",
-            "example": "Sellix",
-            "description": "Name of the merchant."
+            "example": "null"
           },
           "type": {
             "type": "string",
@@ -6222,17 +6313,6 @@
             ],
             "example": "SERIALS",
             "description": "Product type."
-          },
-          "subtype": {
-            "type": "string",
-            "enum": [
-              "SERIALS",
-              "FILE",
-              "SERVICE",
-              "DYNAMIC"
-            ],
-            "example": null,
-            "description": "Product subtype, set only with product_type SUBSCRIPTION."
           },
           "gateway": {
             "type": "string",
@@ -6297,38 +6377,38 @@
           },
           "paypal_order_id": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "This field contains the PayPal order ID."
           },
           "paypal_fee": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "This field is updated after the invoice is completed with the fee taken by PayPal over the invoice total."
           },
           "paypal_payer_email": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "This field is updated after the invoice is completed with the PayPal's email used for the purchase."
           },
           "skrill_email": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Merchant Skrill email."
           },
           "skrill_sid": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Skrill unique ID linked to the invoice."
           },
           "skrill_link": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "Skrill link to redirect the customer to."
           },
           "perfectmoney_id": {
             "type": "string",
             "format": "uuid",
-            "example": null,
+            "example": "null",
             "description": "PerfectMoney payment ID linked to the invoice."
           },
           "crypto_address": {
@@ -6357,33 +6437,182 @@
             "type": "integer",
             "example": 1,
             "description": "Crypto confirmations needed to process the invoice."
+          },          
+          "cashapp_cashtag": {
+            "type": "string",
+            "example": "null",
+            "description": "CashApp cashtag used to create the QRCODE."
           },
-          "purchase_info": {
-            "type": "object",
-            "example": {
-              "sample98ia7": {
-                "delivery_text": "",
-                "product": {
-                  "...": null
-                },
-                "product_feedback": [],
-                "service_text": "...",
-                "serials": [],
-                "dynamic_response": "",
-                "file_attachment": {
-                  "...": null
-                },
-                "status": "PROCESSED",
-                "unit_price": 50,
-                "unit_price_display": 50,
-                "unit_quantity": 1
-              }
-            },
-            "description": "If invoice type is SHOPPING_CART, object with product Unique IDs as keys which contain the product info purchased by the customer as well as the full product object. For example, if one product is SERIALS and one is SERVICE purchase_info will contain one key-value object with the details on the SERIALS purchased as well as info on its product and another similar key-value object with more information on the SERVICE purchased."
+          "cashapp_note": {
+            "type": "string",
+            "format": "uuid",
+            "example": "null",
+            "description": "Unique note for the customer to leave in the CashApp payment."
           },
-          "crypto_scheduled_payout_transaction": {
+          "country": {
+            "type": "string",
+            "example": "IT",
+            "description": "Customer country."
+          },
+          "location": {
+            "type": "string",
+            "example": "Bologna, Emilia-Romagna (Europe/Rome)",
+            "description": "Customer location."
+          },
+          "ip": {
+            "type": "string",
+            "example": "255.11.12.255",
+            "description": "Customer IP."
+          },
+          "is_vpn_or_proxy": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, a VPN or Proxy has been detected."
+          },
+          "user_agent": {
+            "type": "string",
+            "example": "PostmanRuntime/7.26.8",
+            "description": "Customer User Agent."
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 5,
+            "description": "Qauntity of product purchased."
+          },
+          "coupon_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "null",
+            "description": "Unique ID of the coupon, if used, for the discount."
+          },
+          "coupon_code": {
+            "type": "string",
+            "example": "null",
+            "description": "If coupon_id is specified, coupon_code contains the code used during the checkout."
+          },
+          "custom_fields": {
+            "$ref": "#/components/schemas/custom_fields_object"
+          },
+          "developer_invoice": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, this invoice has been created through the Developers API."
+          },
+          "developer_title": {
+            "type": "string",
+            "example": "null",
+            "description": "If a product_id is not passed through the Developers API, a title must be specified."
+          },
+          "developer_webhook": {
+            "type": "string",
+            "example": "null",
+            "description": "Additional webhook URL to which updates regarding this invoice will be sent."
+          },
+          "developer_return_url": {
+            "type": "string",
+            "example": "null",
+            "description": "If present, the customer will be redirected to this URL after the invoice has been paid."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "COMPLETED",
+              "VOIDED",
+              "WAITING_FOR_CONFIRMATIONS",
+              "PARTIAL",
+              "CUSTOMER_DISPUTE_ONGOING",
+              "REVERSED",
+              "REFUNDED",
+              "WAITING_SHOP_ACTION",
+              "PROCESSING"
+            ],
+            "example": "COMPLETED",
+            "description": "Status of the invoice."
+          },
+          "status_details": {
+            "type": "string",
+            "enum": [
+              "CART_PARTIAL_OUT_OF_STOCK"
+            ],
+            "example": "null",
+            "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
+          },
+          "void_details": {
+            "type": "string",
+            "enum": [
+              "PRODUCT_SOLD_OUT",
+              "CART_PRODUCTS_SOLD_OUT"
+            ],
+            "example": "null",
+            "description": "If the invoice is VOIDED and the product (or all the products in the cart) were out of stock, this additional status is set."
+          },
+          "discount": {
+            "type": "number",
+            "format": "double",
+            "example": 0,
+            "description": "If a coupon or volume_discount is used, the discount value presents the total amount of discount over the total cost of the invoice."
+          },
+          "fee_percentage": {
+            "type": "integer",
+            "example": 5,
+            "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
+          },
+          "fee_breakdown": {
             "type": "object",
-            "example": null,
+            "example": "null",
+            "description": "TODO"
+          },
+          "day_value": {
+            "type": "integer",
+            "description": "DEPRECATED: Day value, number.",
+            "deprecated": true
+          },
+          "day": {
+            "type": "string",
+            "description": "DEPRECATED: First three letters of the day name.",
+            "deprecated": true
+          },
+          "month": {
+            "type": "string",
+            "description": "DEPRECATED: First three letters of the month name.",
+            "deprecated": true
+          },
+          "year": {
+            "type": "integer",
+            "description": "DEPRECATED: Year number.",
+            "deprecated": true
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Creation date of the blacklist."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the blacklist has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 0,
+            "description": "User ID, available if the blacklist has been edited."
+          },
+          "is_evm_approved": {
+            "type": "boolean",
+            "example": false,
+            "description": "TODO"
+          },
+          "fee_billed": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not a fee was billed to the customer"
+          },
+          "crypto_scheduled_payout": {
+            "type": "object",
+            "example": "null",
             "properties": {
               "amount": {
                 "type": "number",
@@ -6428,190 +6657,15 @@
             },
             "description": "If the payout for this invoice is SCHEDULED and not INSTANT and a cryptocurrency gateway is used, once the payout has been sent this field will contain additional info on it."
           },
-          "products": {
-            "type": "array",
-            "items": {
-              "type": "object"
-            },
-            "example": null,
-            "description": "If invoice type is SHOPPING_CART, contains an array of product objects for each product added to the cart."
-          },
-          "cashapp_partial_amount_received": {
-            "type": "string",
-            "example": null,
-            "description": "If gateway is CASH_APP and invoice status PARTIAL, the amount received with Cash App that does not cover the total."
-          },
-          "paypal_client_id": {
-            "type": "string",
-            "example": null,
-            "description": "If gateway is PAYPAL, contains the PayPal client ID to be used with the PayPal checkout SDK."
-          },
-          "stripe_user_id": {
-            "type": "string",
-            "example": null,
-            "description": "If gateway is STRIPE, contains the stripe account id of the merchant."
-          },
-          "stripe_publishable_key": {
-            "type": "string",
-            "example": null,
-            "description": "If gateway is STRIPE, contains stripe_publishable_key to process the PaymentIntent."
-          },
-          "cashapp_cashtag": {
-            "type": "string",
-            "example": null,
-            "description": "CashApp cashtag used to create the QRCODE."
-          },
-          "cashapp_note": {
-            "type": "string",
-            "format": "uuid",
-            "example": null,
-            "description": "Unique note for the customer to leave in the CashApp payment."
-          },
-          "country": {
-            "type": "string",
-            "example": "IT",
-            "description": "Customer country."
-          },
-          "location": {
-            "type": "string",
-            "example": "Bologna, Emilia-Romagna (Europe/Rome)",
-            "description": "Customer location."
-          },
-          "ip": {
-            "type": "string",
-            "example": "255.11.12.255",
-            "description": "Customer IP."
-          },
-          "is_vpn_or_proxy": {
+          "shop_paypal_credit_card": {
             "type": "boolean",
             "example": false,
-            "description": "If true, a VPN or Proxy has been detected."
+            "description": "Whether or not to support credit cards on PayPal"
           },
-          "user_agent": {
-            "type": "string",
-            "example": "PostmanRuntime/7.26.8",
-            "description": "Customer User Agent."
-          },
-          "quantity": {
-            "type": "integer",
-            "example": 5,
-            "description": "Qauntity of product purchased."
-          },
-          "coupon_id": {
-            "type": "string",
-            "format": "uuid",
-            "example": null,
-            "description": "Unique ID of the coupon, if used, for the discount."
-          },
-          "coupon_code": {
-            "type": "string",
-            "example": null,
-            "description": "If coupon_id is specified, coupon_code contains the code used during the checkout."
-          },
-          "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
-          },
-          "developer_invoice": {
+          "shop_force_paypal_email_delivery": {
             "type": "boolean",
             "example": false,
-            "description": "If true, this invoice has been created through the Developers API."
-          },
-          "developer_title": {
-            "type": "string",
-            "example": null,
-            "description": "If a product_id is not passed through the Developers API, a title must be specified."
-          },
-          "developer_webhook": {
-            "type": "string",
-            "example": null,
-            "description": "Additional webhook URL to which updates regarding this invoice will be sent."
-          },
-          "developer_return_url": {
-            "type": "string",
-            "example": null,
-            "description": "If present, the customer will be redirected to this URL after the invoice has been paid."
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "PENDING",
-              "COMPLETED",
-              "VOIDED",
-              "WAITING_FOR_CONFIRMATIONS",
-              "PARTIAL",
-              "CUSTOMER_DISPUTE_ONGOING",
-              "REVERSED",
-              "REFUNDED",
-              "WAITING_SHOP_ACTION",
-              "PROCESSING"
-            ],
-            "example": "COMPLETED",
-            "description": "Status of the invoice."
-          },
-          "status_details": {
-            "type": "string",
-            "enum": [
-              "CART_PARTIAL_OUT_OF_STOCK"
-            ],
-            "example": null,
-            "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
-          },
-          "void_details": {
-            "type": "string",
-            "enum": [
-              "PRODUCT_SOLD_OUT",
-              "CART_PRODUCTS_SOLD_OUT"
-            ],
-            "example": null,
-            "description": "If the invoice is VOIDED and the product (or all the products in the cart) were out of stock, this additional status is set."
-          },
-          "discount": {
-            "type": "number",
-            "format": "double",
-            "example": 0,
-            "description": "If a coupon or volume_discount is used, the discount value presents the total amount of discount over the total cost of the invoice."
-          },
-          "fee_percentage": {
-            "type": "integer",
-            "example": 5,
-            "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
-          },
-          "day_value": {
-            "type": "integer",
-            "description": "DEPRECATED: Day value, number.",
-            "deprecated": true
-          },
-          "day": {
-            "type": "string",
-            "description": "DEPRECATED: First three letters of the day name.",
-            "deprecated": true
-          },
-          "month": {
-            "type": "string",
-            "description": "DEPRECATED: First three letters of the month name.",
-            "deprecated": true
-          },
-          "year": {
-            "type": "integer",
-            "description": "DEPRECATED: Year number.",
-            "deprecated": true
-          },
-          "created_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 162857125819,
-            "description": "Creation date of the blacklist."
-          },
-          "updated_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 162857125819,
-            "description": "Date, available if the blacklist has been edited."
-          },
-          "updated_by": {
-            "type": "integer",
-            "example": 0,
-            "description": "User ID, available if the blacklist has been edited."
+            "description": "Whether or not to deliver the product to the PayPal email address"
           }
         }
       },
@@ -6632,7 +6686,7 @@
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": null,
+            "example": "null",
             "description": "Unique ID of the invoice this query is linked to, if specified by the customer."
           },
           "customer_email": {
@@ -7144,17 +7198,17 @@
             },
             "regex": {
               "type": "string",
-              "example": null,
+              "example": "null",
               "description": "Regex that the custom field value must match."
             },
             "placeholder": {
               "type": "string",
-              "example": null,
+              "example": "null",
               "description": "Placeholder for the custom field input."
             },
             "default": {
               "type": "string",
-              "example": null,
+              "example": "null",
               "description": "Default value if the customer leaves the input empty."
             },
             "required": {
@@ -8647,6 +8701,56 @@
                 "data": {
                   "type": "object",
                   "properties": {
+                    "returned_invoices": {
+                      "type": "number",
+                      "example": 1,
+                      "description": "The total number of invoices returned"
+                    },
+                    "total_invoices": {
+                      "type": "number",
+                      "example": 5,
+                      "description": "The total number of invoices on the store"
+                    },
+                    "total_invoices_filtered": {
+                      "type": "number",
+                      "example": 5,
+                      "description": "The total number of invoices that matched the specified fitler"
+                    },
+                    "page": {
+                      "type": "number",
+                      "example": "null",
+                      "description": "The current page if pagination was specified"
+                    },
+                    "limit": {
+                      "type": "number",
+                      "example": 25,
+                      "description": "The total amount of invoices to display per page"
+                    },
+                    "filter": {
+                      "type": "object",
+                      "example": null,
+                      "description": "The filter to use against the invoices"
+                    },
+                    "sort": {
+                      "type": "object",
+                      "example": null,
+                      "description": "TODO"
+                    },
+                    "search": {
+                      "type": "object",
+                      "example": null,
+                      "description": "TODO"
+                    },
+                    "fields": {
+                      "type": "array",
+                      "example": [ 78 ],
+                      "description": "The total amount of fields returned"
+                    },
+                    "time_taken_ms": {
+                      "type": "number",
+                      "example": 14,
+                      "description": "THe amount of time, in milliseconds, it took to retrieve the orders"
+                    },
                     "orders": {
                       "type": "array",
                       "items": {
@@ -8655,17 +8759,13 @@
                     }
                   }
                 },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
                 "error": {
                   "type": "string",
-                  "example": null
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "null"
                 },
                 "env": {
                   "type": "string",
@@ -8695,15 +8795,11 @@
                     }
                   }
                 },
-                "message": {
+                "error": {
                   "type": "string",
                   "example": null
                 },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
+                "message": {
                   "type": "string",
                   "example": null
                 },
@@ -9103,6 +9199,74 @@
                   "$ref": "#/components/schemas/payment_response_white_label"
                 }
               ]
+            }
+          }
+        }
+      },
+      "paymentCompleted": {
+        "description": "payment creation response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Payment Completed Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "paymentVoided": {
+        "description": "payment creation response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": "null"
+                },
+                "error": {
+                  "type": "string",
+                  "example": "null"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Payment Voided Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
             }
           }
         }
