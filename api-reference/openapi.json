@@ -2936,9 +2936,7 @@
             "example": "null"
           },
           "blockchain": {
-            "type": "string",
-            "description": "The blockchain the coupon is active for",
-            "example": "null"
+            "$ref": "#/components/schemas/blockchain"
           },
           "expire_at": {
             "type": "string",
@@ -3094,9 +3092,7 @@
             "example": "null"
           },
           "blockchain": {
-            "type": "string",
-            "description": "The blockchain the coupon is active for",
-            "example": "null"
+            "$ref": "#/components/schemas/blockchain"
           },
           "expire_at": {
             "type": "string",
@@ -5676,16 +5672,7 @@
             "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
           },
           "blockchain": {
-            "type": "string",
-            "enum": [
-              "ERC20",
-              "BEP20",
-              "TRC20",
-              "MATIC",
-              "SOL"
-            ],
-            "example": "null",
-            "description": "The blockchain the cryptocurrency was sent on"
+            "$ref": "#/components/schemas/blockchain"
           },
           "paypal_apm": {
             "type": "string",
@@ -6051,7 +6038,7 @@
             "description": "User ID, available if the blacklist has been edited."
           },
           "approved_address": {
-            "example": "null"
+            "$ref": "#/components/schemas/approved_address"
           },
           "service_text": {
             "type": "string",
@@ -7513,6 +7500,18 @@
         "example": "EUR",
         "description": "Available currency."
       },
+      "blockchain": {
+        "type": "string",
+        "enum": [
+          "ERC20",
+          "BEP20",
+          "TRC20",
+          "MATIC",
+          "SOL"
+        ],
+        "example": "null",
+        "description": "The blockchain of the crypto currency."
+      },
       "paypal_dispute": {
         "type": "object",
         "properties": {
@@ -7978,6 +7977,54 @@
             "type": "number",
             "example": 162857125819,
             "description": "Timestamp, available if the bundle has been updated."
+          }
+        }
+      },
+      "approved_address": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1,
+            "description": "ID of the resource."
+          },
+          "address": {
+            "type": "string",
+            "example": "btcsda312dsad34132dsa",
+            "description": "The crypto address that was approved."
+          },
+          "coin": {
+            "type": "string",
+            "example": "BTC",
+            "description": "The coin of the approved address."
+          },
+          "blockchain": {
+            "$ref": "#/components/schemas/blockchain"
+          },
+          "tx": {
+            "type": "string",
+            "example": "txid",
+            "description": "The transaction ID of the approval."
+          },
+          "recurring_billing_id": {
+            "type": "string",
+            "example": "rec_sample-4caac117ca-abeb80",
+            "description": "The recurring billing ID of the approval."
+          },
+          "allowance": {
+            "type": "number",
+            "example": 0.0001,
+            "description": "The allowance of the approved address."
+          },
+          "updated_at": {
+            "type": "number",
+            "example": 162857125819,
+            "description": "Timestamp, available if the approved address has been updated."
+          },
+          "created_at": {
+            "type": "number",
+            "example": 162857125819,
+            "description": "Timestamp, available if the approved address has been created."
           }
         }
       }
