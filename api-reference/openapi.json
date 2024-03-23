@@ -4712,13 +4712,11 @@
           },
           "label_singular": {
             "type": "string",
-            "example": null,
-            "description": "TODO"
+            "example": null
           },
           "label_plural": {
             "type": "string",
-            "example": null,
-            "description": "TODO"
+            "example": null
           },
           "private": {
             "type": "boolean",
@@ -5487,7 +5485,7 @@
           "payout_configuration": {
             "type": "string",
             "example": "null",
-            "description": "TODO"
+            "description": "DEPRECATED"
           },
           "type": {
             "type": "string",
@@ -5730,22 +5728,22 @@
           "lex_order_id": {
             "type": "string",
             "example": "null",
-            "description": "Unique ID of the LEX_HOLDINGS_GROUP order linked to this invoice."
+            "description": "DEPRECATED"
           },
           "lex_payment_method": {
             "type": "string",
             "example": "null",
-            "description": "Gateway used over LEX_HOLDINGS_GROUP."
+            "description": "DEPRECATED"
           },
           "paydash_paymentID": {
             "type": "string",
             "example": "null",
-            "description": "Unique ID of the PAYDASH order linked to this invoice."
+            "description": "DEPRECATED"
           },
           "virtual_payments_id": {
             "type": "string",
             "example": "null",
-            "description": "Unique ID of the Virtual Payments order linked to this invoice."
+            "description": "DEPRECATED"
           },
           "stripe_client_secret": {
             "type": "string",
@@ -7306,21 +7304,21 @@
               "uniqid": "sample-4caac117ca-abeb80"
             }
           },
-          "message": {
-            "type": "string",
-            "example": "<success-message>"
-          },
-          "log": {
-            "type": "object",
-            "example": null
-          },
           "error": {
             "type": "string",
             "example": null
           },
+          "message": {
+            "type": "string",
+            "example": "<success-message>"
+          },
           "env": {
             "type": "string",
             "example": "production"
+          },
+          "log": {
+            "type": "object",
+            "example": null
           }
         }
       },
@@ -7346,21 +7344,21 @@
               "subscription_id": "rec_sample-4caac117ca-abeb80"
             }
           },
-          "message": {
-            "type": "string",
-            "example": "<success-message>"
-          },
-          "log": {
-            "type": "object",
-            "example": null
-          },
           "error": {
             "type": "string",
             "example": null
           },
+          "message": {
+            "type": "string",
+            "example": "<success-message>"
+          },
           "env": {
             "type": "string",
             "example": "production"
+          },
+          "log": {
+            "type": "object",
+            "example": null
           }
         }
       },
@@ -7393,21 +7391,21 @@
               "uniqid": "sample-4caac117ca-abeb80"
             }
           },
-          "message": {
-            "type": "string",
-            "example": "<success-message>"
-          },
-          "log": {
-            "type": "object",
-            "example": null
-          },
           "error": {
             "type": "string",
             "example": null
           },
+          "message": {
+            "type": "string",
+            "example": "<success-message>"
+          },
           "env": {
             "type": "string",
             "example": "production"
+          },
+          "log": {
+            "type": "object",
+            "example": null
           }
         }
       },
@@ -7749,11 +7747,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8001,11 +7999,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8177,11 +8175,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9008,11 +9006,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9119,11 +9117,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9151,11 +9149,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9183,11 +9181,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9232,11 +9230,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9268,11 +9266,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9417,11 +9415,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
