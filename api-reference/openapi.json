@@ -2588,7 +2588,7 @@
           },
           "scope_details": {
             "type": "object",
-            "example": "null"
+            "example": null
           },
           "shop_id": {
             "type": "integer",
@@ -2642,7 +2642,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2653,7 +2653,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this whitelist belongs."
           },
           "type": {
@@ -2703,7 +2703,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2714,7 +2714,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this category belongs."
           },
           "title": {
@@ -2781,7 +2781,7 @@
         "properties": {
           "id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The ID of the resource"
           },
           "uniqid": {
@@ -2792,7 +2792,7 @@
           },
           "shop_id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The unique identifyer for the shop."
           },
           "title": {
@@ -2844,7 +2844,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2855,7 +2855,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this coupon belongs."
           },
           "type": {
@@ -2881,11 +2881,13 @@
           },
           "stripe_promo_id": {
             "type": "string",
-            "example": "null"
+            "example": null,
+            "description": "The stripe ID for the promotion"
           },
           "stripe_coupon_id": {
             "type": "string",
-            "example": "null"
+            "example": null,
+            "description": "The stripe ID for the coupon"
           },
           "use_type": {
             "type": "string",
@@ -2929,16 +2931,16 @@
           },
           "smart_contract_address": {
             "type": "string",
-            "example": "null"
+            "example": null,
+            "description": "The smart contract address for the coupon"
           },
           "token_id": {
             "type": "string",
-            "example": "null"
+            "example": null,
+            "description": "The token ID for the coupon"
           },
           "blockchain": {
-            "type": "string",
-            "description": "The blockchain the coupon is active for",
-            "example": "null"
+            "$ref": "#/components/schemas/blockchain"
           },
           "expire_at": {
             "type": "string",
@@ -3002,7 +3004,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -3013,7 +3015,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this coupon belongs."
           },
           "type": {
@@ -3039,11 +3041,13 @@
           },
           "stripe_promo_id": {
             "type": "string",
-            "example": "null"
+            "example": null,
+            "description": "The stripe ID for the promotion"
           },
           "stripe_coupon_id": {
             "type": "string",
-            "example": "null"
+            "example": null,
+            "description": "The stripe ID for the coupon"
           },
           "use_type": {
             "type": "string",
@@ -3087,16 +3091,16 @@
           },
           "smart_contract_address": {
             "type": "string",
-            "example": "null"
+            "example": null,
+            "description": "The smart contract address for the coupon"
           },
           "token_id": {
             "type": "string",
-            "example": "null"
+            "example": null,
+            "description": "The token ID for the coupon"
           },
           "blockchain": {
-            "type": "string",
-            "description": "The blockchain the coupon is active for",
-            "example": "null"
+            "$ref": "#/components/schemas/blockchain"
           },
           "expire_at": {
             "type": "string",
@@ -3160,7 +3164,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this feedback belongs."
           },
           "message": {
@@ -3379,7 +3383,7 @@
           },
           "price_variants": {
             "type": "object",
-            "example": "null",
+            "example": null,
             "description": "Variants in pricing for the product."
           },
           "description": {
@@ -3507,8 +3511,9 @@
             "description": "Minimum number of confirmations for a crypto payment to be accepted."
           },
           "delivery_time": {
-            "type": "string",
-            "example": "null"
+            "type": "integer",
+            "example": 162857125819,
+            "description": "The timestamp for when the invoice was delivered"
           },
           "stock_delimiter": {
             "type": "string",
@@ -3522,7 +3527,8 @@
           },
           "bestseller": {
             "type": "number",
-            "example": "0"
+            "example": "null",
+            "description": "DEPRECATED"
           },
           "sort_priority": {
             "type": "integer",
@@ -3640,7 +3646,7 @@
           },
           "shop_id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this resource belongs."
           },
           "type": {
@@ -3664,7 +3670,7 @@
               "SERVICE",
               "DYNAMIC"
             ],
-            "example": "null",
+            "example": null,
             "description": "Product subtype, can be used only with type SUBSCRIPTION."
           },
           "title": {
@@ -3704,7 +3710,7 @@
           },
           "price_variants": {
             "type": "object",
-            "example": "null",
+            "example": null,
             "description": "Variants in pricing for the product."
           },
           "description": {
@@ -3730,8 +3736,8 @@
           },
           "file_attachment": {
             "type": "string",
-            "description": "Unique id of the file attachment for this product if the product type is FILE.",
-            "example": "null"
+            "example": null,
+            "description": "Unique id of the file attachment for this product if the product type is FILE."
           },
           "youtube_link": {
             "type": "string",
@@ -3880,8 +3886,9 @@
             "description": "The text to be delivered to the customer after payment"
           },
           "delivery_time": {
-            "type": "string",
-            "example": "null"
+            "type": "integer",
+            "example": 162857125819,
+            "description": "The timestamp for when the invoice was delivered"
           },
           "service_text": {
             "type": "string",
@@ -3900,7 +3907,7 @@
           },
           "dynamic_webhook": {
             "type": "object",
-            "example": "null"
+            "example": null
           },
           "bestseller": {
             "type": "number",
@@ -4093,11 +4100,12 @@
               "properties": {
                 "id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987
                 },
                 "shop_id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
                 },
                 "gateway": {
                   "type": "string",
@@ -4167,7 +4175,9 @@
                 },
                 "active_type": {
                   "type": "string",
-                  "enum": ["PERCENT", "FIXED"]
+                  "enum": ["PERCENT", "FIXED"],
+                  "example": "null",
+                  "description": "DEPRECATED"
                 },
                 "updated_at": {
                   "type": "string",
@@ -4314,22 +4324,22 @@
               },
               "shop_id": {
                 "type": "integer",
-                "example": 123
+                "example": 987,
+                "description": "The shop ID to which this resource belongs."
               },
               "product_id": {
-                "type": "integer",
-                "example": 123
+                "type": "string",
+                "example": "sample29a0e39d"
               },
               "size": {
                 "type": "integer",
-                "example": 123
+                "example": 987
               },
               "created_at": {
                 "type": "integer",
                 "example": 162857125819
               }
-            },
-            "required": ["id", "uniqid", "cloudflare_image_id", "storage", "type", "name", "original_name", "extension", "shop_id", "product_id", "size", "created_at"]
+            }
           },
           "average_score": {
             "type": "string",
@@ -4348,7 +4358,7 @@
               "properties": {
                 "id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987
                 },
                 "uniqid": {
                   "type": "string",
@@ -4356,11 +4366,12 @@
                 },
                 "shop_id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
                 },
                 "product_types": {
                   "type": "array",
-                  "example": "null"
+                  "example": null
                 },
                 "title": {
                   "type": "string",
@@ -4403,7 +4414,7 @@
           },
           "shop_id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this resource belongs."
           },
           "type": {
@@ -4427,7 +4438,7 @@
               "SERVICE",
               "DYNAMIC"
             ],
-            "example": "null",
+            "example": null,
             "description": "Product subtype, can be used only with type SUBSCRIPTION."
           },
           "title": {
@@ -4466,7 +4477,7 @@
           },
           "price_variants": {
             "type": "object",
-            "example": "null",
+            "example": null,
             "description": "Variants in pricing for the product."
           },
           "description": {
@@ -4491,8 +4502,8 @@
           },
           "file_attachment": {
             "type": "string",
-            "description": "Unique id of the file attachment for this product if the product type is FILE.",
-            "example": "null"
+            "example": null,
+            "description": "Unique id of the file attachment for this product if the product type is FILE."
           },
           "youtube_link": {
             "type": "string",
@@ -4637,8 +4648,9 @@
             "description": "The text to be delivered to the customer after payment"
           },
           "delivery_time": {
-            "type": "string",
-            "example": "null"
+            "type": "integer",
+            "example": 162857125819,
+            "description": "The timestamp for when the invoice was delivered"
           },
           "service_text": {
             "type": "string",
@@ -4657,7 +4669,7 @@
           },
           "dynamic_webhook": {
             "type": "object",
-            "example": "null"
+            "example": null
           },
           "bestseller": {
             "type": "number",
@@ -4707,6 +4719,14 @@
             "type": "string",
             "example": "https://sellix.io",
             "description": "The url to redirect a customer to on successful payment"
+          },
+          "label_singular": {
+            "type": "string",
+            "example": null
+          },
+          "label_plural": {
+            "type": "string",
+            "example": null
           },
           "private": {
             "type": "boolean",
@@ -4845,11 +4865,12 @@
               "properties": {
                 "id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987
                 },
                 "shop_id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
                 },
                 "gateway": {
                   "type": "string",
@@ -4919,7 +4940,9 @@
                 },
                 "active_type": {
                   "type": "string",
-                  "enum": ["PERCENT", "FIXED"]
+                  "enum": ["PERCENT", "FIXED"],
+                  "example": "null",
+                  "description": "DEPRECATED"
                 },
                 "updated_at": {
                   "type": "string",
@@ -4944,7 +4967,7 @@
           },
           "shop_id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this customer belongs."
           },
           "email": {
@@ -5475,7 +5498,7 @@
           "payout_configuration": {
             "type": "string",
             "example": "null",
-            "description": "TODO"
+            "description": "DEPRECATED"
           },
           "type": {
             "type": "string",
@@ -5515,7 +5538,7 @@
           "total": {
             "type": "number",
             "format": "double",
-            "example": 2.5,
+            "example": 4.5,
             "description": "Invoice total, unit_price*quantity where quantity is applicable."
           },
           "total_display": {
@@ -5526,7 +5549,9 @@
           },
           "product_variants": {
             "type": "array",
-            "example": "null"
+            "items": {
+              "$ref": "#/components/schemas/product_variant"
+            }
           },
           "exchange_rate": {
             "type": "number",
@@ -5578,7 +5603,7 @@
           },
           "affliate_revenue_customer_id": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "ID of the affiliate"
           },
           "paypal_email_delivery": {
@@ -5664,40 +5689,31 @@
             "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
           },
           "blockchain": {
-            "type": "string",
-            "enum": [
-              "ERC20",
-              "BEP20",
-              "TRC20",
-              "MATIC",
-              "SOL"
-            ],
-            "example": "null",
-            "description": "The blockchain the cryptocurrency was sent on"
+            "$ref": "#/components/schemas/blockchain"
           },
           "paypal_apm": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "PayPal Alternative Payment Method name, such as iDEAL, used if gateway is PAYPAL."
           },
           "stripe_apm": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "PayPal Alternative Payment Method name, such as iDEAL, used if gateway is PAYPAL."
           },
           "paypal_email": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Merchant PayPal email."
           },
           "paypal_order_id": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "This field contains the PayPal order ID."
           },
           "paypal_payer_email": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "This field is updated after the invoice is completed with the PayPal's email used for the purchase."
           },
           "paypal_fee": {
@@ -5707,78 +5723,78 @@
           },
           "paypal_subscription_id": {
             "type": "integer",
-            "example": "null",
+            "example": null,
             "description": "ID of the paypal subscription."
           },
           "paypal_subscription_link": {
             "type": "integer",
-            "example": "null",
+            "example": null,
             "description": "Link for the merchant to purchase the subscription from."
           },
           "lex_order_id": {
             "type": "string",
             "example": "null",
-            "description": "Unique ID of the LEX_HOLDINGS_GROUP order linked to this invoice."
+            "description": "DEPRECATED"
           },
           "lex_payment_method": {
             "type": "string",
             "example": "null",
-            "description": "Gateway used over LEX_HOLDINGS_GROUP."
+            "description": "DEPRECATED"
           },
           "paydash_paymentID": {
             "type": "string",
             "example": "null",
-            "description": "Unique ID of the PAYDASH order linked to this invoice."
+            "description": "DEPRECATED"
           },
           "virtual_payments_id": {
             "type": "string",
             "example": "null",
-            "description": "Unique ID of the Virtual Payments order linked to this invoice."
+            "description": "DEPRECATED"
           },
           "stripe_client_secret": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Client secret used to create the STRIPE paymentIntent."
           },
           "stripe_price_id": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "If the invoice type is PRODUCT_SUBSCRIPTION or SUBSCRIPTION, refers to the STRIPE price ID."
           },
           "skrill_email": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Merchant Skrill email."
           },
           "skrill_sid": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Skrill unique ID linked to the invoice."
           },
           "skrill_link": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Skrill link to redirect the customer to."
           },
           "perfectmoney_id": {
             "type": "string",
             "format": "uuid",
-            "example": "null",
+            "example": null,
             "description": "PerfectMoney payment ID linked to the invoice."
           },
           "binance_invoice_id": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "ID for binance invoice"
           },
           "binance_qrcode": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Full Binance QRCODE string"
           },
           "binance_checkout_url": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Checkout URL for Binance invoice"
           },
           "crypto_address": {
@@ -5825,23 +5841,23 @@
           },
           "bill_info": {
             "type": "object",
-            "example": "null",
+            "example": null,
             "description": "If invoice type is MONTHLY_BILL, contains a breakdown of the fees that need to be collected."
           },
           "cashapp_qrcode": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Full CashApp QRCODE string."
           },
           "cashapp_note": {
             "type": "string",
             "format": "uuid",
-            "example": "null",
+            "example": null,
             "description": "Unique note for the customer to leave in the CashApp payment."
           },
           "cashapp_cashtag": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "CashApp cashtag used to create the QRCODE."
           },
           "country": {
@@ -5877,7 +5893,7 @@
           "coupon_id": {
             "type": "string",
             "format": "uuid",
-            "example": "null",
+            "example": null,
             "description": "Unique ID of the coupon, if used, for the discount."
           },
           "custom_fields": {
@@ -5890,17 +5906,17 @@
           },
           "developer_title": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "If a product_id is not passed through the Developers API, a title must be specified."
           },
           "developer_webhook": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Additional webhook URL to which updates regarding this invoice will be sent."
           },
           "developer_return_url": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "If present, the customer will be redirected to this URL after the invoice has been paid."
           },
           "status": {
@@ -5925,7 +5941,7 @@
             "enum": [
               "CART_PARTIAL_OUT_OF_STOCK"
             ],
-            "example": "null",
+            "example": null,
             "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
           },
           "void_details": {
@@ -5934,7 +5950,7 @@
               "PRODUCT_SOLD_OUT",
               "CART_PRODUCTS_SOLD_OUT"
             ],
-            "example": "null",
+            "example": null,
             "description": "If the invoice is VOIDED and the product (or all the products in the cart) were out of stock, this additional status is set."
           },
           "discount": {
@@ -5949,13 +5965,11 @@
             "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
           },
           "fee_breakdown": {
-            "type": "string",
-            "example": "null",
-            "description": "Representation of how fees were applied to invoice"
+            "$ref": "#/components/schemas/fee_breakdown"
           },
           "discount_breakdown": {
             "type": "object",
-            "example": "null",
+            "example": null,
             "description": "Representation of how discount was applied to invoice"
           },
           "day_value": {
@@ -5985,7 +5999,7 @@
               "properties": {
                 "id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987
                 },
                 "uniqid": {
                   "type": "string",
@@ -5993,11 +6007,12 @@
                 },
                 "shop_id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987,
+                  "description": "The shop ID to which this addon belongs."
                 },
                 "product_types": {
                   "type": "array",
-                  "example": "null"
+                  "example": null
                 },
                 "title": {
                   "type": "string",
@@ -6018,7 +6033,10 @@
             }
           },
           "bundle_config": {
-            "example": "null"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/bundle_config"
+            }
           },
           "created_at": {
             "type": "integer",
@@ -6038,11 +6056,11 @@
             "description": "User ID, available if the blacklist has been edited."
           },
           "approved_address": {
-            "example": "null"
+            "$ref": "#/components/schemas/approved_address"
           },
           "service_text": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "If the product type is SERVICE, this field contains additional details on the type of service provided by the merchant."
           },
           "ip_info": {
@@ -6068,19 +6086,20 @@
             "description": "Webhook responses for this invoice."
           },
           "rewards_data": {
-            "example": "null"
+            "example": null
           },
           "paypal_dispute": {
             "$ref": "#/components/schemas/paypal_dispute"
           },
           "product_downloads": {
             "type": "array",
-            "example": [],
-            "description": "The items available to download from the invoice"
+            "items": {
+              "$ref": "#/components/schemas/product_download"
+            }
           },
           "payment_link_id": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "The ID for the payment link, if invoice was created by a payment link"
           },
           "license": {
@@ -6113,7 +6132,7 @@
           },
           "aml_wallets": {
             "type": "array",
-            "example": "null"
+            "example": null
           },
           "crypto_transactions": {
             "type": "array",
@@ -6197,7 +6216,9 @@
           },
           "shop_payment_gateways_fees": {
             "type": "array",
-            "example": []
+            "items": {
+              "$ref": "#/components/schemas/gateway_fees"
+            }
           },
           "shop_paypal_credit_card": {
             "type": "boolean",
@@ -6210,13 +6231,13 @@
             "description": "If true, the merchant has enabled invoice shipment to the PayPal customer email."
           },
           "shop_walletconnect_id": {
-            "example": "null"
+            "example": null
           },
           "rates_snapshot": {
-            "example": "null"
+            "example": null
           },
           "void_times": {
-            "example": "null"
+            "example": null
           }
         }
       },
@@ -6259,17 +6280,18 @@
             "description": "Exchange rate between the cryptocurrency chosen (if any) and USD."
           },
           "product_variants": {
-            "type": "object",
-            "example": "null",
-            "description": "TODO"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/product_variant"
+            }
           },
           "currency": {
             "$ref": "#/components/schemas/currency"
           },
           "shop_id": {
             "type": "integer",
-            "description": "The shop ID to which this invoice belongs.",
-            "example": "null"
+            "example": null,
+            "description": "The shop ID to which this invoice belongs."
           },
           "type": {
             "type": "string",
@@ -6381,38 +6403,38 @@
           },
           "paypal_order_id": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "This field contains the PayPal order ID."
           },
           "paypal_fee": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "This field is updated after the invoice is completed with the fee taken by PayPal over the invoice total."
           },
           "paypal_payer_email": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "This field is updated after the invoice is completed with the PayPal's email used for the purchase."
           },
           "skrill_email": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Merchant Skrill email."
           },
           "skrill_sid": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Skrill unique ID linked to the invoice."
           },
           "skrill_link": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Skrill link to redirect the customer to."
           },
           "perfectmoney_id": {
             "type": "string",
             "format": "uuid",
-            "example": "null",
+            "example": null,
             "description": "PerfectMoney payment ID linked to the invoice."
           },
           "crypto_address": {
@@ -6444,13 +6466,13 @@
           },          
           "cashapp_cashtag": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "CashApp cashtag used to create the QRCODE."
           },
           "cashapp_note": {
             "type": "string",
             "format": "uuid",
-            "example": "null",
+            "example": null,
             "description": "Unique note for the customer to leave in the CashApp payment."
           },
           "country": {
@@ -6486,12 +6508,12 @@
           "coupon_id": {
             "type": "string",
             "format": "uuid",
-            "example": "null",
+            "example": null,
             "description": "Unique ID of the coupon, if used, for the discount."
           },
           "coupon_code": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "If coupon_id is specified, coupon_code contains the code used during the checkout."
           },
           "custom_fields": {
@@ -6504,17 +6526,17 @@
           },
           "developer_title": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "If a product_id is not passed through the Developers API, a title must be specified."
           },
           "developer_webhook": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "Additional webhook URL to which updates regarding this invoice will be sent."
           },
           "developer_return_url": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "If present, the customer will be redirected to this URL after the invoice has been paid."
           },
           "status": {
@@ -6539,7 +6561,7 @@
             "enum": [
               "CART_PARTIAL_OUT_OF_STOCK"
             ],
-            "example": "null",
+            "example": null,
             "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
           },
           "void_details": {
@@ -6548,7 +6570,7 @@
               "PRODUCT_SOLD_OUT",
               "CART_PRODUCTS_SOLD_OUT"
             ],
-            "example": "null",
+            "example": null,
             "description": "If the invoice is VOIDED and the product (or all the products in the cart) were out of stock, this additional status is set."
           },
           "discount": {
@@ -6563,9 +6585,7 @@
             "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
           },
           "fee_breakdown": {
-            "type": "object",
-            "example": "null",
-            "description": "TODO"
+            "$ref": "#/components/schemas/fee_breakdown"
           },
           "day_value": {
             "type": "integer",
@@ -6616,7 +6636,7 @@
           },
           "crypto_scheduled_payout": {
             "type": "object",
-            "example": "null",
+            "example": null,
             "properties": {
               "amount": {
                 "type": "number",
@@ -6684,13 +6704,13 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this query belongs."
           },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": "null",
+            "example": null,
             "description": "Unique ID of the invoice this query is linked to, if specified by the customer."
           },
           "customer_email": {
@@ -6759,7 +6779,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -6770,13 +6790,13 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this query belongs."
           },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": "null",
+            "example": null,
             "description": "Unique ID of the invoice this query is linked to, if specified by the customer."
           },
           "customer_email": {
@@ -7202,17 +7222,17 @@
             },
             "regex": {
               "type": "string",
-              "example": "null",
+              "example": null,
               "description": "Regex that the custom field value must match."
             },
             "placeholder": {
               "type": "string",
-              "example": "null",
+              "example": null,
               "description": "Placeholder for the custom field input."
             },
             "default": {
               "type": "string",
-              "example": "null",
+              "example": null,
               "description": "Default value if the customer leaves the input empty."
             },
             "required": {
@@ -7294,21 +7314,21 @@
               "uniqid": "sample-4caac117ca-abeb80"
             }
           },
-          "message": {
-            "type": "string",
-            "example": "<success-message>"
-          },
-          "log": {
-            "type": "object",
-            "example": null
-          },
           "error": {
             "type": "string",
             "example": null
           },
+          "message": {
+            "type": "string",
+            "example": "<success-message>"
+          },
           "env": {
             "type": "string",
             "example": "production"
+          },
+          "log": {
+            "type": "object",
+            "example": null
           }
         }
       },
@@ -7334,21 +7354,21 @@
               "subscription_id": "rec_sample-4caac117ca-abeb80"
             }
           },
-          "message": {
-            "type": "string",
-            "example": "<success-message>"
-          },
-          "log": {
-            "type": "object",
-            "example": null
-          },
           "error": {
             "type": "string",
             "example": null
           },
+          "message": {
+            "type": "string",
+            "example": "<success-message>"
+          },
           "env": {
             "type": "string",
             "example": "production"
+          },
+          "log": {
+            "type": "object",
+            "example": null
           }
         }
       },
@@ -7381,21 +7401,21 @@
               "uniqid": "sample-4caac117ca-abeb80"
             }
           },
-          "message": {
-            "type": "string",
-            "example": "<success-message>"
-          },
-          "log": {
-            "type": "object",
-            "example": null
-          },
           "error": {
             "type": "string",
             "example": null
           },
+          "message": {
+            "type": "string",
+            "example": "<success-message>"
+          },
           "env": {
             "type": "string",
             "example": "production"
+          },
+          "log": {
+            "type": "object",
+            "example": null
           }
         }
       },
@@ -7500,6 +7520,18 @@
         ],
         "example": "EUR",
         "description": "Available currency."
+      },
+      "blockchain": {
+        "type": "string",
+        "enum": [
+          "ERC20",
+          "BEP20",
+          "TRC20",
+          "MATIC",
+          "SOL"
+        ],
+        "example": null,
+        "description": "The blockchain of the crypto currency."
       },
       "paypal_dispute": {
         "type": "object",
@@ -7699,6 +7731,521 @@
             "description": "Date, available if the license has been updated."
           }
         }
+      },
+      "product_variant": {
+        "type": "object",
+        "properties": {
+          "price": { 
+            "type": "number",
+            "example": 60,
+            "description": "The price of the product variant."
+          },
+          "title": { 
+            "type": "string",
+            "example": "exampleTitle",
+            "description": "The title of the product variant."
+          },
+          "description": { 
+            "type": "string",
+            "example": "exampleDescription",
+            "description": "The description of the product variant."
+          },
+          "price_conversions": {
+            "type": "object", 
+            "properties": {
+              "AUD": {
+                "type": "number",
+                "example": 92.08,
+                "description": "The price of the product variant in AUD."
+              },
+              "BGN": {
+                "type": "number",
+                "example": 108.62,
+                "description": "The price of the product variant in BGN."
+              },
+              "BRL": {
+                "type": "number",
+                "example": 300.17,
+                "description": "The price of the product variant in BRL."
+              },
+              "ZAR": {
+                "type": "number",
+                "example": 1143.49,
+                "description": "The price of the product variant in ZAR."
+              },
+              "crypto": {
+                "type": "object",
+                "properties": {
+                  "APE": {
+                    "type": "string",
+                    "example": "31.0607029506",
+                    "description": "The price of the product variant in APE."
+                  },
+                  "BCH": {
+                    "type": "string",
+                    "example": "0.1271212408",
+                    "description": "The price of the product variant in BCH."
+                  },
+                  "BNB": {
+                    "type": "string",
+                    "example": "0.1067436987",
+                    "description": "The price of the product variant in BNB."
+                  },
+                  "USDC_NATIVE": {
+                    "type": "string",
+                    "example": "60.0000000000",
+                    "description": "The price of the product variant in USDC_NATIVE."
+                  }
+                },
+                "description": "A list of the price of the product variant in various cryptocurrencies."
+              }
+            }
+          }
+        },
+        "description": "Product variant object."
+      },
+      "fee_breakdown": {
+        "type": "object",
+        "properties": {
+          "service_fee": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "example": 0.5,
+                "description": "The amount of the service fee."
+              },
+              "currency": {
+                "$ref": "#/components/schemas/currency"
+              },
+              "breakdown": {
+                "type": "object",
+                "properties": {
+                  "flat": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": 0.5,
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  },
+                  "percentage": {
+                    "type": "object",
+                    "properties": {
+                      "plan": {
+                        "type": "string",
+                        "example": "GATEWAY_NO_FEES",
+                        "description": "The plan of the service fee."
+                      },
+                      "value": {
+                        "type": "number",
+                        "example": "0",
+                        "description": "The amount of the service fee."
+                      },
+                      "amount": {
+                        "type": "number",
+                        "example": "0",
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "aml_analysis": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "example": 1,
+                "description": "The amount of the service fee."
+              },
+              "currency": {
+                "$ref": "#/components/schemas/currency"
+              },
+              "breakdown": {
+                "type": "object",
+                "properties": {
+                  "flat": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": "0",
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  },
+                  "percentage": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": 50,
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "platform_fee": {
+            "type": "object",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "example": 1,
+                "description": "The amount of the service fee."
+              },
+              "currency": {
+                "$ref": "#/components/schemas/currency"
+              },
+              "breakdown": {
+                "type": "object",
+                "properties": {
+                  "flat": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": 1,
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  },
+                  "percentage": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number",
+                        "example": "0",
+                        "description": "The amount of the service fee."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "bundle_config": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1,
+            "description": "ID of the resource."
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample29a0e39d",
+            "description": "Unique ID of the bundle, used as reference across the API."
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 1,
+            "description": "The shop ID to which this bundle belongs."
+          },
+          "title": {
+            "type": "string",
+            "example": "sampleTitle",
+            "description": "The title of the bundle."
+          },
+          "products": {
+            "type": "string",
+            "example": "PRODUCT_ID_1,PRODUCT_ID_2,PRODUCT_ID_3",
+            "description": "The product IDs of the products in the bundle."
+          },
+          "discount_type": {
+            "type": "string",
+            "enum": [
+              "PERCENTAGE",
+              "FIXED"
+            ],
+            "example": "PERCENTAGE",
+            "description": "The type of discount applied to the bundle."
+          },
+          "discount_amount": {
+            "type": "number",
+            "example": 25,
+            "description": "The amount of the discount applied to the bundle."
+          },
+          "updated_at": {
+            "type": "number",
+            "example": 162857125819,
+            "description": "Timestamp, available if the bundle has been updated."
+          }
+        }
+      },
+      "approved_address": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1,
+            "description": "ID of the resource."
+          },
+          "address": {
+            "type": "string",
+            "example": "btcsda312dsad34132dsa",
+            "description": "The crypto address that was approved."
+          },
+          "coin": {
+            "type": "string",
+            "example": "BTC",
+            "description": "The coin of the approved address."
+          },
+          "blockchain": {
+            "$ref": "#/components/schemas/blockchain"
+          },
+          "tx": {
+            "type": "string",
+            "example": "txid",
+            "description": "The transaction ID of the approval."
+          },
+          "recurring_billing_id": {
+            "type": "string",
+            "example": "rec_sample-4caac117ca-abeb80",
+            "description": "The recurring billing ID of the approval."
+          },
+          "allowance": {
+            "type": "number",
+            "example": 0.0001,
+            "description": "The allowance of the approved address."
+          },
+          "updated_at": {
+            "type": "number",
+            "example": 162857125819,
+            "description": "Timestamp, available if the approved address has been updated."
+          },
+          "created_at": {
+            "type": "number",
+            "example": 162857125819,
+            "description": "Timestamp, available if the approved address has been created."
+          }
+        }
+      },
+      "product_download": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1,
+            "description": "ID of the resource."
+          },
+          "invoice_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample-3ddfc9dc3d-ab2e3",
+            "description": "Unique ID of the invoice this download is linked to."
+          },
+          "customer_ip": {
+            "type": "string",
+            "example": "182.219.207.39",
+            "description": "The IP of the customer that downloaded the product."
+          },
+          "customer_isp": {
+            "type": "string",
+            "example": "WINDTRE",
+            "description": "The ISP of the customer that downloaded the product."
+          },
+          "customer_timezone": {
+            "type": "string",
+            "example": "GMT+1",
+            "description": "The timezone of the customer that downloaded the product."
+          },
+          "customer_country": {
+            "type": "string",
+            "example": "IT",
+            "description": "The country of the customer that downloaded the product."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp, available if the download has been created."
+          }
+        }
+      },
+      "gateway_fees": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1,
+            "description": "ID of the resource."
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 1,
+            "description": "The shop ID to which this gateway fee belongs."
+          },
+          "gateway": {
+            "type": "string",
+            "enum": [
+              "PAYPAL",
+              "STRIPE",
+              "SKRILL",
+              "PERFECT_MONEY",
+              "CASH_APP",
+              "BINANCE",
+              "BITCOIN",
+              "LITECOIN",
+              "ETHEREUM",
+              "BITCOIN_CASH",
+              "NANO",
+              "MONERO",
+              "SOLANA",
+              "RIPPLE",
+              "BINANCE_COIN",
+              "USDC:ERC20",
+              "USDC:BEP20",
+              "USDC:MATIC",
+              "USDC:SOL",
+              "USDT:ERC20",
+              "USDT:BEP20",
+              "USDT:MATIC",
+              "USDT:SOL",
+              "USDT:TRC20",
+              "TRON",
+              "BITCOIN_LN",
+              "CONCORDIUM",
+              "POLYGON",
+              "PEPE:ERC20",
+              "DAI:ERC20",
+              "DAI:BEP20",
+              "DAI:MATIC",
+              "WETH:BEP20",
+              "WETH:MATIC",
+              "APE:ERC20",
+              "APE:MATIC",
+              "SHIB:ERC20",
+              "SHIB:BEP20",
+              "SHIB:MATIC",
+              "USDC_NATIVE:MATIC",
+              "DOGECOIN",
+              "PYTH:SOL",
+              "BONK:SOL",
+              "JUP:SOL",
+              "JITO:SOL",
+              "WEN:SOL",
+              "RENDER:SOL",
+              "MOBILE:SOL",
+              "HNT:SOL"
+            ],
+            "example": null,
+            "description": "The gateway of the gateway fee."
+          },
+          "percent_amount": {
+            "type": "number",
+            "example": 3,
+            "description": "The percent amount of the gateway fee."
+          },
+          "fixed_amount": {
+            "type": "number",
+            "example": "0",
+            "description": "The fixed amount of the gateway fee."
+          },
+          "fixed_currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "active_type": {
+            "type": "string",
+            "enum": [
+              "PERCENT",
+              "FIXED"
+            ],
+            "example": "PERCENT",
+            "description": "The active type of the gateway fee."
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "1975-02-28 15:05:25",
+            "description": "DateTime, available if the gateway fee has been updated."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "1975-02-28 15:05:25",
+            "description": "DateTime, available if the gateway fee has been created."
+          },
+          "conversions": {
+            "type": "object", 
+            "properties": {
+              "AUD": {
+                "type": "number",
+                "example": 12.43,
+                "description": "The price of the product variant in AUD."
+              },
+              "BGN": {
+                "type": "number",
+                "example": 14.66,
+                "description": "The price of the product variant in BGN."
+              },
+              "BRL": {
+                "type": "number",
+                "example": 40.52,
+                "description": "The price of the product variant in BRL."
+              },
+              "ZAR": {
+                "type": "number",
+                "example": 154.37,
+                "description": "The price of the product variant in ZAR."
+              },
+              "crypto": {
+                "type": "object",
+                "properties": {
+                  "APE": {
+                    "type": "string",
+                    "example": "0.00435",
+                    "description": "The price of the product variant in APE."
+                  },
+                  "BCH": {
+                    "type": "string",
+                    "example": "1.062",
+                    "description": "The price of the product variant in BCH."
+                  },
+                  "BNB": {
+                    "type": "string",
+                    "example": "1.265",
+                    "description": "The price of the product variant in BNB."
+                  },
+                  "USDC_NATIVE": {
+                    "type": "string",
+                    "example": "0.00225",
+                    "description": "The price of the product variant in USDC_NATIVE."
+                  }
+                },
+                "description": "A list of the price of the product variant in various cryptocurrencies."
+              }
+            }
+          }
+        }
       }
     },
     "parameters": {
@@ -7737,11 +8284,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -7769,7 +8316,7 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
@@ -7777,7 +8324,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -7785,7 +8332,7 @@
                 },
                 "log": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 }
               }
             }
@@ -7805,7 +8352,7 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
@@ -7813,7 +8360,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -7821,7 +8368,7 @@
                 },
                 "log": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 }
               }
             }
@@ -7841,7 +8388,7 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
@@ -7849,7 +8396,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -7857,7 +8404,7 @@
                 },
                 "log": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 }
               }
             }
@@ -7888,11 +8435,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -7924,11 +8471,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -7961,7 +8508,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -7989,11 +8536,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8025,7 +8572,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8064,11 +8611,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8100,11 +8647,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8137,7 +8684,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8165,11 +8712,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8201,7 +8748,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8240,11 +8787,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8276,11 +8823,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8313,7 +8860,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8350,7 +8897,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8387,7 +8934,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8426,11 +8973,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8462,11 +9009,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8500,7 +9047,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8538,7 +9085,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8576,7 +9123,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8636,15 +9183,15 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "log": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8722,7 +9269,7 @@
                     },
                     "page": {
                       "type": "number",
-                      "example": "null",
+                      "example": null,
                       "description": "The current page if pagination was specified"
                     },
                     "limit": {
@@ -8765,11 +9312,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8880,11 +9427,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -8922,7 +9469,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8964,7 +9511,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -8996,11 +9543,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9043,11 +9590,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -9107,11 +9654,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9139,11 +9686,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9171,11 +9718,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9220,11 +9767,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9256,11 +9803,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9339,11 +9886,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -9377,11 +9924,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -9405,11 +9952,11 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": "null"
+                  "example": null
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -9588,11 +10135,11 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "message": {
                   "type": "string",
-                  "example": "null"
+                  "example": null
                 },
                 "env": {
                   "type": "string",
