@@ -6132,7 +6132,9 @@
           },
           "aml_wallets": {
             "type": "array",
-            "example": null
+            "items": {
+              "$ref": "#/components/schemas/aml_wallet"
+            }
           },
           "crypto_transactions": {
             "type": "array",
@@ -6912,6 +6914,569 @@
             "type": "integer",
             "example": 1640673134,
             "description": "Crypto transaction update date."
+          },
+          "aml_tx": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 987,
+                "description": "AML transaction ID."
+              },
+              "shop_id": {
+                "type": "integer",
+                "example": 987,
+                "description": "Shop ID linked to this AML transaction."
+              },
+              "invoice_id": {
+                "type": "string",
+                "example": "1c7fa9-a277075d5d-6d8431",
+                "description": "Unique ID of the invoice this AML transaction is linked to."
+              },
+              "origin": {
+                "type": "string",
+                "example": "INVOICE",
+                "description": "Origin of the AML transaction."
+              },
+              "type": {
+                "type": "string",
+                "example": "TRANSACTION",
+                "description": "Type of the AML transaction."
+              },
+              "asset": {
+                "type": "string",
+                "example": "holistic",
+                "description": "Asset of the AML transaction."
+              },
+              "blockchain": {
+                "type": "string",
+                "example": "holistic",
+                "description": "Blockchain of the AML transaction."
+              },
+              "hash": {
+                "type": "string",
+                "example": "df6693ca6fe386993ff8496fa297df1f2fcd8ce65bd45468dd1539f16d949ee7",
+                "description": "AML transaction hash."
+              },
+              "output_type": {
+                "type": "string",
+                "example": "address",
+                "description": "AML transaction output type."
+              },
+              "output_address": {
+                "type": "string",
+                "example": "bc1q5k8c3w7js7s56mhremysa7mv9ufsr59eers9ad",
+                "description": "AML transaction output address."
+              },
+              "risk_score": {
+                "type": "string",
+                "example": "0.270000",
+                "description": "AML transaction risk score."
+              },
+              "asset_list": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "BTC/bitcoin"
+                ],
+                "description": "AML transaction asset list."
+              },
+              "error": {
+                "type": "string",
+                "example": null,
+                "description": "AML transaction error."
+              },
+              "evaluation_detail": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [],
+                "description": "AML transaction evaluation detail."
+              },
+              "contributions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "entities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "Coinbase",
+                            "description": "Entity name."
+                          },
+                          "is_vasp": {
+                            "type": "boolean",
+                            "example": true,
+                            "description": "Is a VASP."
+                          },
+                          "actor_id": {
+                            "type": "integer",
+                            "example": 30,
+                            "description": "Actor ID."
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Exchange",
+                            "description": "Entity category."
+                          },
+                          "is_primary_entity": {
+                            "type": "boolean",
+                            "example": true,
+                            "description": "Is the primary entity."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "blockchain_info": {
+                "type": "object",
+                "properties": {
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "has_sent": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "Has sent."
+                      },
+                      "has_received": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "Has received."
+                      }
+                    }
+                  },
+                  "transaction": {
+                    "type": "object",
+                    "properties": {
+                      "time": {
+                        "type": "string",
+                        "example": "1975-02-28T22:05:25Z",
+                        "description": "Transaction time."
+                      },
+                      "value": {
+                        "type": "object",
+                        "properties": {
+                          "usd": {
+                            "type": "number",
+                            "format": "double",
+                            "example": 806.035089,
+                            "description": "Transaction value in USD."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "risk_score_detail": {
+                "type": "integer",
+                "example": 2
+              },
+              "created_at": {
+                "type": "integer",
+                "example": 162857125819,
+                "description": "AML transaction creation date."
+              }
+            }
+          }
+        }
+      },
+      "aml_wallet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 987,
+            "description": "AML transaction ID."
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 987,
+            "description": "Shop ID linked to this AML transaction."
+          },
+          "invoice_id": {
+            "type": "string",
+            "example": "sample-3ddfc9dc3d-ab2e36",
+            "description": "Unique ID of the invoice this AML transaction is linked to."
+          },
+          "origin": {
+            "type": "string",
+            "example": "INVOICE",
+            "description": "Origin of the AML transaction."
+          },
+          "type": {
+            "type": "string",
+            "example": "WALLET",
+            "description": "Type of the AML transaction."
+          },
+          "asset": {
+            "type": "string",
+            "example": "holistic",
+            "description": "Asset of the AML transaction."
+          },
+          "blockchain": {
+            "type": "string",
+            "example": "holistic",
+            "description": "Blockchain of the AML transaction."
+          },
+          "hash": {
+            "type": "string",
+            "example": "bc1qvkwfapml56vvweuvvp7tqvurv2w52asv38u5l3",
+            "description": "AML transaction hash."
+          },
+          "output_type": {
+            "type": "string",
+            "example": null,
+            "description": "AML transaction output type."
+          },
+          "output_address": {
+            "type": "string",
+            "example": null,
+            "description": "AML transaction output address."
+          },
+          "risk_score": {
+            "type": "string",
+            "example": "0.156921",
+            "description": "AML transaction risk score."
+          },
+          "asset_list": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "BTC/bitcoin"
+            ],
+            "description": "AML transaction asset list."
+          },
+          "error": {
+            "type": "string",
+            "example": null,
+            "description": "AML transaction error."
+          },
+          "evaluation_detail": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "rule_id": {
+                        "type": "string",
+                        "example": "2a380f72-2dcd-4b90-9467-d3c7b6d25dfb",
+                        "description": "Rule ID."
+                      },
+                      "rule_name": {
+                        "type": "string",
+                        "example": "Sanctioned, TF & CSAM",
+                        "description": "Rule name."
+                      },
+                      "risk_score": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 0.014195487896676929,
+                        "description": "Risk score."
+                      },
+                      "matched_elements": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "example": "OFAC Sanctioned Entity",
+                              "description": "Category."
+                            },
+                            "contributions": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "entity": {
+                                    "type": "string",
+                                    "example": "Lazarus Group Harmony Horizon Bridge Exploit - June 2022 (suspected post-Exchange)",
+                                    "description": "Entity."
+                                  },
+                                  "risk_triggers": {
+                                    "type": "object",
+                                    "properties": {
+                                      "country": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "category": {
+                                        "type": "string",
+                                        "example": "OFAC Sanctioned Entity",
+                                        "description": "Category."
+                                      },
+                                      "category_id": {
+                                        "type": "string",
+                                        "example": "8d39eacf-a5c0-4b38-a101-6b3120b84bf9",
+                                        "description": "Category ID."
+                                      },
+                                      "is_sanctioned": {
+                                        "type": "boolean",
+                                        "example": true,
+                                        "description": "Is sanctioned."
+                                      }
+                                    }
+                                  },
+                                  "contribution_value": {
+                                    "type": "object",
+                                    "properties": {
+                                      "usd": {
+                                        "type": "number",
+                                        "format": "double",
+                                        "example": 15.554924625314328,
+                                        "description": "Contribution value in USD."
+                                      }
+                                    }
+                                  },
+                                  "contribution_percentage": {
+                                    "type": "number",
+                                    "format": "double",
+                                    "example": 0.09531445633497328,
+                                    "description": "Contribution percentage."
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "contributions": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "entities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "Unknown",
+                            "description": "Entity name."
+                          },
+                          "is_vasp": {
+                            "type": "boolean",
+                            "example": null,
+                            "description": "Is a VASP."
+                          },
+                          "actor_id": {
+                            "type": "integer",
+                            "example": -4,
+                            "description": "Actor ID."
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Unknown",
+                            "description": "Entity category."
+                          },
+                          "is_primary_entity": {
+                            "type": "boolean",
+                            "example": true,
+                            "description": "Is the primary entity."
+                          }
+                        }
+                      }
+                    },
+                    "contribution_value": {
+                      "type": "object",
+                      "properties": {
+                        "usd": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 8842.310699142721,
+                          "description": "Contribution value in USD."
+                        }
+                      }
+                    },
+                    "contribution_percentage": {
+                      "type": "number",
+                      "format": "double",
+                      "example": 54.1822,
+                      "description": "Contribution percentage."
+                    }
+                  }
+                }
+              },
+              "destination": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "entities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "Kraken",
+                            "description": "Entity name."
+                          },
+                          "is_vasp": {
+                            "type": "boolean",
+                            "example": true,
+                            "description": "Is a VASP."
+                          },
+                          "actor_id": {
+                            "type": "integer",
+                            "example": 23,
+                            "description": "Actor ID."
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Exchange",
+                            "description": "Entity category."
+                          },
+                          "is_primary_entity": {
+                            "type": "boolean",
+                            "example": true,
+                            "description": "Is the primary entity."
+                          }
+                        }
+                      }
+                    },
+                    "contribution_value": {
+                      "type": "object",
+                      "properties": {
+                        "usd": {
+                          "type": "number",
+                          "format": "double",
+                          "example": 14645.819876,
+                          "description": "Contribution value in USD."
+                        }
+                      }
+                    },
+                    "contribution_percentage": {
+                      "type": "number",
+                      "format": "double",
+                      "example": 100,
+                      "description": "Contribution percentage."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "blockchain_info": {
+            "type": "object",
+            "properties": {
+              "cluster": {
+                "type": "object",
+                "properties": {
+                  "inflow_value": {
+                    "type": "object",
+                    "properties": {
+                      "usd": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 16319.573922305124,
+                        "description": "Inflow value in USD."
+                      }
+                    }
+                  },
+                  "outflow_value": {
+                    "type": "object",
+                    "properties": {
+                      "usd": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 14645.819876,
+                        "description": "Inflow value in USD."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "cluster_entities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Unknown",
+                  "description": "Entity name."
+                },
+                "is_vasp": {
+                  "type": "boolean",
+                  "example": null,
+                  "description": "Is a VASP."
+                },
+                "actor_id": {
+                  "type": "integer",
+                  "example": -4,
+                  "description": "Actor ID."
+                },
+                "category": {
+                  "type": "string",
+                  "example": "Unknown",
+                  "description": "Entity category."
+                },
+                "is_primary_entity": {
+                  "type": "boolean",
+                  "example": true,
+                  "description": "Is the primary entity."
+                },
+                "is_after_sanction_date": {
+                  "type": "boolean",
+                  "example": false,
+                  "description": "Is after the sanction date."
+                }
+              }
+            }
+          },
+          "risk_score_detail": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "number",
+                "format": "double",
+                "example": 0.15692119477282407,
+                "description": "Source risk score."
+              },
+              "destination": {
+                "type": "number",
+                "format": "double",
+                "example": 0.15692119477282407,
+                "description": "Destination risk score."
+              }
+            }
+          },
+          "created_at": {
+            "type": "integer",
+            "example": 162857125819,
+            "description": "AML transaction creation date."
           }
         }
       },
