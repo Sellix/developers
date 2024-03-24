@@ -2642,7 +2642,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2653,7 +2653,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this whitelist belongs."
           },
           "type": {
@@ -2703,7 +2703,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2714,7 +2714,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this category belongs."
           },
           "title": {
@@ -2781,7 +2781,7 @@
         "properties": {
           "id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The ID of the resource"
           },
           "uniqid": {
@@ -2792,7 +2792,7 @@
           },
           "shop_id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The unique identifyer for the shop."
           },
           "title": {
@@ -2844,7 +2844,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -2855,7 +2855,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this coupon belongs."
           },
           "type": {
@@ -3004,7 +3004,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -3015,7 +3015,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this coupon belongs."
           },
           "type": {
@@ -3164,7 +3164,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this feedback belongs."
           },
           "message": {
@@ -3646,7 +3646,7 @@
           },
           "shop_id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this resource belongs."
           },
           "type": {
@@ -4100,11 +4100,12 @@
               "properties": {
                 "id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987
                 },
                 "shop_id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
                 },
                 "gateway": {
                   "type": "string",
@@ -4323,22 +4324,22 @@
               },
               "shop_id": {
                 "type": "integer",
-                "example": 123
+                "example": 987,
+                "description": "The shop ID to which this resource belongs."
               },
               "product_id": {
-                "type": "integer",
-                "example": 123
+                "type": "string",
+                "example": "sample29a0e39d"
               },
               "size": {
                 "type": "integer",
-                "example": 123
+                "example": 987
               },
               "created_at": {
                 "type": "integer",
                 "example": 162857125819
               }
-            },
-            "required": ["id", "uniqid", "cloudflare_image_id", "storage", "type", "name", "original_name", "extension", "shop_id", "product_id", "size", "created_at"]
+            }
           },
           "average_score": {
             "type": "string",
@@ -4357,7 +4358,7 @@
               "properties": {
                 "id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987
                 },
                 "uniqid": {
                   "type": "string",
@@ -4365,7 +4366,8 @@
                 },
                 "shop_id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
                 },
                 "product_types": {
                   "type": "array",
@@ -4412,7 +4414,7 @@
           },
           "shop_id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this resource belongs."
           },
           "type": {
@@ -4863,11 +4865,12 @@
               "properties": {
                 "id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987
                 },
                 "shop_id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
                 },
                 "gateway": {
                   "type": "string",
@@ -4964,7 +4967,7 @@
           },
           "shop_id": {
             "type": "number",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this customer belongs."
           },
           "email": {
@@ -5996,7 +5999,7 @@
               "properties": {
                 "id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987
                 },
                 "uniqid": {
                   "type": "string",
@@ -6004,7 +6007,8 @@
                 },
                 "shop_id": {
                   "type": "integer",
-                  "example": 123
+                  "example": 987,
+                  "description": "The shop ID to which this addon belongs."
                 },
                 "product_types": {
                   "type": "array",
@@ -6700,7 +6704,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this query belongs."
           },
           "invoice_id": {
@@ -6775,7 +6779,7 @@
         "properties": {
           "id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "ID of the resource"
           },
           "uniqid": {
@@ -6786,7 +6790,7 @@
           },
           "shop_id": {
             "type": "integer",
-            "example": 123,
+            "example": 987,
             "description": "The shop ID to which this query belongs."
           },
           "invoice_id": {
