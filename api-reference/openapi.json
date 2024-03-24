@@ -6202,7 +6202,9 @@
           },
           "shop_payment_gateways_fees": {
             "type": "array",
-            "example": []
+            "items": {
+              "$ref": "#/components/schemas/gateway_fees"
+            }
           },
           "shop_paypal_credit_card": {
             "type": "boolean",
@@ -8089,8 +8091,60 @@
             "description": "The shop ID to which this gateway fee belongs."
           },
           "gateway": {
-            "$ref": "#/components/schemas/gateway",
-            "example": "BITCOIN"
+            "type": "string",
+            "enum": [
+              "PAYPAL",
+              "STRIPE",
+              "SKRILL",
+              "PERFECT_MONEY",
+              "CASH_APP",
+              "BINANCE",
+              "BITCOIN",
+              "LITECOIN",
+              "ETHEREUM",
+              "BITCOIN_CASH",
+              "NANO",
+              "MONERO",
+              "SOLANA",
+              "RIPPLE",
+              "BINANCE_COIN",
+              "USDC:ERC20",
+              "USDC:BEP20",
+              "USDC:MATIC",
+              "USDC:SOL",
+              "USDT:ERC20",
+              "USDT:BEP20",
+              "USDT:MATIC",
+              "USDT:SOL",
+              "USDT:TRC20",
+              "TRON",
+              "BITCOIN_LN",
+              "CONCORDIUM",
+              "POLYGON",
+              "PEPE:ERC20",
+              "DAI:ERC20",
+              "DAI:BEP20",
+              "DAI:MATIC",
+              "WETH:BEP20",
+              "WETH:MATIC",
+              "APE:ERC20",
+              "APE:MATIC",
+              "SHIB:ERC20",
+              "SHIB:BEP20",
+              "SHIB:MATIC",
+              "USDC_NATIVE:MATIC",
+              "DOGECOIN",
+              "PYTH:SOL",
+              "BONK:SOL",
+              "JUP:SOL",
+              "JITO:SOL",
+              "WEN:SOL",
+              "RENDER:SOL",
+              "MOBILE:SOL",
+              "HNT:SOL"
+            ],
+            "example": null,
+            "description": "The gateway of the gateway fee."
           },
           "percent_amount": {
             "type": "number",
@@ -8103,8 +8157,7 @@
             "description": "The fixed amount of the gateway fee."
           },
           "fixed_currency": {
-            "$ref": "#/components/schemas/currency",
-            "example": "USD"
+            "$ref": "#/components/schemas/currency"
           },
           "active_type": {
             "type": "string",
