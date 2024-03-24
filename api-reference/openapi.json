@@ -2423,7 +2423,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/paymentVoided"
           },
           "401": {
             "$ref": "#/components/responses/401"
