@@ -2881,11 +2881,13 @@
           },
           "stripe_promo_id": {
             "type": "string",
-            "example": null
+            "example": null,
+            "description": "The stripe ID for the promotion"
           },
           "stripe_coupon_id": {
             "type": "string",
-            "example": null
+            "example": null,
+            "description": "The stripe ID for the coupon"
           },
           "use_type": {
             "type": "string",
@@ -2929,11 +2931,13 @@
           },
           "smart_contract_address": {
             "type": "string",
-            "example": null
+            "example": null,
+            "description": "The smart contract address for the coupon"
           },
           "token_id": {
             "type": "string",
-            "example": null
+            "example": null,
+            "description": "The token ID for the coupon"
           },
           "blockchain": {
             "$ref": "#/components/schemas/blockchain"
@@ -3037,11 +3041,13 @@
           },
           "stripe_promo_id": {
             "type": "string",
-            "example": null
+            "example": null,
+            "description": "The stripe ID for the promotion"
           },
           "stripe_coupon_id": {
             "type": "string",
-            "example": null
+            "example": null,
+            "description": "The stripe ID for the coupon"
           },
           "use_type": {
             "type": "string",
@@ -3085,11 +3091,13 @@
           },
           "smart_contract_address": {
             "type": "string",
-            "example": null
+            "example": null,
+            "description": "The smart contract address for the coupon"
           },
           "token_id": {
             "type": "string",
-            "example": null
+            "example": null,
+            "description": "The token ID for the coupon"
           },
           "blockchain": {
             "$ref": "#/components/schemas/blockchain"
@@ -3503,8 +3511,9 @@
             "description": "Minimum number of confirmations for a crypto payment to be accepted."
           },
           "delivery_time": {
-            "type": "string",
-            "example": null
+            "type": "integer",
+            "example": 162857125819,
+            "description": "The timestamp for when the invoice was delivered"
           },
           "stock_delimiter": {
             "type": "string",
@@ -3727,8 +3736,8 @@
           },
           "file_attachment": {
             "type": "string",
-            "description": "Unique id of the file attachment for this product if the product type is FILE.",
-            "example": null
+            "example": null,
+            "description": "Unique id of the file attachment for this product if the product type is FILE."
           },
           "youtube_link": {
             "type": "string",
@@ -3877,8 +3886,8 @@
             "description": "The text to be delivered to the customer after payment"
           },
           "delivery_time": {
-            "type": "string",
-            "example": null,
+            "type": "integer",
+            "example": 162857125819,
             "description": "The timestamp for when the invoice was delivered"
           },
           "service_text": {
@@ -4491,8 +4500,8 @@
           },
           "file_attachment": {
             "type": "string",
-            "description": "Unique id of the file attachment for this product if the product type is FILE.",
-            "example": null
+            "example": null,
+            "description": "Unique id of the file attachment for this product if the product type is FILE."
           },
           "youtube_link": {
             "type": "string",
@@ -4637,8 +4646,9 @@
             "description": "The text to be delivered to the customer after payment"
           },
           "delivery_time": {
-            "type": "string",
-            "example": null
+            "type": "integer",
+            "example": 162857125819,
+            "description": "The timestamp for when the invoice was delivered"
           },
           "service_text": {
             "type": "string",
@@ -6276,8 +6286,8 @@
           },
           "shop_id": {
             "type": "integer",
-            "description": "The shop ID to which this invoice belongs.",
-            "example": null
+            "example": null,
+            "description": "The shop ID to which this invoice belongs."
           },
           "type": {
             "type": "string",
