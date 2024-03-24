@@ -6086,7 +6086,58 @@
             "description": "Webhook responses for this invoice."
           },
           "rewards_data": {
-            "example": null
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "clause": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "clause_value": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "clause_currency": {
+                    "$ref": "#/components/schemas/currency"
+                  },
+                  "action": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "action_value": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "action_currency": {
+                    "$ref": "#/components/schemas/currency"
+                  },
+                  "action_send_product_variant": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "created_at": {
+                    "type": "integer",
+                    "format": "timestamp",
+                    "example": 162857125819,
+                    "description": "Creation timstamp of the resource."
+                  },
+                  "updated_at": {
+                    "type": "integer",
+                    "format": "timestamp",
+                    "example": 162857125819,
+                    "description": "Timestamp for when resource was last updated."
+                  },
+                  "log": {
+                    "type": "object",
+                    "example": null
+                  },
+                  "reward_info": {
+                    "type": "object",
+                    "example": null
+                  }
+                }
+              }
           },
           "paypal_dispute": {
             "$ref": "#/components/schemas/paypal_dispute"
@@ -6613,7 +6664,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the blacklist."
+            "description": "Creation timestamp of the blacklist."
           },
           "updated_at": {
             "type": "integer",
@@ -7078,9 +7129,60 @@
                   }
                 }
               },
+              "cluster_entities": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Unknown",
+                      "description": "Entity name."
+                    },
+                    "is_vasp": {
+                      "type": "boolean",
+                      "example": null,
+                      "description": "Is a VASP."
+                    },
+                    "actor_id": {
+                      "type": "integer",
+                      "example": -4,
+                      "description": "Actor ID."
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Unknown",
+                      "description": "Entity category."
+                    },
+                    "is_primary_entity": {
+                      "type": "boolean",
+                      "example": true,
+                      "description": "Is the primary entity."
+                    },
+                    "is_after_sanction_date": {
+                      "type": "boolean",
+                      "example": false,
+                      "description": "Is after the sanction date."
+                    }
+                  }
+                }
+              },
               "risk_score_detail": {
-                "type": "integer",
-                "example": 2
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 0.15692119477282407,
+                    "description": "Source risk score."
+                  },
+                  "destination": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 0.15692119477282407,
+                    "description": "Destination risk score."
+                  }
+                }
               },
               "created_at": {
                 "type": "integer",
