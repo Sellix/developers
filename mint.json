@@ -81,6 +81,7 @@
         "api-reference/authentication",
         "api-reference/pagination",
         "api-reference/errors",
+        "api-reference/null-values",
         "api-reference/webhooks",
         "api-reference/dynamic-products",
         "api-reference/payment-methods",

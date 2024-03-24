@@ -1,0 +1,18 @@
+---
+title: 'Null Values'
+description: 'See how null values are represented in our documentation'
+---
+
+## How they look like
+Our documentation is rendered with [OpenAPI](https://swagger.io/). 
+OpenAPI handles null cases in our examples by replacing instances of `null` values with specific fields that are type dependeng. Below you can see how null values are represented for each individual type:
+- String: `"<string>"`,
+- Number: `123`
+- Integer: `123`
+- Object: `{}`
+- Array: `["<any>"]`
+- Boolean: `true`
+
+
+## Deprecated fields
+When a field is deprecated from our API, it is still sent with all requests with a stringified value of `null` that appears as `"null"`. This is done for backwards compatibility so your software never breaks.
