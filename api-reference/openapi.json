@@ -6153,6 +6153,11 @@
             "example": null,
             "description": "The ID for the payment link, if invoice was created by a payment link"
           },
+          "cashapp_email_configured": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not cashapp email is configured"
+          },
           "license": {
             "type": "boolean",
             "example": false,
