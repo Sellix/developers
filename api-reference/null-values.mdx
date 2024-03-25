@@ -12,7 +12,8 @@ Our documentation leverages [OpenAPI](https://swagger.io/) for rendering. OpenAP
 - **Array**: `["<any>"]`
 - **Boolean**: `true`
 
-It's important to clarify that these representations do not reflect the actual return values of our API. Instead, they are utilized solely within our documentation for clarity and example purposes.
-
 ## Handling Deprecated Fields
-In cases where a field is deprecated, our API continues to include the field in all requests as `"null"` in a string format. This approach is maintained for backward compatibility, ensuring that integrations remain functional without disruption.
+In cases where a field is deprecated, our API continues to include the field in all requests as `null`, however, it will be rendered as `"null"`, in a string format, in all of our documentation examples. This approach is maintained for backward compatibility, ensuring that integrations remain functional without disruption.
+
+## Clarification
+It's important to clarify that these representations do not reflect the actual return values of our API. Instead, they are utilized solely within our documentation for clarity and example purposes.
