@@ -1540,9 +1540,6 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1570,7 +1567,7 @@
             "$ref": "#/components/responses/403"
           },
           "404": {
-            "$ref": "#/components/responses/404"
+            "$ref": "#/components/responses/queryNotFound"
           }
         }
       }
@@ -1611,14 +1608,14 @@
           "200": {
             "$ref": "#/components/responses/queryReply"
           },
+          "400": {
+            "$ref": "#/components/responses/queryReplyError"
+          },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
             "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1644,9 +1641,6 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1672,9 +1666,6 @@
           },
           "403": {
             "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -10347,10 +10338,6 @@
                 "env": {
                   "type": "string",
                   "example": "production"
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
                 }
               }
             }
@@ -11587,6 +11574,38 @@
           }
         }
       },
+      "queryNotFound": {
+        "description": "Query Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 404
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Query Not Found"
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
       "queryReply": {
         "description": "resource retrieved",
         "content": {
@@ -11609,6 +11628,38 @@
                 "message": {
                   "type": "string",
                   "example": "Reply Sent Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "queryReplyError": {
+        "description": "Query Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Message too short,"
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
                 },
                 "env": {
                   "type": "string",
