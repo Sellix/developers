@@ -1182,7 +1182,8 @@
                   },
                   "max_risk_level": {
                     "type": "integer",
-                    "example": 85
+                    "example": 85,
+                    "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
                   },
                   "unlisted": {
                     "type": "boolean",
@@ -1431,7 +1432,8 @@
                   },
                   "max_risk_level": {
                     "type": "integer",
-                    "example": 85
+                    "example": 85,
+                    "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
                   },
                   "unlisted": {
                     "type": "boolean",
@@ -2803,9 +2805,7 @@
             "description": "Group title."
           },
           "image_attachment": {
-            "type": "string",
-            "description": "DEPRECATED: Unique id of the image attachment for this group.",
-            "example": ""
+            "$ref": "#/components/schemas/image_attachment"
           },
           "unlisted": {
             "type": "number",
@@ -3233,64 +3233,12 @@
             "description": "Whether product licenses are generated on successful payments"
           },
           "license_period": {
-            "type": "number",
-            "example": null,
+            "type": "integer",
+            "example": 7,
             "description": "Amount in days that licenses will be valid for"
           },
           "image_attachment": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "uniqid": {
-                "type": "string",
-                "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
-              },
-              "cloudflare_image_id": {
-                "$ref": "#/components/schemas/cloudflare_image_id"
-              },
-              "storage": {
-                "type": "string",
-                "enum": ["PRODUCTS"],
-                "example": "PRODUCTS"
-              },
-              "type": {
-                "type": "string",
-                "enum": ["IMAGE"],
-                "example": "IMAGE"
-              },
-              "name": {
-                "type": "string",
-                "example": "sample.png"
-              },
-              "original_name": {
-                "type": "string",
-                "example": "file.png"
-              },
-              "extension": {
-                "type": "string",
-                "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
-                "example": "png"
-              },
-              "shop_id": {
-                "type": "integer",
-                "example": 987,
-                "description": "The shop ID to which this resource belongs."
-              },
-              "product_id": {
-                "type": "string",
-                "example": "sample29a0e39d"
-              },
-              "size": {
-                "type": "integer",
-                "example": 987
-              },
-              "created_at": {
-                "type": "integer",
-                "example": 162857125819
-              }
-            }
+            "$ref": "#/components/schemas/image_attachment"
           },
           "file_attachment": {
             "type": "object",
@@ -3518,7 +3466,8 @@
           },
           "marketplace_category_id": {
             "type": "string",
-            "example": "0"
+            "example": "0",
+            "description": "The category ID the product is a part of"
           },
           "telegram_group_id": {
             "type": "string",
@@ -3553,59 +3502,7 @@
           "image_attachments": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer"
-                },
-                "uniqid": {
-                  "type": "string",
-                  "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
-                },
-                "cloudflare_image_id": {
-                  "$ref": "#/components/schemas/cloudflare_image_id"
-                },
-                "storage": {
-                  "type": "string",
-                  "enum": ["PRODUCTS"],
-                  "example": "PRODUCTS"
-                },
-                "type": {
-                  "type": "string",
-                  "enum": ["IMAGE"],
-                  "example": "IMAGE"
-                },
-                "name": {
-                  "type": "string",
-                  "example": "sample.png"
-                },
-                "original_name": {
-                  "type": "string",
-                  "example": "file.png"
-                },
-                "extension": {
-                  "type": "string",
-                  "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
-                  "example": "png"
-                },
-                "shop_id": {
-                  "type": "integer",
-                  "example": 987,
-                  "description": "The shop ID to which this resource belongs."
-                },
-                "product_id": {
-                  "type": "string",
-                  "example": "sample29a0e39d"
-                },
-                "size": {
-                  "type": "integer",
-                  "example": 987
-                },
-                "created_at": {
-                  "type": "integer",
-                  "example": 162857125819
-                }
-              }
+              "$ref": "#/components/schemas/image_attachment"
             }
           },
           "feedback": {
@@ -4277,14 +4174,12 @@
             "description": "Whether product licenses are generated on successful payments"
           },
           "license_period": {
-            "type": "string",
-            "example": "7",
+            "type": "integer",
+            "example": 7,
             "description": "Amount in days that licenses will be valid for"
           },
           "image_attachment": {
-            "type": "string",
-            "description": "DEPRECATED: Unique id of the image attachment for this product.",
-            "example": ""
+            "$ref": "#/components/schemas/image_attachment"
           },
           "file_attachment": {
             "type": "string",
@@ -4423,7 +4318,7 @@
             "description": "Minimum number of confirmations for a crypto payment to be accepted."
           },
           "max_risk_level": {
-            "type": "number",
+            "type": "integer",
             "example": 85,
             "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
           },
@@ -4463,7 +4358,8 @@
           },
           "bestseller": {
             "type": "number",
-            "example": "0"
+            "example": "0",
+            "description": "DEPRECATED"
           },
           "sort_priority": {
             "type": "integer",
@@ -4510,6 +4406,14 @@
             "example": "https://sellix.io",
             "description": "The url to redirect a customer to on successful payment"
           },
+          "label_singular": {
+            "type": "string",
+            "example": null
+          },
+          "label_plural": {
+            "type": "string",
+            "example": null
+          },
           "private": {
             "type": "boolean",
             "example": false,
@@ -4534,19 +4438,25 @@
           },
           "marketplace_category_id": {
             "type": "string",
-            "example": "0"
+            "example": "0",
+            "description": "The category ID the product is a part of"
           },
           "telegram_group_id": {
             "type": "string",
-            "example": "none"
+            "example": "none",
+            "description": "The Telegram group ID"
           },
           "telegram_integration": {
-            "type": "number",
-            "example": "0"
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the Telegram integration is enabled"
           },
           "telegram_optional": {
-            "type": "number",
-            "example": "0"
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the Telegram integration is optional"
           },
           "name": {
             "type": "string",
@@ -4555,7 +4465,7 @@
           },
           "image_name": {
             "type": "string",
-            "example": "null",
+            "example": "SellixImageName.png",
             "description": "DEPRECATED: The name of the product image with the file type"
           },
           "image_storage": {
@@ -4565,6 +4475,12 @@
           },
           "cloudflare_image_id": {
             "$ref": "#/components/schemas/cloudflare_image_id"
+          },
+          "image_attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/image_attachment"
+            }
           },
           "feedback": {
             "type": "object",
@@ -4745,7 +4661,6 @@
               }
             }
           },
-          
           "price_conversions": {
             "type": "object", 
             "properties": {
@@ -4799,7 +4714,8 @@
           },
           "country_regulations": {
             "type": "string",
-            "example": "IT"
+            "example": "IT",
+            "description": "The country ISO code that the business is located in"
           },
           "available_stripe_apm": {
             "type": "object",
@@ -4830,16 +4746,19 @@
           },
           "theme": {
             "type": "string",
-            "example": "dark"
+            "example": "dark",
+            "description": "The current theme enabled on the Sellix storefront"
           },
           "dark_mode": {
             "type": "integer",
             "enum": [0, 1],
-            "example": 1
+            "example": 1,
+            "description": "Whether or not dark mode is enabled on the Sellix storefront"
           },
           "vat_percentage": {
             "type": "string",
-            "example": "0.00"
+            "example": "0.00",
+            "description": "The VAR percentage set for the store"
           },
           "tax_details": {
             "type": "object",
@@ -4884,59 +4803,7 @@
             }
           },
           "image_attachment_info": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "uniqid": {
-                "type": "string",
-                "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
-              },
-              "cloudflare_image_id": {
-                "$ref": "#/components/schemas/cloudflare_image_id"
-              },
-              "storage": {
-                "type": "string",
-                "enum": ["PRODUCTS"],
-                "example": "PRODUCTS"
-              },
-              "type": {
-                "type": "string",
-                "enum": ["IMAGE"],
-                "example": "IMAGE"
-              },
-              "name": {
-                "type": "string",
-                "example": "sample.png"
-              },
-              "original_name": {
-                "type": "string",
-                "example": "file.png"
-              },
-              "extension": {
-                "type": "string",
-                "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
-                "example": "png"
-              },
-              "shop_id": {
-                "type": "integer",
-                "example": 987,
-                "description": "The shop ID to which this resource belongs."
-              },
-              "product_id": {
-                "type": "string",
-                "example": "sample29a0e39d"
-              },
-              "size": {
-                "type": "integer",
-                "example": 987
-              },
-              "created_at": {
-                "type": "integer",
-                "example": 162857125819
-              }
-            }
+            "$ref": "#/components/schemas/image_attachment"
           },
           "average_score": {
             "type": "string",
@@ -5091,64 +4958,12 @@
             "description": "Whether product licenses are generated on successful payments"
           },
           "license_period": {
-            "type": "string",
-            "example": "7",
+            "type": "integer",
+            "example": 7,
             "description": "Amount in days that licenses will be valid for"
           },
           "image_attachment": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "uniqid": {
-                "type": "string",
-                "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
-              },
-              "cloudflare_image_id": {
-                "$ref": "#/components/schemas/cloudflare_image_id"
-              },
-              "storage": {
-                "type": "string",
-                "enum": ["PRODUCTS"],
-                "example": "PRODUCTS"
-              },
-              "type": {
-                "type": "string",
-                "enum": ["IMAGE"],
-                "example": "IMAGE"
-              },
-              "name": {
-                "type": "string",
-                "example": "sample.png"
-              },
-              "original_name": {
-                "type": "string",
-                "example": "file.png"
-              },
-              "extension": {
-                "type": "string",
-                "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
-                "example": "png"
-              },
-              "shop_id": {
-                "type": "integer",
-                "example": 987,
-                "description": "The shop ID to which this resource belongs."
-              },
-              "product_id": {
-                "type": "string",
-                "example": "sample29a0e39d"
-              },
-              "size": {
-                "type": "integer",
-                "example": 987
-              },
-              "created_at": {
-                "type": "integer",
-                "example": 162857125819
-              }
-            }
+            "$ref": "#/components/schemas/image_attachment"
           },
           "file_attachment": {
             "type": "string",
@@ -5283,7 +5098,7 @@
             "description": "Minimum number of confirmations for a crypto payment to be accepted."
           },
           "max_risk_level": {
-            "type": "number",
+            "type": "integer",
             "example": 85,
             "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
           },
@@ -5405,7 +5220,7 @@
           },
           "marketplace_category_id": {
             "type": "string",
-            "example": null,
+            "example": "0",
             "description": "The category ID the product is a part of"
           },
           "telegram_group_id": {
@@ -5441,59 +5256,7 @@
           "image_attachments": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer"
-                },
-                "uniqid": {
-                  "type": "string",
-                  "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
-                },
-                "cloudflare_image_id": {
-                  "$ref": "#/components/schemas/cloudflare_image_id"
-                },
-                "storage": {
-                  "type": "string",
-                  "enum": ["PRODUCTS"],
-                  "example": "PRODUCTS"
-                },
-                "type": {
-                  "type": "string",
-                  "enum": ["IMAGE"],
-                  "example": "IMAGE"
-                },
-                "name": {
-                  "type": "string",
-                  "example": "sample.png"
-                },
-                "original_name": {
-                  "type": "string",
-                  "example": "file.png"
-                },
-                "extension": {
-                  "type": "string",
-                  "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
-                  "example": "png"
-                },
-                "shop_id": {
-                  "type": "integer",
-                  "example": 987,
-                  "description": "The shop ID to which this resource belongs."
-                },
-                "product_id": {
-                  "type": "string",
-                  "example": "sample29a0e39d"
-                },
-                "size": {
-                  "type": "integer",
-                  "example": 987
-                },
-                "created_at": {
-                  "type": "integer",
-                  "example": 162857125819
-                }
-              }
+              "$ref": "#/components/schemas/image_attachment"
             }
           },
           "feedback": {
@@ -6997,8 +6760,8 @@
           },
           "shop_image_name": {
             "type": "string",
-            "description": "DEPRECATED: Unique id of the image attachment for this merchant with the image extension included.",
-            "deprecated": true
+            "example": "ShopImageName.png",
+            "description": "DEPRECATED: Unique id of the image attachment for this merchant with the image extension included."
           },
           "shop_image_storage": {
             "type": "string",
@@ -10341,6 +10104,61 @@
                 "description": "A list of the price of the product variant in various cryptocurrencies."
               }
             }
+          }
+        }
+      },
+      "image_attachment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "uniqid": {
+            "type": "string",
+            "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
+          },
+          "cloudflare_image_id": {
+            "$ref": "#/components/schemas/cloudflare_image_id"
+          },
+          "storage": {
+            "type": "string",
+            "enum": ["PRODUCTS"],
+            "example": "PRODUCTS"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["IMAGE"],
+            "example": "IMAGE"
+          },
+          "name": {
+            "type": "string",
+            "example": "sample.png"
+          },
+          "original_name": {
+            "type": "string",
+            "example": "file.png"
+          },
+          "extension": {
+            "type": "string",
+            "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
+            "example": "png"
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 987,
+            "description": "The shop ID to which this resource belongs."
+          },
+          "product_id": {
+            "type": "string",
+            "example": "sample29a0e39d"
+          },
+          "size": {
+            "type": "integer",
+            "example": 987
+          },
+          "created_at": {
+            "type": "integer",
+            "example": 162857125819
           }
         }
       }
