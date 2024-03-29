@@ -2755,7 +2755,7 @@
           "products_bound": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/miniProduct"
+              "$ref": "#/components/schemas/categoryProduct"
             },
             "description": "Array of products. Please note that the product object contains limited fields, to get the full product object please use the Products API endpoint."
           },
@@ -2804,7 +2804,7 @@
           },
           "image_attachment": {
             "type": "string",
-            "description": "Unique id of the image attachment for this group.",
+            "description": "DEPRECATED: Unique id of the image attachment for this group.",
             "example": ""
           },
           "unlisted": {
@@ -3540,7 +3540,7 @@
           "image_name": {
             "type": "string",
             "example": "SellixStoreExampleImage.png",
-            "description": "The name of the image for the store the invoice was created on"
+            "description": "DEPRECATED: The name of the image for the store the invoice was created on"
           },
           "image_storage": {
             "type": "string",
@@ -3923,8 +3923,8 @@
           },
           "product_image_storage": {
             "type": "string",
-            "description": "Where the image is stored in our self-hosted CDN.",
-            "example": "PRODUCTS"
+            "example": "PRODUCTS",
+            "description": "Where the image is stored in our self-hosted CDN."
           },
           "cloudflare_image_id": {
             "$ref": "#/components/schemas/cloudflare_image_id"
@@ -4024,7 +4024,7 @@
           }
         }
       },
-      "miniProduct": {
+      "categoryProduct": {
         "type": "object",
         "properties": {
           "uniqid": {
@@ -4032,48 +4032,6 @@
             "format": "uuid",
             "example": "sample29a0e39d",
             "description": "Unique ID of the resource, used as reference across the API."
-          },
-          "slug": {
-            "type": "string",
-            "example": "digital-good-to-download",
-            "description": "The slug used to navigate to the product page on a storefront."
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "SERIALS",
-              "FILE",
-              "SERVICE",
-              "DYNAMIC",
-              "INFO_CARD",
-              "SUBSCRIPTION"
-            ],
-            "example": "SUBSCRIPTION",
-            "description": "Product type."
-          },
-          "subtype": {
-            "type": "string",
-            "enum": [
-              "SERIALS",
-              "FILE",
-              "SERVICE",
-              "DYNAMIC"
-            ],
-            "example": null,
-            "description": "Product subtype, can be used only with type SUBSCRIPTION."
-          },
-          "title": {
-            "type": "string",
-            "example": "Digital good to download",
-            "description": "Product title."
-          },
-          "currency": {
-            "$ref": "#/components/schemas/currency"
-          },
-          "pay_what_you_want": {
-            "type": "number",
-            "example": 1,
-            "description": "Whether or not pay-what-you-want pricing is enabled."
           },
           "price": {
             "type": "number",
@@ -4091,111 +4049,28 @@
             "type": "number",
             "example": "0"
           },
-          "affiliate_revenue_percent": {
-            "type": "number",
-            "example": 15,
-            "description": "The percentage of revenue to give to affiliates. -1 for disabled, 0 for default (10%), other number for a custom percent."
+          "currency": {
+            "$ref": "#/components/schemas/currency"
           },
-          "price_variants": {
-            "type": "object",
+          "unlisted": {
+            "type": "boolean",
+            "example": false,
+            "description": "If unlisted is true, the product is not shown in the storefront but can be bought through a direct link."
+          },
+          "title": {
+            "type": "string",
+            "example": "Sellix Product",
+            "description": "The product title"
+          },
+          "image_attachment": {
+            "type": "string",
             "example": null,
-            "description": "Variants in pricing for the product."
+            "description": "DEPRECATED: Unique id of the image attachment for this product."
           },
           "description": {
             "type": "string",
             "example": "Product description",
             "description": "Product description."
-          },
-          "licensing_enabled": {
-            "type": "number", 
-            "example": 1,
-            "description": "Whether product licenses are generated on successful payments"
-          },
-          "license_period": {
-            "type": "string",
-            "example": "7",
-            "description": "Amount in days that licenses will be valid for"
-          },
-          "image_attachment": {
-            "type": "string",
-            "description": "Unique id of the image attachment for this product.",
-            "example": ""
-          },
-          "youtube_link": {
-            "type": "string",
-            "example": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-            "description": "The url for the YouTube video of the product"
-          },
-          "volume_discounts": {
-            "type": "string",
-            "example": "{\"volume_discounts\": [{\"type\": \"PERCENTAGE\", \"value\": \"5\", \"quantity\": \"10\"}]}",
-            "description": "Stringified array of volume discounts."
-          },
-          "recurring_interval": {
-            "type": "string",
-            "enum": [
-              "DAY",
-              "WEEK",
-              "MONTH",
-              "YEAR"
-            ],
-            "example": "MONTH",
-            "description": "At which frequency the customer is billed for product type SUBSCRIPTION."
-          },
-          "recurring_interval_count": {
-            "type": "integer",
-            "example": 1,
-            "description": "How many recurring_interval before the customer is billed for product type SUBSCRIPTION."
-          },
-          "trial_period": {
-            "type": "integer",
-            "example": 987,
-            "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION."
-          },
-          "paypal_product_id": {
-            "type": "string",
-            "example": null,
-            "description": "When a product SUBSCRIPTION is created and the gateway PAYPAL chosen, a PayPal product is automatically created on the connected account."
-          },
-          "paypal_plan_id": {
-            "type": "string",
-            "example": null,
-            "description": "When a product SUBSCRIPTION is created and the gateway PAYPAL chosen, a PayPal plan is automatically created on the connected account."
-          },
-          "stripe_price_id": {
-            "type": "string",
-            "example": "price_sample2X7rAeMb7AM5APEU",
-            "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
-          },
-          "discord_integration": {
-            "type": "number",
-            "example": 1,
-            "description": "Whether or not the discord integeration is enabled for this product."
-          },
-          "discord_optional": {
-            "type": "number",
-            "example": 1,
-            "description": "Whether or not the discord integration is optional."
-          },
-          "discord_set_role": {
-            "type": "number",
-            "example": 1,
-            "description": "Whether to give users a role when added to the discord server."
-          },
-          "discord_server_id": {
-            "type": "string",
-            "example": "742768752180854827",
-            "description": "The id of the discord server the bot will add users to."
-          },
-          "discord_role_id": {
-            "type": "number",
-            "example": "742772275698335765",
-            "description": "The role to give users when added by the discord integration."
-          },
-          "discord_remove_role": {
-            "type": "number",
-            "example": "0",
-            "description": "Whether to remove a role from the user when added to the discord server."
           },
           "quantity_min": {
             "type": "integer",
@@ -4214,86 +4089,54 @@
             "example": "0",
             "description": "At which product quantity should we send a webhook and email warning the merchant."
           },
-          "gateways": {
-            "$ref": "#/components/schemas/gateways"
-          },
           "custom_fields": {
             "$ref": "#/components/schemas/custom_fields_array"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC",
+              "INFO_CARD",
+              "SUBSCRIPTION"
+            ],
+            "example": "SUBSCRIPTION",
+            "description": "Product type."
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 987,
+            "description": "The shop ID to which this resource belongs."
+          },
+          "gateways": {
+            "$ref": "#/components/schemas/gateways"
           },
           "crypto_confirmations_needed": {
             "type": "integer",
             "example": 3,
             "description": "Minimum number of confirmations for a crypto payment to be accepted."
           },
-          "delivery_time": {
-            "type": "integer",
-            "example": 162857125819,
-            "description": "The timestamp for when the invoice was delivered"
-          },
-          "stock_delimiter": {
-            "type": "string",
-            "example": ",",
-            "description": "How to delimit the stock if product type is SERIALS, for example with stock_delimiter \",\" and serials value first,second; the stock would have two different serials \"first\" and \"second\"."
+          "private": {
+            "type": "boolean",
+            "example": false,
+            "description": "If private is true, the product is hidden on the storefront and cannot be bought with a direct link."
           },
           "stock": {
             "type": "integer",
             "example": -1,
             "description": "Stock of the current product, can be -1 for unlimited stock."
           },
-          "bestseller": {
-            "type": "number",
-            "example": "null",
-            "description": "DEPRECATED"
-          },
           "sort_priority": {
             "type": "integer",
             "example": 1,
             "description": "Sort order of this product."
           },
-          "unlisted": {
-            "type": "boolean",
-            "example": false,
-            "description": "If unlisted is true, the product is not shown in the storefront but can be bought through a direct link."
-          },
           "on_hold": {
             "type": "boolean",
             "example": false,
             "description": "If on_hold is true, the product cannot be bought but is shown in the storefront."
-          },
-          "terms_of_service": {
-            "type": "string",
-            "example": null,
-            "description": "Text containing the product's terms of service."
-          },
-          "warranty": {
-            "type": "integer",
-            "example": 86400,
-            "description": "Time, in seconds, of how much the warranty for this product lasts."
-          },
-          "warranty_text": {
-            "type": "string",
-            "example": "This warranty covers..",
-            "description": "Clear explanation of what the warranty covers."
-          },
-          "watermark_enabled": {
-            "type": "number",
-            "example": 1,
-            "description": "Whether sellix should add a watermark to your product image."
-          },
-          "watermark_text": {
-            "type": "string",
-            "example": "Sellix",
-            "description": "The watermark to add to the product image."
-          },
-          "redirect_link": {
-            "type": "string",
-            "example": "https://sellix.io",
-            "description": "The url to redirect a customer to on successful payment"
-          },
-          "private": {
-            "type": "boolean",
-            "example": false,
-            "description": "If private is true, the product is hidden on the storefront and cannot be bought with a direct link."
           },
           "created_at": {
             "type": "integer",
@@ -4307,26 +4150,18 @@
             "example": 162857125819,
             "description": "Date, available if the product has been edited."
           },
-          "updated_by": {
-            "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the product has been edited."
-          },
-          "marketplace_category_id": {
+          "image_name": {
             "type": "string",
-            "example": "0"
+            "example": "SellixImageName.png",
+            "description": "DEPRECATED: The name of the product image with the file type"
           },
-          "telegram_group_id": {
+          "image_storage": {
             "type": "string",
-            "example": "none"
+            "example": "PRODUCTS",
+            "description": "Where the image is stored in Sellix's self-hosted CDN."
           },
-          "telegram_integration": {
-            "type": "number",
-            "example": "0"
-          },
-          "telegram_optional": {
-            "type": "number",
-            "example": "0"
+          "cloudflare_image_id": {
+            "$ref": "#/components/schemas/cloudflare_image_id"
           },
           "category_id": {
             "type": "string",
@@ -4446,7 +4281,7 @@
           },
           "image_attachment": {
             "type": "string",
-            "description": "Unique id of the image attachment for this product.",
+            "description": "DEPRECATED: Unique id of the image attachment for this product.",
             "example": ""
           },
           "file_attachment": {
@@ -4718,7 +4553,8 @@
           },
           "image_name": {
             "type": "string",
-            "example": null
+            "example": "null",
+            "description": "DEPRECATED: The name of the product image with the file type"
           },
           "image_storage": {
             "type": "string",
@@ -5257,7 +5093,7 @@
           },
           "image_attachment": {
             "type": "string",
-            "description": "Unique id of the image attachment for this product.",
+            "description": "DEPRECATED: Unique id of the image attachment for this product.",
             "example": ""
           },
           "file_attachment": {
@@ -5528,7 +5364,8 @@
           },
           "image_name": {
             "type": "string",
-            "example": null
+            "example": "null",
+            "description": "DEPRECATED: The name of the product image with the file type"
           },
           "image_storage": {
             "type": "string",
@@ -7044,8 +6881,8 @@
           },
           "shop_image_storage": {
             "type": "string",
-            "description": "DEPRECATED: Where the image is stored in our self-hosted CDN.",
-            "deprecated": true
+            "example": "PRODUCTS",
+            "description": "Where the image is stored in Sellix's self-hosted CDN."
           },
           "cloudflare_image_id": {
             "$ref": "#/components/schemas/cloudflare_image_id"
