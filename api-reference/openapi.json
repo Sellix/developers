@@ -2626,7 +2626,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the blacklist."
+            "description": "Timestamp for the creation of the blacklist."
           },
           "updated_at": {
             "type": "integer",
@@ -2687,7 +2687,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the whitelist."
+            "description": "Timestamp for the creation of the whitelist."
           },
           "updated_at": {
             "type": "integer",
@@ -2736,12 +2736,11 @@
             "example": 1,
             "description": "Sort order of this category."
           },
-
           "created_at": {
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the category."
+            "description": "Timestamp for the creation of the category."
           },
           "updated_at": {
             "type": "integer",
@@ -2821,7 +2820,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the group."
+            "description": "Timestamp for the creation of the group."
           },
           "updated_at": {
             "type": "integer",
@@ -2953,7 +2952,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the category."
+            "description": "Timestamp for the creation of the coupon."
           },
           "updated_at": {
             "type": "integer",
@@ -3113,7 +3112,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the category."
+            "description": "Timestamp for the creation of the coupon."
           },
           "updated_at": {
             "type": "integer",
@@ -3451,7 +3450,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the product."
+            "description": "Timestamp for the creation of the feedback."
           },
           "updated_at": {
             "type": "integer",
@@ -3684,7 +3683,9 @@
                 },
                 "created_at": {
                   "type": "string",
-                  "example": "1970-01-01 00:00:00"
+                  "format": "date-time",
+                  "example": "1975-02-28 00:00:00",
+                  "description": "Datetime for what the resource was created."
                 }
               }
             }
@@ -3799,7 +3800,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the product."
+            "description": "Timestamp for the creation of the feedback."
           },
           "updated_at": {
             "type": "integer",
@@ -3905,7 +3906,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the product."
+            "description": "Timestamp for the creation of the feedback."
           },
           "updated_at": {
             "type": "integer",
@@ -4039,7 +4040,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the product."
+            "description": "Timestamp for the creation of the product."
           },
           "updated_at": {
             "type": "integer",
@@ -4423,7 +4424,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the product."
+            "description": "Timestamp for the creation of the product."
           },
           "updated_at": {
             "type": "integer",
@@ -4535,8 +4536,10 @@
                       "example": "Thank you for the feedback."
                     },
                     "created_at": {
-                      "type": "number",
-                      "example": 162857125819
+                      "type": "integer",
+                      "format": "timestamp",
+                      "example": 162857125819,
+                      "description": "Timestamp for the creation of the feedback."
                     },
                     "updated_at": {
                       "type": "number",
@@ -4656,7 +4659,9 @@
                 },
                 "created_at": {
                   "type": "string",
-                  "example": "1970-01-01 00:00:00"
+                  "format": "date-time",
+                  "example": "1975-02-28 00:00:00",
+                  "description": "Datetime for the creation of the resource"
                 }
               }
             }
@@ -5204,7 +5209,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the product."
+            "description": "Timestamp for the creation of the product."
           },
           "updated_at": {
             "type": "integer",
@@ -5312,8 +5317,10 @@
                       "example": "Thank you for the feedback."
                     },
                     "created_at": {
-                      "type": "number",
-                      "example": 162857125819
+                      "type": "integer",
+                      "format": "timestamp",
+                      "example": 162857125819,
+                      "description": "Timestamp for the creation of the feedback."
                     },
                     "updated_at": {
                       "type": "number",
@@ -5433,7 +5440,9 @@
                 },
                 "created_at": {
                   "type": "string",
-                  "example": "1970-01-01 00:00:00"
+                  "format": "date-time",
+                  "example": "1975-02-28 00:00:00",
+                  "description": "Datetime for the creation of the resource"
                 }
               }
             }
@@ -5445,7 +5454,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "example": "cst_8761b2g7atm91892",
+            "example": "cst_sample37atm91892",
             "description": "Customer ID"
           },
           "shop_id": {
@@ -5519,8 +5528,11 @@
             "description": "The currency the customer gets reimbursed in for the affiliate program"
           },
           "created_at": {
-            "type": "number",
-            "example": "Italy"
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the customer."
+            }
           }
         }
       },
@@ -5661,8 +5673,8 @@
           "created_at": {
             "type": "integer",
             "format": "timestamp",
-            "description": "When this subscription was created.",
-            "example": 1641314317
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the subscription."
           },
           "updated_at": {
             "type": "integer",
@@ -5881,8 +5893,8 @@
           "created_at": {
             "type": "integer",
             "format": "timestamp",
-            "description": "When this subscription was created.",
-            "example": 1641314317
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the subscription."
           },
           "updated_at": {
             "type": "integer",
@@ -6618,7 +6630,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the blacklist."
+            "description": "Timestamp for the creation of the invoice."
           },
           "gateway_updated_at": {
             "type": "integer",
@@ -7190,7 +7202,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the blacklist."
+            "description": "Timestamp for the creation of the invoice."
           },
           "updated_at": {
             "type": "integer",
@@ -7268,7 +7280,7 @@
                     "type": "integer",
                     "format": "timestamp",
                     "example": 162857125819,
-                    "description": "Creation timstamp of the resource."
+                    "description": "Creation date of the invoice."
                   },
                   "updated_at": {
                     "type": "integer",
@@ -7817,7 +7829,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation timestamp of the blacklist."
+            "description": "Timestamp for the creation of the invoice."
           },
           "updated_at": {
             "type": "integer",
@@ -7881,8 +7893,9 @@
               },
               "created_at": {
                 "type": "integer",
-                "example": 1640741003,
-                "description": "When the transaction was broadcasted."
+                "format": "timestamp",
+                "example": 162857125819,
+                "description": "Timestamp for when the transaction was broadcast."
               }
             },
             "description": "If the payout for this invoice is SCHEDULED and not INSTANT and a cryptocurrency gateway is used, once the payout has been sent this field will contain additional info on it."
@@ -7959,7 +7972,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the query."
+            "description": "Timestamp for the creation of the query."
           },
           "updated_at": {
             "type": "integer",
@@ -8045,7 +8058,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the query."
+            "description": "Timestamp for the creation of the query."
           },
           "updated_at": {
             "type": "integer",
@@ -8081,7 +8094,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "When the message was sent."
+            "description": "Timestamp for when the message was sent."
           }
         }
       },
@@ -8111,8 +8124,9 @@
           },
           "created_at": {
             "type": "integer",
-            "example": 1640777734,
-            "description": "Crypto transaction reception date."
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the crypto transaction reception date"
           },
           "updated_at": {
             "type": "integer",
@@ -8339,8 +8353,9 @@
               },
               "created_at": {
                 "type": "integer",
+                "format": "timestamp",
                 "example": 162857125819,
-                "description": "AML transaction creation date."
+                "description": "Timestamp for the AML transaction creation date"
               }
             }
           }
@@ -8730,8 +8745,9 @@
           },
           "created_at": {
             "type": "integer",
+            "format": "timestamp",
             "example": 162857125819,
-            "description": "AML transaction creation date."
+            "description": "Timestamp for the AML transaction creation date."
           }
         }
       },
@@ -8771,8 +8787,9 @@
           },
           "created_at": {
             "type": "integer",
-            "example": 1640777796,
-            "description": "Status change date."
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the status change date."
           }
         }
       },
@@ -8837,7 +8854,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Request sent date."
+            "description": "Timestamp for the request sent date."
           },
           "payload": {
             "type": "string",
@@ -9451,7 +9468,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "Creation date of the dispute."
+            "description": "Timestamp for the creation of the dispute."
           },
           "updated_at": {
             "type": "integer",
@@ -9483,7 +9500,7 @@
             "type": "integer",
             "format": "timestamp",
             "example": 162857125819,
-            "description": "When the message was sent."
+            "description": "Timestamp for when the message was sent"
           }
         }
       },
@@ -9541,7 +9558,7 @@
           "created_at": {
             "type": "string",
             "format": "date-time",
-            "example": "1970-01-01 00:00:00",
+            "example": "1975-02-28 00:00:00",
             "description": "Creation date of the license."
           },
           "updated_at": {
@@ -9898,12 +9915,13 @@
             "description": "The allowance of the approved address."
           },
           "updated_at": {
-            "type": "number",
+            "type": "integer",
             "example": 162857125819,
             "description": "Timestamp, available if the approved address has been updated."
           },
           "created_at": {
-            "type": "number",
+            "type": "integer",
+            "format": "timestamp",
             "example": 162857125819,
             "description": "Timestamp, available if the approved address has been created."
           }
@@ -10158,7 +10176,9 @@
           },
           "created_at": {
             "type": "integer",
-            "example": 162857125819
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the image."
           }
         }
       }
