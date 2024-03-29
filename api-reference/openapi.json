@@ -4558,11 +4558,11 @@
           },
           "image_storage": {
             "type": "string",
-            "example": null
+            "example": "PRODUCTS",
+            "description": "Where the image is stored in Sellix's self-hosted CDN."
           },
           "cloudflare_image_id": {
-            "type": "string",
-            "example": "sample-c4f1-4f7c-9a1d-89120ed0c800"
+            "$ref": "#/components/schemas/cloudflare_image_id"
           },
           "feedback": {
             "type": "object",
@@ -5053,18 +5053,19 @@
           "price": {
             "type": "number",
             "format": "double",
-            "example": "5.00",
+            "example": 5.00,
             "description": "Product price."
           },
           "price_display": {
             "type": "number",
             "format": "double",
-            "example": "5.00",
+            "example": 5.00,
             "description": "Product price in currency."
           },
           "price_discount": {
             "type": "number",
-            "example": "0"
+            "format": "double",
+            "example": 1.00
           },
           "affiliate_revenue_percent": {
             "type": "number",
@@ -5082,7 +5083,8 @@
             "description": "Product description."
           },
           "licensing_enabled": {
-            "type": "number", 
+            "type": "integer",
+            "enum": [0,1], 
             "example": 1,
             "description": "Whether product licenses are generated on successful payments"
           },
@@ -5092,9 +5094,59 @@
             "description": "Amount in days that licenses will be valid for"
           },
           "image_attachment": {
-            "type": "string",
-            "description": "DEPRECATED: Unique id of the image attachment for this product.",
-            "example": ""
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "uniqid": {
+                "type": "string",
+                "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
+              },
+              "cloudflare_image_id": {
+                "$ref": "#/components/schemas/cloudflare_image_id"
+              },
+              "storage": {
+                "type": "string",
+                "enum": ["PRODUCTS"],
+                "example": "PRODUCTS"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["IMAGE"],
+                "example": "IMAGE"
+              },
+              "name": {
+                "type": "string",
+                "example": "sample.png"
+              },
+              "original_name": {
+                "type": "string",
+                "example": "file.png"
+              },
+              "extension": {
+                "type": "string",
+                "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
+                "example": "png"
+              },
+              "shop_id": {
+                "type": "integer",
+                "example": 987,
+                "description": "The shop ID to which this resource belongs."
+              },
+              "product_id": {
+                "type": "string",
+                "example": "sample29a0e39d"
+              },
+              "size": {
+                "type": "integer",
+                "example": 987
+              },
+              "created_at": {
+                "type": "integer",
+                "example": 162857125819
+              }
+            }
           },
           "file_attachment": {
             "type": "string",
@@ -5245,6 +5297,7 @@
           },
           "delivery_time": {
             "type": "integer",
+            "format": "timestamp",
             "example": 162857125819,
             "description": "The timestamp for when the invoice was delivered"
           },
@@ -5268,8 +5321,9 @@
             "example": null
           },
           "bestseller": {
-            "type": "number",
-            "example": "0"
+            "type": "integer",
+            "example": "0",
+            "description": "DEPRECATED"
           },
           "sort_priority": {
             "type": "integer",
@@ -5343,37 +5397,102 @@
           },
           "updated_by": {
             "type": "integer",
+            "format": "timestamp",
             "example": 987,
             "description": "User ID, available if the product has been edited."
           },
           "marketplace_category_id": {
             "type": "string",
-            "example": "0"
+            "example": null,
+            "description": "The category ID the product is a part of"
           },
           "telegram_group_id": {
             "type": "string",
-            "example": "none"
+            "example": null,
+            "description": "The Telegram group ID"
           },
           "telegram_integration": {
-            "type": "number",
-            "example": "0"
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the Telegram integration is enabled"
           },
           "telegram_optional": {
-            "type": "number",
-            "example": "0"
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the Telegram integration is optional"
           },
           "image_name": {
             "type": "string",
-            "example": "null",
+            "example": "SellixImageName.png",
             "description": "DEPRECATED: The name of the product image with the file type"
           },
           "image_storage": {
             "type": "string",
-            "example": null
+            "example": "PRODUCTS",
+            "description": "Where the image is stored in Sellix's self-hosted CDN."
           },
           "cloudflare_image_id": {
-            "type": "string",
-            "example": "sample-c4f1-4f7c-9a1d-89120ed0c800"
+            "$ref": "#/components/schemas/cloudflare_image_id"
+          },
+          "image_attachments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
+                },
+                "cloudflare_image_id": {
+                  "$ref": "#/components/schemas/cloudflare_image_id"
+                },
+                "storage": {
+                  "type": "string",
+                  "enum": ["PRODUCTS"],
+                  "example": "PRODUCTS"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["IMAGE"],
+                  "example": "IMAGE"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "sample.png"
+                },
+                "original_name": {
+                  "type": "string",
+                  "example": "file.png"
+                },
+                "extension": {
+                  "type": "string",
+                  "enum": ["png", "webp", "jpg", "jpeg", "avif", "gif"],
+                  "example": "png"
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
+                },
+                "product_id": {
+                  "type": "string",
+                  "example": "sample29a0e39d"
+                },
+                "size": {
+                  "type": "integer",
+                  "example": 987
+                },
+                "created_at": {
+                  "type": "integer",
+                  "example": 162857125819
+                }
+              }
+            }
           },
           "feedback": {
             "type": "object",
