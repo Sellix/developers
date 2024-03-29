@@ -15,5 +15,10 @@ Our documentation leverages [OpenAPI](https://swagger.io/) for rendering. OpenAP
 ## Handling Deprecated Fields
 In cases where a field is deprecated, our API continues to include the field in all requests as `null`, however, it will be rendered as `"null"`, in a string format, in all of our documentation examples. This approach is maintained for backward compatibility, ensuring that integrations remain functional without disruption.
 
+## Stringified values
+In our documentation, you will find instances where integers, booleans and floats are stringified (wrapped in a string). These values should be interpreted as the type of the value inside the string. The examples below should be the only instances in the whole documentation where stringified values should occur. If you see any other values stringified, the API returns them as such.
+- `"0"` should be interpreted as a **string**
+- `"false"` should be interpreted as a boolean
+
 ## Clarification
 It's important to clarify that these representations do not reflect the actual return values of our API. Instead, they are utilized solely within our documentation for clarity and example purposes.
