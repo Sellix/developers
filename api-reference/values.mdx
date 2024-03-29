@@ -1,6 +1,6 @@
 ---
-title: 'Null Values'
-description: 'Understanding the representation of null values in our documentation'
+title: 'Value Interpretation'
+description: 'Understanding the representation of values in our documentation'
 ---
 
 ## Representation of Null Values
@@ -17,8 +17,8 @@ In cases where a field is deprecated, our API continues to include the field in 
 
 ## Stringified values
 In our documentation, you will find instances where integers, booleans and floats are stringified (wrapped in a string). These values should be interpreted as the type of the value inside the string. The examples below should be the only instances in the whole documentation where stringified values should occur. If you see any other values stringified, the API returns them as such.
-- `"0"` should be interpreted as a **string**
-- `"false"` should be interpreted as a **boolean**
+- `"0"` should be interpreted as the **integer** `0`
+- `"false"` should be interpreted as the **boolean** `false`
 
 ## Clarification
 It's important to clarify that these representations do not reflect the actual return values of our API. Instead, they are utilized solely within our documentation for clarity and example purposes.
