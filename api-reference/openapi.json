@@ -5532,6 +5532,17 @@
             "format": "timestamp",
             "example": 162857125819,
             "description": "Timestamp for the creation of the customer."
+          },
+          "subscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/subscriptionListing"
+            }
+          },
+          "invoices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/miniInvoice"
             }
           }
         }
