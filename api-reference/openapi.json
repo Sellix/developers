@@ -3247,8 +3247,7 @@
                 "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
               },
               "cloudflare_image_id": {
-                "type": "string",
-                "example": "samplexx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                "$ref": "#/components/schemas/cloudflare_image_id"
               },
               "storage": {
                 "type": "string",
@@ -3563,8 +3562,7 @@
                   "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
                 },
                 "cloudflare_image_id": {
-                  "type": "string",
-                  "example": "samplexx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                  "$ref": "#/components/schemas/cloudflare_image_id"
                 },
                 "storage": {
                   "type": "string",
@@ -4892,8 +4890,7 @@
                 "example": "sample2b21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7"
               },
               "cloudflare_image_id": {
-                "type": "string",
-                "example": "samplexx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                "$ref": "#/components/schemas/cloudflare_image_id"
               },
               "storage": {
                 "type": "string",
