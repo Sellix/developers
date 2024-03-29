@@ -3190,7 +3190,7 @@
             "$ref": "#/components/schemas/currency"
           },
           "pay_what_you_want": {
-            "type": "number",
+            "type": "integer",
             "example": 1,
             "description": "Whether or not pay-what-you-want pricing is enabled."
           },
@@ -3208,7 +3208,8 @@
           },
           "price_discount": {
             "type": "number",
-            "example": "0"
+            "example": "0",
+            "description": "The discount price on the purchased goods."
           },
           "affiliate_revenue_percent": {
             "type": "number",
@@ -4045,7 +4046,8 @@
           },
           "price_discount": {
             "type": "number",
-            "example": "0"
+            "example": "0",
+            "description": "The discount price on the purchased goods."
           },
           "currency": {
             "$ref": "#/components/schemas/currency"
@@ -4178,7 +4180,7 @@
         "properties": {
           "id": {
             "type": "number",
-            "example": "123",
+            "example": 987,
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "uniqid": {
@@ -4230,7 +4232,7 @@
             "$ref": "#/components/schemas/currency"
           },
           "pay_what_you_want": {
-            "type": "number",
+            "type": "integer",
             "enum": [0, 1],
             "example": 1,
             "description": "Whether or not pay-what-you-want pricing is enabled."
@@ -4238,18 +4240,20 @@
           "price": {
             "type": "number",
             "format": "double",
-            "example": "5.00",
+            "example": 4.00,
             "description": "Product price."
           },
           "price_display": {
             "type": "number",
             "format": "double",
-            "example": "5.00",
+            "example": 5.00,
             "description": "Product price in currency."
           },
           "price_discount": {
             "type": "number",
-            "example": "0"
+            "format": "double",
+            "example": 1.00,
+            "description": "The discount price on the purchased goods."
           },
           "affiliate_revenue_percent": {
             "type": "number",
@@ -4267,7 +4271,7 @@
             "description": "Product description."
           },
           "licensing_enabled": {
-            "type": "number", 
+            "type": "integer", 
             "enum": [0, 1],
             "example": 1,
             "description": "Whether product licenses are generated on successful payments"
@@ -4357,19 +4361,19 @@
             "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
           },
           "discord_integration": {
-            "type": "number",
+            "type": "integer",
             "enum": [0, 1],
             "example": 1,
             "description": "Whether or not the discord integeration is enabled for this product."
           },
           "discord_optional": {
-            "type": "number",
+            "type": "integer",
             "enum": [0, 1],
             "example": 1,
             "description": "Whether or not the discord integration is optional."
           },
           "discord_set_role": {
-            "type": "number",
+            "type": "integer",
             "enum": [0, 1],
             "example": 1,
             "description": "Whether to give users a role when added to the discord server."
@@ -4385,7 +4389,7 @@
             "description": "The role to give users when added by the discord integration."
           },
           "discord_remove_role": {
-            "type": "number",
+            "type": "integer",
             "enum": [0, 1],
             "example": "0",
             "description": "Whether to remove a role from the user when added to the discord server."
@@ -4829,7 +4833,7 @@
             "example": "dark"
           },
           "dark_mode": {
-            "type": "number",
+            "type": "integer",
             "enum": [0, 1],
             "example": 1
           },
@@ -4991,7 +4995,7 @@
         "properties": {
           "id": {
             "type": "number",
-            "example": "123",
+            "example": 987,
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "uniqid": {
@@ -5043,7 +5047,7 @@
             "$ref": "#/components/schemas/currency"
           },
           "pay_what_you_want": {
-            "type": "number",
+            "type": "integer",
             "example": 1,
             "description": "Whether or not pay-what-you-want pricing is enabled."
           },
@@ -5062,7 +5066,8 @@
           "price_discount": {
             "type": "number",
             "format": "double",
-            "example": 1.00
+            "example": 1.00,
+            "description": "The discount price on the purchased goods."
           },
           "affiliate_revenue_percent": {
             "type": "number",
@@ -7600,7 +7605,7 @@
             "description": "What Sellix theme the shop is set to."
           },
           "dark_mode": {
-            "type": "number",
+            "type": "integer",
             "enum": [0, 1],
             "example": 1,
             "description": "1 if darkmode is enabled, 0 if it is disabled."
