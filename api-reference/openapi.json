@@ -760,16 +760,16 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/couponCreated"
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },  
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
             "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -892,14 +892,14 @@
           "200": {
             "$ref": "#/components/responses/couponUpdated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
           },
           "403": {
             "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -989,7 +989,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/feedbackReply"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1567,7 +1567,7 @@
             "$ref": "#/components/responses/403"
           },
           "404": {
-            "$ref": "#/components/responses/queryNotFound"
+            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -2121,7 +2121,7 @@
         }
       }
     },
-    "/customers/{id}": {
+    "/customers/{uniqid}": {
       "get": {
         "tags": [
           "Customers"
@@ -2378,7 +2378,7 @@
         }
       }
     },
-    "/subscriptions/{id}": {
+    "/subscriptions/{uniqid}": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -10221,7 +10221,12 @@
                 },
                 "data": {
                   "type": "object",
-                  "example": null
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
                 },
                 "error": {
                   "type": "string",
@@ -10229,7 +10234,39 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "<success-message>"
+                  "example": "<resource> Created Successfully"
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "<error-message>"
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -10329,7 +10366,7 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "NOT_FOUND"
+                  "example": "<resource> Not Found"
                 },
                 "message": {
                   "type": "string",
@@ -10957,44 +10994,6 @@
           }
         }
       },
-      "couponCreated": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "uniqid": {
-                      "type": "string",
-                      "description": "The ID of the new coupon",
-                      "example": "sample29a0e39d"
-                    }
-                  }
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Coupon Created Successfully."
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
       "couponUpdated": {
         "description": "resource retrieved",
         "content": {
@@ -11161,6 +11160,38 @@
                 "message": {
                   "type": "string",
                   "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "feedbackReply": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Feedback Replied Successfully."
                 },
                 "env": {
                   "type": "string",
@@ -11560,38 +11591,6 @@
                 "error": {
                   "type": "string",
                   "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "queryNotFound": {
-        "description": "Query Not Found",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 404
-                },
-                "data": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
-                  "type": "string",
-                  "example": "Query Not Found"
                 },
                 "message": {
                   "type": "string",
