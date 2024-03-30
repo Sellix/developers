@@ -77,6 +77,9 @@
         "description": "List all the blacklists created on the current shop.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/page"
           }
         ],
@@ -95,6 +98,11 @@
         ],
         "operationId": "createBlacklist",
         "description": "Create a blacklist",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "requestBody": {
           "description": "blacklist JSON to be created",
           "required": true,
@@ -154,6 +162,9 @@
         "description": "Get a specific blacklist.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -177,6 +188,9 @@
         "description": "Delete a blacklist.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -196,6 +210,9 @@
         "operationId": "updateBlacklist",
         "description": "Update a blacklist",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -255,6 +272,9 @@
         "description": "List all the whitelists created on the current shop.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/page"
           }
         ],
@@ -273,6 +293,11 @@
         ],
         "operationId": "createWhitelist",
         "description": "Create a whitelist",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "requestBody": {
           "description": "whitelist JSON to be created",
           "required": true,
@@ -332,6 +357,9 @@
         "description": "Get a specific whitelist.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -355,6 +383,9 @@
         "description": "Delete a whitelist.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -374,6 +405,9 @@
         "operationId": "updateWhitelist",
         "description": "Update a whitelist",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -433,6 +467,9 @@
         "description": "List all the categories created on the current shop.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/page"
           }
         ],
@@ -451,6 +488,11 @@
         ],
         "operationId": "createCategory",
         "description": "Create a category",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "requestBody": {
           "description": "category JSON to be created",
           "required": true,
@@ -519,6 +561,9 @@
         "description": "Get a specific category.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -542,6 +587,9 @@
         "description": "Delete a category.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -561,6 +609,9 @@
         "operationId": "updateCategory",
         "description": "Update a category",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -633,6 +684,9 @@
         "description": "List all the coupons created on the current shop.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/page"
           }
         ],
@@ -651,6 +705,11 @@
         ],
         "operationId": "createCoupon",
         "description": "Create a coupon",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "requestBody": {
           "description": "coupon JSON to be created",
           "required": true,
@@ -731,6 +790,9 @@
         "description": "Get a specific coupon.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -753,6 +815,9 @@
         "operationId": "deleteCoupon",
         "description": "Delete a coupon.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -824,6 +889,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -849,6 +917,9 @@
         "description": "List the feedback received on the current shop.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/page"
           }
         ],
@@ -870,6 +941,9 @@
         "operationId": "getFeedback",
         "description": "Get a specific feedback.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -916,6 +990,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -938,6 +1015,9 @@
         "description": "List all the orders created on the current shop.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/page"
           }
         ],
@@ -959,6 +1039,9 @@
         "operationId": "getOrder",
         "description": "Get a specific order.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -985,6 +1068,9 @@
         "description": "Issue a replacement for a specific order.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -1005,11 +1091,6 @@
         ],
         "operationId": "updateOrder",
         "description": "Update information for a specific order.",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/uniqid"
-          }
-        ],
         "requestBody": {
           "description": "order information to be updated in JSON format",
           "required": true,
@@ -1156,7 +1237,15 @@
               }
             }
           }
-        },
+        },        
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/uniqid"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/invoiceUpdated"
@@ -1177,14 +1266,6 @@
         ],
         "operationId": "updateOrder",
         "description": "Update custom_field information for a specific order.",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/uniqid"
-          },
-          {
-            "$ref": "#/components/parameters/custom_fields"
-          }
-        ],
         "requestBody": {
           "description": "order information to be updated in JSON format",
           "required": true,
@@ -1331,7 +1412,18 @@
               }
             }
           }
-        },
+        },        
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/uniqid"
+          },
+          {
+            "$ref": "#/components/parameters/custom_fields"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/invoiceUpdated"
@@ -1353,6 +1445,9 @@
         "operationId": "getProducts",
         "description": "List all the products created on the current shop.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/page"
           }
@@ -1548,6 +1643,11 @@
             }
           }
         },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/productCreated"
@@ -1569,6 +1669,9 @@
         "operationId": "getProduct",
         "description": "Get a specific product.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -1593,6 +1696,9 @@
         "description": "Delete a product.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -1612,6 +1718,9 @@
         "operationId": "updateProduct",
         "description": "Update a product",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -1808,6 +1917,9 @@
         "description": "List all the queries created on the current shop.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/page"
           }
         ],
@@ -1829,6 +1941,9 @@
         "operationId": "getQuery",
         "description": "Get a specific query.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -1875,6 +1990,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -1900,6 +2018,9 @@
         "description": "Close a query.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -1921,6 +2042,9 @@
         "operationId": "reopenQuery",
         "description": "Reopen a closed query.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -2199,6 +2323,11 @@
             }
           }
         },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/payment"
@@ -2221,6 +2350,9 @@
         "description": "Void a payment.",
         "parameters": [
           {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
             "$ref": "#/components/parameters/uniqid"
           }
         ],
@@ -2240,6 +2372,9 @@
         "operationId": "completePayment",
         "description": "Flag an invoice as paid and process it, sending the purchased product to the customer.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/uniqid"
           }
@@ -2265,6 +2400,9 @@
         "operationId": "getCustomers",
         "description": "List all the customers created on the current shop.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/page"
           }
@@ -2357,6 +2495,11 @@
             }
           }
         },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/customerCreated"
@@ -2378,6 +2521,9 @@
         "operationId": "getCustomer",
         "description": "Get a specific customer.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/id"
           }
@@ -2401,6 +2547,9 @@
         "operationId": "updateCustomer",
         "description": "Update a customer",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/id"
           }
@@ -2494,6 +2643,9 @@
         "operationId": "getSubscriptions",
         "description": "List all the subscriptions created on the current shop.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/page"
           }
@@ -2604,6 +2756,11 @@
             }
           }
         },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/subscriptionInvoiceCreated"
@@ -2625,6 +2782,9 @@
         "operationId": "getSubscription",
         "description": "Get a specific subscription.",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/id"
           }
@@ -2648,6 +2808,9 @@
         "operationId": "deleteSubscription",
         "description": "Cancel a subscription",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
           {
             "$ref": "#/components/parameters/id"
           }
@@ -2702,6 +2865,11 @@
             }
           }
         },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/license"
@@ -2754,6 +2922,11 @@
             }
           }
         },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/license"
@@ -10524,6 +10697,16 @@
         "required": false,
         "example": 1,
         "description": "If pagination is desired, the page to fetch of the response"
+      },
+      "merchant": {
+        "in": "header",
+        "name": "X-Sellix-Merchant",
+        "schema": {
+          "type": "string"
+        },
+        "required": false,
+        "example": "Sellix",
+        "description": "The name of the store to perform actions on via the API"
       },
       "custom_fields": {
         "in": "query",
