@@ -2164,7 +2164,7 @@
         }
       }
     },
-    "/customers/{uniqid}": {
+    "/customers/{id}": {
       "get": {
         "tags": [
           "Customers"
@@ -2406,7 +2406,7 @@
         }
       }
     },
-    "/subscriptions/{uniqid}": {
+    "/subscriptions/{id}": {
       "get": {
         "tags": [
           "Subscriptions"
