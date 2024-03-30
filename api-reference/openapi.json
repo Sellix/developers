@@ -81,12 +81,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -137,14 +131,11 @@
           "200": {
             "$ref": "#/components/responses/blacklistCreated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -168,9 +159,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
           "404": {
             "$ref": "#/components/responses/404"
           }
@@ -193,12 +181,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -250,14 +232,11 @@
           "200": {
             "$ref": "#/components/responses/blacklistUpdated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -275,12 +254,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -331,14 +304,11 @@
           "200": {
             "$ref": "#/components/responses/whitelistCreated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -362,9 +332,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
           "404": {
             "$ref": "#/components/responses/404"
           }
@@ -387,12 +354,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -444,14 +405,11 @@
           "200": {
             "$ref": "#/components/responses/whitelistUpdated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -469,12 +427,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -534,14 +486,11 @@
           "200": {
             "$ref": "#/components/responses/categoryCreated"
           },
+          "400": {
+            "$ref": "#/components/responses/categoryError"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -565,9 +514,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
           "404": {
             "$ref": "#/components/responses/404"
           }
@@ -590,12 +536,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -660,14 +600,11 @@
           "200": {
             "$ref": "#/components/responses/categoryUpdated"
           },
+          "400": {
+            "$ref": "#/components/responses/categoryError"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -685,12 +622,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -767,9 +698,6 @@
           },  
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           }
         }
       }
@@ -793,9 +721,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
           "404": {
             "$ref": "#/components/responses/404"
           }
@@ -818,12 +743,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -897,9 +816,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           }
         }
       }
@@ -917,12 +833,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -945,9 +855,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           },
           "404": {
             "$ref": "#/components/responses/404"
@@ -993,12 +900,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1016,12 +917,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1045,9 +940,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
           "404": {
             "$ref": "#/components/responses/404"
           }
@@ -1067,12 +959,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -1262,14 +1148,11 @@
           "200": {
             "$ref": "#/components/responses/productCreated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1293,9 +1176,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
           "404": {
             "$ref": "#/components/responses/404"
           }
@@ -1318,12 +1198,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -1512,14 +1386,11 @@
           "200": {
             "$ref": "#/components/responses/productUpdated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1537,9 +1408,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           }
         }
       }
@@ -1562,9 +1430,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           },
           "404": {
             "$ref": "#/components/responses/404"
@@ -1613,9 +1478,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           }
         }
       }
@@ -1638,9 +1500,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           }
         }
       }
@@ -1663,9 +1522,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           }
         }
       }
@@ -1938,14 +1794,11 @@
           "200": {
             "$ref": "#/components/responses/payment"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1968,12 +1821,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -1992,14 +1839,11 @@
           "200": {
             "$ref": "#/components/responses/paymentCompleted"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -2017,12 +1861,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -2109,14 +1947,11 @@
           "200": {
             "$ref": "#/components/responses/customerCreated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -2139,9 +1974,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           },
           "404": {
             "$ref": "#/components/responses/404"
@@ -2231,14 +2063,11 @@
           "200": {
             "$ref": "#/components/responses/200"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -2256,12 +2085,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -2366,14 +2189,11 @@
           "200": {
             "$ref": "#/components/responses/subscriptionInvoiceCreated"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -2397,9 +2217,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
           "404": {
             "$ref": "#/components/responses/404"
           }
@@ -2422,12 +2239,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -2476,14 +2287,11 @@
           "200": {
             "$ref": "#/components/responses/license"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -2531,11 +2339,11 @@
           "200": {
             "$ref": "#/components/responses/license"
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
           },
           "404": {
             "$ref": "#/components/responses/404"
@@ -10835,6 +10643,38 @@
                 "message": {
                   "type": "string",
                   "example": "Category Created Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "categoryError": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Insert a valid Title."
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
                 },
                 "env": {
                   "type": "string",
