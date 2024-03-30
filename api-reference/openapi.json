@@ -946,6 +946,214 @@
         }
       }
     },
+    "/orders/replacement/{uniqid}": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "operationId": "replaceOrder",
+        "description": "Issue a replacement for a specific order.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/uniqid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/invoiceReplaced"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/orders/update/{uniqid}": {
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "operationId": "updateOrder",
+        "description": "Update information for a specific order.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/uniqid"
+          },
+          {
+            "name": "custom_fields",
+            "in": "query",
+            "required": false,
+            "description": "Any number of query parameters in the form of variable=value. Each query parameter represents a custom_field for the invoice.",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "description": "order information to be updated in JSON format",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "gateway": {
+                    "type": "string",
+                    "enum": [
+                      "PAYPAL",
+                      "STRIPE",
+                      "SKRILL",
+                      "PERFECT_MONEY",
+                      "CASH_APP",
+                      "BINANCE",
+                      "BITCOIN",
+                      "LITECOIN",
+                      "ETHEREUM",
+                      "BITCOIN_CASH",
+                      "NANO",
+                      "MONERO",
+                      "SOLANA",
+                      "RIPPLE",
+                      "BINANCE_COIN",
+                      "USDC:ERC20",
+                      "USDC:BEP20",
+                      "USDC:MATIC",
+                      "USDC:SOL",
+                      "USDT:ERC20",
+                      "USDT:BEP20",
+                      "USDT:MATIC",
+                      "USDT:SOL",
+                      "USDT:TRC20",
+                      "TRON",
+                      "BITCOIN_LN",
+                      "CONCORDIUM",
+                      "POLYGON",
+                      "PEPE:ERC20",
+                      "DAI:ERC20",
+                      "DAI:BEP20",
+                      "DAI:MATIC",
+                      "WETH:BEP20",
+                      "WETH:MATIC",
+                      "APE:ERC20",
+                      "APE:MATIC",
+                      "SHIB:ERC20",
+                      "SHIB:BEP20",
+                      "SHIB:MATIC",
+                      "USDC_NATIVE:MATIC",
+                      "DOGECOIN",
+                      "PYTH:SOL",
+                      "BONK:SOL",
+                      "JUP:SOL",
+                      "JITO:SOL",
+                      "WEN:SOL",
+                      "RENDER:SOL",
+                      "MOBILE:SOL",
+                      "HNT:SOL"
+                    ],
+                    "example": "STRIPE",
+                    "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page. If product_id is specified, the gateway must be on in the product's gateways array."
+                  },
+                  "paypal_apm": {
+                    "type": "string",
+                    "enum": [
+                      "bancontact",
+                      "eps",
+                      "trustly",
+                      "mercado",
+                      "paylater",
+                      "sepa",
+                      "venmo",
+                      "blik",
+                      "giropay",
+                      "ideal",
+                      "mybank",
+                      "sofort",
+                      "przelewy24",
+                      "credit"
+                    ],
+                    "example": null,
+                    "description": "If gateway is PAYPAL, a paypal_apm (PayPal Alternative Payment Method) can be specified. To retrieve the available PayPal APM for a specific customer session, please refer to the PayPal SDK using window.paypal.FUNDING and fundingSource to filter out available methods. You can also use our documentation on how to process white_label payments."
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Sellix",
+                    "description": "The name of the recipient for the order"
+                  },
+                  "surname": {
+                    "type": "string",
+                    "example": "SRL",
+                    "description": "The surname of the recipient for the order"
+                  },
+                  "address_line1": {
+                    "type": "string",
+                    "example": "Via del Monte 1",
+                    "description": "The address line of the the order"
+                  },
+                  "address_city": {
+                    "type": "string",
+                    "example": "Bologna",
+                    "description": "The city the address is located in"
+                  },
+                  "address_country": {
+                    "type": "string",
+                    "example": "IT",
+                    "description": "The ISO country code country the address is located in"
+                  },
+                  "address_postal_code": {
+                    "type": "string",
+                    "example": "40126",
+                    "description": "The zipcode for the address"
+                  },
+                  "address_state": {
+                    "type": "string",
+                    "example": "BO",
+                    "description": "The state the address is located"
+                  },
+                  "stripe_apm": {
+                    "type": "string",
+                    "enum": [
+                      "afterpay_clearpay",
+                      "alipay",
+                      "bancontact",
+                      "au_becs_debit",
+                      "boleto",
+                      "eps",
+                      "fpx",
+                      "giropay",
+                      "grabpay",
+                      "ideal",
+                      "klarna",
+                      "oxxo",
+                      "p24",
+                      "sofort",
+                      "wechat_pay"
+                    ],
+                    "example": null,
+                    "description": "Stripe Alternative Payment Method name, such as iDEAL, used if gateway is STRIPE."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/invoiceUpdated"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          }
+        }
+      }
+    },
     "/products": {
       "get": {
         "tags": [
@@ -5965,8 +6173,25 @@
           },
           "stripe_apm": {
             "type": "string",
+            "enum": [
+              "afterpay_clearpay",
+              "alipay",
+              "bancontact",
+              "au_becs_debit",
+              "boleto",
+              "eps",
+              "fpx",
+              "giropay",
+              "grabpay",
+              "ideal",
+              "klarna",
+              "oxxo",
+              "p24",
+              "sofort",
+              "wechat_pay"
+            ],
             "example": null,
-            "description": "PayPal Alternative Payment Method name, such as iDEAL, used if gateway is PAYPAL."
+            "description": "Stripe Alternative Payment Method name, such as iDEAL, used if gateway is STRIPE."
           },
           "quantity": {
             "type": "integer",
@@ -6705,8 +6930,25 @@
           },
           "stripe_apm": {
             "type": "string",
+            "enum": [
+              "afterpay_clearpay",
+              "alipay",
+              "bancontact",
+              "au_becs_debit",
+              "boleto",
+              "eps",
+              "fpx",
+              "giropay",
+              "grabpay",
+              "ideal",
+              "klarna",
+              "oxxo",
+              "p24",
+              "sofort",
+              "wechat_pay"
+            ],
             "example": null,
-            "description": "PayPal Alternative Payment Method name, such as iDEAL, used if gateway is PAYPAL."
+            "description": "Stripe Alternative Payment Method name, such as iDEAL, used if gateway is STRIPE."
           },
           "paypal_email": {
             "type": "string",
@@ -7261,11 +7503,59 @@
           "shop_walletconnect_id": {
             "example": null
           },
+          "original_developer_return_url": {
+            "type": "string",
+            "example": "/",
+            "description": "The original return url of the order."
+          },
           "rates_snapshot": {
-            "example": null
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 987,
+                "description": "ID of the resource."
+              },
+              "USD": {
+                "type": "string",
+                "example": "1.0000",
+                "description": "The rate in USD."
+              },
+              "CAD": {
+                "type": "string",
+                "example": "1.3542",
+                "description": "The rate in CAD."
+              },
+              "HKD": {
+                "type": "string",
+                "example": "7.8269",
+                "description": "The rate in HKD."
+              }
+            }
           },
           "void_times": {
-            "example": null
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "gateways": {
+                  "$ref": "#/components/schemas/gateways"
+                },
+                "conf": {
+                  "type": "object",
+                  "properties": {
+                    "void": {
+                      "type": "integer",
+                      "example": 86400
+                    },
+                    "wait_period": {
+                      "type": "object",
+                      "example": "null"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -10113,7 +10403,7 @@
                   "example": "production"
                 },
                 "log": {
-                  "type": "object",
+                  "type": "string",
                   "example": null
                 }
               }
@@ -11097,6 +11387,74 @@
       },
       "invoice": {
         "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "order": {
+                      "$ref": "#/components/schemas/invoice"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "invoiceReplaced": {
+        "description": "invoice replaced",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Invoice Replacement Issued Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "invoiceUpdated": {
+        "description": "invoice replaced",
         "content": {
           "application/json": {
             "schema": {

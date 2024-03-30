@@ -104,6 +104,8 @@
         "api-reference/payments/post-payments",
         "api-reference/payments/put-payments",
         "api-reference/orders/list-orders",
+        "api-reference/orders/replace-order",
+        "api-reference/orders/update-order",
         "api-reference/payments/delete-payments"
       ]
     },
