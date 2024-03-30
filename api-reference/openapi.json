@@ -10668,46 +10668,6 @@
       }
     },
     "parameters": {
-      "uniqid": {
-        "in": "path",
-        "name": "uniqid",
-        "schema": {
-          "type": "string"
-        },
-        "required": true,
-        "example": "sample29a0e39d",
-        "description": "Uniqid of the resource"
-      },
-      "id": {
-        "in": "path",
-        "name": "id",
-        "schema": {
-          "type": "string"
-        },
-        "required": true,
-        "example": "sample6978a0e39d",
-        "description": "ID of the resource"
-      },
-      "page": {
-        "in": "query",
-        "name": "page",
-        "schema": {
-          "type": "integer"
-        },
-        "required": false,
-        "example": 1,
-        "description": "If pagination is desired, the page to fetch of the response"
-      },
-      "merchant": {
-        "in": "header",
-        "name": "X-Sellix-Merchant",
-        "schema": {
-          "type": "string"
-        },
-        "required": false,
-        "example": "Sellix",
-        "description": "The name of the store to perform actions on via the API"
-      },
       "custom_fields": {
         "in": "query",
         "name": "custom_field_name",
@@ -10720,6 +10680,46 @@
         },
         "style": "form",
         "explode": true
+      },
+      "id": {
+        "in": "path",
+        "name": "id",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "example": "sample6978a0e39d",
+        "description": "ID of the resource"
+      },
+      "merchant": {
+        "in": "header",
+        "name": "X-Sellix-Merchant",
+        "schema": {
+          "type": "string"
+        },
+        "required": false,
+        "example": "Sellix",
+        "description": "The name of the store to perform actions on via the API"
+      },
+      "page": {
+        "in": "query",
+        "name": "page",
+        "schema": {
+          "type": "integer"
+        },
+        "required": false,
+        "example": 1,
+        "description": "If pagination is desired, the page to fetch of the response"
+      },
+      "uniqid": {
+        "in": "path",
+        "name": "uniqid",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "example": "sample29a0e39d",
+        "description": "Uniqid of the resource"
       }
     },
     "responses": {
