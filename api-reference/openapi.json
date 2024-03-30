@@ -10121,42 +10121,6 @@
           }
         }
       },
-      "403": {
-        "description": "FORBIDDEN",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 403
-                },
-                "data": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
-                  "type": "string",
-                  "example": "forbidden"
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                }
-              }
-            }
-          }
-        }
-      },
       "404": {
         "description": "NOT_FOUND",
         "content": {
