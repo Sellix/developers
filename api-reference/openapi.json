@@ -75,6 +75,11 @@
         ],
         "operationId": "getBlacklists",
         "description": "List all the blacklists created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/blacklistListing"
@@ -248,6 +253,11 @@
         ],
         "operationId": "getWhitelists",
         "description": "List all the whitelists created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/whitelistListing"
@@ -421,6 +431,11 @@
         ],
         "operationId": "getCategories",
         "description": "List all the categories created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/categoryListing"
@@ -616,6 +631,11 @@
         ],
         "operationId": "getCoupons",
         "description": "List all the coupons created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/couponListing"
@@ -827,6 +847,11 @@
         ],
         "operationId": "feedbackListing",
         "description": "List the feedback received on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/feedbackListing"
@@ -911,6 +936,11 @@
         ],
         "operationId": "getOrders",
         "description": "List all the orders created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/invoiceListing"
@@ -1322,6 +1352,11 @@
         ],
         "operationId": "getProducts",
         "description": "List all the products created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/productListing"
@@ -1771,6 +1806,11 @@
         ],
         "operationId": "getQueries",
         "description": "List all the queries created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/queryListing"
@@ -2224,6 +2264,11 @@
         ],
         "operationId": "getCustomers",
         "description": "List all the customers created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/customers"
@@ -2448,6 +2493,11 @@
         ],
         "operationId": "getSubscriptions",
         "description": "List all the subscriptions created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/subscriptions"
@@ -10464,6 +10514,16 @@
         "required": true,
         "example": "sample6978a0e39d",
         "description": "ID of the resource"
+      },
+      "page": {
+        "in": "query",
+        "name": "page",
+        "schema": {
+          "type": "integer"
+        },
+        "required": false,
+        "example": 1,
+        "description": "If pagination is desired, the page to fetch of the response"
       },
       "custom_fields": {
         "in": "query",
