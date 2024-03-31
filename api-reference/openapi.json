@@ -9284,17 +9284,20 @@
             "properties": {
               "url": {
                 "type": "string",
+                "example": "https://sellix.io/payment/sample-4caac117ca-abeb80",
                 "description": "Sellix hosted payment page."
               },
               "uniqid": {
                 "type": "string",
                 "format": "uuid",
+                "example": "sample-4caac117ca-abeb80",
                 "description": "Unique ID of the invoice created for the payment."
+              },
+              "url_branded": {
+                "type": "string",
+                "example": "https://storename.mysellix.io/invoice/sample-4caac117ca-abeb80",
+                "description": "Sellix hosted payment page with url unique to your shop."
               }
-            },
-            "example": {
-              "url": "https://sellix.io/payment/sample-4caac117ca-abeb80",
-              "uniqid": "sample-4caac117ca-abeb80"
             }
           },
           "error": {
@@ -9303,7 +9306,7 @@
           },
           "message": {
             "type": "string",
-            "example": "<success-message>"
+            "example": null
           },
           "env": {
             "type": "string",
@@ -13004,7 +13007,7 @@
                 "data": {
                   "type": "object",
                   "properties": {
-                    "group": {
+                    "groups": {
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/listedGroup"
@@ -13373,7 +13376,28 @@
                 },
                 "log": {
                   "type": "object",
-                  "example": null
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Invoice checkout completed"
+                    },
+                    "env": {
+                      "type": "string",
+                      "example": "production"
+                    }
+                  }
                 }
               }
             }
