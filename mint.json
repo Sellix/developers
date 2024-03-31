@@ -93,9 +93,9 @@
       ]
     },
     {
-      "group": "Sellix Pay",
+      "group": "Information",
       "pages": [
-        "api-reference/payments"
+        "api-reference/information/get-self"
       ]
     },
     {

@@ -65,6 +65,10 @@
     {
       "name": "Licenses",
       "description": "License endpoints"
+    },
+    {
+      "name": "Information",
+      "description": "Informative endpoints"
     }
   ],
   "paths": {
@@ -2942,6 +2946,28 @@
           }
         }
       }
+    },
+    "/self": {
+      "get": {
+        "tags": [
+          "Information"
+        ],
+        "operationId": "getSelf",
+        "description": "Get information about the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/shop"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
     }
   },
   "security": [
@@ -4768,7 +4794,7 @@
           },
           "youtube_link": {
             "type": "string",
-            "example": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "example": "https://www.youtube.com/example",
             "description": "The url for the YouTube video of the product"
           },
           "volume_discounts": {
@@ -7466,7 +7492,7 @@
           },
           "youtube_link": {
             "type": "string",
-            "example": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "example": "https://www.youtube.com/example",
             "description": "The url for the YouTube video of the product"
           },
           "volume_discounts": {
@@ -8996,7 +9022,7 @@
           },
           "youtube_link": {
             "type": "string",
-            "example": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "example": "https://www.youtube.com/example",
             "description": "The url for the YouTube video of the product"
           },
           "volume_discounts": {
@@ -10226,6 +10252,530 @@
             "items": {
               "$ref": "#/components/schemas/invoiceListing"
             }
+          }
+        }
+      },
+      "shop_info": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 987,
+            "description": "The ID of the shop"
+          },
+          "user_id": {
+            "type": "integer",
+            "example": 987,
+            "description": "The ID of the user who requested the shop info"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["DEFAULT"],
+            "example": "DEFAULT",
+            "description": "The type of the shop"
+          },
+          "name": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The name of the shop"
+          },
+          "avatar": {
+            "type": "string",
+            "example": "45ecddc105c6717eab77e499688b608437cd0de7fa2e8ced3af65f0648c94b4b",
+            "description": "The hash for the avatar"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "default_currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "available_currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "vat_percentage": {
+            "type": "string",
+            "example": "0.00",
+            "description": "The VAT percentage setup for the store"
+          },
+          "tax_configuration": {
+            "type": "string",
+            "example": "NONE",
+            "description": "The tax configuration for the shop"
+          },
+          "dashboard_feature": {
+            "type": "string",
+            "enum": ["API_CUSTOM", "EMBED", "PAYMENT_LINKS", "STORE", "POS", "PLUGINS", "UNSURE"],
+            "example": "STORE",
+            "description": "The organization mode set for the dashboard"
+          },
+          "display_tax_on_storefront": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "The tax percentage will be shown on the product cards of your storefront, and not on the checkout page and invoice PDF only."
+          },
+          "display_tax_custom_fields": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether the tax is displayed in custom fields"
+          }, 
+          "validation_only_for_companies": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Wheter or not VAT validation is only done for companies"
+          },
+          "validate_vat_number": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "If enabled, we will validate the Company VAT number to be sure it’s correct."
+          },
+          "prices_tax_inclusive": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not product pricing incldues the VAT"
+          },
+          "notify_trial_ending": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Send an email to your customers when the trial period is ending."
+          },
+          "notify_upcoming_renewal": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Send an email to your customers days before an upcoming renewal."
+          },
+          "notify_subscription_renewal_failure": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Send an email to your customers if a subscription renewal fails."
+          },
+          "order_emails": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop owner receives emails for orders"
+          },
+          "subscription_grace_period": {
+            "type": "integer",
+            "example": 172800,
+            "description": "In days, how much time should we wait before cancelling a subscription if no payment is completed."
+          },
+          "paypal_credit_card": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop accepts credit cards via PayPal"
+          },
+          "force_paypal_email_delivery": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop delivers products to the PayPal email when the gateway is PAYPAL"
+          },
+          "paypal_merchant_id": {
+            "type": "string",
+            "example": null,
+            "description": "The PayPal merchant ID of the PayPal account linked to the shop"
+          },
+          "binance_id": {
+            "type": "string",
+            "example": null,
+            "description": "The Binance ID of the Binance account linked to the shop"
+          },
+          "walletconnect_id": {
+            "type": "string",
+            "example": null,
+            "description": "The WalletConnect ID of the WalletConnect account linked to the shop"
+          },
+          "non_custodial_wallet": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop uses the Sellix non-custodial crypto wallet"
+          },
+          "dark_mode": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop has dark mode enabled"
+          },
+          "discord_link": {
+            "type": "string",
+            "example": "https://discord.gg/example",
+            "description": "The Discord server invite link for the shop"
+          },
+          "twitter_link": {
+            "type": "string",
+            "example": "https://twitter.com/example",
+            "description": "The link to the shop's Twitter account"
+          },
+          "instagram_link": {
+            "type": "string",
+            "example": "https://instagram.com/example",
+            "description": "The link to the shop's Instagram account"
+          },
+          "facebook_link": {
+            "type": "string",
+            "example": "https://facebook.com/example",
+            "description": "The link to the shop's Facebook account"
+          },
+          "telegram_link": {
+            "type": "string",
+            "example": "https://t.me/example",
+            "description": "The invite link to the shop's Telegram community"
+          },
+          "youtube_link": {
+            "type": "string",
+            "example": "https://youtube.com/example",
+            "description": "The link to the shop's YouTube channel"
+          },
+          "reddit_link": {
+            "type": "string",
+            "example": "https://reddit.com/example",
+            "description": "The link to the shop's SubReddit"
+          },
+          "tiktok_link": {
+            "type": "string",
+            "example": "https://tiktok.com/example",
+            "description": "The link to the shop's TikTok account"
+          },
+          "search_enabled": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop has dark mode enabled"
+          },
+          "sort_enabled": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop has product sorting enabled"
+          },
+          "cart_enabled": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop has the cart system enabled"
+          },
+          "cart_maximum_checkout": {
+            "type": "string",
+            "example": "10000.00",
+            "description": "Set the maximum amount, in your currency, for an order made through the Shopping Cart."
+          },
+          "hide_out_of_stock": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Automatically hide your products when out of stock."
+          },
+          "google_analytics_tracking_id": {
+            "type": "string",
+            "example": "**Terms of Service**\r\nFollow Sellix TOS",
+            "description": "The google analyticd tracking id the shop uses for analytics"
+          },
+          "crisp_website_id": {
+            "type": "string",
+            "example": null,
+            "description": "The crisp website id the shop uses for analytics"
+          },
+          "center_product_titles": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop's theme centers product titles"
+          },
+          "center_group_titles": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop's theme centers group titles"
+          },
+          "popup_message": {
+            "type": "string",
+            "example": "Example Popup Message",
+            "description": "This message will be shown to anyone who visits your site. Do not include your Terms of Service here."
+          },
+          "verified": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop is verified by Sellix"
+          },
+          "on_hold": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop is on hold"
+          },
+          "terms_of_service": {
+            "type": "string",
+            "example": "Terms of Service",
+            "description": "The terms of service for the shop in MDX"
+          },
+          "primary_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The primary color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "secondary_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The secondary color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "primary_font_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The primary font color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "secondary_font_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The secondary font color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "custom_embed": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop uses a custom embed theme. Value is null if no custom theme is used."
+          },
+          "custom_theme": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop uses a custom storefront theme. Value is null if no custom theme is used."
+          },
+          "font_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The font of the shop's custom storefront theme. Value is null if no custom theme is used."
+          },
+          "style_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The style of the shop's custom storefront theme. Value is null if no custom theme is used."
+          },
+          "embed_style_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The style of the shop's custom embed theme. Value is null if no custom theme is used."
+          },
+          "index_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The index of the shop's active custom storefront theme. Value is null if no custom theme is used."
+          },
+          "product_card_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The product_card of the shop's active custom storefront theme. Value is null if no custom theme is used."
+          },
+          "banner_custom_theme": {
+            "type": "object",
+            "example": null,
+            "description": "The storefront banner of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "footer_custom_theme": {
+            "type": "object",
+            "example": null,
+            "description": "The storefront footer of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "background_image_custom_theme": {
+            "type": "object",
+            "example": null,
+            "description": "The storefront background image of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "logo_custom_theme": {
+            "type": "object",
+            "example": null,
+            "description": "The storefront logo of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "header_custom_theme": {
+            "type": "object",
+            "example": null,
+            "description": "The storefront header of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "cards_in_row_custom_theme": {
+            "type": "integer",
+            "example": 4,
+            "description": "The amount of cards to display in a row on the storefront"
+          },
+          "cards_align_custom_theme": {
+            "type": "object",
+            "example": null,
+            "description": "Value is null if no custom theme is used."
+          },
+          "group_card_custom_theme": {
+            "type": "object",
+            "example": null,
+            "description": "Value is null if no custom theme is used."
+          },
+          "card_animation_custom_theme": {
+            "type": "object",
+            "example": null,
+            "description": "Value is null if no custom theme is used."
+          },
+          "light_font_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The light mode font color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "dark_font_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The dark mode font color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "light_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The light mode accent color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "dark_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The dark mode accent color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "border_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The border color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "button_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The button color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "thin_color_custom_theme": {
+            "type": "string",
+            "example": null,
+            "description": "The thin font color of the shop's custom theme. Value is null if no custom theme is used."
+          },
+          "sort_custom_theme": {
+            "type": "string",
+            "enum": ["DEFAULT", "PRICE", "STOCK", "NAME", "TYPE"],
+            "example": "DEFAULT",
+            "description": "The default sorting method for the storefront's custom theme"
+          },
+          "helpspace_client_id": {
+            "type": "string",
+            "example": null,
+            "description": "The helpspace client id of the helpspace account linked to the shop"
+          },
+          "helpspace_token": {
+            "type": "string",
+            "example": "null",
+            "description": "The helpspace token of the helpspace account linked to the shop"
+          },
+          "description_youtube_only": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Show only youtube video for invoice/product description."
+          },
+          "description_skip_default_image": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Skip Default Image for Product Description."
+          },
+          "hide_stock_counter": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "If enabled, the number of how many products are in stock will be removed, we will only show 'In Stock' or 'Out of Stock'."
+          },
+          "image_width": {
+            "type": "integer",
+            "example": 500,
+            "description": "The width of the storefront image"
+          },
+          "image_height": {
+            "type": "integer",
+            "example": 480,
+            "description": "The height of the storefront image"
+          },
+          "default_sort": {
+            "type": "string",
+            "enum": ["DEFAULT", "PRICE", "STOCK", "NAME", "TYPE"],
+            "example": "DEFAULT",
+            "description": "The default sorting method for the storefront"
+          },
+          "description_image": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop has a description image"
+          },
+          "hide_products_sold": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Hide the products sold counter on your storefront, only your average feedback will be displayed."
+          },
+          "service_date_from": {
+            "type": "string",
+            "enum": ["REGISTRATION_DATE", "FIRST_SALE"],
+            "example": "REGISTRATION_DATE",
+            "description": "Choose whether to display your business starting date from the day of your first sale or the day you have signed up to Sellix."
+          },
+          "cards_type": {
+            "type": "string",
+            "example": "BORDER_OUTLINE",
+            "description": "DEPRECATED: The name of the product image with the file type"
+          },
+          "setup_wizard": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop has completed the setup wizzard"
+          },
+          "setup_cryptocurrencies": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop has setup cryptocurrencies"
+          },
+          "notices_banner": {
+            "type": "string",
+            "example": "{\"notices\": []}",
+            "description": "The notices for the shop"
+          },
+          "affiliate_revenue_percent": {
+            "type": "integer",
+            "example": 10,
+            "description": "The percentage of each payment given to affiliates"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the subscription."
+          },
+          "image_name": {
+            "type": "string",
+            "example": "SellixImageName.png",
+            "description": "DEPRECATED: The name of the product image with the file type"
+          },
+          "image_storage": {
+            "type": "string",
+            "example": "PRODUCTS",
+            "description": "Where the image is stored in Sellix's self-hosted CDN."
+          },
+          "cloudflare_image_id": {
+            "$ref": "#/components/schemas/cloudflare_image_id"
+          },
+          "marketplace_verified": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop is a verified marketplace"
           }
         }
       },
@@ -12707,6 +13257,37 @@
                       "$ref": "#/components/schemas/license"
                     }
                   }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "shop": {
+        "description": "shop object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "$ref": "#/components/schemas/shop_info"
                 },
                 "error": {
                   "type": "string",
