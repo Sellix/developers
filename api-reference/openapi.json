@@ -774,7 +774,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/couponCreated"
           },
           "400": {
             "$ref": "#/components/responses/400"
@@ -11785,12 +11785,7 @@
                 },
                 "data": {
                   "type": "object",
-                  "properties": {
-                    "uniqid": {
-                      "type": "string",
-                      "example": "sample29a0e39d"
-                    }
-                  }
+                  "example": null
                 },
                 "error": {
                   "type": "string",
@@ -11798,7 +11793,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "<resource> Created Successfully"
+                  "example": "<success-message>"
                 },
                 "env": {
                   "type": "string",
@@ -12292,6 +12287,43 @@
                 "message": {
                   "type": "string",
                   "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "couponCreated": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Coupon Created Successfully."
                 },
                 "env": {
                   "type": "string",
