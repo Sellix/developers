@@ -2612,7 +2612,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/customers"
+            "$ref": "#/components/responses/customerListing"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2708,7 +2708,7 @@
             "$ref": "#/components/responses/customerCreated"
           },
           "400": {
-            "$ref": "#/components/responses/400"
+            "$ref": "#/components/responses/customerCreateError"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -2827,7 +2827,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/200"
+            "$ref": "#/components/responses/customerUpdated"
           },
           "400": {
             "$ref": "#/components/responses/400"
@@ -4729,6 +4729,92 @@
             "items": {
               "$ref": "#/components/schemas/miniInvoice"
             }
+          }
+        }
+      },
+      "customerListing": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "cst_sample37atm91892",
+            "description": "Customer ID"
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 987,
+            "description": "The shop ID to which this customer belongs."
+          },
+          "email": {
+            "type": "string",
+            "example": "sample@gmail.com",
+            "description": "Customer email"
+          },
+          "name": {
+            "type": "string",
+            "example": "James",
+            "description": "Customer name"
+          },
+          "surname": {
+            "type": "string",
+            "example": "Smith",
+            "description": "Customer surname"
+          },
+          "phone": {
+            "type": "string",
+            "example": 3287261000,
+            "description": "Customer phone"
+          },
+          "phone_country_code": {
+            "type": "string",
+            "example": "IT",
+            "description": "Customer phone country code"
+          },
+          "country_code": {
+            "type": "string",
+            "example": "IT",
+            "description": "Customer country code"
+          },
+          "street_address": {
+            "type": "string",
+            "example": "St. Rome 404",
+            "description": "Customer street address"
+          },
+          "additional_address_info": {
+            "type": "string",
+            "example": null,
+            "description": "Customer street address additional info"
+          },
+          "city": {
+            "type": "string",
+            "example": "Rome",
+            "description": "Customer city"
+          },
+          "postal_code": {
+            "type": "string",
+            "example": 987,
+            "description": "Customer postal code"
+          },
+          "state": {
+            "type": "string",
+            "example": "Italy",
+            "description": "Customer state"
+          },
+          "affiliate_revenue": {
+            "type": "string",
+            "example": "0.00",
+            "description": "Revenue customer has recieved from the affiliate program"
+          },
+          "affiliate_revenue_currency": {
+            "type": "string",
+            "example": "EUR",
+            "description": "The currency the customer gets reimbursed in for the affiliate program"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the customer."
           }
         }
       },
@@ -12457,10 +12543,10 @@
                 "data": {
                   "type": "object",
                   "properties": {
-                    "products": {
+                    "customers": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/customer"
+                        "$ref": "#/components/schemas/customerListing"
                       }
                     }
                   }
@@ -12546,6 +12632,38 @@
                 "error": {
                   "type": "string",
                   "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "customerCreateError": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Email, Name and Surname are required."
                 },
                 "message": {
                   "type": "string",
