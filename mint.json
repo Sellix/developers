@@ -182,6 +182,16 @@
       ]
     },
     {
+      "group": "Groups",
+      "pages": [
+        "api-reference/groups/get-group",
+        "api-reference/groups/post-groups",
+        "api-reference/groups/list-groups",
+        "api-reference/groups/put-groups",
+        "api-reference/groups/delete-groups"
+      ]
+    },
+    {
       "group": "Coupons",
       "pages": [
         "api-reference/coupons/get-coupon",

@@ -548,7 +548,7 @@
             "$ref": "#/components/responses/categoryCreated"
           },
           "400": {
-            "$ref": "#/components/responses/categoryError"
+            "$ref": "#/components/responses/invalidTitleError"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -671,7 +671,7 @@
             "$ref": "#/components/responses/categoryUpdated"
           },
           "400": {
-            "$ref": "#/components/responses/categoryError"
+            "$ref": "#/components/responses/invalidTitleError"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -1003,6 +1003,205 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/feedbackReply"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/groups": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "getGroups",
+        "description": "List all the groups created on the current shop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/groupListing"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "createGroup",
+        "description": "Create a group",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
+        "requestBody": {
+          "description": "group JSON to be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Software"
+                  },
+                  "unlisted": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "sort_priority": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "products_bound": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "sample8718521"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/groupCreated"
+          },
+          "400": {
+            "$ref": "#/components/responses/invalidTitleError"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/groups/{uniqid}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "getGroup",
+        "description": "Get a specific group.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/uniqid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/group"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "deleteGroups",
+        "description": "Delete a groups.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/uniqid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/groupDeleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "updateGroup",
+        "description": "Update a group",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/uniqid"
+          }
+        ],
+        "requestBody": {
+          "description": "group JSON to be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Software"
+                  },
+                  "unlisted": {
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "sort_priority": {
+                    "type": "integer",
+                    "example": 0
+                  },
+                  "products_bound": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "sample8718521"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/groupUpdated"
+          },
+          "400": {
+            "$ref": "#/components/responses/invalidTitleError"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3493,7 +3692,7 @@
           "updated_by": {
             "type": "integer",
             "example": 987,
-            "description": "User ID, available if the blacklist has been edited."
+            "description": "User ID of the user who updated the blaclist."
           }
         }
       },
@@ -3608,7 +3807,7 @@
           "updated_by": {
             "type": "integer",
             "example": 987,
-            "description": "User ID, available if the category has been edited."
+            "description": "User ID of the user who updated the category."
           },
           "products_bound": {
             "type": "array",
@@ -3625,7 +3824,7 @@
           "groups_bound": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/group"
+              "$ref": "#/components/schemas/miniGroup"
             },
             "description": "Array of groups."
           },
@@ -3677,7 +3876,7 @@
           },
           "image_attachment": {
             "type": "string",
-            "example": null,
+            "example": "null",
             "description": "DEPRECATED: Unique id of the image attachment for this product."
           },
           "description": {
@@ -3916,7 +4115,7 @@
           "updated_by": {
             "type": "integer",
             "example": 1,
-            "description": "User ID, available if the category has been edited."
+            "description": "User ID of the user who updated the coupon."
           },
           "products_bound": {
             "type": "array",
@@ -4076,7 +4275,7 @@
           "updated_by": {
             "type": "integer",
             "example": 1,
-            "description": "User ID, available if the category has been edited."
+            "description": "User ID of the user who updated the coupon."
           },
           "products_count": {
             "type": "integer",
@@ -5008,8 +5207,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the product has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the feedback."
           },
           "marketplace_category_id": {
             "type": "string",
@@ -5382,8 +5581,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the product has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the feedback."
           }
         }
       },
@@ -5712,12 +5911,14 @@
             "description": "Group title."
           },
           "image_attachment": {
-            "$ref": "#/components/schemas/image_attachment"
+            "type": "string",
+            "example": "50ab99797bd6b36f54089a7f6151c56e7a902be4bdaa4204e63961625bb9cb54",
+            "description": "DEPRECATED: Unique id of the image attachment for this product."
           },
           "unlisted": {
-            "type": "number",
-            "example": 1,
-            "description": "Whether or not the product is unlisted."
+            "type": "boolean",
+            "example": true,
+            "description": "Whether or not the group is unlisted."
           },
           "sort_priority": {
             "type": "number",
@@ -5736,15 +5937,106 @@
             "example": 162857125819,
             "description": "Date, available if the group has been edited."
           },
-          "category_id": {
-            "type": "string",
-            "example": "sample29a0e39d",
-            "description": "The category the group is a part of"
+          "updated_by": {
+            "type": "integer",
+            "example": 1,
+            "description": "User ID of the user who updated the group."
           },
-          "group_id": {
+          "products_bound": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/miniProduct"
+            }
+          },
+          "image_attachment_info": {
+            "$ref": "#/components/schemas/image_attachment"
+          },
+          "name": {
             "type": "string",
+            "example": "Sellix",
+            "description": "The name of the store the group is on."
+          }
+        }
+      },
+      "listedGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 987,
+            "description": "The ID of the resource"
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
             "example": "sample29a0e39d",
-            "description": "The unique identifyer of the current group"
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 987,
+            "description": "The unique identifyer for the shop."
+          },
+          "title": {
+            "type": "string",
+            "example": "Digital goods to download",
+            "description": "Group title."
+          },
+          "image_attachment": {
+            "type": "string",
+            "example": "50ab99797bd6b36f54089a7f6151c56e7a902be4bdaa4204e63961625bb9cb54",
+            "description": "DEPRECATED: Unique id of the image attachment for this product."
+          },
+          "unlisted": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether or not the group is unlisted."
+          },
+          "sort_priority": {
+            "type": "number",
+            "example": 1,
+            "description": "The priority of the group on the storefront."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the group."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the group has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 1,
+            "description": "User ID of the user who updated the group."
+          },
+          "image_name": {
+            "type": "string",
+            "example": "SellixImageName.png",
+            "description": "DEPRECATED: The name of the product image with the file type"
+          },
+          "image_storage": {
+            "type": "string",
+            "example": "GROUPS",
+            "description": "Where the image is stored in Sellix's self-hosted CDN."
+          },
+          "cloudflare_image_id": {
+            "$ref": "#/components/schemas/cloudflare_image_id"
+          },
+          "products_bound": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/miniProduct"
+            }
+          },
+          "products_count": {
+            "type": "integer",
+            "example": 1,
+            "description": "The number of products in the group."
           }
         }
       },
@@ -6362,8 +6654,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the blacklist has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the invoice."
           },
           "approved_address": {
             "$ref": "#/components/schemas/approved_address"
@@ -7239,8 +7531,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the blacklist has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the invoice."
           },
           "is_evm_approved": {
             "type": "boolean",
@@ -7734,9 +8026,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "format": "timestamp",
-            "example": 987,
-            "description": "User ID, available if the product has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the product."
           },
           "marketplace_category_id": {
             "type": "string",
@@ -7961,6 +8252,67 @@
                 }
               }
             }
+          }
+        }
+      },
+      "miniGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 987,
+            "description": "The ID of the resource"
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample29a0e39d",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 987,
+            "description": "The unique identifyer for the shop."
+          },
+          "title": {
+            "type": "string",
+            "example": "Digital goods to download",
+            "description": "Group title."
+          },
+          "image_attachment": {
+            "$ref": "#/components/schemas/image_attachment"
+          },
+          "unlisted": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether or not the group is unlisted."
+          },
+          "sort_priority": {
+            "type": "number",
+            "example": 1,
+            "description": "The priority of the group on the storefront."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the group."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the group has been edited."
+          },
+          "category_id": {
+            "type": "string",
+            "example": "sample29a0e39d",
+            "description": "The category the group is a part of"
+          },
+          "group_id": {
+            "type": "string",
+            "example": "sample29a0e39d",
+            "description": "The unique identifyer of the current group"
           }
         }
       },
@@ -8657,8 +9009,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the blacklist has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the invoice."
           },
           "is_marketplace": {
             "type": "integer",
@@ -8680,6 +9032,153 @@
             "type": "boolean",
             "example": true,
             "description": "If true, the merchant has enabled invoice shipment to the PayPal customer email."
+          }
+        }
+      },
+      "miniProduct": {
+        "type": "object",
+        "properties": {
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample29a0e39d",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "price": {
+            "type": "string",
+            "example": "4.00",
+            "description": "Product price."
+          },
+          "price_display": {
+            "type": "string",
+            "example": "5.00",
+            "description": "Product price in currency."
+          },
+          "price_discount": {
+            "type": "number",
+            "example": 1,
+            "description": "The discount price on the purchased goods."
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "unlisted": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the product is shown on the storefront."
+          },
+          "title": {
+            "type": "string",
+            "example": "Digital good to download",
+            "description": "The title of the product"
+          },
+          "image_attachment": {
+            "type": "string",
+            "example": "8028e4db21744421e9645ed2abef4d303fd16a30fd4bb32f580d7a615ef6e0c7",
+            "description": "DEPRECATED: Unique id of the image attachment for this product."
+          },
+          "description": {
+            "type": "string",
+            "example": "Product description",
+            "description": "The description of the product"
+          },
+          "quantity_min": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 1,
+            "description": "Minimum quantity purchasable of this product."
+          },
+          "quantity_max": {
+            "type": "integer",
+            "minimum": -1,
+            "example": -1,
+            "description": "Maximum quantity purchasable of this product."
+          },
+          "quantity_warning": {
+            "type": "integer",
+            "example": "0",
+            "description": "At which product quantity should we send a webhook and email warning the merchant."
+          },
+          "custom_fields": {
+            "$ref": "#/components/schemas/custom_fields_array"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC",
+              "INFO_CARD",
+              "SUBSCRIPTION"
+            ],
+            "example": "SERVICE",
+            "description": "Product type."
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 987,
+            "description": "The shop ID to which this resource belongs."
+          },
+          "gateways": {
+            "type": "string",
+            "example": "STRIPE,PAYPAL,CASH_APP,BITCOIN,LITECOIN,ETHEREUM,BITCOIN_CASH",
+            "description": "A list of gateways available on this product."
+          },
+          "crypto_confirmations_needed": {
+            "type": "integer",
+            "example": 3,
+            "description": "Minimum number of confirmations for a crypto payment to be accepted."
+          },
+          "private": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the product is private and cannot be purchased."
+          },
+          "stock": {
+            "type": "integer",
+            "example": -1,
+            "description": "Stock of the current product, can be -1 for unlimited stock."
+          },
+          "sort_priority": {
+            "type": "integer",
+            "example": 1,
+            "description": "Sort order of this product."
+          },
+          "on_hold": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the product is on hold and purchaseable."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the product."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the product has been edited."
+          },
+          "product_id": {
+            "type": "string",
+            "example": "sample29a0e39d",
+            "description": "The uniqid of the product"
+          },
+          "group_id": {
+            "type": "string",
+            "example": "sample29a0e39d",
+            "description": "If the product is in a group, this is the group_id of that group."
+          },
+          "average_score": {
+            "type": "string",
+            "example": "5.0000",
+            "description": "The average rating of the product."
           }
         }
       },
@@ -9267,8 +9766,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the product has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the product."
           },
           "marketplace_category_id": {
             "type": "string",
@@ -9919,8 +10418,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the query has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the query."
           },
           "messages": {
             "type": "array",
@@ -10005,8 +10504,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": "0",
-            "description": "User ID, available if the query has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the query."
           }
         }
       },
@@ -11211,8 +11710,8 @@
           },
           "updated_by": {
             "type": "integer",
-            "example": 987,
-            "description": "User ID, available if the whitelist has been edited."
+            "example": 1,
+            "description": "User ID of the user who updated the whitelist."
           }
         }
       }
@@ -11586,221 +12085,6 @@
           }
         }
       },
-      "whitelistListing": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "whitelists": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/whitelist"
-                      }
-                    }
-                  }
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "whitelist": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "whitelist": {
-                      "$ref": "#/components/schemas/whitelist"
-                    }
-                  }
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "whitelistCreated": {
-        "description": "SUCCESS_MESSAGE",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "uniqid": {
-                      "type": "string",
-                      "example": "sample29a0e39d"
-                    }
-                  }
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Whitelist Created Successfully."
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "whitelistUpdated": {
-        "description": "SUCCESS_MESSAGE",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Whitelist Edited Successfully."
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "whitelistDeleted": {
-        "description": "SUCCESS_MESSAGE",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Whitelist Deleted Successfully."
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "categoryListing": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "categories": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/category"
-                      }
-                    }
-                  }
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
       "category": {
         "description": "resource retrieved",
         "content": {
@@ -11874,7 +12158,7 @@
           }
         }
       },
-      "categoryError": {
+      "categoryDeleted": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -11883,7 +12167,7 @@
               "properties": {
                 "status": {
                   "type": "integer",
-                  "example": 400
+                  "example": 200
                 },
                 "data": {
                   "type": "object",
@@ -11891,7 +12175,46 @@
                 },
                 "error": {
                   "type": "string",
-                  "example": "Insert a valid Title."
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Category Deleted Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "categoryListing": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "categories": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/category"
+                      }
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
                 },
                 "message": {
                   "type": "string",
@@ -11943,7 +12266,7 @@
           }
         }
       },
-      "categoryDeleted": {
+      "coupon": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -11957,9 +12280,8 @@
                 "data": {
                   "type": "object",
                   "properties": {
-                    "uniqid": {
-                      "type": "string",
-                      "example": "sample29a0e39d"
+                    "coupon": {
+                      "$ref": "#/components/schemas/coupon"
                     }
                   }
                 },
@@ -11969,7 +12291,39 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "Category Deleted Successfully."
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "couponDeleted": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Coupon Deleted Successfully"
                 },
                 "env": {
                   "type": "string",
@@ -11999,42 +12353,6 @@
                       "items": {
                         "$ref": "#/components/schemas/couponListing"
                       }
-                    }
-                  }
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "coupon": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "coupon": {
-                      "$ref": "#/components/schemas/coupon"
                     }
                   }
                 },
@@ -12093,7 +12411,7 @@
           }
         }
       },
-      "couponDeleted": {
+      "customerListing": {
         "description": "resource retrieved",
         "content": {
           "application/json": {
@@ -12107,10 +12425,51 @@
                 "data": {
                   "type": "object",
                   "properties": {
-                    "uniqid": {
-                      "type": "string",
-                      "description": "The ID of the new coupon",
-                      "example": "sample29a0e39d"
+                    "products": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/customer"
+                      }
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "customer": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "customer": {
+                      "$ref": "#/components/schemas/customer"
                     }
                   }
                 },
@@ -12120,7 +12479,120 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "Coupon Deleted Successfully"
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "customerCreated": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "customer_id": {
+                      "type": "string",
+                      "example": "cst_87b8as6ba9125",
+                      "description": "Customer ID"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "customers": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "customers": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/customer"
+                      }
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "customerUpdated": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Customer updated"
                 },
                 "env": {
                   "type": "string",
@@ -12253,6 +12725,219 @@
                 "message": {
                   "type": "string",
                   "example": "Feedback Replied Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "group": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "group": {
+                      "$ref": "#/components/schemas/group"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "groupCreated": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Group Created Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "groupDeleted": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Group Deleted Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "groupListing": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "group": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/listedGroup"
+                      }
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "groupUpdated": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Group Edited Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "invalidTitleError": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Insert a valid Title."
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
                 },
                 "env": {
                   "type": "string",
@@ -12456,6 +13141,127 @@
           }
         }
       },
+      "license": {
+        "description": "license object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "license": {
+                      "$ref": "#/components/schemas/license"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "payment": {
+        "description": "payment creation response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/payment_response"
+                },
+                {
+                  "$ref": "#/components/schemas/payment_response_white_label"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "paymentCompleted": {
+        "description": "payment creation response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Payment Completed Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "paymentVoided": {
+        "description": "payment creation response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Payment Voided Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
       "productListing": {
         "description": "resource retrieved",
         "content": {
@@ -12649,10 +13455,6 @@
                 "env": {
                   "type": "string",
                   "example": "production"
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
                 }
               }
             }
@@ -12862,25 +13664,8 @@
           }
         }
       },
-      "payment": {
-        "description": "payment creation response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/payment_response"
-                },
-                {
-                  "$ref": "#/components/schemas/payment_response_white_label"
-                }
-              ]
-            }
-          }
-        }
-      },
-      "paymentCompleted": {
-        "description": "payment creation response",
+      "shop": {
+        "description": "shop object",
         "content": {
           "application/json": {
             "schema": {
@@ -12891,242 +13676,13 @@
                   "example": 200
                 },
                 "data": {
-                  "type": "object",
-                  "example": null
+                  "$ref": "#/components/schemas/shop_info"
                 },
                 "error": {
                   "type": "string",
                   "example": null
                 },
                 "message": {
-                  "type": "string",
-                  "example": "Payment Completed Successfully."
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                }
-              }
-            }
-          }
-        }
-      },
-      "paymentVoided": {
-        "description": "payment creation response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Payment Voided Successfully."
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "customerListing": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "products": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/customer"
-                      }
-                    }
-                  }
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "customer": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "customer": {
-                      "$ref": "#/components/schemas/customer"
-                    }
-                  }
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "customerCreated": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "customer_id": {
-                      "type": "string",
-                      "example": "cst_87b8as6ba9125",
-                      "description": "Customer ID"
-                    }
-                  }
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "customerUpdated": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
-                  "type": "string",
-                  "example": null
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Customer updated"
-                },
-                "env": {
-                  "type": "string",
-                  "example": "production"
-                }
-              }
-            }
-          }
-        }
-      },
-      "customers": {
-        "description": "resource retrieved",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "integer",
-                  "example": 200
-                },
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "customers": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/customer"
-                      }
-                    }
-                  }
-                },
-                "message": {
-                  "type": "string",
-                  "example": null
-                },
-                "log": {
-                  "type": "object",
-                  "example": null
-                },
-                "error": {
                   "type": "string",
                   "example": null
                 },
@@ -13239,8 +13795,8 @@
           }
         }
       },
-      "license": {
-        "description": "license object",
+      "whitelist": {
+        "description": "resource retrieved",
         "content": {
           "application/json": {
             "schema": {
@@ -13253,8 +13809,8 @@
                 "data": {
                   "type": "object",
                   "properties": {
-                    "license": {
-                      "$ref": "#/components/schemas/license"
+                    "whitelist": {
+                      "$ref": "#/components/schemas/whitelist"
                     }
                   }
                 },
@@ -13275,8 +13831,8 @@
           }
         }
       },
-      "shop": {
-        "description": "shop object",
+      "whitelistCreated": {
+        "description": "SUCCESS_MESSAGE",
         "content": {
           "application/json": {
             "schema": {
@@ -13287,7 +13843,84 @@
                   "example": 200
                 },
                 "data": {
-                  "$ref": "#/components/schemas/shop_info"
+                  "type": "object",
+                  "properties": {
+                    "uniqid": {
+                      "type": "string",
+                      "example": "sample29a0e39d"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Whitelist Created Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "whitelistDeleted": {
+        "description": "SUCCESS_MESSAGE",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Whitelist Deleted Successfully."
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "whitelistListing": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "whitelists": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/whitelist"
+                      }
+                    }
+                  }
                 },
                 "error": {
                   "type": "string",
@@ -13296,6 +13929,38 @@
                 "message": {
                   "type": "string",
                   "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "whitelistUpdated": {
+        "description": "SUCCESS_MESSAGE",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Whitelist Edited Successfully."
                 },
                 "env": {
                   "type": "string",
