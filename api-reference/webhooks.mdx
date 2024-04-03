@@ -10,6 +10,15 @@ Sellix provides a webhooks system allowing you to subscribe to events with Webho
 <Warning>Please note only HTTPS webhook URLs are supported.</Warning>
 
 A [webhook simulator](https://dashboard.sellix.io/developer/webhooks/logs) is available allowing you to simulate webhook events to a specified URL.
+
+<Card
+  title="Create Webhook"
+  icon="plus"
+  href="https://dashboard.sellix.io/developer/webhooks/all"
+>
+  Configure your first webhook to receive instant & live notifications about things happening within your Store.
+</Card>
+
 ## Signing/Validating
 
 To verify the authenticity of a webhook request and its payload, each webhook request includes a `X-Sellix-Signature` header with a HMAC signature comprised of the JSON encoded request body and your webhook secret. Your webhook secret can be changed in your [settings page](https://dashboard.sellix.io/settings/shop/general).
