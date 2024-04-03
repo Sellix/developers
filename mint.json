@@ -86,27 +86,34 @@
         "api-reference/dynamic-products",
         "api-reference/payment-methods",
         "api-reference/prefilled-links",
+        "api-reference/payments",
         "api-reference/subscriptions",
         "api-reference/disputes",
         "api-reference/licenses"
       ]
     },
     {
-      "group": "Sellix Pay",
+      "group": "Information",
       "pages": [
-        "api-reference/payments"
+        "api-reference/information/get-self"
       ]
     },
     {
       "group": "Payments",
       "pages": [
-        "api-reference/orders/get-order",
         "api-reference/payments/post-payments",
         "api-reference/payments/put-payments",
+        "api-reference/payments/delete-payments"
+      ]
+    },
+    {
+      "group": "Orders",
+      "pages": [
+        "api-reference/orders/get-order",
         "api-reference/orders/list-orders",
         "api-reference/orders/replace-order",
         "api-reference/orders/update-order",
-        "api-reference/payments/delete-payments"
+        "api-reference/orders/update-custom-fields"
       ]
     },
     {
@@ -172,6 +179,16 @@
         "api-reference/categories/list-categories",
         "api-reference/categories/put-categories",
         "api-reference/categories/delete-categories"
+      ]
+    },
+    {
+      "group": "Groups",
+      "pages": [
+        "api-reference/groups/get-group",
+        "api-reference/groups/post-groups",
+        "api-reference/groups/list-groups",
+        "api-reference/groups/put-groups",
+        "api-reference/groups/delete-groups"
       ]
     },
     {
