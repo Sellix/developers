@@ -2380,6 +2380,9 @@
                     "example": null,
                     "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page. If product_id is specified, the gateway must be on in the product's gateways array."
                   },
+                  "gateways": {
+                    "$ref": "#/components/schemas/gateways"
+                  },
                   "paypal_apm": {
                     "type": "string",
                     "enum": [
