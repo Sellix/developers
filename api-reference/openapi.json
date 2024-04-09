@@ -1222,6 +1222,46 @@
           },
           {
             "$ref": "#/components/parameters/page"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer"
+            },
+            "required": false,
+            "example": 25,
+            "description": "The number of resources to include in a page"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "example": "created_at:ASC,type:ASC",
+            "description": "How to sort the resources in the response."
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "example": "status:COMPLETED,type:PRODUCT",
+            "description": "Which requirements to apply to returned resources."
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "example": "support@sellix.io",
+            "description": "A specific value to search the response for."
           }
         ],
         "responses": {
@@ -13144,19 +13184,19 @@
                       "description": "The total amount of invoices to display per page"
                     },
                     "filter": {
-                      "type": "object",
+                      "type": "string",
                       "example": null,
                       "description": "The filter to use against the invoices"
                     },
                     "sort": {
-                      "type": "object",
+                      "type": "string",
                       "example": null,
-                      "description": "TODO"
+                      "description": "The fields to sort the invoices by"
                     },
                     "search": {
-                      "type": "object",
+                      "type": "string",
                       "example": null,
-                      "description": "TODO"
+                      "description": "The fields to search for in invoices"
                     },
                     "fields": {
                       "type": "array",

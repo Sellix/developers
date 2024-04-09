@@ -2,3 +2,12 @@
 title: "List Orders"
 openapi: get /orders
 ---
+
+# Guide to Query Params
+For the `GET /orders` endpoint, there are a few unique query parameters available for you to use. Here is a detailed example of how to use the query parameters to get the most out of our API. 
+- The **page** and **limit** query parameters need to be positive integers.
+- The **sort** query parameter needs to be a comma separated list of key-value pairs such as `created_at:ASC,type:ASC`, where the key is a field described below, and the value is either `ASC` or `DESC`.
+- The **filter** query parameter needs to be a comma separated list of key-value pairs such as `status:COMPLETED,type:PRODUCT`, where the key is a field described below, and the value is a possible value for the respective field.
+- The **search** query parameter needs to be an email to search for all the invoices from.
+
+Here are all the possible fields for the **search** and **filter** parameters: `uniqid`, `recurring_billing_id`, `type`, `origin`, `shop_id`, `customer_id`, `product_id`, `affiliate_revenue_customer_id`, `gateway`, `blockchain`, `paypal_apm`, `stripe_apm`, `total`, `total_display`, `coupon_id`, `customer_email`, `paypal_payer_email`, `paypal_capture_id`, `paypal_subscription_id`, `stripe_id`, `stripe_invoice_id`, `binance_invoice_id`, `cashapp_note`, `crypto_address`, `status`, `void_details`, `created_at`, `updated_at`
