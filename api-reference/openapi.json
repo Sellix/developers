@@ -2529,7 +2529,8 @@
                     "required": [
                       "ip",
                       "user_agent",
-                      "user_language"
+                      "user_language",
+                      "maximum_fraud_score"
                     ],
                     "properties": {
                       "ip": {
@@ -2546,6 +2547,11 @@
                         "type": "string",
                         "example": "en-GB,fr-FR;q=0.5",
                         "description": "Customer user language."
+                      },
+                      "maximum_fraud_score": {
+                        "type": "integer",
+                        "example": "85",
+                        "description": "The maximum fraud score a customer can have for the payment to be processed."
                       }
                     },
                     "description": "Customer details to be used by our fraud shield in order to score potential fraud attempts."
