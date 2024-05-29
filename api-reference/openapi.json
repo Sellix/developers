@@ -2526,12 +2526,6 @@
                   },
                   "fraud_shield": {
                     "type": "object",
-                    "required": [
-                      "ip",
-                      "user_agent",
-                      "user_language",
-                      "maximum_fraud_score"
-                    ],
                     "properties": {
                       "ip": {
                         "type": "string",
