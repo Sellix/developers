@@ -1517,140 +1517,19 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "gateway": {
-                    "type": "string",
-                    "enum": [
-                      "PAYPAL",
-                      "STRIPE",
-                      "SKRILL",
-                      "PERFECT_MONEY",
-                      "CASH_APP",
-                      "BINANCE",
-                      "BITCOIN",
-                      "LITECOIN",
-                      "ETHEREUM",
-                      "BITCOIN_CASH",
-                      "NANO",
-                      "MONERO",
-                      "SOLANA",
-                      "RIPPLE",
-                      "BINANCE_COIN",
-                      "USDC:ERC20",
-                      "USDC:BEP20",
-                      "USDC:MATIC",
-                      "USDC:SOL",
-                      "USDT:ERC20",
-                      "USDT:BEP20",
-                      "USDT:MATIC",
-                      "USDT:SOL",
-                      "USDT:TRC20",
-                      "TRON",
-                      "BITCOIN_LN",
-                      "CONCORDIUM",
-                      "POLYGON",
-                      "PEPE:ERC20",
-                      "DAI:ERC20",
-                      "DAI:BEP20",
-                      "DAI:MATIC",
-                      "WETH:BEP20",
-                      "WETH:MATIC",
-                      "APE:ERC20",
-                      "APE:MATIC",
-                      "SHIB:ERC20",
-                      "SHIB:BEP20",
-                      "SHIB:MATIC",
-                      "USDC_NATIVE:MATIC",
-                      "DOGECOIN",
-                      "PYTH:SOL",
-                      "BONK:SOL",
-                      "JUP:SOL",
-                      "JITO:SOL",
-                      "WEN:SOL",
-                      "RENDER:SOL",
-                      "MOBILE:SOL",
-                      "HNT:SOL"
-                    ],
-                    "example": "STRIPE",
-                    "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page. If product_id is specified, the gateway must be on in the product's gateways array."
-                  },
-                  "paypal_apm": {
-                    "type": "string",
-                    "enum": [
-                      "bancontact",
-                      "eps",
-                      "trustly",
-                      "mercado",
-                      "paylater",
-                      "sepa",
-                      "venmo",
-                      "blik",
-                      "giropay",
-                      "ideal",
-                      "mybank",
-                      "sofort",
-                      "przelewy24",
-                      "credit"
-                    ],
-                    "example": null,
-                    "description": "If gateway is PAYPAL, a paypal_apm (PayPal Alternative Payment Method) can be specified. To retrieve the available PayPal APM for a specific customer session, please refer to the PayPal SDK using window.paypal.FUNDING and fundingSource to filter out available methods. You can also use our documentation on how to process white_label payments."
-                  },
-                  "name": {
-                    "type": "string",
-                    "example": "Sellix",
-                    "description": "The name of the recipient for the order"
-                  },
-                  "surname": {
-                    "type": "string",
-                    "example": "SRL",
-                    "description": "The surname of the recipient for the order"
-                  },
-                  "address_line1": {
-                    "type": "string",
-                    "example": "Via del Monte 1",
-                    "description": "The address line of the the order"
-                  },
-                  "address_city": {
-                    "type": "string",
-                    "example": "Bologna",
-                    "description": "The city the address is located in"
-                  },
-                  "address_country": {
-                    "type": "string",
-                    "example": "IT",
-                    "description": "The ISO country code country the address is located in"
-                  },
-                  "address_postal_code": {
-                    "type": "string",
-                    "example": "40126",
-                    "description": "The zipcode for the address"
-                  },
-                  "address_state": {
-                    "type": "string",
-                    "example": "BO",
-                    "description": "The state the address is located"
-                  },
-                  "stripe_apm": {
-                    "type": "string",
-                    "enum": [
-                      "afterpay_clearpay",
-                      "alipay",
-                      "bancontact",
-                      "au_becs_debit",
-                      "boleto",
-                      "eps",
-                      "fpx",
-                      "giropay",
-                      "grabpay",
-                      "ideal",
-                      "klarna",
-                      "oxxo",
-                      "p24",
-                      "sofort",
-                      "wechat_pay"
-                    ],
-                    "example": null,
-                    "description": "Stripe Alternative Payment Method name, such as iDEAL, used if gateway is STRIPE."
+                  "custom_fields": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    },
+                    "example": [
+                      {
+                        "name": "custom_field_name",
+                        "value": "custom_field_value"
+                      }
+                    ]
                   }
+                
                 }
               }
             }
@@ -1662,14 +1541,11 @@
           },
           {
             "$ref": "#/components/parameters/uniqid"
-          },
-          {
-            "$ref": "#/components/parameters/custom_fields"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/invoiceUpdated"
+            "$ref": "#/components/responses/200"
           },
           "401": {
             "$ref": "#/components/responses/401"
