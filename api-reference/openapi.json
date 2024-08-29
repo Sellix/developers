@@ -2635,7 +2635,7 @@
         }
       }
     },
-    "/customers/{id}": {
+    "/customers/{id_or_email}": {
       "get": {
         "tags": [
           "Customers"
@@ -2647,7 +2647,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/id_or_email"
           }
         ],
         "responses": {
@@ -2673,7 +2673,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/id_or_email"
           }
         ],
         "requestBody": {
@@ -3096,9 +3096,8 @@
   "components": {
     "securitySchemes": {
       "bearerAuth": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "Authorization"
+        "type": "http",
+        "scheme": "bearer"
       }
     },
     "schemas": {
@@ -11734,6 +11733,16 @@
         "required": true,
         "example": "sample6978a0e39d",
         "description": "ID of the resource"
+      },
+      "id_or_email": {
+        "in": "path",
+        "name": "id or email",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "example": "sample6978a0e39d",
+        "description": "ID or email associated with the customer"
       },
       "merchant": {
         "in": "header",
