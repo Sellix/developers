@@ -61,17 +61,18 @@
       "pages": [
         "products/platforms",
         "products/wallet-and-crypto",
-        "products/commerce",
-        "products/communities",
         "products/embed",
-        "products/plugins",
         "products/links",
         "products/subscriptions",
         "products/pos",
+        "products/commerce",
         "products/licenses",
+        "products/style-center",
         "products/marketing",
         "products/analytics",
-        "products/fraud-shield"
+        "products/fraud-shield",
+        "products/communities",
+        "products/plugins"
       ]
     },
     {
