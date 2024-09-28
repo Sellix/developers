@@ -2757,6 +2757,90 @@
         }
       }
     },
+    "/customers/{id_or_email}/affiliate_balance": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "updateCustomer",
+        "description": "Update a customer",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/id_or_email"
+          }
+        ],
+        "requestBody": {
+          "description": "customer JSON to be updated",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "example": "SET",
+                    "enum": ["SET", "ADD", "SUBTRACT"],
+                    "description": "How the amount should be applied to the customer"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "example": 10,
+                    "description": "The amount the action should apply to the customer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "resource updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Customer affiliate balance updated."
+                    },
+                    "env": {
+                      "type": "string",
+                      "example": "production"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
     "/subscriptions": {
       "get": {
         "tags": [

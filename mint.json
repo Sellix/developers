@@ -124,7 +124,8 @@
         "api-reference/customers/get-customer",
         "api-reference/customers/post-customers",
         "api-reference/customers/list-customers",
-        "api-reference/customers/put-customers"
+        "api-reference/customers/put-customers",
+        "api-reference/customers/customer-balance"
       ]
     },
     {
