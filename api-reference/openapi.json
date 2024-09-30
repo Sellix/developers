@@ -6197,6 +6197,11 @@
             "example": "null",
             "description": "DEPRECATED"
           },
+          "secret": {
+            "type": "string",
+            "example": "sample-secret",
+            "description": "An internal Sellix secret used for completing tasks with our internal API"
+          },
           "type": {
             "type": "string",
             "enum": [
