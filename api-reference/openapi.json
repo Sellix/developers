@@ -2203,9 +2203,13 @@
                   },
                   "product_id": {
                     "type": "string",
-                    "format": "uuid",
-                    "example": null,
+                    "example": "sample2bde8a50",
                     "description": "If specified value, currency and custom_fields will be taken from the product details."
+                  },
+                  "product_plans": {
+                    "type": "object",
+                    "example": {"sample2bde8a50": "pp_622886e03cbf6a40d5d1f0"},
+                    "description": "Required for subscriptions V2. Specified which plan to use for the invoice."
                   },
                   "cart": {
                     "type": "object",
@@ -2428,8 +2432,7 @@
                   },
                   "webhook": {
                     "type": "string",
-                    "example": "https://dev.sellix.io/v1/webhook",
-                    "description": "Webhook URL to which updates regarding this payment (invoice) will be sent."
+                    "description": "DEPRECATED: Webhook URL to which updates regarding this payment (invoice) will be sent."
                   },
                   "white_label": {
                     "type": "boolean",
@@ -7781,7 +7784,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SUBSCRIPTION",
             "description": "Product type."
@@ -9520,7 +9524,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SUBSCRIPTION",
             "description": "Product type."
@@ -10274,7 +10279,180 @@
                 }
               }
             }
-          }
+          },
+          "product_plans": {
+            "type": "array",
+            "description": "Product plan information if the product is a SUBSCRIPTION_V2",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The ID of the resource.",
+                  "example": 987
+                },
+                "uniqid": {
+                  "type": "string",
+                  "description": "The unique identifier for the payment plan.",
+                  "example": "pp_b7dded91285bb657098ac0"
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "description": "The shop ID to which this resource belongs.",
+                  "example": 987
+                },
+                "product_id": {
+                  "type": "integer",
+                  "description": "ID of the product subscription.",
+                  "example": "samplede6277597"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": ["ACTIVE", "INACTIVE"],
+                  "description": "TODO",
+                  "example": "ACTIVE"
+                },
+                "stock": {
+                  "type": "integer",
+                  "description": "The stock of the subscription plan",
+                  "example": -1
+                },
+                "dynamic_webhook": {
+                  "type": "string",
+                  "description": "DEPRECATED: The webhook to be sent for events related to thsi product.",
+                  "example": ""
+                },
+                "service_text": {
+                  "type": "string",
+                  "description": "The service text to be delievered upon delivery (it product type is SERVICE).",
+                  "example": ""
+                },
+                "title": {
+                  "type": "string",
+                  "description": "The title of the plan.",
+                  "example": "Custom Title"
+                },
+                "price": {
+                  "type": "number",
+                  "format": "float",
+                  "description": "The price of the subscription plan",
+                  "example": 5
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The description for the subscription plan",
+                  "example": "Plan description"
+                },
+                "trial_period": {
+                  "type": "integer",
+                  "description": "Whether a trial period is enabled for the subscription plan",
+                  "example": 0
+                },
+                "recurring_interval": {
+                  "type": "string",
+                  "enum": ["DAY", "WEEK", "MONTH", "YEAR"],
+                  "description": "How often the customer should be invoiced for the subscription.",
+                  "example": "MONTH"
+                },
+                "recurring_interval_count": {
+                  "type": "integer",
+                  "description": "How many times the customer should be invoiced per interval",
+                  "example": 1
+                },
+                "payment_type": {
+                  "type": "string",
+                  "enum": ["ADVANCE", "ARREARS"],
+                  "description": "When the customer will be billed for the subscription.",
+                  "example": "ADVANCE"
+                },
+                "renew_type": {
+                  "type": "string",
+                  "enum": ["CALENDAR", "ANNIVERSARY"],
+                  "description": "How subscription renewals should be handled.",
+                  "example": "CALENDAR"
+                },
+                "billing_type": {
+                  "type": "string",
+                  "enum": ["FULL", "PRORATED"],
+                  "description": "How customers should be billed for the subscription if they purchase through the interval.",
+                  "example": "FULL"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "When the subscription plan was created",
+                  "example": "2024-09-30 22:38:46"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "When the subscription plan was last updated",
+                  "example": "2024-09-30 22:38:46"
+                },
+                "product_currency": {
+                  "type": "string",
+                  "description": "Default currency for the subscription product",
+                  "example": "USD"
+                },
+                "product_stock": {
+                  "type": "integer",
+                  "description": "The stock of the subscription plan",
+                  "example": -1
+                },
+                "product_type": {
+                  "type": "string",
+                  "description": "The type of the product",
+                  "example": "SUBSCRIPTION_V2"
+                },
+                "product_subtype": {
+                  "type": "string",
+                  "enum": [
+                    "PRODUCT",
+                    "SUBSCRIPTION",
+                    "PUBLIC_REST_API",
+                    "MONTHLY_BILL",
+                    "SHOPPING_CART",
+                    "PRODUCT_SUBSCRIPTION"
+                  ],
+                  "example": null
+                },
+                "real_stock": {
+                  "type": "integer",
+                  "description": "The real stock of the subscription plan",
+                  "example": -1
+                },
+                "price_conversions": {
+                  "type": "object",
+                  "description": "Price conversions for supported currencies",
+                  "properties": {
+                    "USD": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 5
+                    },
+                    "CAD": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 6.82
+                    },
+                    "crypto": {
+                      "type": "object",
+                      "properties": {
+                        "BTC": {
+                          "type": "string",
+                          "example": "0.0000792735"
+                        },
+                        "DOGE": {
+                          "type": "string",
+                          "example": "45.3345736873"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }          
         }
       },
       "product_addons": {
