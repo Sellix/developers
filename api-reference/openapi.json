@@ -1780,6 +1780,218 @@
         }
       }
     },
+    "/products?img=true": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "operationId": "createProduct",
+        "description": "Create a product with an image",
+        "requestBody": {
+          "description": "product JSON to be created",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["image"],
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Image file to upload with the product."
+                  },
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "title",
+                      "price",
+                      "description",
+                      "type"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "example": "Software Activation Keys"
+                      },
+                      "price": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 12.5
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Product description example."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      },
+                      "gateways": {
+                        "$ref": "#/components/schemas/gateways"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "SERIALS",
+                          "FILE",
+                          "SERVICE",
+                          "DYNAMIC",
+                          "INFO_CARD",
+                          "SUBSCRIPTION"
+                        ],
+                        "example": "SERIALS",
+                        "description": "Product type."
+                      },
+                      "serials": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": [
+                          "activation-key-#1"
+                        ]
+                      },
+                      "serials_remove_duplicates": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "service_text": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "stock": {
+                        "type": "integer",
+                        "example": null
+                      },
+                      "dynamic_webhook": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "stock_delimiter": {
+                        "type": "string",
+                        "example": ","
+                      },
+                      "min_quantity": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "max_quantity": {
+                        "type": "integer",
+                        "example": 150
+                      },
+                      "delivery_text": {
+                        "type": "string",
+                        "example": "Thank you for the purchase!"
+                      },
+                      "custom_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "example": null
+                      },
+                      "crypto_confirmations_needed": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "max_risk_level": {
+                        "type": "integer",
+                        "example": 85,
+                        "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
+                      },
+                      "unlisted": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "private": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "block_vpn_proxies": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "Block VPN and Proxy purchases if the gateway is PAYPAL or STRIPE."
+                      },
+                      "sort_priority": {
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "webhooks": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": null
+                      },
+                      "on_hold": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "terms_of_service": {
+                        "type": "string",
+                        "example": "ToS to be agreed upon purchase."
+                      },
+                      "warranty": {
+                        "type": "integer",
+                        "example": 86400,
+                        "description": "The length of the warranty in seconds"
+                      },
+                      "warranty_text": {
+                        "type": "string",
+                        "example": "Warranty description."
+                      },
+                      "remove_image": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "remove_file": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "volume_discounts": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "example": null
+                      },
+                      "recurring_interval": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "recurring_interval_count": {
+                        "type": "integer",
+                        "example": null
+                      },
+                      "trial_period": {
+                        "type": "integer",
+                        "example": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/productCreated"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
     "/products/{uniqid}": {
       "get": {
         "tags": [

@@ -169,6 +169,7 @@
       "pages": [
         "api-reference/products/get-product",
         "api-reference/products/post-products",
+        "api-reference/products/post-products-image",
         "api-reference/products/list-products",
         "api-reference/products/put-products",
         "api-reference/products/delete-products"
