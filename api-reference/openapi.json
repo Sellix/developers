@@ -1780,6 +1780,218 @@
         }
       }
     },
+    "/products?img=true": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "operationId": "createProduct",
+        "description": "Create a product with an image",
+        "requestBody": {
+          "description": "product JSON to be created",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["image"],
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Image file to upload with the product."
+                  },
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "title",
+                      "price",
+                      "description",
+                      "type"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "example": "Software Activation Keys"
+                      },
+                      "price": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 12.5
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Product description example."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      },
+                      "gateways": {
+                        "$ref": "#/components/schemas/gateways"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "SERIALS",
+                          "FILE",
+                          "SERVICE",
+                          "DYNAMIC",
+                          "INFO_CARD",
+                          "SUBSCRIPTION"
+                        ],
+                        "example": "SERIALS",
+                        "description": "Product type."
+                      },
+                      "serials": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": [
+                          "activation-key-#1"
+                        ]
+                      },
+                      "serials_remove_duplicates": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "service_text": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "stock": {
+                        "type": "integer",
+                        "example": null
+                      },
+                      "dynamic_webhook": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "stock_delimiter": {
+                        "type": "string",
+                        "example": ","
+                      },
+                      "min_quantity": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "max_quantity": {
+                        "type": "integer",
+                        "example": 150
+                      },
+                      "delivery_text": {
+                        "type": "string",
+                        "example": "Thank you for the purchase!"
+                      },
+                      "custom_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "example": null
+                      },
+                      "crypto_confirmations_needed": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "max_risk_level": {
+                        "type": "integer",
+                        "example": 85,
+                        "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
+                      },
+                      "unlisted": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "private": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "block_vpn_proxies": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "Block VPN and Proxy purchases if the gateway is PAYPAL or STRIPE."
+                      },
+                      "sort_priority": {
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "webhooks": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": null
+                      },
+                      "on_hold": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "terms_of_service": {
+                        "type": "string",
+                        "example": "ToS to be agreed upon purchase."
+                      },
+                      "warranty": {
+                        "type": "integer",
+                        "example": 86400,
+                        "description": "The length of the warranty in seconds"
+                      },
+                      "warranty_text": {
+                        "type": "string",
+                        "example": "Warranty description."
+                      },
+                      "remove_image": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "remove_file": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "volume_discounts": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "example": null
+                      },
+                      "recurring_interval": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "recurring_interval_count": {
+                        "type": "integer",
+                        "example": null
+                      },
+                      "trial_period": {
+                        "type": "integer",
+                        "example": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/productCreated"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
     "/products/{uniqid}": {
       "get": {
         "tags": [
@@ -2027,6 +2239,215 @@
         }
       }
     },
+    "/products/{uniqid}?img=true": {
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "operationId": "updateProduct",
+        "description": "Update a product",
+        "requestBody": {
+          "description": "product JSON to be created",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["image"],
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Image file to upload with the product."
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "example": "Software Activation Keys"
+                      },
+                      "price": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 12.5
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Product description example."
+                      },
+                      "currency": {
+                        "$ref": "#/components/schemas/currency"
+                      },
+                      "gateways": {
+                        "$ref": "#/components/schemas/gateways"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "SERIALS",
+                          "FILE",
+                          "SERVICE",
+                          "DYNAMIC",
+                          "INFO_CARD",
+                          "SUBSCRIPTION"
+                        ],
+                        "example": "SERIALS",
+                        "description": "Product type."
+                      },
+                      "serials": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": [
+                          "activation-key-#1"
+                        ]
+                      },
+                      "serials_remove_duplicates": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "service_text": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "stock": {
+                        "type": "integer",
+                        "example": null
+                      },
+                      "dynamic_webhook": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "stock_delimiter": {
+                        "type": "string",
+                        "example": ","
+                      },
+                      "min_quantity": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "max_quantity": {
+                        "type": "integer",
+                        "example": 150
+                      },
+                      "delivery_text": {
+                        "type": "string",
+                        "example": "Thank you for the purchase!"
+                      },
+                      "custom_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "example": null
+                      },
+                      "crypto_confirmations_needed": {
+                        "type": "integer",
+                        "example": 3
+                      },
+                      "max_risk_level": {
+                        "type": "integer",
+                        "example": 85,
+                        "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
+                      },
+                      "unlisted": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "private": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "block_vpn_proxies": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "Block VPN and Proxy purchases if the gateway is PAYPAL or STRIPE."
+                      },
+                      "sort_priority": {
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "webhooks": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": null
+                      },
+                      "on_hold": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "terms_of_service": {
+                        "type": "string",
+                        "example": "ToS to be agreed upon purchase."
+                      },
+                      "warranty": {
+                        "type": "integer",
+                        "example": 86400,
+                        "description": "The length of the warranty in seconds"
+                      },
+                      "warranty_text": {
+                        "type": "string",
+                        "example": "Warranty description."
+                      },
+                      "remove_image": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "remove_file": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "volume_discounts": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "example": null
+                      },
+                      "recurring_interval": {
+                        "type": "string",
+                        "example": null
+                      },
+                      "recurring_interval_count": {
+                        "type": "integer",
+                        "example": null
+                      },
+                      "trial_period": {
+                        "type": "integer",
+                        "example": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/uniqid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/productUpdated"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
     "/queries": {
       "get": {
         "tags": [
@@ -2203,9 +2624,13 @@
                   },
                   "product_id": {
                     "type": "string",
-                    "format": "uuid",
-                    "example": null,
+                    "example": "sample2bde8a50",
                     "description": "If specified value, currency and custom_fields will be taken from the product details."
+                  },
+                  "product_plans": {
+                    "type": "object",
+                    "example": {"sample2bde8a50": "pp_622886e03cbf6a40d5d1f0"},
+                    "description": "Required for subscriptions V2. Specified which plan to use for the invoice."
                   },
                   "cart": {
                     "type": "object",
@@ -2428,8 +2853,7 @@
                   },
                   "webhook": {
                     "type": "string",
-                    "example": "https://dev.sellix.io/v1/webhook",
-                    "description": "Webhook URL to which updates regarding this payment (invoice) will be sent."
+                    "description": "DEPRECATED: Webhook URL to which updates regarding this payment (invoice) will be sent."
                   },
                   "white_label": {
                     "type": "boolean",
@@ -2753,6 +3177,90 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/customers/{id_or_email}/affiliate_balance": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "updateCustomer",
+        "description": "Update a customer",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/id_or_email"
+          }
+        ],
+        "requestBody": {
+          "description": "customer JSON to be updated",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "example": "SET",
+                    "enum": ["SET", "ADD", "SUBTRACT"],
+                    "description": "How the amount should be applied to the customer"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "example": 10,
+                    "description": "The amount the action should apply to the customer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "resource updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Customer affiliate balance updated."
+                    },
+                    "env": {
+                      "type": "string",
+                      "example": "production"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -6113,6 +6621,11 @@
             "example": "null",
             "description": "DEPRECATED"
           },
+          "secret": {
+            "type": "string",
+            "example": "sample-secret",
+            "description": "An internal Sellix secret used for completing tasks with our internal API"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -7692,7 +8205,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SUBSCRIPTION",
             "description": "Product type."
@@ -9431,7 +9945,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SUBSCRIPTION",
             "description": "Product type."
@@ -10185,7 +10700,180 @@
                 }
               }
             }
-          }
+          },
+          "product_plans": {
+            "type": "array",
+            "description": "Product plan information if the product is a SUBSCRIPTION_V2",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The ID of the resource.",
+                  "example": 987
+                },
+                "uniqid": {
+                  "type": "string",
+                  "description": "The unique identifier for the payment plan.",
+                  "example": "pp_b7dded91285bb657098ac0"
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "description": "The shop ID to which this resource belongs.",
+                  "example": 987
+                },
+                "product_id": {
+                  "type": "integer",
+                  "description": "ID of the product subscription.",
+                  "example": "samplede6277597"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": ["ACTIVE", "INACTIVE"],
+                  "description": "TODO",
+                  "example": "ACTIVE"
+                },
+                "stock": {
+                  "type": "integer",
+                  "description": "The stock of the subscription plan",
+                  "example": -1
+                },
+                "dynamic_webhook": {
+                  "type": "string",
+                  "description": "DEPRECATED: The webhook to be sent for events related to thsi product.",
+                  "example": ""
+                },
+                "service_text": {
+                  "type": "string",
+                  "description": "The service text to be delievered upon delivery (it product type is SERVICE).",
+                  "example": ""
+                },
+                "title": {
+                  "type": "string",
+                  "description": "The title of the plan.",
+                  "example": "Custom Title"
+                },
+                "price": {
+                  "type": "number",
+                  "format": "float",
+                  "description": "The price of the subscription plan",
+                  "example": 5
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The description for the subscription plan",
+                  "example": "Plan description"
+                },
+                "trial_period": {
+                  "type": "integer",
+                  "description": "Whether a trial period is enabled for the subscription plan",
+                  "example": 0
+                },
+                "recurring_interval": {
+                  "type": "string",
+                  "enum": ["DAY", "WEEK", "MONTH", "YEAR"],
+                  "description": "How often the customer should be invoiced for the subscription.",
+                  "example": "MONTH"
+                },
+                "recurring_interval_count": {
+                  "type": "integer",
+                  "description": "How many times the customer should be invoiced per interval",
+                  "example": 1
+                },
+                "payment_type": {
+                  "type": "string",
+                  "enum": ["ADVANCE", "ARREARS"],
+                  "description": "When the customer will be billed for the subscription.",
+                  "example": "ADVANCE"
+                },
+                "renew_type": {
+                  "type": "string",
+                  "enum": ["CALENDAR", "ANNIVERSARY"],
+                  "description": "How subscription renewals should be handled.",
+                  "example": "CALENDAR"
+                },
+                "billing_type": {
+                  "type": "string",
+                  "enum": ["FULL", "PRORATED"],
+                  "description": "How customers should be billed for the subscription if they purchase through the interval.",
+                  "example": "FULL"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "When the subscription plan was created",
+                  "example": "2024-09-30 22:38:46"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "When the subscription plan was last updated",
+                  "example": "2024-09-30 22:38:46"
+                },
+                "product_currency": {
+                  "type": "string",
+                  "description": "Default currency for the subscription product",
+                  "example": "USD"
+                },
+                "product_stock": {
+                  "type": "integer",
+                  "description": "The stock of the subscription plan",
+                  "example": -1
+                },
+                "product_type": {
+                  "type": "string",
+                  "description": "The type of the product",
+                  "example": "SUBSCRIPTION_V2"
+                },
+                "product_subtype": {
+                  "type": "string",
+                  "enum": [
+                    "PRODUCT",
+                    "SUBSCRIPTION",
+                    "PUBLIC_REST_API",
+                    "MONTHLY_BILL",
+                    "SHOPPING_CART",
+                    "PRODUCT_SUBSCRIPTION"
+                  ],
+                  "example": null
+                },
+                "real_stock": {
+                  "type": "integer",
+                  "description": "The real stock of the subscription plan",
+                  "example": -1
+                },
+                "price_conversions": {
+                  "type": "object",
+                  "description": "Price conversions for supported currencies",
+                  "properties": {
+                    "USD": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 5
+                    },
+                    "CAD": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 6.82
+                    },
+                    "crypto": {
+                      "type": "object",
+                      "properties": {
+                        "BTC": {
+                          "type": "string",
+                          "example": "0.0000792735"
+                        },
+                        "DOGE": {
+                          "type": "string",
+                          "example": "45.3345736873"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }          
         }
       },
       "product_addons": {
