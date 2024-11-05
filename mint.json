@@ -129,7 +129,7 @@
       ]
     },
     {
-      "group": "Subscriptions",
+      "group": "Subscriptions V1",
       "pages": [
         "api-reference/subscriptions/get-subscription",
         "api-reference/subscriptions/post-subscriptions",

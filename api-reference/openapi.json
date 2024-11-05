@@ -2,8 +2,8 @@
   "openapi": "3.0.0",
   "servers": [
     {
-      "description": "Sellix Developers API endpoint",
-      "url": "https://dev.sellix.io/v1"
+      "description": "Sellix Developers API V1 endpoints",
+      "url": "https://dev.sellix.io"
     }
   ],
   "info": {
@@ -72,7 +72,7 @@
     }
   ],
   "paths": {
-    "/blacklists": {
+    "/v1/blacklists": {
       "get": {
         "tags": [
           "Blacklists"
@@ -157,7 +157,7 @@
         }
       }
     },
-    "/blacklists/{uniqid}": {
+    "/v1/blacklists/{uniqid}": {
       "get": {
         "tags": [
           "Blacklists"
@@ -267,7 +267,7 @@
         }
       }
     },
-    "/whitelists": {
+    "/v1/whitelists": {
       "get": {
         "tags": [
           "Whitelists"
@@ -352,7 +352,7 @@
         }
       }
     },
-    "/whitelists/{uniqid}": {
+    "/v1/whitelists/{uniqid}": {
       "get": {
         "tags": [
           "Whitelists"
@@ -462,7 +462,7 @@
         }
       }
     },
-    "/categories": {
+    "/v1/categories": {
       "get": {
         "tags": [
           "Categories"
@@ -556,7 +556,7 @@
         }
       }
     },
-    "/categories/{uniqid}": {
+    "/v1/categories/{uniqid}": {
       "get": {
         "tags": [
           "Categories"
@@ -679,7 +679,7 @@
         }
       }
     },
-    "/coupons": {
+    "/v1/coupons": {
       "get": {
         "tags": [
           "Coupons"
@@ -785,7 +785,7 @@
         }
       }
     },
-    "/coupons/{uniqid}": {
+    "/v1/coupons/{uniqid}": {
       "get": {
         "tags": [
           "Coupons"
@@ -912,7 +912,7 @@
         }
       }
     },
-    "/feedback": {
+    "/v1/feedback": {
       "get": {
         "tags": [
           "Feedback"
@@ -937,7 +937,7 @@
         }
       }
     },
-    "/feedback/{uniqid}": {
+    "/v1/feedback/{uniqid}": {
       "get": {
         "tags": [
           "Feedback"
@@ -965,7 +965,7 @@
         }
       }
     },
-    "/feedback/reply/{uniqid}": {
+    "/v1/feedback/reply/{uniqid}": {
       "post": {
         "tags": [
           "Feedback"
@@ -1010,7 +1010,7 @@
         }
       }
     },
-    "/groups": {
+    "/v1/groups": {
       "get": {
         "tags": [
           "Groups"
@@ -1095,7 +1095,7 @@
         }
       }
     },
-    "/groups/{uniqid}": {
+    "/v1/groups/{uniqid}": {
       "get": {
         "tags": [
           "Groups"
@@ -1209,7 +1209,7 @@
         }
       }
     },
-    "/orders": {
+    "/v1/orders": {
       "get": {
         "tags": [
           "Orders"
@@ -1274,7 +1274,7 @@
         }
       }
     },
-    "/orders/{uniqid}": {
+    "/v1/orders/{uniqid}": {
       "get": {
         "tags": [
           "Orders"
@@ -1302,7 +1302,7 @@
         }
       }
     },
-    "/orders/replacement/{uniqid}": {
+    "/v1/orders/replacement/{uniqid}": {
       "post": {
         "tags": [
           "Orders"
@@ -1327,7 +1327,7 @@
         }
       }
     },
-    "/orders/update/{uniqid}": {
+    "/v1/orders/update/{uniqid}": {
       "put": {
         "tags": [
           "Orders"
@@ -1502,7 +1502,7 @@
         }
       }
     },
-    "/orders/{uniqid}/custom_fields": {
+    "/v1/orders/{uniqid}/custom_fields": {
       "put": {
         "tags": [
           "Orders"
@@ -1556,7 +1556,7 @@
         }
       }
     },
-    "/products": {
+    "/v1/products": {
       "get": {
         "tags": [
           "Products"
@@ -1627,7 +1627,8 @@
                       "SERVICE",
                       "DYNAMIC",
                       "INFO_CARD",
-                      "SUBSCRIPTION"
+                      "SUBSCRIPTION",
+                      "SUBSCRIPTION_V2"
                     ],
                     "example": "SERIALS",
                     "description": "Product type."
@@ -1780,7 +1781,7 @@
         }
       }
     },
-    "/products?img=true": {
+    "/v1/products?img=true": {
       "post": {
         "tags": [
           "Products"
@@ -1837,7 +1838,8 @@
                           "SERVICE",
                           "DYNAMIC",
                           "INFO_CARD",
-                          "SUBSCRIPTION"
+                          "SUBSCRIPTION",
+                          "SUBSCRIPTION_V2"
                         ],
                         "example": "SERIALS",
                         "description": "Product type."
@@ -1992,7 +1994,7 @@
         }
       }
     },
-    "/products/{uniqid}": {
+    "/v1/products/{uniqid}": {
       "get": {
         "tags": [
           "Products"
@@ -2091,7 +2093,8 @@
                       "SERVICE",
                       "DYNAMIC",
                       "INFO_CARD",
-                      "SUBSCRIPTION"
+                      "SUBSCRIPTION",
+                      "SUBSCRIPTION_V2"
                     ],
                     "example": "SERIALS",
                     "description": "Product type."
@@ -2239,7 +2242,7 @@
         }
       }
     },
-    "/products/{uniqid}?img=true": {
+    "/v1/products/{uniqid}?img=true": {
       "put": {
         "tags": [
           "Products"
@@ -2290,7 +2293,8 @@
                           "SERVICE",
                           "DYNAMIC",
                           "INFO_CARD",
-                          "SUBSCRIPTION"
+                          "SUBSCRIPTION",
+                          "SUBSCRIPTION_V2"
                         ],
                         "example": "SERIALS",
                         "description": "Product type."
@@ -2448,7 +2452,7 @@
         }
       }
     },
-    "/queries": {
+    "/v1/queries": {
       "get": {
         "tags": [
           "Queries"
@@ -2473,7 +2477,7 @@
         }
       }
     },
-    "/queries/{uniqid}": {
+    "/v1/queries/{uniqid}": {
       "get": {
         "tags": [
           "Queries"
@@ -2501,7 +2505,7 @@
         }
       }
     },
-    "/queries/reply/{uniqid}": {
+    "/v1/queries/reply/{uniqid}": {
       "post": {
         "tags": [
           "Queries"
@@ -2549,7 +2553,7 @@
         }
       }
     },
-    "/queries/close/{uniqid}": {
+    "/v1/queries/close/{uniqid}": {
       "post": {
         "tags": [
           "Queries"
@@ -2574,7 +2578,7 @@
         }
       }
     },
-    "/queries/reopen/{uniqid}": {
+    "/v1/queries/reopen/{uniqid}": {
       "post": {
         "tags": [
           "Queries"
@@ -2599,7 +2603,7 @@
         }
       }
     },
-    "/payments": {
+    "/v1/payments": {
       "post": {
         "tags": [
           "Payments"
@@ -2887,7 +2891,7 @@
         }
       }
     },
-    "/payments/{uniqid}": {
+    "/v1/payments/{uniqid}": {
       "delete": {
         "tags": [
           "Payments"
@@ -2938,7 +2942,7 @@
         }
       }
     },
-    "/customers": {
+    "/v1/customers": {
       "get": {
         "tags": [
           "Customers"
@@ -3059,7 +3063,7 @@
         }
       }
     },
-    "/customers/{id_or_email}": {
+    "/v1/customers/{id_or_email}": {
       "get": {
         "tags": [
           "Customers"
@@ -3181,7 +3185,7 @@
         }
       }
     },
-    "/customers/{id_or_email}/affiliate_balance": {
+    "/v1/customers/{id_or_email}/affiliate_balance": {
       "post": {
         "tags": [
           "Customers"
@@ -3265,7 +3269,7 @@
         }
       }
     },
-    "/subscriptions": {
+    "/v1/subscriptions": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -3404,7 +3408,7 @@
         }
       }
     },
-    "/subscriptions/{id}": {
+    "/v1/subscriptions/{id}": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -3455,7 +3459,7 @@
         }
       }
     },
-    "/products/licensing/hardware_id": {
+    "/v1/products/licensing/hardware_id": {
       "put": {
         "tags": [
           "Licenses"
@@ -3513,7 +3517,7 @@
         }
       }
     },
-    "/products/licensing/check": {
+    "/v1/products/licensing/check": {
       "post": {
         "tags": [
           "Licenses"
@@ -3573,7 +3577,7 @@
         }
       }
     },
-    "/self": {
+    "/v1/self": {
       "get": {
         "tags": [
           "Information"
@@ -4338,7 +4342,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SUBSCRIPTION",
             "description": "Product type."
@@ -5423,7 +5428,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SUBSCRIPTION",
             "description": "Product type."
@@ -6647,7 +6653,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SERIALS",
             "description": "Product type."
@@ -6756,7 +6763,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SERIALS",
             "description": "Product type."
@@ -7749,7 +7757,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SERIALS",
             "description": "Product type."
@@ -8872,7 +8881,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SERIALS",
             "description": "Product type."
@@ -8930,7 +8940,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SERIALS",
             "description": "Product type."
@@ -9616,7 +9627,8 @@
               "SERVICE",
               "DYNAMIC",
               "INFO_CARD",
-              "SUBSCRIPTION"
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
             ],
             "example": "SERVICE",
             "description": "Product type."
