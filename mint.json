@@ -139,6 +139,15 @@
       ]
     },
     {
+      "group": "Subscriptions V2",
+      "pages": [
+        "api-reference/subscriptions/get-subscription",
+        "api-reference/subscriptions-v2/post-subscriptions",
+        "api-reference/subscriptions-v2/put-subscriptions",
+        "api-reference/subscriptions-v2/delete-subscriptions"
+      ]
+    },
+    {
       "group": "Licenses",
       "pages": [
         "api-reference/licenses/check-license",

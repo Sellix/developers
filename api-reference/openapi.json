@@ -3539,6 +3539,296 @@
         }
       }
     },
+    "/subscriptions-v2": {
+      "post": {
+        "tags": [
+          "Subscriptions V2"
+        ],
+        "operationId": "createSubscriptionv2",
+        "description": "Create a subscription invoice to a customer",
+        "requestBody": {
+          "description": "subscription creation JSON",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "product_id",
+                  "quantity",
+                  "product_plan_id"
+                ],
+                "properties": {
+                  "gateway": {
+                    "type": "string",
+                    "enum": [
+                      "PAYPAL",
+                      "STRIPE",
+                      "SKRILL",
+                      "PERFECT_MONEY",
+                      "CASH_APP",
+                      "BINANCE",
+                      "BITCOIN",
+                      "LITECOIN",
+                      "ETHEREUM",
+                      "BITCOIN_CASH",
+                      "NANO",
+                      "MONERO",
+                      "SOLANA",
+                      "RIPPLE",
+                      "BINANCE_COIN",
+                      "USDC",
+                      "USDT",
+                      "TRON",
+                      "BITCOIN_LN",
+                      "CONCORDIUM",
+                      "POLYGON",
+                      "PEPE",
+                      "DAI",
+                      "WETH",
+                      "APE",
+                      "SHIB",
+                      "USDC_NATIVE",
+                      "DOGECOIN",
+                      "PYTH",
+                      "BONK",
+                      "JUP",
+                      "JITO",
+                      "WEN",
+                      "RENDER",
+                      "MOBILE",
+                      "HNT"
+                    ],
+                    "example": "STRIPE",
+                    "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page."
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "customer.email@gmail.com",
+                    "description": "The customer's email address. Invoices and subscription updates will be sent to this email"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "example": "USD",
+                    "description": "The currency to display prices in. If not specified, the shop's default currency will be used."
+                  },
+                  "tax_data": {
+                    "type": "object",
+                    "properties": {
+                      "country_code": {
+                        "type": "string",
+                        "example": "US",
+                        "description": "The two letter ISO country code for your country. This is used to determine the correct tax rate to apply to the subscription."
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": "New York",
+                        "description": "The city your business is located in. This is used to determine the correct tax rate to apply to the subscription."
+                      }
+                    }
+                  },
+                  "product_id": {
+                    "type": "string",
+                    "example": "67151e256f149",
+                    "description": "The unique ID of the product to create a subscription for."
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "example": 1,
+                    "description": "The quantity of the product to subscribe to. If not specified, the default quantity of the product will be used."
+                  },
+                  "product_plan_id": {
+                    "type": "string",
+                    "example": "pp_1aed3fb1583653f925c260",
+                    "description": "The unique ID of the product plan to subscribe to. If not specified, the default plan of the product will be used."
+                  },
+                  "product_addons": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "coupon_code": {
+                    "type": "integer",
+                    "example": 4,
+                    "description": "The coupon code to apply to the subscription."
+                  },
+                  "discord_integration_code": {
+                    "type": "string",
+                    "example": null,
+                    "description": "The code for the Sellix discord integration. Will be null if discord integration is not enabled."
+                  },
+                  "custom_fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/subscriptionInvoiceCreated"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/subscriptions-v2/{id}": {
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "getSubscriptionv2",
+        "description": "Get a specific subscription.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/subscription"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Subscriptions V2"
+        ],
+        "operationId": "deleteSubscriptionv2",
+        "description": "Cancel a subscription",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/paymentVoided"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Subscriptions V2"
+        ],
+        "operationId": "updateSubscriptionv2",
+        "description": "Cancel a subscription",
+        "requestBody": {
+          "description": "subscription update JSON",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "gateway": {
+                    "type": "string",
+                    "enum": [
+                      "PAYPAL",
+                      "STRIPE",
+                      "SKRILL",
+                      "PERFECT_MONEY",
+                      "CASH_APP",
+                      "BINANCE",
+                      "BITCOIN",
+                      "LITECOIN",
+                      "ETHEREUM",
+                      "BITCOIN_CASH",
+                      "NANO",
+                      "MONERO",
+                      "SOLANA",
+                      "RIPPLE",
+                      "BINANCE_COIN",
+                      "USDC",
+                      "USDT",
+                      "TRON",
+                      "BITCOIN_LN",
+                      "CONCORDIUM",
+                      "POLYGON",
+                      "PEPE",
+                      "DAI",
+                      "WETH",
+                      "APE",
+                      "SHIB",
+                      "USDC_NATIVE",
+                      "DOGECOIN",
+                      "PYTH",
+                      "BONK",
+                      "JUP",
+                      "JITO",
+                      "WEN",
+                      "RENDER",
+                      "MOBILE",
+                      "HNT"
+                    ],
+                    "example": "STRIPE",
+                    "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page."
+                  },
+                  "payment_method_uniqid": {
+                    "type": "string",
+                    "example": "pm_86456a7715ef1f35de7851",
+                    "description": "The unique id of the customer's payment method to set for this endpoint."
+                  },
+                  "checkout_version": {
+                    "type": "string",
+                    "enum": ["v1", "v2"],
+                    "example": "v2",
+                    "description": "The version of Sellix checkout to use for this subscription."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/paymentVoided"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
     "/products/licensing/hardware_id": {
       "put": {
         "tags": [
@@ -9785,22 +10075,22 @@
           "id": {
             "type": "integer",
             "example": 29,
-            "description": "Unique ID of the resource, used as reference across the API."
+            "description": "Internal Sellix ID for the resource"
           },
           "uniqid": {
             "type": "string",
             "example": "pm_d71038bf11c9e5406f8269",
-            "description": ""
+            "description": "Unique identifier used throughout Sellix's API"
           },
           "title": {
             "type": "string",
             "example": "Credit Card, Diners club, **** **** **** 0004",
-            "description": ""
+            "description": "The title of the stored payment method"
           },
           "system_title": {
             "type": "string",
             "example": "Credit Card, Diners club, **** **** **** 0004",
-            "description": ""
+            "description": "The title of the stored payment method used by our system"
           },
           "shop_id": {
             "type": "integer",
