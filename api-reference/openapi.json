@@ -3362,6 +3362,9 @@
           },
           {
             "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/version"
           }
         ],
         "responses": {
@@ -3677,7 +3680,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/subscriptionInvoiceCreated"
+            "$ref": "#/components/responses/subscriptionV2Response"
           },
           "400": {
             "$ref": "#/components/responses/400"
@@ -3731,7 +3734,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/paymentVoided"
+            "$ref": "#/components/responses/subscriptionV2Response"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3821,7 +3824,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/paymentVoided"
+            "$ref": "#/components/responses/subscriptionV2Response"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -13041,6 +13044,17 @@
         "example": 1,
         "description": "If pagination is desired, the page to fetch of the response"
       },
+      "version": {
+        "in": "query",
+        "name": "version",
+        "schema": {
+          "type": "string",
+          "enum": ["v1", "v2"]
+        },
+        "required": false,
+        "example": "v2",
+        "description": "Specify the type(s) of subscriptions to be returned"
+      },
       "uniqid": {
         "in": "path",
         "name": "uniqid",
@@ -15155,6 +15169,53 @@
                 "env": {
                   "type": "string",
                   "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "subscriptionV2Response": {
+        "description": "subscription creation response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "invoice"
+                  ],
+                  "properties": {
+                    "subscription_id": {
+                      "type": "string",
+                      "description": "Subscription ID."
+                    }
+                  },
+                  "example": {
+                    "subscription_id": "sub_7451b916d925ae0ad1c1c7"
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "<success-message>"
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
                 }
               }
             }
