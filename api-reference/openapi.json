@@ -3,7 +3,7 @@
   "servers": [
     {
       "description": "Sellix Developers API V1 endpoints",
-      "url": "https://dev.sellix.io"
+      "url": "https://dev.sellix.io/v1"
     }
   ],
   "info": {
@@ -72,7 +72,7 @@
     }
   ],
   "paths": {
-    "/v1/blacklists": {
+    "/blacklists": {
       "get": {
         "tags": [
           "Blacklists"
@@ -157,7 +157,7 @@
         }
       }
     },
-    "/v1/blacklists/{uniqid}": {
+    "/blacklists/{uniqid}": {
       "get": {
         "tags": [
           "Blacklists"
@@ -267,7 +267,7 @@
         }
       }
     },
-    "/v1/whitelists": {
+    "/whitelists": {
       "get": {
         "tags": [
           "Whitelists"
@@ -352,7 +352,7 @@
         }
       }
     },
-    "/v1/whitelists/{uniqid}": {
+    "/whitelists/{uniqid}": {
       "get": {
         "tags": [
           "Whitelists"
@@ -462,7 +462,7 @@
         }
       }
     },
-    "/v1/categories": {
+    "/categories": {
       "get": {
         "tags": [
           "Categories"
@@ -556,7 +556,7 @@
         }
       }
     },
-    "/v1/categories/{uniqid}": {
+    "/categories/{uniqid}": {
       "get": {
         "tags": [
           "Categories"
@@ -679,7 +679,7 @@
         }
       }
     },
-    "/v1/coupons": {
+    "/coupons": {
       "get": {
         "tags": [
           "Coupons"
@@ -785,7 +785,7 @@
         }
       }
     },
-    "/v1/coupons/{uniqid}": {
+    "/coupons/{uniqid}": {
       "get": {
         "tags": [
           "Coupons"
@@ -912,7 +912,7 @@
         }
       }
     },
-    "/v1/feedback": {
+    "/feedback": {
       "get": {
         "tags": [
           "Feedback"
@@ -937,7 +937,7 @@
         }
       }
     },
-    "/v1/feedback/{uniqid}": {
+    "/feedback/{uniqid}": {
       "get": {
         "tags": [
           "Feedback"
@@ -965,7 +965,7 @@
         }
       }
     },
-    "/v1/feedback/reply/{uniqid}": {
+    "/feedback/reply/{uniqid}": {
       "post": {
         "tags": [
           "Feedback"
@@ -1010,7 +1010,7 @@
         }
       }
     },
-    "/v1/groups": {
+    "/groups": {
       "get": {
         "tags": [
           "Groups"
@@ -1095,7 +1095,7 @@
         }
       }
     },
-    "/v1/groups/{uniqid}": {
+    "/groups/{uniqid}": {
       "get": {
         "tags": [
           "Groups"
@@ -1209,7 +1209,7 @@
         }
       }
     },
-    "/v1/orders": {
+    "/orders": {
       "get": {
         "tags": [
           "Orders"
@@ -1274,7 +1274,7 @@
         }
       }
     },
-    "/v1/orders/{uniqid}": {
+    "/orders/{uniqid}": {
       "get": {
         "tags": [
           "Orders"
@@ -1302,7 +1302,7 @@
         }
       }
     },
-    "/v1/orders/replacement/{uniqid}": {
+    "/orders/replacement/{uniqid}": {
       "post": {
         "tags": [
           "Orders"
@@ -1327,7 +1327,7 @@
         }
       }
     },
-    "/v1/orders/update/{uniqid}": {
+    "/orders/update/{uniqid}": {
       "put": {
         "tags": [
           "Orders"
@@ -1502,7 +1502,7 @@
         }
       }
     },
-    "/v1/orders/{uniqid}/custom_fields": {
+    "/orders/{uniqid}/custom_fields": {
       "put": {
         "tags": [
           "Orders"
@@ -1556,7 +1556,7 @@
         }
       }
     },
-    "/v1/products": {
+    "/products": {
       "get": {
         "tags": [
           "Products"
@@ -1788,7 +1788,7 @@
         }
       }
     },
-    "/v1/products?img=true": {
+    "/products?img=true": {
       "post": {
         "tags": [
           "Products"
@@ -2001,7 +2001,7 @@
         }
       }
     },
-    "/v1/products/{uniqid}": {
+    "/products/{uniqid}": {
       "get": {
         "tags": [
           "Products"
@@ -2067,7 +2067,7 @@
         ],
         "requestBody": {
           "description": "product JSON to be updated",
-          "required": true,
+          "required": true, 
           "content": {
             "application/json": {
               "schema": {
@@ -2255,7 +2255,7 @@
         }
       }
     },
-    "/v1/products/{uniqid}?img=true": {
+    "/products/{uniqid}?img=true": {
       "put": {
         "tags": [
           "Products"
@@ -2465,7 +2465,7 @@
         }
       }
     },
-    "/v1/queries": {
+    "/queries": {
       "get": {
         "tags": [
           "Queries"
@@ -2490,7 +2490,7 @@
         }
       }
     },
-    "/v1/queries/{uniqid}": {
+    "/queries/{uniqid}": {
       "get": {
         "tags": [
           "Queries"
@@ -2518,7 +2518,7 @@
         }
       }
     },
-    "/v1/queries/reply/{uniqid}": {
+    "/queries/reply/{uniqid}": {
       "post": {
         "tags": [
           "Queries"
@@ -2566,7 +2566,7 @@
         }
       }
     },
-    "/v1/queries/close/{uniqid}": {
+    "/queries/close/{uniqid}": {
       "post": {
         "tags": [
           "Queries"
@@ -2591,7 +2591,7 @@
         }
       }
     },
-    "/v1/queries/reopen/{uniqid}": {
+    "/queries/reopen/{uniqid}": {
       "post": {
         "tags": [
           "Queries"
@@ -2616,7 +2616,7 @@
         }
       }
     },
-    "/v1/payments": {
+    "/payments": {
       "post": {
         "tags": [
           "Payments"
@@ -2904,7 +2904,7 @@
         }
       }
     },
-    "/v1/payments/{uniqid}": {
+    "/payments/{uniqid}": {
       "delete": {
         "tags": [
           "Payments"
@@ -2955,7 +2955,7 @@
         }
       }
     },
-    "/v1/customers": {
+    "/customers": {
       "get": {
         "tags": [
           "Customers"
@@ -3076,7 +3076,7 @@
         }
       }
     },
-    "/v1/customers/{id_or_email}": {
+    "/customers/{id_or_email}": {
       "get": {
         "tags": [
           "Customers"
@@ -3198,13 +3198,13 @@
         }
       }
     },
-    "/v1/customers/{id_or_email}/affiliate_balance": {
+    "/customers/{id_or_email}/affiliate_balance": {
       "post": {
         "tags": [
           "Customers"
         ],
-        "operationId": "updateCustomer",
-        "description": "Update a customer",
+        "operationId": "customerAffiliateBalance",
+        "description": "Update a customer affiliate balance",
         "parameters": [
           {
             "$ref": "#/components/parameters/merchant"
@@ -3214,7 +3214,7 @@
           }
         ],
         "requestBody": {
-          "description": "customer JSON to be updated",
+          "description": "JSON describing adjustments to affiliate balance",
           "required": true,
           "content": {
             "application/json": {
@@ -3282,7 +3282,74 @@
         }
       }
     },
-    "/v1/subscriptions": {
+    "/customers/{id_or_email}/payment_methods": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "getCustomerPaymentMethods",
+        "description": "Get a customer's payment methods on file",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/id_or_email"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "resource updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "payment_methods": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/payment_method"
+                          }
+                        }
+                      }
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "env": {
+                      "type": "string",
+                      "example": "production"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      }
+    },
+    "/subscriptions": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -3421,7 +3488,7 @@
         }
       }
     },
-    "/v1/subscriptions/{id}": {
+    "/subscriptions/{id}": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -3472,7 +3539,7 @@
         }
       }
     },
-    "/v1/products/licensing/hardware_id": {
+    "/products/licensing/hardware_id": {
       "put": {
         "tags": [
           "Licenses"
@@ -3530,7 +3597,7 @@
         }
       }
     },
-    "/v1/products/licensing/check": {
+    "/products/licensing/check": {
       "post": {
         "tags": [
           "Licenses"
@@ -3590,7 +3657,7 @@
         }
       }
     },
-    "/v1/self": {
+    "/self": {
       "get": {
         "tags": [
           "Information"
@@ -9709,6 +9776,119 @@
             "type": "string",
             "example": "5.0000",
             "description": "The average rating of the product."
+          }
+        }
+      },
+      "payment_method": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 29,
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "uniqid": {
+            "type": "string",
+            "example": "pm_d71038bf11c9e5406f8269",
+            "description": ""
+          },
+          "title": {
+            "type": "string",
+            "example": "Credit Card, Diners club, **** **** **** 0004",
+            "description": ""
+          },
+          "system_title": {
+            "type": "string",
+            "example": "Credit Card, Diners club, **** **** **** 0004",
+            "description": ""
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 433811,
+            "description": "ID of the Sellix shop the customer was created for."
+          },
+          "stripe_user_id": {
+            "type": "string",
+            "example": "acct_1PQbheLKSsHE5k7g",
+            "description": "Unique ID used within stripe to identify the customer during stripe requests. See [Stripe's documentation for Connected Accounts](https://docs.stripe.com/connect/authentication) to see how to use this identifier"
+          },
+          "customer_id": {
+            "type": "string",
+            "example": "cst_00d4b22a76640d5967d36e",
+            "description": "Unique ID used within Sellix to identify customers across the API."
+          },
+          "gateway": {
+            "type": "string",
+            "enum": [
+              "PAYPAL",
+              "STRIPE",
+              "SKRILL",
+              "PERFECT_MONEY",
+              "CASH_APP",
+              "BINANCE",
+              "BITCOIN",
+              "LITECOIN",
+              "ETHEREUM",
+              "BITCOIN_CASH",
+              "NANO",
+              "MONERO",
+              "SOLANA",
+              "RIPPLE",
+              "BINANCE_COIN",
+              "USDC",
+              "USDT",
+              "TRON",
+              "BITCOIN_LN",
+              "CONCORDIUM",
+              "POLYGON",
+              "PEPE",
+              "DAI",
+              "WETH",
+              "APE",
+              "SHIB",
+              "USDC_NATIVE",
+              "DOGECOIN",
+              "PYTH",
+              "BONK",
+              "JUP",
+              "JITO",
+              "WEN",
+              "RENDER",
+              "MOBILE",
+              "HNT"
+            ],
+            "example": "STRIPE",
+            "description": "Payment gateway this payment method is used for"
+          },
+          "method_type": {
+            "type": "string",
+            "enum": ["CARD"],
+            "example": "CARD",
+            "description": "The type of payment method used within the gateway (e.g. CARD, BANK_ACCOUNT, PAYPAL)"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["ACTIVE", "INACTIVE", "ARCHIVED"],
+            "example": "ACTIVE",
+            "description": "The status of the payment method. Should **ONLY BE \"ACTIVE\"**"
+          },
+          "last_confirm_date": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 1730317834,
+            "description": "The last time the payment method was used stored as a timestamp."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 1730317834,
+            "description": "When the payment method was saved for future reuse stored as a timestamp."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 1730317834,
+            "description": "When the payment method was last updated stored as a timestamp."
           }
         }
       },
