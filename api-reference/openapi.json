@@ -3542,7 +3542,7 @@
         }
       }
     },
-    "/subscriptions-v2": {
+    "/subscriptions_v2": {
       "post": {
         "tags": [
           "Subscriptions V2"
@@ -3691,7 +3691,7 @@
         }
       }
     },
-    "/subscriptions-v2/{id}": {
+    "/subscriptions_v2/{id}": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -6992,12 +6992,12 @@
           "recurring_billing_id": {
             "type": "string",
             "format": "uuid",
-            "example": null,
+            "example": "sub_pp_568e7d30a88460e03901c6",
             "description": "Unique ID of the recurring bill."
           },
           "payout_configuration": {
             "type": "string",
-            "example": "null",
+            "example": null,
             "description": "DEPRECATED"
           },
           "secret": {
@@ -7013,7 +7013,8 @@
               "PUBLIC_REST_API",
               "MONTHLY_BILL",
               "SHOPPING_CART",
-              "PRODUCT_SUBSCRIPTION"
+              "PRODUCT_SUBSCRIPTION",
+              "PRODUCT_SUBSCRIPTION_V2"
             ],
             "example": "PRODUCT",
             "description": "Invoice type. For subscriptions, the invoice type is PRODUCT_SUBSCRIPTION as SUBSCRIPTION is reserved for Sellix-own plans."
@@ -7086,6 +7087,7 @@
           },
           "shop_image_storage": {
             "type": "string",
+            "enum": ["PRODUCTS", "SHOPS"],
             "example": "PRODUCTS",
             "description": "Where the image is stored in Sellix's self-hosted CDN."
           },

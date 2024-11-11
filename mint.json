@@ -85,6 +85,7 @@
         "api-reference/webhooks",
         "api-reference/subscriptions",
         "api-reference/subscriptions-v2",
+        "api-reference/subscriptions-compare",
         "api-reference/dynamic-products",
         "api-reference/licenses",
         "api-reference/payment-methods",
@@ -141,7 +142,7 @@
     {
       "group": "Subscriptions V2",
       "pages": [
-        "api-reference/subscriptions/get-subscription",
+        "api-reference/subscriptions-v2/get-subscription",
         "api-reference/subscriptions-v2/post-subscriptions",
         "api-reference/subscriptions-v2/put-subscriptions",
         "api-reference/subscriptions-v2/delete-subscriptions"

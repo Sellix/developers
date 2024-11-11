@@ -28,11 +28,10 @@ You can easily set up and manage subscriptions in your Sellix dashboard. Here’
 
 <Step title="Step 2">
   Select **Create New Subscription** and fill in the necessary details:
-  - **Product Plan Name**
-  - **Recurring Interval**: Choose from Day, Week, Month, or Year
-  - **Billing Type**: Options include Full or Prorated
-  - **Trial Period**: Set a number of trial days, if desired
-  - **Payment Type**: Advanced (paid at the start) or Arrears (paid at the end)
+  - **Email**
+  - **Product ID**: ID of the subscriptions v2 product
+  - **Quantity**: Number of subscriptions to include in the invoice
+  - **Product Plan ID**: ID of the subscription plan
 </Step>
 
 <Step title="Step 3">
@@ -51,35 +50,32 @@ Sellix provides API endpoints for programmatic management of subscriptions, enab
 ## Creating a Subscription
 
 ```curl
-POST /subscriptions/v2
+POST /subscriptions-v2
 Headers: { "Authorization": "Bearer YOUR_API_KEY" }
 Body:
 {
-  "name": "Premium Plan",
-  "interval": "month",
-  "interval_count": 1,
-  "price": 20.0,
-  "trial_days": 7
+  "email": "sellix.customer@gmail.com",
+  "product_id": "67151e256f149",
+  "quantity": 1,
+  "product_plan_id": "pp_edfbee1654aba75fa7965a"
 }
 ```
 
 ### Available Fields
-- **name**: Name of the subscription plan
-- **interval**: Interval type (day, week, month, year)
-- **price**: Subscription price per interval
-- **trial_days**: Number of days for free trial, if applicable
+- For a list of available fields, please check the [API Reference](https://docs.sellix.io/api-reference/subscriptions-v2/post-subscriptions).
 
 ## Updating a Subscription
 
 Use the following endpoint to update a subscription:
 
 ```curl
-PUT /subscriptions/v2/{subscription_id}
+PUT /subscriptions-v2/{subscription_id}
 Headers: { "Authorization": "Bearer YOUR_API_KEY" }
 Body:
 {
-  "price": 25.0,
-  "interval_count": 2
+  "gateway": "STRIPE",
+  "payment_method_uniqid": "pm_86456a7715ef1f35de7851",
+  "checkout_version": "v2"
 }
 ```
 
@@ -96,7 +92,7 @@ Subscriptions V2 offers comprehensive webhook events to keep track of each stage
 - **subscription-v2:started**: Triggered when a subscription begins.
 - **subscription-v2:ended**: Triggered at the end of a subscription period.
 - **subscription-v2:canceled**: Triggered if a subscription is canceled.
-- **subscription-v2:payment-succeeded**: Triggered when a payment is successfully processed.
+- **subscription-v2:plan:payment-succeeded**: Triggered when a payment is successfully processed.
 
 <Note>
   Separate events are available for plan upgrades, downgrades, payment failures, and retries.
