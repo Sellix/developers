@@ -83,7 +83,10 @@
         "api-reference/authentication",
         "api-reference/errors",
         "api-reference/webhooks",
+        "api-reference/subscriptions",
+        "api-reference/subscriptions-v2",
         "api-reference/dynamic-products",
+        "api-reference/licenses",
         "api-reference/payment-methods",
         "api-reference/prefilled-links",
         "api-reference/disputes",
@@ -127,9 +130,8 @@
       ]
     },
     {
-      "group": "Subscriptions V1",
+      "group": "Subscriptions (legacy)",
       "pages": [
-        "api-reference/subscriptions",
         "api-reference/subscriptions/get-subscription",
         "api-reference/subscriptions/post-subscriptions",
         "api-reference/subscriptions/list-subscriptions",
@@ -139,7 +141,6 @@
     {
       "group": "Subscriptions V2",
       "pages": [
-        "api-reference/subscriptions-v2",
         "api-reference/subscriptions/get-subscription",
         "api-reference/subscriptions-v2/post-subscriptions",
         "api-reference/subscriptions-v2/put-subscriptions",
@@ -149,7 +150,6 @@
     {
       "group": "Licenses",
       "pages": [
-        "api-reference/licenses",
         "api-reference/licenses/check-license",
         "api-reference/licenses/set-hardware-id"
       ]
