@@ -1343,59 +1343,7 @@
                 "type": "object",
                 "properties": {
                   "gateway": {
-                    "type": "string",
-                    "enum": [
-                      "PAYPAL",
-                      "STRIPE",
-                      "SKRILL",
-                      "PERFECT_MONEY",
-                      "CASH_APP",
-                      "BINANCE",
-                      "BITCOIN",
-                      "LITECOIN",
-                      "ETHEREUM",
-                      "BITCOIN_CASH",
-                      "NANO",
-                      "MONERO",
-                      "SOLANA",
-                      "RIPPLE",
-                      "BINANCE_COIN",
-                      "USDC:ERC20",
-                      "USDC:BEP20",
-                      "USDC:MATIC",
-                      "USDC:SOL",
-                      "USDT:ERC20",
-                      "USDT:BEP20",
-                      "USDT:MATIC",
-                      "USDT:SOL",
-                      "USDT:TRC20",
-                      "TRON",
-                      "BITCOIN_LN",
-                      "CONCORDIUM",
-                      "POLYGON",
-                      "PEPE:ERC20",
-                      "DAI:ERC20",
-                      "DAI:BEP20",
-                      "DAI:MATIC",
-                      "WETH:BEP20",
-                      "WETH:MATIC",
-                      "APE:ERC20",
-                      "APE:MATIC",
-                      "SHIB:ERC20",
-                      "SHIB:BEP20",
-                      "SHIB:MATIC",
-                      "USDC_NATIVE:MATIC",
-                      "DOGECOIN",
-                      "PYTH:SOL",
-                      "BONK:SOL",
-                      "JUP:SOL",
-                      "JITO:SOL",
-                      "WEN:SOL",
-                      "RENDER:SOL",
-                      "MOBILE:SOL",
-                      "HNT:SOL"
-                    ],
-                    "example": "STRIPE",
+                    "$ref": "#/components/schemas/gateway",
                     "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page. If product_id is specified, the gateway must be on in the product's gateways array."
                   },
                   "paypal_apm": {
@@ -2683,59 +2631,7 @@
                     "example": null
                   },
                   "gateway": {
-                    "type": "string",
-                    "enum": [
-                      "PAYPAL",
-                      "STRIPE",
-                      "SKRILL",
-                      "PERFECT_MONEY",
-                      "CASH_APP",
-                      "BINANCE",
-                      "BITCOIN",
-                      "LITECOIN",
-                      "ETHEREUM",
-                      "BITCOIN_CASH",
-                      "NANO",
-                      "MONERO",
-                      "SOLANA",
-                      "RIPPLE",
-                      "BINANCE_COIN",
-                      "USDC:ERC20",
-                      "USDC:BEP20",
-                      "USDC:MATIC",
-                      "USDC:SOL",
-                      "USDT:ERC20",
-                      "USDT:BEP20",
-                      "USDT:MATIC",
-                      "USDT:SOL",
-                      "USDT:TRC20",
-                      "TRON",
-                      "BITCOIN_LN",
-                      "CONCORDIUM",
-                      "POLYGON",
-                      "PEPE:ERC20",
-                      "DAI:ERC20",
-                      "DAI:BEP20",
-                      "DAI:MATIC",
-                      "WETH:BEP20",
-                      "WETH:MATIC",
-                      "APE:ERC20",
-                      "APE:MATIC",
-                      "SHIB:ERC20",
-                      "SHIB:BEP20",
-                      "SHIB:MATIC",
-                      "USDC_NATIVE:MATIC",
-                      "DOGECOIN",
-                      "PYTH:SOL",
-                      "BONK:SOL",
-                      "JUP:SOL",
-                      "JITO:SOL",
-                      "WEN:SOL",
-                      "RENDER:SOL",
-                      "MOBILE:SOL",
-                      "HNT:SOL"
-                    ],
-                    "example": null,
+                    "$ref": "#/components/schemas/gateway",
                     "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page. If product_id is specified, the gateway must be on in the product's gateways array."
                   },
                   "gateways": {
@@ -3413,59 +3309,7 @@
                     "example": "cst_sampleaddc898a645"
                   },
                   "gateway": {
-                    "type": "string",
-                    "enum": [
-                      "PAYPAL",
-                      "STRIPE",
-                      "SKRILL",
-                      "PERFECT_MONEY",
-                      "CASH_APP",
-                      "BINANCE",
-                      "BITCOIN",
-                      "LITECOIN",
-                      "ETHEREUM",
-                      "BITCOIN_CASH",
-                      "NANO",
-                      "MONERO",
-                      "SOLANA",
-                      "RIPPLE",
-                      "BINANCE_COIN",
-                      "USDC:ERC20",
-                      "USDC:BEP20",
-                      "USDC:MATIC",
-                      "USDC:SOL",
-                      "USDT:ERC20",
-                      "USDT:BEP20",
-                      "USDT:MATIC",
-                      "USDT:SOL",
-                      "USDT:TRC20",
-                      "TRON",
-                      "BITCOIN_LN",
-                      "CONCORDIUM",
-                      "POLYGON",
-                      "PEPE:ERC20",
-                      "DAI:ERC20",
-                      "DAI:BEP20",
-                      "DAI:MATIC",
-                      "WETH:BEP20",
-                      "WETH:MATIC",
-                      "APE:ERC20",
-                      "APE:MATIC",
-                      "SHIB:ERC20",
-                      "SHIB:BEP20",
-                      "SHIB:MATIC",
-                      "USDC_NATIVE:MATIC",
-                      "DOGECOIN",
-                      "PYTH:SOL",
-                      "BONK:SOL",
-                      "JUP:SOL",
-                      "JITO:SOL",
-                      "WEN:SOL",
-                      "RENDER:SOL",
-                      "MOBILE:SOL",
-                      "HNT:SOL"
-                    ],
-                    "example": null,
+                    "$ref": "#/components/schemas/gateway",
                     "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page."
                   }
                 }
@@ -3564,46 +3408,7 @@
                 ],
                 "properties": {
                   "gateway": {
-                    "type": "string",
-                    "enum": [
-                      "PAYPAL",
-                      "STRIPE",
-                      "SKRILL",
-                      "PERFECT_MONEY",
-                      "CASH_APP",
-                      "BINANCE",
-                      "BITCOIN",
-                      "LITECOIN",
-                      "ETHEREUM",
-                      "BITCOIN_CASH",
-                      "NANO",
-                      "MONERO",
-                      "SOLANA",
-                      "RIPPLE",
-                      "BINANCE_COIN",
-                      "USDC",
-                      "USDT",
-                      "TRON",
-                      "BITCOIN_LN",
-                      "CONCORDIUM",
-                      "POLYGON",
-                      "PEPE",
-                      "DAI",
-                      "WETH",
-                      "APE",
-                      "SHIB",
-                      "USDC_NATIVE",
-                      "DOGECOIN",
-                      "PYTH",
-                      "BONK",
-                      "JUP",
-                      "JITO",
-                      "WEN",
-                      "RENDER",
-                      "MOBILE",
-                      "HNT"
-                    ],
-                    "example": "STRIPE",
+                    "$ref": "#/components/schemas/gateway",
                     "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page."
                   },
                   "email": {
@@ -3708,7 +3513,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/subscription"
+            "$ref": "#/components/responses/subscriptionV2"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -3756,46 +3561,7 @@
                 "type": "object",
                 "properties": {
                   "gateway": {
-                    "type": "string",
-                    "enum": [
-                      "PAYPAL",
-                      "STRIPE",
-                      "SKRILL",
-                      "PERFECT_MONEY",
-                      "CASH_APP",
-                      "BINANCE",
-                      "BITCOIN",
-                      "LITECOIN",
-                      "ETHEREUM",
-                      "BITCOIN_CASH",
-                      "NANO",
-                      "MONERO",
-                      "SOLANA",
-                      "RIPPLE",
-                      "BINANCE_COIN",
-                      "USDC",
-                      "USDT",
-                      "TRON",
-                      "BITCOIN_LN",
-                      "CONCORDIUM",
-                      "POLYGON",
-                      "PEPE",
-                      "DAI",
-                      "WETH",
-                      "APE",
-                      "SHIB",
-                      "USDC_NATIVE",
-                      "DOGECOIN",
-                      "PYTH",
-                      "BONK",
-                      "JUP",
-                      "JITO",
-                      "WEN",
-                      "RENDER",
-                      "MOBILE",
-                      "HNT"
-                    ],
-                    "example": "STRIPE",
+                    "$ref": "#/components/schemas/gateway",
                     "description": "If null, the customer will be asked automatically to choose a gateway on the Sellix hosted /payment page."
                   },
                   "payment_method_uniqid": {
@@ -6244,59 +6010,7 @@
                   "description": "The shop ID to which this resource belongs."
                 },
                 "gateway": {
-                  "type": "string",
-                  "enum": [
-                    "PAYPAL",
-                    "STRIPE",
-                    "SKRILL",
-                    "PERFECT_MONEY",
-                    "CASH_APP",
-                    "BINANCE",
-                    "BITCOIN",
-                    "LITECOIN",
-                    "ETHEREUM",
-                    "BITCOIN_CASH",
-                    "NANO",
-                    "MONERO",
-                    "SOLANA",
-                    "RIPPLE",
-                    "BINANCE_COIN",
-                    "USDC:ERC20",
-                    "USDC:BEP20",
-                    "USDC:MATIC",
-                    "USDC:SOL",
-                    "USDT:ERC20",
-                    "USDT:BEP20",
-                    "USDT:MATIC",
-                    "USDT:SOL",
-                    "USDT:TRC20",
-                    "TRON",
-                    "BITCOIN_LN",
-                    "CONCORDIUM",
-                    "POLYGON",
-                    "PEPE:ERC20",
-                    "DAI:ERC20",
-                    "DAI:BEP20",
-                    "DAI:MATIC",
-                    "WETH:BEP20",
-                    "WETH:MATIC",
-                    "APE:ERC20",
-                    "APE:MATIC",
-                    "SHIB:ERC20",
-                    "SHIB:BEP20",
-                    "SHIB:MATIC",
-                    "USDC_NATIVE:MATIC",
-                    "DOGECOIN",
-                    "PYTH:SOL",
-                    "BONK:SOL",
-                    "JUP:SOL",
-                    "JITO:SOL",
-                    "WEN:SOL",
-                    "RENDER:SOL",
-                    "MOBILE:SOL",
-                    "HNT:SOL"
-                  ],
-                  "example": "STRIPE"
+                  "$ref": "#/components/schemas/gateway"
                 },
                 "percent_amount": {
                   "type": "integer",
@@ -6559,6 +6273,48 @@
           }
         }
       },
+      "gateway": {
+        "type": "string",
+        "enum": [
+          "PAYPAL",
+          "STRIPE",
+          "SKRILL",
+          "PERFECT_MONEY",
+          "CASH_APP",
+          "BINANCE",
+          "BITCOIN",
+          "LITECOIN",
+          "ETHEREUM",
+          "BITCOIN_CASH",
+          "NANO",
+          "MONERO",
+          "SOLANA",
+          "RIPPLE",
+          "BINANCE_COIN",
+          "USDC",
+          "USDT",
+          "TRON",
+          "BITCOIN_LN",
+          "CONCORDIUM",
+          "POLYGON",
+          "PEPE",
+          "DAI",
+          "WETH",
+          "APE",
+          "SHIB",
+          "USDC_NATIVE",
+          "DOGECOIN",
+          "PYTH",
+          "BONK",
+          "JUP",
+          "JITO",
+          "WEN",
+          "RENDER",
+          "MOBILE",
+          "HNT"
+        ],
+        "example": "STRIPE"
+      },
       "gateways": {
         "type": "array",
         "items": {
@@ -6622,59 +6378,7 @@
             "description": "The shop ID to which this gateway fee belongs."
           },
           "gateway": {
-            "type": "string",
-            "enum": [
-              "PAYPAL",
-              "STRIPE",
-              "SKRILL",
-              "PERFECT_MONEY",
-              "CASH_APP",
-              "BINANCE",
-              "BITCOIN",
-              "LITECOIN",
-              "ETHEREUM",
-              "BITCOIN_CASH",
-              "NANO",
-              "MONERO",
-              "SOLANA",
-              "RIPPLE",
-              "BINANCE_COIN",
-              "USDC:ERC20",
-              "USDC:BEP20",
-              "USDC:MATIC",
-              "USDC:SOL",
-              "USDT:ERC20",
-              "USDT:BEP20",
-              "USDT:MATIC",
-              "USDT:SOL",
-              "USDT:TRC20",
-              "TRON",
-              "BITCOIN_LN",
-              "CONCORDIUM",
-              "POLYGON",
-              "PEPE:ERC20",
-              "DAI:ERC20",
-              "DAI:BEP20",
-              "DAI:MATIC",
-              "WETH:BEP20",
-              "WETH:MATIC",
-              "APE:ERC20",
-              "APE:MATIC",
-              "SHIB:ERC20",
-              "SHIB:BEP20",
-              "SHIB:MATIC",
-              "USDC_NATIVE:MATIC",
-              "DOGECOIN",
-              "PYTH:SOL",
-              "BONK:SOL",
-              "JUP:SOL",
-              "JITO:SOL",
-              "WEN:SOL",
-              "RENDER:SOL",
-              "MOBILE:SOL",
-              "HNT:SOL"
-            ],
-            "example": null,
+            "$ref": "#/components/schemas/gateway",
             "description": "The gateway of the gateway fee."
           },
           "percent_amount": {
@@ -7155,46 +6859,7 @@
             "description": "Field reserved for Sellix-own plans. Time, in seconds, of the subscription purchased."
           },
           "gateway": {
-            "type": "string",
-            "enum": [
-              "PAYPAL",
-              "STRIPE",
-              "SKRILL",
-              "PERFECT_MONEY",
-              "CASH_APP",
-              "BINANCE",
-              "BITCOIN",
-              "LITECOIN",
-              "ETHEREUM",
-              "BITCOIN_CASH",
-              "NANO",
-              "MONERO",
-              "SOLANA",
-              "RIPPLE",
-              "BINANCE_COIN",
-              "USDC",
-              "USDT",
-              "TRON",
-              "BITCOIN_LN",
-              "CONCORDIUM",
-              "POLYGON",
-              "PEPE",
-              "DAI",
-              "WETH",
-              "APE",
-              "SHIB",
-              "USDC_NATIVE",
-              "DOGECOIN",
-              "PYTH",
-              "BONK",
-              "JUP",
-              "JITO",
-              "WEN",
-              "RENDER",
-              "MOBILE",
-              "HNT"
-            ],
-            "example": "LITECOIN",
+            "$ref": "#/components/schemas/gateway",
             "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
           },
           "blockchain": {
@@ -7836,6 +7501,869 @@
           }
         }
       },
+      "subscriptionV2Invoice": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 987,
+            "description": "ID of the resource."
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample-3ddfc9dc3d-ab2e36",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "recurring_billing_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sub_pp_568e7d30a88460e03901c6",
+            "description": "Unique ID of the recurring bill."
+          },
+          "payout_configuration": {
+            "type": "string",
+            "example": null,
+            "description": "DEPRECATED"
+          },
+          "secret": {
+            "type": "string",
+            "example": "sample-secret",
+            "description": "An internal Sellix secret used for completing tasks with our internal API"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PRODUCT",
+              "SUBSCRIPTION",
+              "PUBLIC_REST_API",
+              "MONTHLY_BILL",
+              "SHOPPING_CART",
+              "PRODUCT_SUBSCRIPTION",
+              "PRODUCT_SUBSCRIPTION_V2"
+            ],
+            "example": "PRODUCT",
+            "description": "Invoice type. For subscriptions, the invoice type is PRODUCT_SUBSCRIPTION as SUBSCRIPTION is reserved for Sellix-own plans."
+          },
+          "subtype": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC",
+              "INFO_CARD",
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
+            ],
+            "example": "SERIALS",
+            "description": "Product type."
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "STOREFRONT",
+              "API"
+            ],
+            "example": "STOREFRONT",
+            "description": "How the invoice was created"
+          },
+          "total": {
+            "type": "number",
+            "format": "double",
+            "example": 4.5,
+            "description": "Invoice total, unit_price*quantity where quantity is applicable."
+          },
+          "total_display": {
+            "type": "number",
+            "format": "double",
+            "example": 2,
+            "description": "Invoice total in the currency chosen."
+          },
+          "product_variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/product_variant"
+            }
+          },
+          "exchange_rate": {
+            "type": "number",
+            "format": "double",
+            "example": 1.12,
+            "description": "Exchange rate between currency chosen and USD."
+          },
+          "crypto_exchange_rate": {
+            "type": "number",
+            "format": "double",
+            "example": 176.38,
+            "description": "Exchange rate between the cryptocurrency chosen (if any) and USD."
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 987,
+            "description": "The shop ID to which this invoice belongs."
+          },
+          "shop_image_name": {
+            "type": "string",
+            "example": "ShopImageName.png",
+            "description": "DEPRECATED: Unique id of the image attachment for this merchant with the image extension included."
+          },
+          "shop_image_storage": {
+            "type": "string",
+            "enum": ["PRODUCTS", "SHOPS"],
+            "example": "PRODUCTS",
+            "description": "Where the image is stored in Sellix's self-hosted CDN."
+          },
+          "cloudflare_image_id": {
+            "$ref": "#/components/schemas/cloudflare_image_id"
+          },
+          "name": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "Name of the merchant."
+          },
+          "customer_email": {
+            "type": "string",
+            "example": "customer@gmail.com",
+            "description": "Email of the customer."
+          },
+          "customer_id": {
+            "type": "string",
+            "example": "cst_sample86f8ac433f4a084",
+            "description": "ID of the customer."
+          },
+          "affliate_revenue_customer_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID of the affiliate"
+          },
+          "paypal_email_delivery": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true and gateway is PAYPAL, the product will be shipped to the PayPal email on record instead of the customer email."
+          },
+          "product_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample2bde8a50",
+            "description": "Unique ID of the product linked to this invoice, if any."
+          },
+          "product_title": {
+            "type": "string",
+            "example": "Digital Good",
+            "description": "Product title."
+          },
+          "product_type": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC",
+              "INFO_CARD",
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
+            ],
+            "example": "SUBSCRIPTION_V2",
+            "description": "Product type."
+          },
+          "subscription_id": {
+            "type": "integer",
+            "example": null,
+            "description": "Field reserved for Sellix-own plans. Unique ID of the subscription purchased."
+          },
+          "subscription_time": {
+            "type": "integer",
+            "example": null,
+            "description": "Field reserved for Sellix-own plans. Time, in seconds, of the subscription purchased."
+          },
+          "gateway": {
+            "$ref": "#/components/schemas/gateway",
+            "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
+          },
+          "blockchain": {
+            "$ref": "#/components/schemas/blockchain"
+          },
+          "paypal_apm": {
+            "type": "string",
+            "example": null,
+            "description": "PayPal Alternative Payment Method name, such as iDEAL, used if gateway is PAYPAL."
+          },
+          "stripe_apm": {
+            "type": "string",
+            "enum": [
+              "afterpay_clearpay",
+              "alipay",
+              "bancontact",
+              "au_becs_debit",
+              "boleto",
+              "eps",
+              "fpx",
+              "giropay",
+              "grabpay",
+              "ideal",
+              "klarna",
+              "oxxo",
+              "p24",
+              "sofort",
+              "wechat_pay"
+            ],
+            "example": null,
+            "description": "Stripe Alternative Payment Method name, such as iDEAL, used if gateway is STRIPE."
+          },
+          "paypal_email": {
+            "type": "string",
+            "example": null,
+            "description": "Merchant PayPal email."
+          },
+          "paypal_order_id": {
+            "type": "string",
+            "example": null,
+            "description": "This field contains the PayPal order ID."
+          },
+          "paypal_payer_email": {
+            "type": "string",
+            "example": null,
+            "description": "This field is updated after the invoice is completed with the PayPal's email used for the purchase."
+          },
+          "paypal_fee": {
+            "type": "string",
+            "example": 987,
+            "description": "This field is updated after the invoice is completed with the fee taken by PayPal over the invoice total."
+          },
+          "paypal_subscription_id": {
+            "type": "integer",
+            "example": null,
+            "description": "ID of the paypal subscription."
+          },
+          "paypal_subscription_link": {
+            "type": "integer",
+            "example": null,
+            "description": "Link for the merchant to purchase the subscription from."
+          },
+          "lex_order_id": {
+            "type": "string",
+            "example": "null",
+            "description": "DEPRECATED"
+          },
+          "lex_payment_method": {
+            "type": "string",
+            "example": "null",
+            "description": "DEPRECATED"
+          },
+          "paydash_paymentID": {
+            "type": "string",
+            "example": "null",
+            "description": "DEPRECATED"
+          },
+          "virtual_payments_id": {
+            "type": "string",
+            "example": "null",
+            "description": "DEPRECATED"
+          },
+          "stripe_client_secret": {
+            "type": "string",
+            "example": null,
+            "description": "Client secret used to create the STRIPE paymentIntent."
+          },
+          "stripe_price_id": {
+            "type": "string",
+            "example": null,
+            "description": "If the invoice type is PRODUCT_SUBSCRIPTION or SUBSCRIPTION, refers to the STRIPE price ID."
+          },
+          "skrill_email": {
+            "type": "string",
+            "example": null,
+            "description": "Merchant Skrill email."
+          },
+          "skrill_sid": {
+            "type": "string",
+            "example": null,
+            "description": "Skrill unique ID linked to the invoice."
+          },
+          "skrill_link": {
+            "type": "string",
+            "example": null,
+            "description": "Skrill link to redirect the customer to."
+          },
+          "perfectmoney_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": null,
+            "description": "PerfectMoney payment ID linked to the invoice."
+          },
+          "binance_invoice_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID for binance invoice"
+          },
+          "binance_qrcode": {
+            "type": "string",
+            "example": null,
+            "description": "Full Binance QRCODE string"
+          },
+          "binance_checkout_url": {
+            "type": "string",
+            "example": null,
+            "description": "Checkout URL for Binance invoice"
+          },
+          "crypto_address": {
+            "type": "string",
+            "example": "3RUx8gs74R5KdXrs8wU6Z2xQkS8jmGVCnTVTRpwSoE3B",
+            "description": "Cryptocurrency address linked to this invoice."
+          },
+          "crypto_amount": {
+            "type": "number",
+            "format": "double",
+            "example": 0.014174,
+            "description": "Cryptocurrency amount converted based on crypto_exchange_rate."
+          },
+          "crypto_received": {
+            "type": "number",
+            "format": "double",
+            "example": 0.014174,
+            "description": "Cryptocurrency amount received, paid by the customer."
+          },
+          "crypto_uri": {
+            "type": "string",
+            "example": "solana:3RUx8gs74R5KdXrs8wU6Z2xQkS8jmGVCnTVTRpwSoE3B?amount=0.014174",
+            "description": "URI used to create the QRCODE."
+          },
+          "crypto_confirmations_needed": {
+            "type": "integer",
+            "example": 1,
+            "description": "Crypto confirmations needed to process the invoice."
+          },
+          "crypto_scheduled_payout": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, a scheduled payout for this invoice's cryptocurrency address has been sent."
+          },
+          "crypto_payout": {
+            "type": "boolean",
+            "example": true,
+            "description": "If true, an instant payout for this invoice's cryptocurrency address has been sent."
+          },
+          "crypto_wallet_version": {
+            "type": "string",
+            "example": "NON_CUSTODIAL",
+            "description": "The version of the wallet used to receive the cryptocurrency."
+          },
+          "fee_billed": {
+            "type": "boolean",
+            "example": true,
+            "description": "If true, the Sellix fee_percentage has already been collected."
+          },
+          "bill_info": {
+            "type": "object",
+            "example": null,
+            "description": "If invoice type is MONTHLY_BILL, contains a breakdown of the fees that need to be collected."
+          },
+          "cashapp_qrcode": {
+            "type": "string",
+            "example": null,
+            "description": "Full CashApp QRCODE string."
+          },
+          "cashapp_note": {
+            "type": "string",
+            "format": "uuid",
+            "example": null,
+            "description": "Unique note for the customer to leave in the CashApp payment."
+          },
+          "cashapp_cashtag": {
+            "type": "string",
+            "example": null,
+            "description": "CashApp cashtag used to create the QRCODE."
+          },
+          "square_payment_id": {
+            "type": "string",
+            "example": null,
+            "description": "Unique payment idenfitier used by square for internal logic."
+          },
+          "country": {
+            "type": "string",
+            "example": "IT",
+            "description": "Customer country."
+          },
+          "location": {
+            "type": "string",
+            "example": "Bologna, Emilia-Romagna (Europe/Rome)",
+            "description": "Customer location."
+          },
+          "ip": {
+            "type": "string",
+            "example": "255.11.12.255",
+            "description": "Customer IP."
+          },
+          "is_vpn_or_proxy": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, a VPN or Proxy has been detected."
+          },
+          "user_agent": {
+            "type": "string",
+            "example": "PostmanRuntime/7.26.8",
+            "description": "Customer User Agent."
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 5,
+            "description": "Qauntity of product purchased."
+          },
+          "coupon_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": null,
+            "description": "Unique ID of the coupon, if used, for the discount."
+          },
+          "custom_fields": {
+            "$ref": "#/components/schemas/custom_fields_object"
+          },
+          "developer_invoice": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, this invoice has been created through the Developers API."
+          },
+          "developer_title": {
+            "type": "string",
+            "example": null,
+            "description": "If a product_id is not passed through the Developers API, a title must be specified."
+          },
+          "developer_webhook": {
+            "type": "string",
+            "example": null,
+            "description": "Additional webhook URL to which updates regarding this invoice will be sent."
+          },
+          "developer_return_url": {
+            "type": "string",
+            "example": null,
+            "description": "If present, the customer will be redirected to this URL after the invoice has been paid."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "COMPLETED",
+              "VOIDED",
+              "WAITING_FOR_CONFIRMATIONS",
+              "PARTIAL",
+              "CUSTOMER_DISPUTE_ONGOING",
+              "REVERSED",
+              "REFUNDED",
+              "WAITING_SHOP_ACTION",
+              "PROCESSING"
+            ],
+            "example": "COMPLETED",
+            "description": "Status of the invoice."
+          },
+          "status_details": {
+            "type": "string",
+            "enum": [
+              "CART_PARTIAL_OUT_OF_STOCK"
+            ],
+            "example": null,
+            "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
+          },
+          "void_details": {
+            "type": "string",
+            "enum": [
+              "PRODUCT_SOLD_OUT",
+              "CART_PRODUCTS_SOLD_OUT"
+            ],
+            "example": null,
+            "description": "If the invoice is VOIDED and the product (or all the products in the cart) were out of stock, this additional status is set."
+          },
+          "discount": {
+            "type": "number",
+            "format": "double",
+            "example": 987,
+            "description": "If a coupon or volume_discount is used, the discount value presents the total amount of discount over the total cost of the invoice."
+          },
+          "fee_percentage": {
+            "type": "integer",
+            "example": 5,
+            "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
+          },
+          "fee_breakdown": {
+            "$ref": "#/components/schemas/fee_breakdown"
+          },
+          "discount_breakdown": {
+            "type": "object",
+            "example": null,
+            "description": "Representation of how discount was applied to invoice"
+          },
+          "day_value": {
+            "type": "integer",
+            "description": "DEPRECATED: Day value, number.",
+            "deprecated": true
+          },
+          "day": {
+            "type": "string",
+            "description": "DEPRECATED: First three letters of the day name.",
+            "deprecated": true
+          },
+          "month": {
+            "type": "string",
+            "description": "DEPRECATED: First three letters of the month name.",
+            "deprecated": true
+          },
+          "year": {
+            "type": "integer",
+            "description": "DEPRECATED: Year number.",
+            "deprecated": true
+          },
+          "bundle_config": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/bundle_config"
+            }
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the invoice."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the blacklist has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 1,
+            "description": "User ID of the user who updated the invoice."
+          },
+          "product_plan_id": {
+            "type": "integer",
+            "example": 123,
+            "description": "Unique ID of the product plan linked to this invoice, if any."
+          },
+          "addons": {
+            "$ref": "#/components/schemas/product_addons"
+          },
+          "approved_address": {
+            "$ref": "#/components/schemas/approved_address"
+          },
+          "ip_info": {
+            "$ref": "#/components/schemas/ip_info"
+          },
+          "webhooks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/webhook"
+            },
+            "example": [
+              {
+                "uniqid": "sample079ee22",
+                "url": "https://dev.sellix.io/v1/webhook",
+                "event": "order:paid",
+                "retries": 1,
+                "response_code": 200,
+                "created_at": 1640777735,
+                "payload": "{\"sample\":\"sellix\"}",
+                "response": "webhook response"
+              }
+            ],
+            "description": "Webhook responses for this invoice."
+          },
+          "rewards_data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "clause": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "clause_value": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "clause_currency": {
+                    "$ref": "#/components/schemas/currency"
+                  },
+                  "action": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "action_value": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "action_currency": {
+                    "$ref": "#/components/schemas/currency"
+                  },
+                  "action_send_product_variant": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "created_at": {
+                    "type": "integer",
+                    "format": "timestamp",
+                    "example": 162857125819,
+                    "description": "Creation date of the invoice."
+                  },
+                  "updated_at": {
+                    "type": "integer",
+                    "format": "timestamp",
+                    "example": 162857125819,
+                    "description": "Timestamp for when resource was last updated."
+                  },
+                  "log": {
+                    "type": "object",
+                    "example": null
+                  },
+                  "reward_info": {
+                    "type": "object",
+                    "example": null
+                  }
+                }
+              }
+          },
+          "paypal_dispute": {
+            "$ref": "#/components/schemas/paypal_dispute"
+          },
+          "product_downloads": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/product_download"
+            }
+          },
+          "payment_link_id": {
+            "type": "string",
+            "example": null,
+            "description": "The ID for the payment link, if invoice was created by a payment link"
+          },
+          "cashapp_email_configured": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not cashapp email is configured"
+          },
+          "license": {
+            "type": "boolean",
+            "example": false,
+            "description": "True if the product is of type LICENSE"
+          },
+          "trial_period": {
+            "type": "integer",
+            "example": 0,
+            "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION."
+          },
+          "interval": {
+            "type": "string",
+            "enum": [
+              "DAY",
+              "WEEK",
+              "MONTH",
+              "YEAR"
+            ],
+            "example": "MONTH",
+            "description": "At which frequency the customer is billed for product type SUBSCRIPTION."
+          },
+          "recurring_interval_count": {
+            "type": "integer",
+            "example": 4,
+            "description": "The number of intervals included in one billing cycle"
+          },
+          "product_plan_subscription": {
+            "$ref": "#/components/schemas/product_plan_subscription"
+          },
+          "payment_interval": {
+            "$ref": "#/components/schemas/payment_interval"
+          },
+          "status_history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/invoice_status"
+            },
+            "example": [
+              {
+                "id": 10726392,
+                "invoice_id": "sample-3ddfc9dc3d-ab2e36",
+                "status": "PENDING",
+                "details": "The invoice has been created and we are now waiting to receive a payment.",
+                "created_at": 1640777609
+              },
+              {
+                "id": 10726409,
+                "invoice_id": "sample-3ddfc9dc3d-ab2e36",
+                "status": "COMPLETED",
+                "details": "The invoice has been flagged as completed and the product has been shipped.",
+                "created_at": 1640777796
+              }
+            ],
+            "description": "Additional details on the invoice status change."
+          },
+          "aml_wallets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/aml_wallet"
+            }
+          },
+          "crypto_transactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/crypto_transaction"
+            },
+            "example": [
+              {
+                "crypto_amount": 0.014174,
+                "hash": "234dB62Q3X9nyqussRSHW5x9rXe7NzyS3hLcwSTtzd9WLWfrHFUtX4KS6DAMyyHnvRgUNiqUvZdw2T9XWJqa8sPW",
+                "confirmations": 1,
+                "created_at": 1640777734,
+                "updated_at": 1640777734
+              }
+            ],
+            "description": "Crypto transactions received to fulfill this invoice."
+          },
+          "stripe_user_id": {
+            "type": "string",
+            "example": "acct_1PQbheLKSsHE5k7g",
+            "description": "Unique ID used within stripe to identify the customer during stripe requests. See [Stripe's documentation for Connected Accounts](https://docs.stripe.com/connect/authentication) to see how to use this identifier"
+          },
+          "stripe_publishable_key": {
+            "type": "string",
+            "example": "",
+            "description": "Key used by stripe to partially authentiate requests on client"
+          },
+          "product": {
+            "$ref": "#/components/schemas/product"
+          },
+          "total_conversions": {
+            "example": []
+          },
+          "theme": {
+            "type": "string",
+            "example": "dark",
+            "description": "What Sellix theme the shop is set to."
+          },
+          "dark_mode": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "1 if darkmode is enabled, 0 if it is disabled."
+          },
+          "crypto_mode": {
+            "example": "DEFAULT"
+          },
+          "ui_style_configuration": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the user has customized the UI style"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/product"
+            }
+          },
+          "gateways_available": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "PAYPAL",
+              "STRIPE",
+              "MONERO"
+            ],
+            "description": "gateways available for the update invoice Developers API."
+          },
+          "shop_payment_gateways_fees": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/gateway_fees"
+            }
+          },
+          "country_regulations": {
+            "type": "string",
+            "example": "IT",
+            "description": "The country the shop is opperated in"
+          },
+          "available_stripe_apm": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "afterpay_clearpay",
+                "description": "The stripe ID for the APM"
+              },
+              "name": {
+                "type": "string",
+                "example": "Afterpay and Clearpay",
+                "description": "The stripe name for the APM"
+              }
+            }
+          },
+          "shop_paypal_credit_card": {
+            "type": "boolean",
+            "example": true,
+            "description": "If true, the merchant has enabled purchase with Credit Card through PayPal."
+          },
+          "shop_force_paypal_email_delivery": {
+            "type": "boolean",
+            "example": true,
+            "description": "If true, the merchant has enabled invoice shipment to the PayPal customer email."
+          },
+          "shop_walletconnect_id": {
+            "example": null
+          },
+          "rates_snapshot": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 987,
+                "description": "ID of the resource."
+              },
+              "USD": {
+                "type": "string",
+                "example": "1.0000",
+                "description": "The rate in USD."
+              },
+              "CAD": {
+                "type": "string",
+                "example": "1.3542",
+                "description": "The rate in CAD."
+              },
+              "HKD": {
+                "type": "string",
+                "example": "7.8269",
+                "description": "The rate in HKD."
+              }
+            }
+          },
+          "void_times": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "gateways": {
+                  "$ref": "#/components/schemas/gateways"
+                },
+                "conf": {
+                  "type": "object",
+                  "properties": {
+                    "void": {
+                      "type": "integer",
+                      "example": 86400
+                    },
+                    "wait_period": {
+                      "type": "object",
+                      "example": "null"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "invoice_status": {
         "type": "object",
         "properties": {
@@ -8139,59 +8667,7 @@
             "description": "Product type."
           },
           "gateway": {
-            "type": "string",
-            "enum": [
-              "PAYPAL",
-              "STRIPE",
-              "SKRILL",
-              "PERFECT_MONEY",
-              "CASH_APP",
-              "BINANCE",
-              "BITCOIN",
-              "LITECOIN",
-              "ETHEREUM",
-              "BITCOIN_CASH",
-              "NANO",
-              "MONERO",
-              "SOLANA",
-              "RIPPLE",
-              "BINANCE_COIN",
-              "USDC:ERC20",
-              "USDC:BEP20",
-              "USDC:MATIC",
-              "USDC:SOL",
-              "USDT:ERC20",
-              "USDT:BEP20",
-              "USDT:MATIC",
-              "USDT:SOL",
-              "USDT:TRC20",
-              "TRON",
-              "BITCOIN_LN",
-              "CONCORDIUM",
-              "POLYGON",
-              "PEPE:ERC20",
-              "DAI:ERC20",
-              "DAI:BEP20",
-              "DAI:MATIC",
-              "WETH:BEP20",
-              "WETH:MATIC",
-              "APE:ERC20",
-              "APE:MATIC",
-              "SHIB:ERC20",
-              "SHIB:BEP20",
-              "SHIB:MATIC",
-              "USDC_NATIVE:MATIC",
-              "DOGECOIN",
-              "PYTH:SOL",
-              "BONK:SOL",
-              "JUP:SOL",
-              "JITO:SOL",
-              "WEN:SOL",
-              "RENDER:SOL",
-              "MOBILE:SOL",
-              "HNT:SOL"
-            ],
-            "example": "SOLANA",
+            "$ref": "#/components/schemas/gateway",
             "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
           },
           "paypal_email": {
@@ -9058,59 +9534,7 @@
                   "description": "The shop ID to which this resource belongs."
                 },
                 "gateway": {
-                  "type": "string",
-                  "enum": [
-                    "PAYPAL",
-                    "STRIPE",
-                    "SKRILL",
-                    "PERFECT_MONEY",
-                    "CASH_APP",
-                    "BINANCE",
-                    "BITCOIN",
-                    "LITECOIN",
-                    "ETHEREUM",
-                    "BITCOIN_CASH",
-                    "NANO",
-                    "MONERO",
-                    "SOLANA",
-                    "RIPPLE",
-                    "BINANCE_COIN",
-                    "USDC:ERC20",
-                    "USDC:BEP20",
-                    "USDC:MATIC",
-                    "USDC:SOL",
-                    "USDT:ERC20",
-                    "USDT:BEP20",
-                    "USDT:MATIC",
-                    "USDT:SOL",
-                    "USDT:TRC20",
-                    "TRON",
-                    "BITCOIN_LN",
-                    "CONCORDIUM",
-                    "POLYGON",
-                    "PEPE:ERC20",
-                    "DAI:ERC20",
-                    "DAI:BEP20",
-                    "DAI:MATIC",
-                    "WETH:BEP20",
-                    "WETH:MATIC",
-                    "APE:ERC20",
-                    "APE:MATIC",
-                    "SHIB:ERC20",
-                    "SHIB:BEP20",
-                    "SHIB:MATIC",
-                    "USDC_NATIVE:MATIC",
-                    "DOGECOIN",
-                    "PYTH:SOL",
-                    "BONK:SOL",
-                    "JUP:SOL",
-                    "JITO:SOL",
-                    "WEN:SOL",
-                    "RENDER:SOL",
-                    "MOBILE:SOL",
-                    "HNT:SOL"
-                  ],
-                  "example": "STRIPE"
+                  "$ref": "#/components/schemas/gateway"
                 },
                 "percent_amount": {
                   "type": "integer",
@@ -9337,46 +9761,7 @@
             "description": "Field reserved for Sellix-own plans. Time, in seconds, of the subscription purchased."
           },
           "gateway": {
-            "type": "string",
-            "enum": [
-              "PAYPAL",
-              "STRIPE",
-              "SKRILL",
-              "PERFECT_MONEY",
-              "CASH_APP",
-              "BINANCE",
-              "BITCOIN",
-              "LITECOIN",
-              "ETHEREUM",
-              "BITCOIN_CASH",
-              "NANO",
-              "MONERO",
-              "SOLANA",
-              "RIPPLE",
-              "BINANCE_COIN",
-              "USDC",
-              "USDT",
-              "TRON",
-              "BITCOIN_LN",
-              "CONCORDIUM",
-              "POLYGON",
-              "PEPE",
-              "DAI",
-              "WETH",
-              "APE",
-              "SHIB",
-              "USDC_NATIVE",
-              "DOGECOIN",
-              "PYTH",
-              "BONK",
-              "JUP",
-              "JITO",
-              "WEN",
-              "RENDER",
-              "MOBILE",
-              "HNT"
-            ],
-            "example": "LITECOIN",
+            "$ref": "#/components/schemas/gateway",
             "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
           },
           "blockchain": {
@@ -10074,6 +10459,11 @@
           }
         }
       },
+      "payment_interval": {
+        "type": "object",
+        "properties": {
+        }
+      },
       "payment_method": {
         "type": "object",
         "properties": {
@@ -10113,46 +10503,7 @@
             "description": "Unique ID used within Sellix to identify customers across the API."
           },
           "gateway": {
-            "type": "string",
-            "enum": [
-              "PAYPAL",
-              "STRIPE",
-              "SKRILL",
-              "PERFECT_MONEY",
-              "CASH_APP",
-              "BINANCE",
-              "BITCOIN",
-              "LITECOIN",
-              "ETHEREUM",
-              "BITCOIN_CASH",
-              "NANO",
-              "MONERO",
-              "SOLANA",
-              "RIPPLE",
-              "BINANCE_COIN",
-              "USDC",
-              "USDT",
-              "TRON",
-              "BITCOIN_LN",
-              "CONCORDIUM",
-              "POLYGON",
-              "PEPE",
-              "DAI",
-              "WETH",
-              "APE",
-              "SHIB",
-              "USDC_NATIVE",
-              "DOGECOIN",
-              "PYTH",
-              "BONK",
-              "JUP",
-              "JITO",
-              "WEN",
-              "RENDER",
-              "MOBILE",
-              "HNT"
-            ],
-            "example": "STRIPE",
+            "$ref": "#/components/schemas/gateway",
             "description": "Payment gateway this payment method is used for"
           },
           "method_type": {
@@ -10582,6 +10933,11 @@
             "example": "0",
             "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION."
           },
+          "setup_cost": {
+            "type": "string",
+            "example": "0.000000000000",
+            "description": "If the product is a subcription, this is the setup cost of the subscription"
+          },
           "paypal_product_id": {
             "type": "string",
             "example": null,
@@ -10649,10 +11005,29 @@
             "description": "At which product quantity should we send a webhook and email warning the merchant."
           },
           "gateways": {
-            "$ref": "#/components/schemas/gateways"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/gateway"
+            },
+            "example": ["PAYPAL", "STRIPE", "BITCOIN"]
           },
           "custom_fields": {
             "$ref": "#/components/schemas/custom_fields_array"
+          },
+          "rcon_commands": {
+            "type": "array",
+            "example": null
+          },
+          "rcon_execution_type": {
+            "type": "string",
+            "example": "AUTOMATIC",
+            "description": "The execution type of the RCON product"
+          },
+          "rcon_start_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-20 00:00:00",
+            "description": "The timestamp for when the RCON product should start"
           },
           "crypto_confirmations_needed": {
             "type": "integer",
@@ -10807,7 +11182,7 @@
           },
           "image_name": {
             "type": "string",
-            "example": "SellixImageName.png",
+            "example": "350f4d83d59450404ad3fca36e9337236df3697dd9149863682d88c32503230a.jpeg",
             "description": "DEPRECATED: The name of the product image with the file type"
           },
           "image_storage": {
@@ -10816,7 +11191,9 @@
             "description": "Where the image is stored in Sellix's self-hosted CDN."
           },
           "cloudflare_image_id": {
-            "$ref": "#/components/schemas/cloudflare_image_id"
+            "type": "string",
+            "example": "db1fe49f-4492-4e82-9001-9fad57555c00",
+            "description": "The ID of the image stored in cloudflare's CDN"
           },
           "image_attachments": {
             "type": "array",
@@ -10923,59 +11300,8 @@
                   "description": "The shop ID to which this resource belongs."
                 },
                 "gateway": {
-                  "type": "string",
-                  "enum": [
-                    "PAYPAL",
-                    "STRIPE",
-                    "SKRILL",
-                    "PERFECT_MONEY",
-                    "CASH_APP",
-                    "BINANCE",
-                    "BITCOIN",
-                    "LITECOIN",
-                    "ETHEREUM",
-                    "BITCOIN_CASH",
-                    "NANO",
-                    "MONERO",
-                    "SOLANA",
-                    "RIPPLE",
-                    "BINANCE_COIN",
-                    "USDC:ERC20",
-                    "USDC:BEP20",
-                    "USDC:MATIC",
-                    "USDC:SOL",
-                    "USDT:ERC20",
-                    "USDT:BEP20",
-                    "USDT:MATIC",
-                    "USDT:SOL",
-                    "USDT:TRC20",
-                    "TRON",
-                    "BITCOIN_LN",
-                    "CONCORDIUM",
-                    "POLYGON",
-                    "PEPE:ERC20",
-                    "DAI:ERC20",
-                    "DAI:BEP20",
-                    "DAI:MATIC",
-                    "WETH:BEP20",
-                    "WETH:MATIC",
-                    "APE:ERC20",
-                    "APE:MATIC",
-                    "SHIB:ERC20",
-                    "SHIB:BEP20",
-                    "SHIB:MATIC",
-                    "USDC_NATIVE:MATIC",
-                    "DOGECOIN",
-                    "PYTH:SOL",
-                    "BONK:SOL",
-                    "JUP:SOL",
-                    "JITO:SOL",
-                    "WEN:SOL",
-                    "RENDER:SOL",
-                    "MOBILE:SOL",
-                    "HNT:SOL"
-                  ],
-                  "example": "STRIPE"
+                  "$ref": "#/components/schemas/gateway",
+                  "description": "Payment gateway this payment method is used for"
                 },
                 "percent_amount": {
                   "type": "integer",
@@ -11055,6 +11381,46 @@
                   }
                 },
                 "description": "A list of the price of the product variant in various cryptocurrencies."
+              }
+            }
+          },
+          "addons": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 987
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample29a0e39d"
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
+                },
+                "product_types": {
+                  "type": "array",
+                  "example": null
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Sellix"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A Sellix product description"
+                },
+                "price": {
+                  "type": "string",
+                  "example": "1.00"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                }
               }
             }
           },
@@ -11160,54 +11526,7 @@
             "type": "number",
             "example": 236,
             "description": "The amount of sales for the product."
-          },
-          "addons": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "example": 987
-                },
-                "uniqid": {
-                  "type": "string",
-                  "example": "sample29a0e39d"
-                },
-                "shop_id": {
-                  "type": "integer",
-                  "example": 987,
-                  "description": "The shop ID to which this resource belongs."
-                },
-                "product_types": {
-                  "type": "array",
-                  "example": null
-                },
-                "title": {
-                  "type": "string",
-                  "example": "Sellix"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "A Sellix product description"
-                },
-                "price": {
-                  "type": "string",
-                  "example": "1.00"
-                },
-                "currency": {
-                  "$ref": "#/components/schemas/currency"
-                }
-              }
-            }
-          },
-          "product_plans": {
-            "type": "array",
-            "description": "Product plan information if the product is a SUBSCRIPTION_V2",
-            "items": {
-              "$ref": "#/components/schemas/product_plan"
-            }
-          }          
+          }
         }
       },
       "product_addons": {
@@ -11552,6 +11871,478 @@
           }
         }
       },
+      "product_plan_subscription": {
+        "type": "object",
+        "properties": {
+          "shop_id": {
+            "type": "integer",
+            "example": 433811,
+            "description": "The internal shop ID to which this resource belongs."
+          },
+          "customer_id": {
+            "type": "string",
+            "example": "cst_8e025b000dee1a9fbbe481",
+            "description": "The ID of the customer who purchased the subscription plan"
+          },
+          "product_subscription_uniqid": {
+            "type": "string",
+            "example": "sub_7451b916d925ae0ad1c1c7",
+            "description": "The unique ID of the subscription plan"
+          },
+          "product_id": {
+            "type": "integer",
+            "example": 987,
+            "description": "The internal ID of the subscription product"
+          },
+          "product_uniqid": {
+            "type": "string",
+            "example": "67151e256f149",
+            "description": "The external ID of the subscription product"
+          },
+          "id": {
+            "type": "integer",
+            "example": 74,
+            "description": "The internal ID of the subscription plan"
+          },
+          "uniqid": {
+            "type": "string",
+            "example": "sub_pp_568e7d30a88460e03901c6",
+            "description": "The unique ID of the subscription plan"
+          },
+          "product_subscription_id": {
+            "type": "integer",
+            "example": 50,
+            "description": "The internal ID of the product subscription"
+          },
+          "product_plan_id": {
+            "type": "integer",
+            "example": 132,
+            "description": "The internal ID of the product plan"
+          },
+          "payment_interval_id": {
+            "type": "integer",
+            "example": 79,
+            "description": "The internal ID of the payment interval"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["ACTIVE", "INACTIVE", "PENDING"],
+            "example": "PENDING",
+            "description": "The status of the subscription"
+          },
+          "start_date": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 1730648592,
+            "description": "The timestamp of the subscription start date"
+          },
+          "end_date": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 1730668592,
+            "description": "The timestamp of the subscription end date"
+          },
+          "payment_method_id": {
+            "type": "integer",
+            "example": 38,
+            "description": "The internal ID of the payment method"
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "STOREFRONT",
+              "API"
+            ],
+            "example": "STOREFRONT",
+            "description": "How the invoice was created"
+          },
+          "gateway": {
+            "$ref": "#/components/schemas/gateway",
+            "description": "The gateway used for invoicing the subscription"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "blockchain": {
+            "$ref": "#/components/schemas/blockchain"
+          },
+          "paypal_apm": {
+            "type": "string",
+            "example": null,
+            "description": "PayPal Alternative Payment Method name, such as iDEAL, used if gateway is PAYPAL."
+          },
+          "paypal_email_delivery": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the invoices will be sent to PayPal email"
+          },
+          "stripe_apm": {
+            "type": "string",
+            "enum": [
+              "afterpay_clearpay",
+              "alipay",
+              "bancontact",
+              "au_becs_debit",
+              "boleto",
+              "eps",
+              "fpx",
+              "giropay",
+              "grabpay",
+              "ideal",
+              "klarna",
+              "oxxo",
+              "p24",
+              "sofort",
+              "wechat_pay"
+            ],
+            "example": null,
+            "description": "Stripe Alternative Payment Method name, such as iDEAL, used if gateway is STRIPE."
+          },
+          "lex_payment_method": {
+            "type": "string",
+            "description": "DEPRECATED: If gateway is LEX_HOLDINGS_GROUP, method to be used for the customer to pay.",
+            "deprecated": true
+          },
+          "coupon_id": {
+            "type": "string",
+            "description": "If a coupon has been applied, its ID.",
+            "example": null
+          },
+          "product_addons": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "custom_fields": {
+            "$ref": "#/components/schemas/custom_fields_object"
+          },
+
+          "developer_invoice": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, this invoice has been created through the Developers API."
+          },
+          "developer_title": {
+            "type": "string",
+            "example": null,
+            "description": "If a product_id is not passed through the Developers API, a title must be specified."
+          },
+          "developer_webhook": {
+            "type": "string",
+            "example": null,
+            "description": "Additional webhook URL to which updates regarding this invoice will be sent."
+          },
+          "developer_return_url": {
+            "type": "string",
+            "example": null,
+            "description": "If present, the customer will be redirected to this URL after the invoice has been paid."
+          },
+          "developer_confirmations": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the invoice has received developer confirmation"
+          },
+          "developer_value": {
+            "type": "integer",
+            "example": 0,
+            "description": "Arbitraty value set for development"
+          },
+          "payment_link_id": {
+            "type": "string",
+            "example": null,
+            "description": "Identifier for the payment link used to pay this invoice."
+          },
+          "is_marketplace": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the purchase was made in a Sellixmarketplace"
+          },
+          "payout_confirmation": {
+            "type": "object",
+            "example": null
+          },
+          "gateways_accepted": {
+            "type": "string",
+            "example": "STRIPE,PAYPAL",
+            "description": "Comma separated list of gateways accepted for this invoice."
+          },
+          "tax_data": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "example": "Poland",
+                "description": "The country name"
+              },
+              "country_code": {
+                "type": "string",
+                "example": "PL",
+                "description": "The 2 letter ISO code for the country"
+              }
+            }
+          },
+          "discord_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID of the discord account linked to the purchase at checkout"
+          },
+          "discord_customer_token": {
+            "type": "string",
+            "example": null,
+            "description": "Oauth access token for the linked discord account"
+          },
+          "discord_customer_refresh_token": {
+            "type": "string",
+            "example": null,
+            "description": "Oauth refresh token used to extend access to the linked discord account"
+          },
+          "discord_customer_token_expires_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": null,
+            "description": "Expiration timestamp for the discord customer oauth access"
+          },
+          "discord_integration_removed": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the discord integration for the product has been removed"
+          },
+          "telegram_user_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID of the telegram account linked to the purchase at checkout"
+          },
+          "telegram_group_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID of the telegram group the account should be added to after payment confirmation"
+          },
+          "telegram_integration_removed": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the telegram integration for the product has been removed"
+          },
+          "affiliate_revenue_customer_id": {
+            "type": "string",
+            "example": null,
+            "description": "The ID fo the customer who receives affiliate revenue from this purchase"
+          },
+          "affiliate_revenue_used": {
+            "type": "integer",
+            "example": 0,
+            "description": "The amount of affiliate revenue used"
+          },
+          "affilitae_revenue_used_currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "affiliate_revenue_used_type": {
+            "type": "string",
+            "description": "The type of affiliate revenue used"
+          },
+          "start_event_processed": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether or not the subscription's start has been processed"
+          },
+          "end_event_processed": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the subscription's expiration event has been triggered"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the query."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the query has been updated."
+          },
+          "product_plan": {
+            "$ref": "#/components/schemas/product_plan"
+          },
+          "gateways_available": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "PAYPAL",
+              "STRIPE",
+              "MONERO"
+            ],
+            "description": "gateways available for the update invoice Developers API."
+          },
+          "shop_paypal_credit_card": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 0,
+            "description": "Whether or not the shop accepts paypal credit card payments"
+          },
+          "shop_force_paypal_email_delivery": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the shop forces invoice delivery to the PayPal email"
+          },
+          "shop_payment_gateway_fees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 12011,
+                  "description": "The internal ID for the payment gateway fee"
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 433811,
+                  "description": "The internal shop ID to which this resource belongs."
+                },
+                "gateway": {
+                  "$ref": "#/components/schemas/gateway"
+                },
+                "percent_amount": {
+                  "type": "integer",
+                  "example": -8,
+                  "description": "The percentage amount of the fee"
+                },
+                "fixed_amount": {
+                  "type": "integer",
+                  "example": 0,
+                  "description": "The fixed amount of the fee"
+                },
+                "active_type": {
+                  "type": "string",
+                  "enum": ["PERCENT", "FIXED"],
+                  "example": "PERCENT",
+                  "description": "The type of fee to apply to the invoice"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2024-10-26 15:25:52",
+                  "description": "The date-time object for the last time the gateway fee was updated"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2024-10-26 15:25:52",
+                  "description": "The date-time object for the creation of the gateway fee"
+                }
+              }
+            }
+          }
+        }
+      },
+      "product_subscription": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 50,
+            "description": "ID of the resource."
+          },
+          "uniqid": {
+            "type": "string",
+            "example": "sub_7451b916d925ae0ad1c1c7",
+            "description": "The ID of the product subscription"
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": 433811,
+            "description": "The ID of the shop to which this resource belongs."
+          },
+          "customer_id": {
+            "type": "string",
+            "example": "cst_8e025b000dee1a9fbbe481",
+            "description": "The ID of the customer who made the purchase"
+          },
+          "customer_email": {
+            "type": "string",
+            "example": "sellix_customer@gmail.com",
+            "description": "The email of the customer to which the invoice was sent to"
+          },
+          "product_id": {
+            "type": "integer",
+            "example": 1277206,
+            "description": "The internal ID of the product"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["ACTIVE", "INACTIVE", "PENDING"],
+            "example": "PENDING",
+            "description": "The status of the subscription"
+          },
+          "credit_node_usd": {
+            "type": "integer",
+            "example": 0,
+            "description": ""
+          },
+          "start_date": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 1730668592,
+            "description": "The timestamp of the subscription start date"
+          },
+          "end_date": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": null,
+            "description": "The timestamp of the subscription end date"
+          },
+          "skip_trial": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the trial period was skipped"
+          },
+          "skip_trial_reason": {
+            "type": "string",
+            "example": null,
+            "description": "The reason the trial period was skipped"
+          },
+          "start_event_processed": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether or not the subscription's start has been processed"
+          },
+          "end_event_processed": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the subscription's expiration event has been triggered"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 1730668596,
+            "description": "Timestamp for the creation of the query."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 1730668596,
+            "description": "Date, available if the query has been updated."
+          },
+          "shop_name": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The name of the shop the subscription was made for"
+          },
+          "product_uniqid": {
+            "type": "string",
+            "example": "67151e256f149",
+            "description": "The ID of the product the subscription is for"
+          },
+          "product": {
+            "$ref": "#/components/schemas/subscriptionProduct"
+          }
+        }
+      },
       "product_variant": {
         "type": "object",
         "properties": {
@@ -11840,59 +12631,7 @@
             "example": "CANCELED"
           },
           "gateway": {
-            "type": "string",
-            "enum": [
-              "PAYPAL",
-              "STRIPE",
-              "SKRILL",
-              "PERFECT_MONEY",
-              "CASH_APP",
-              "BINANCE",
-              "BITCOIN",
-              "LITECOIN",
-              "ETHEREUM",
-              "BITCOIN_CASH",
-              "NANO",
-              "MONERO",
-              "SOLANA",
-              "RIPPLE",
-              "BINANCE_COIN",
-              "USDC:ERC20",
-              "USDC:BEP20",
-              "USDC:MATIC",
-              "USDC:SOL",
-              "USDT:ERC20",
-              "USDT:BEP20",
-              "USDT:MATIC",
-              "USDT:SOL",
-              "USDT:TRC20",
-              "TRON",
-              "BITCOIN_LN",
-              "CONCORDIUM",
-              "POLYGON",
-              "PEPE:ERC20",
-              "DAI:ERC20",
-              "DAI:BEP20",
-              "DAI:MATIC",
-              "WETH:BEP20",
-              "WETH:MATIC",
-              "APE:ERC20",
-              "APE:MATIC",
-              "SHIB:ERC20",
-              "SHIB:BEP20",
-              "SHIB:MATIC",
-              "USDC_NATIVE:MATIC",
-              "DOGECOIN",
-              "PYTH:SOL",
-              "BONK:SOL",
-              "JUP:SOL",
-              "JITO:SOL",
-              "WEN:SOL",
-              "RENDER:SOL",
-              "MOBILE:SOL",
-              "HNT:SOL"
-            ],
-            "example": "STRIPE",
+            "$ref": "#/components/schemas/gateway",
             "description": "Gateway chosen for this subscription. A new invoice monthly will be created using this gayeway."
           },
           "custom_fields": {
@@ -12027,6 +12766,775 @@
             "items": {
               "$ref": "#/components/schemas/invoiceListing"
             }
+          }
+        }
+      },
+
+      "subscriptionProduct": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 987,
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample29a0e39d",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "slug": {
+            "type": "string",
+            "example": "subscription-v-2-67151e256f149",
+            "description": "The slug used to navigate to the product page on a storefront."
+          },
+          "shop_id": {
+            "type": "number",
+            "example": 987,
+            "description": "The shop ID to which this resource belongs."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC",
+              "INFO_CARD",
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
+            ],
+            "example": "SUBSCRIPTION_V2",
+            "description": "Product type."
+          },
+          "subtype": {
+            "type": "string",
+            "enum": [
+              "SERIALS",
+              "FILE",
+              "SERVICE",
+              "DYNAMIC"
+            ],
+            "example": null,
+            "description": "Product subtype, can be used only with type SUBSCRIPTION."
+          },
+          "title": {
+            "type": "string",
+            "example": "Digital subscription",
+            "description": "Product title."
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "pay_what_you_want": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not pay-what-you-want pricing is enabled."
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "example": 4.00,
+            "description": "Product price."
+          },
+          "price_display": {
+            "type": "number",
+            "format": "double",
+            "example": 5.00,
+            "description": "Product price in currency."
+          },
+          "price_discount": {
+            "type": "number",
+            "format": "double",
+            "example": 1.00,
+            "description": "The discount price on the purchased goods."
+          },
+          "affiliate_revenue_percent": {
+            "type": "number",
+            "example": 15,
+            "description": "The percentage of revenue to give to affiliates. -1 for disabled, 0 for default (10%), other number for a custom percent."
+          },
+          "price_variants": {
+            "type": "object",
+            "example": null,
+            "description": "Variants in pricing for the product."
+          },
+          "description": {
+            "type": "string",
+            "example": "Product description",
+            "description": "Product description."
+          },
+          "licensing_enabled": {
+            "type": "integer", 
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether product licenses are generated on successful payments"
+          },
+          "license_period": {
+            "type": "integer",
+            "example": 7,
+            "description": "Amount in days that licenses will be valid for"
+          },
+          "image_attachment": {
+            "$ref": "#/components/schemas/image_attachment"
+          },
+          "file_attachment": {
+            "type": "string",
+            "example": null,
+            "description": "Unique id of the file attachment for this product if the product type is FILE."
+          },
+          "youtube_link": {
+            "type": "string",
+            "example": "https://www.youtube.com/example",
+            "description": "The url for the YouTube video of the product"
+          },
+          "volume_discounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "PERCENTAGE",
+                    "FIXED"
+                  ],
+                  "example": "PERCENTAGE",
+                  "description": "Whether the discount value is a percentage or a fixed amount."
+                },
+                "value": {
+                  "type": "integer",
+                  "example": 5,
+                  "description": "Value of a percentage or fixed discount."
+                },
+                "quantity": {
+                  "type": "integer",
+                  "example": 10,
+                  "description": "How much of this product needs to be purchased in order to be eligible for this volume discount."
+                }
+              }
+            },
+            "description": "Array of volume discounts."
+          },
+          "recurring_interval": {
+            "type": "string",
+            "enum": [
+              "DAY",
+              "WEEK",
+              "MONTH",
+              "YEAR"
+            ],
+            "example": "MONTH",
+            "description": "At which frequency the customer is billed for product type SUBSCRIPTION."
+          },
+          "recurring_interval_count": {
+            "type": "integer",
+            "example": 1,
+            "description": "How many recurring_interval before the customer is billed for product type SUBSCRIPTION."
+          },
+          "trial_period": {
+            "type": "integer",
+            "example": "0",
+            "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION."
+          },
+          "setup_cost": {
+            "type": "string",
+            "example": "0.000000000000",
+            "description": "If the product is a subcription, this is the setup cost of the subscription"
+          },
+          "paypal_product_id": {
+            "type": "string",
+            "example": null,
+            "description": "When a product SUBSCRIPTION is created and the gateway PAYPAL chosen, a PayPal product is automatically created on the connected account."
+          },
+          "paypal_plan_id": {
+            "type": "string",
+            "example": null,
+            "description": "When a product SUBSCRIPTION is created and the gateway PAYPAL chosen, a PayPal plan is automatically created on the connected account."
+          },
+          "stripe_price_id": {
+            "type": "string",
+            "example": "price_sample2X7rAeMb7AM5APEU",
+            "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
+          },
+          "discord_integration": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the discord integeration is enabled for this product."
+          },
+          "discord_optional": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the discord integration is optional."
+          },
+          "discord_set_role": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether to give users a role when added to the discord server."
+          },
+          "discord_server_id": {
+            "type": "string",
+            "example": "742768752180854827",
+            "description": "The id of the discord server the bot will add users to."
+          },
+          "discord_role_id": {
+            "type": "number",
+            "example": "742772275698335765",
+            "description": "The role to give users when added by the discord integration."
+          },
+          "discord_remove_role": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": "0",
+            "description": "Whether to remove a role from the user when added to the discord server."
+          },
+          "quantity_min": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 1,
+            "description": "Minimum quantity purchasable of this product."
+          },
+          "quantity_max": {
+            "type": "integer",
+            "minimum": -1,
+            "example": -1,
+            "description": "Maximum quantity purchasable of this product."
+          },
+          "quantity_warning": {
+            "type": "integer",
+            "example": "0",
+            "description": "At which product quantity should we send a webhook and email warning the merchant."
+          },
+          "gateways": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/gateway"
+            },
+            "example": ["PAYPAL", "STRIPE", "BITCOIN"]
+          },
+          "custom_fields": {
+            "$ref": "#/components/schemas/custom_fields_array"
+          },
+          "rcon_execution_type": {
+            "type": "string",
+            "example": "AUTOMATIC",
+            "description": "The execution type of the RCON product"
+          },
+          "rcon_start_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-20 00:00:00",
+            "description": "The timestamp for when the RCON product should start"
+          },
+          "crypto_confirmations_needed": {
+            "type": "integer",
+            "example": 3,
+            "description": "Minimum number of confirmations for a crypto payment to be accepted."
+          },
+          "max_risk_level": {
+            "type": "integer",
+            "example": 85,
+            "description": "For PAYPAL and STRIPE, maximum risk level to accept payments in order to block fraud attempts."
+          },
+          "block_vpn_proxies": {
+            "type": "boolean",
+            "example": true,
+            "description": "Block VPN and Proxy purchases if the gateway is PAYPAL or STRIPE."
+          },
+          "delivery_text": {
+            "type": "string",
+            "example": "Thank you for purchasing this subscription!",
+            "description": "The text to be delivered to the customer after payment"
+          },
+          "delivery_time": {
+            "type": "integer",
+            "example": 162857125819,
+            "description": "The timestamp for when the invoice was delivered"
+          },
+          "service_text": {
+            "type": "string",
+            "example": "In order to get you services, please contact us at..",
+            "description": "The text to be delivered to the customer after payment for a service"
+          },
+          "stock_delimiter": {
+            "type": "string",
+            "example": ",",
+            "description": "How to delimit the stock if product type is SERIALS, for example with stock_delimiter \",\" and serials value first,second; the stock would have two different serials \"first\" and \"second\"."
+          },
+          "stock": {
+            "type": "integer",
+            "example": -1,
+            "description": "Stock of the current product, can be -1 for unlimited stock."
+          },
+          "dynamic_webhook": {
+            "type": "object",
+            "example": null
+          },
+          "bestseller": {
+            "type": "number",
+            "example": "0",
+            "description": "DEPRECATED"
+          },
+          "sort_priority": {
+            "type": "integer",
+            "example": 1,
+            "description": "Sort order of this product."
+          },
+          "unlisted": {
+            "type": "boolean",
+            "example": false,
+            "description": "If unlisted is true, the product is not shown in the storefront but can be bought through a direct link."
+          },
+          "on_hold": {
+            "type": "boolean",
+            "example": false,
+            "description": "If on_hold is true, the product cannot be bought but is shown in the storefront."
+          },
+          "terms_of_service": {
+            "type": "string",
+            "example": null,
+            "description": "Text containing the product's terms of service."
+          },
+          "warranty": {
+            "type": "integer",
+            "example": 86400,
+            "description": "Time, in seconds, of how much the warranty for this product lasts."
+          },
+          "warranty_text": {
+            "type": "string",
+            "example": "This warranty covers..",
+            "description": "Clear explanation of what the warranty covers."
+          },
+          "watermark_enabled": {
+            "type": "number",
+            "example": 1,
+            "description": "Whether sellix should add a watermark to your product image."
+          },
+          "watermark_text": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The watermark to add to the product image."
+          },
+          "redirect_link": {
+            "type": "string",
+            "example": "https://sellix.io",
+            "description": "The url to redirect a customer to on successful payment"
+          },
+          "label_singular": {
+            "type": "string",
+            "example": null
+          },
+          "label_plural": {
+            "type": "string",
+            "example": null
+          },
+          "private": {
+            "type": "boolean",
+            "example": false,
+            "description": "If private is true, the product is hidden on the storefront and cannot be bought with a direct link."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the product."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the product has been edited."
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 1,
+            "description": "User ID of the user who updated the product."
+          },
+          "marketplace_category_id": {
+            "type": "string",
+            "example": "0",
+            "description": "The category ID the product is a part of"
+          },
+          "telegram_group_id": {
+            "type": "string",
+            "example": "none",
+            "description": "The Telegram group ID"
+          },
+          "telegram_integration": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the Telegram integration is enabled"
+          },
+          "telegram_optional": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the Telegram integration is optional"
+          },
+          "name": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The name of the product"
+          },
+          "image_name": {
+            "type": "string",
+            "example": "350f4d83d59450404ad3fca36e9337236df3697dd9149863682d88c32503230a.jpeg",
+            "description": "DEPRECATED: The name of the product image with the file type"
+          },
+          "image_storage": {
+            "type": "string",
+            "example": "PRODUCTS",
+            "description": "Where the image is stored in Sellix's self-hosted CDN."
+          },
+          "cloudflare_image_id": {
+            "type": "string",
+            "example": "db1fe49f-4492-4e82-9001-9fad57555c00",
+            "description": "The ID of the image stored in cloudflare's CDN"
+          },
+          "image_attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/image_attachment"
+            }
+          },
+          "feedback": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "example": 10,
+                "description": "Count of all the feedback."
+              },
+              "positive": {
+                "type": "integer",
+                "example": 8,
+                "description": "Count of positive feedback."
+              },
+              "neutral": {
+                "type": "integer",
+                "example": 1,
+                "description": "Count of neutral feedback."
+              },
+              "negative": {
+                "type": "integer",
+                "example": 1,
+                "description": "Count of negative feedback."
+              },
+              "numbers": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "example": {
+                  "5": 6,
+                  "4": 2,
+                  "3": 1,
+                  "1": 1
+                }
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "score": {
+                      "type": "number",
+                      "example": 5
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nice product!"
+                    },
+                    "reply": {
+                      "type": "string",
+                      "example": "Thank you for the feedback."
+                    },
+                    "created_at": {
+                      "type": "integer",
+                      "format": "timestamp",
+                      "example": 162857125819,
+                      "description": "Timestamp for the creation of the feedback."
+                    },
+                    "updated_at": {
+                      "type": "number",
+                      "example": 162857125819
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Test Category",
+                  "description": "The title of the category"
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample29a0e39d",
+                  "description": "The unique id of the category"
+                }
+              }
+            }
+          },
+          "payment_gateways_fees": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 987
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
+                },
+                "gateway": {
+                  "$ref": "#/components/schemas/gateway",
+                  "description": "Payment gateway this payment method is used for"
+                },
+                "percent_amount": {
+                  "type": "integer",
+                  "example": -5
+                },
+                "fixed_amount": {
+                  "type": "integer",
+                  "example": "0"
+                },
+                "fixed_currency": {
+                  "$ref": "#/components/schemas/currency"
+                },
+                "active_type": {
+                  "type": "string",
+                  "enum": ["PERCENT", "FIXED"],
+                  "example": "null",
+                  "description": "DEPRECATED"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "example": "1970-01-01 00:00:00"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "1975-02-28 00:00:00",
+                  "description": "Datetime for the creation of the resource"
+                }
+              }
+            }
+          },
+          "price_conversions": {
+            "type": "object", 
+            "properties": {
+              "AUD": {
+                "type": "number",
+                "example": 92.08,
+                "description": "The price of the product variant in AUD."
+              },
+              "BGN": {
+                "type": "number",
+                "example": 108.62,
+                "description": "The price of the product variant in BGN."
+              },
+              "BRL": {
+                "type": "number",
+                "example": 300.17,
+                "description": "The price of the product variant in BRL."
+              },
+              "ZAR": {
+                "type": "number",
+                "example": 1143.49,
+                "description": "The price of the product variant in ZAR."
+              },
+              "crypto": {
+                "type": "object",
+                "properties": {
+                  "APE": {
+                    "type": "string",
+                    "example": "31.0607029506",
+                    "description": "The price of the product variant in APE."
+                  },
+                  "BCH": {
+                    "type": "string",
+                    "example": "0.1271212408",
+                    "description": "The price of the product variant in BCH."
+                  },
+                  "BNB": {
+                    "type": "string",
+                    "example": "0.1067436987",
+                    "description": "The price of the product variant in BNB."
+                  },
+                  "USDC_NATIVE": {
+                    "type": "string",
+                    "example": "60.0000000000",
+                    "description": "The price of the product variant in USDC_NATIVE."
+                  }
+                },
+                "description": "A list of the price of the product variant in various cryptocurrencies."
+              }
+            }
+          },
+          "addons": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 987
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample29a0e39d"
+                },
+                "shop_id": {
+                  "type": "integer",
+                  "example": 987,
+                  "description": "The shop ID to which this resource belongs."
+                },
+                "product_types": {
+                  "type": "array",
+                  "example": null
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Sellix"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A Sellix product description"
+                },
+                "price": {
+                  "type": "string",
+                  "example": "1.00"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                }
+              }
+            }
+          },
+          "product_plans": {
+            "type": "array",
+            "description": "Product plan information if the product is a SUBSCRIPTION_V2",
+            "items": {
+              "$ref": "#/components/schemas/product_plan"
+            }
+          },
+          "country_regulations": {
+            "type": "string",
+            "example": "IT",
+            "description": "The country ISO code that the business is located in"
+          },
+          "available_stripe_apm": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "afterpay_clearpay"
+              },
+              "name": {
+                "type": "string",
+                "example": "Afterpay and Clearpay"
+              }
+            }
+          },
+          "serials": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "webhooks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          },
+          "theme": {
+            "type": "string",
+            "example": "dark",
+            "description": "The current theme enabled on the Sellix storefront"
+          },
+          "dark_mode": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not dark mode is enabled on the Sellix storefront"
+          },
+          "vat_percentage": {
+            "type": "string",
+            "example": "0.00",
+            "description": "The VAR percentage set for the store"
+          },
+          "tax_details": {
+            "type": "object",
+            "properties": {
+              "vat_percentage": {
+                "type": "string",
+                "example": "0.00"
+              },
+              "tax_configuration": {
+                "type": "string",
+                "example": "NONE"
+              },
+              "tax_configuration_data": {
+                "type": "array",
+                "example": []
+              },
+              "display_tax_on_storefront": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 0
+              },
+              "display_tax_custom_fields": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 0
+              },
+              "validation_only_for_companies": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 1
+              },
+              "validate_vat_number": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 0
+              },
+              "prices_tax_inclusive": {
+                "type": "integer",
+                "enum": [0, 1],
+                "example": 0
+              }
+            }
+          },
+          "image_attachment_info": {
+            "$ref": "#/components/schemas/image_attachment"
+          },
+          "average_score": {
+            "type": "string",
+            "example": "5.0000",
+            "description": "The average rating of the product."
+          },
+          "sold_count": {
+            "type": "number",
+            "example": 236,
+            "description": "The amount of sales for the product."
           }
         }
       },
@@ -12671,59 +14179,7 @@
             "example": "CANCELED"
           },
           "gateway": {
-            "type": "string",
-            "enum": [
-              "PAYPAL",
-              "STRIPE",
-              "SKRILL",
-              "PERFECT_MONEY",
-              "CASH_APP",
-              "BINANCE",
-              "BITCOIN",
-              "LITECOIN",
-              "ETHEREUM",
-              "BITCOIN_CASH",
-              "NANO",
-              "MONERO",
-              "SOLANA",
-              "RIPPLE",
-              "BINANCE_COIN",
-              "USDC:ERC20",
-              "USDC:BEP20",
-              "USDC:MATIC",
-              "USDC:SOL",
-              "USDT:ERC20",
-              "USDT:BEP20",
-              "USDT:MATIC",
-              "USDT:SOL",
-              "USDT:TRC20",
-              "TRON",
-              "BITCOIN_LN",
-              "CONCORDIUM",
-              "POLYGON",
-              "PEPE:ERC20",
-              "DAI:ERC20",
-              "DAI:BEP20",
-              "DAI:MATIC",
-              "WETH:BEP20",
-              "WETH:MATIC",
-              "APE:ERC20",
-              "APE:MATIC",
-              "SHIB:ERC20",
-              "SHIB:BEP20",
-              "SHIB:MATIC",
-              "USDC_NATIVE:MATIC",
-              "DOGECOIN",
-              "PYTH:SOL",
-              "BONK:SOL",
-              "JUP:SOL",
-              "JITO:SOL",
-              "WEN:SOL",
-              "RENDER:SOL",
-              "MOBILE:SOL",
-              "HNT:SOL"
-            ],
-            "example": "STRIPE",
+            "$ref": "#/components/schemas/gateway",
             "description": "Gateway chosen for this subscription. A new invoice monthly will be created using this gayeway."
           },
           "custom_fields": {
@@ -15153,6 +16609,61 @@
                       "items": {
                         "$ref": "#/components/schemas/subscriptionListing"
                       }
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "subscriptionV2": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "product_subscription": {
+                      "$ref": "#/components/schemas/product_subscription"
+                    },
+                    "product_plan_subscription": {
+                      "$ref": "#/components/schemas/product_plan_subscription"
+                    },
+                    "payment_interval": {
+                      "$ref": "#/components/schemas/payment_interval"
+                    },
+                    "invoice_calculations": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/invoice_calculations"
+                      }
+                    },
+                    "order": {
+                      "$ref": "#/components/schemas/subscriptionV2Invoice"
                     }
                   }
                 },

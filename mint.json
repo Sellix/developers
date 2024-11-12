@@ -83,6 +83,7 @@
         "api-reference/authentication",
         "api-reference/errors",
         "api-reference/webhooks",
+        "api-reference/payments",
         "api-reference/subscriptions",
         "api-reference/subscriptions-v2",
         "api-reference/subscriptions-compare",
@@ -103,7 +104,6 @@
     {
       "group": "Payments",
       "pages": [
-        "api-reference/payments",
         "api-reference/payments/post-payments",
         "api-reference/payments/put-payments",
         "api-reference/payments/delete-payments"
