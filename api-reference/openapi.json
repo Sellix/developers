@@ -3449,7 +3449,7 @@
                   "product_plan_id": {
                     "type": "string",
                     "example": "pp_1aed3fb1583653f925c260",
-                    "description": "The unique ID of the product plan to subscribe to. If not specified, the default plan of the product will be used."
+                    "description": "The id of the product plan to subscribe to."
                   },
                   "product_addons": {
                     "type": "object",
@@ -9612,7 +9612,7 @@
           "product_plan_subscription_id": {
             "type": "integer",
             "example": 74,
-            "description": "Internal ID for the product plan subscription"
+            "description": "Internal ID for the subscription's product plan"
           },
           "invoice_uniqid": {
             "type": "string",
@@ -9673,7 +9673,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["PENDING", "INACTIVE", "ACTIVE"],
+            "enum": ["PENDING", "COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
             "example": "PENDING",
             "description": "The status of the payment interval"
           },
@@ -11588,6 +11588,12 @@
                 }
               }
             }
+          },
+          "intervals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/payment_interval"
+            }
           }
         }
       },
@@ -11688,6 +11694,21 @@
             "type": "string",
             "example": "67151e256f149",
             "description": "The ID of the product the subscription is for"
+          },
+          "plan": {
+            "type": "object",
+            "properties": {
+              "active": {
+                "$ref": "#/components/schemas/product_plan_subscription"
+              },
+              "past": {
+                "type": "array",
+                "description": "A list of past subscription plans. It will populate if the customer switches the plan of their subscription",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
           }
         }
       },
@@ -15226,14 +15247,8 @@
                 "data": {
                   "type": "object",
                   "properties": {
-                    "product_subscription": {
+                    "subscription": {
                       "$ref": "#/components/schemas/product_subscription"
-                    },
-                    "product_plan_subscription": {
-                      "$ref": "#/components/schemas/product_plan_subscription"
-                    },
-                    "payment_interval": {
-                      "$ref": "#/components/schemas/payment_interval"
                     }
                   }
                 },
