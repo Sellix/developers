@@ -5379,6 +5379,11 @@
             "format": "timestamp",
             "example": 162857125819,
             "description": "Timestamp for the creation of the customer."
+          },
+          "affiliate_percentage": {
+            "type": "string",
+            "example": "0.00",
+            "description": "The affiliate percentage awarded to the customer"
           }
         }
       },
