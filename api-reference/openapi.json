@@ -13425,7 +13425,7 @@
       },
       "id_or_email": {
         "in": "path",
-        "name": "id or email",
+        "name": "id_or_email",
         "schema": {
           "type": "string"
         },
