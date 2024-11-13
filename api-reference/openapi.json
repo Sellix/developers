@@ -4554,7 +4554,7 @@
       "cloudflare_image_id": {
         "type": "string",
         "example": "sample-c4f1-4f7c-9a1d-89120ed0c800",
-        "description": "New field containing the cloudflare image ID of this product, replaces image_attachment and image_name. Format https://imagedelivery.net/95QNzrEeP7RU5l5WdbyrKw/<cloudflare_image_id>/<variant_name> where variant_name can be shopItem, avatar, icon, imageAvatarFeedback, public, productImageCart."
+        "description": "The cloudflare image ID of this product, replaces image_attachment and image_name. Format https://imagedelivery.net/95QNzrEeP7RU5l5WdbyrKw/<cloudflare_image_id>/<variant_name> where variant_name can be shopItem, avatar, icon, imageAvatarFeedback, public, productImageCart."
       },
       "coupon": {
         "type": "object",
@@ -7123,9 +7123,7 @@
           },
           "status_details": {
             "type": "string",
-            "enum": [
-              "CART_PARTIAL_OUT_OF_STOCK"
-            ],
+            "enum": ["PAYMENT_FAILED", "CART_PARTIAL_OUT_OF_STOCK"],
             "example": null,
             "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
           },
@@ -7963,9 +7961,7 @@
           },
           "status_details": {
             "type": "string",
-            "enum": [
-              "CART_PARTIAL_OUT_OF_STOCK"
-            ],
+            "enum": ["PAYMENT_FAILED", "CART_PARTIAL_OUT_OF_STOCK"],
             "example": null,
             "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
           },
@@ -9354,9 +9350,7 @@
           },
           "status_details": {
             "type": "string",
-            "enum": [
-              "CART_PARTIAL_OUT_OF_STOCK"
-            ],
+            "enum": ["PAYMENT_FAILED", "CART_PARTIAL_OUT_OF_STOCK"],
             "example": null,
             "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
           },
@@ -11978,6 +11972,11 @@
             "description": "ID of the subscription.",
             "example": "rec_sample-3afde4b6e1-82833e"
           },
+          "product_subscription_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID of product subscription for subscriptions v2"
+          },
           "shop_id": {
             "type": "integer",
             "example": 124,
@@ -11987,6 +11986,34 @@
             "type": "string",
             "description": "ID of the product subscription.",
             "example": "samplede6277597"
+          },
+          "product_plan_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID of the subscriptions v2 active product plan"
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "ID of the store's customer.",
+            "example": "cst_sample6addc898a645"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["v1", "v2"],
+            "example":  "v1",
+            "description": "The subscription version"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the subscription."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "description": "When this subscription was last updated.",
+            "example": 1641315120
           },
           "status": {
             "type": "string",
@@ -12006,30 +12033,10 @@
           "custom_fields": {
             "$ref": "#/components/schemas/custom_fields_object"
           },
-          "customer_id": {
-            "type": "string",
-            "description": "ID of the store's customer.",
-            "example": "cst_sample6addc898a645"
-          },
-          "stripe_customer_id": {
-            "type": "string",
-            "description": "ID of the customer created on STRIPE.",
-            "example": "cus_samplegIE0YKwapE6"
-          },
-          "stripe_account": {
-            "type": "string",
-            "description": "ID of the Stripe connected account.",
-            "example": "acct_sampleuMKb2X7rAeMb"
-          },
-          "stripe_subscription_id": {
-            "type": "string",
-            "description": "ID of the Stripe subscription.",
-            "example": "sub_samplexpKb2X7rAeMbKdJc78AP"
-          },
           "coupon_id": {
             "type": "string",
-            "description": "If a coupon has been applied, its ID.",
-            "example": null
+            "example": null,
+            "description": "The ID of the coupon used when paying for the subscription. Will be null if no coupon was used"
           },
           "current_period_end": {
             "type": "integer",
@@ -12052,17 +12059,11 @@
             "description": "If true, the renewal invoice has already been created.",
             "example": false
           },
-          "created_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 162857125819,
-            "description": "Timestamp for the creation of the subscription."
-          },
-          "updated_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "description": "When this subscription was last updated.",
-            "example": 1641315120
+          "status_details": {
+            "type": "string",
+            "enum": ["PAYMENT_FAILED", "CART_PARTIAL_OUT_OF_STOCK"],
+            "example": "PAYMENT_FAILED",
+            "description": "Details about the subscription status."
           },
           "canceled_at": {
             "type": "integer",
@@ -12070,10 +12071,43 @@
             "description": "When this subscription was canceled.",
             "example": null
           },
+          "stripe_customer_id": {
+            "type": "string",
+            "description": "ID of the customer created on STRIPE.",
+            "example": "cus_samplegIE0YKwapE6"
+          },
+          "stripe_account": {
+            "type": "string",
+            "description": "ID of the Stripe connected account.",
+            "example": "acct_sampleuMKb2X7rAeMb"
+          },
+          "stripe_subscription_id": {
+            "type": "string",
+            "description": "ID of the Stripe subscription.",
+            "example": "sub_samplexpKb2X7rAeMbKdJc78AP"
+          },
+          "paypal_account": {
+            "type": "string",
+            "example": null,
+            "description": "The ID of the PayPal account used to complete the subscription payments"
+          },
+          "paypal_subscription_id": {
+            "type": "string",
+            "example": null,
+            "description": "The ID of the PayPal subscription"
+          },
           "product_title": {
             "type": "string",
             "description": "Digital Software",
             "example": "The title of the product for this subscription."
+          },
+          "product_plan_title": {
+            "type": "string",
+            "example": null,
+            "description": "The title of the product plan for this subscription (only for type: v2)"
+          },
+          "cloudflare_image_id": {
+            "$ref": "#/components/schemas/cloudflare_image_id"
           },
           "customer_name": {
             "type": "string",
@@ -12130,11 +12164,271 @@
             "description": "Customer email.",
             "example": "sample@gmail.com"
           },
+          "shop_name": {
+            "type": "string",
+            "example": "Sellix",
+            "description": "The name of the shop the subscription was made for"
+          },
           "invoices": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/invoiceListing"
+              "$ref": "#/components/schemas/legacy_subscription_invoice"
             }
+          },
+          "approved_address": {
+            "$ref": "#/components/schemas/approved_address"
+          },
+          "gateways_available": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/gateway"
+            },
+            "example": ["STRIPE", "PAYPAL"],
+            "description": "Gateways available for this invoice"
+          }
+        }
+      },
+      "legacy_subscription_invoice": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 14148541,
+            "description": "ID of the resource."
+          },
+          "uniqid": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample-7f4b51efed-9ebee5",
+            "description": "Unique ID of the resource, used as reference across the API."
+          },
+          "recurring_billing_id": {
+            "type": "string",
+            "example": "rec_sample-3afde4b6e1-82833e",
+            "description": "The Id of the legacy subscription"
+          },
+          "total": {
+            "type": "number",
+            "format": "double",
+            "example": 2.5,
+            "description": "Invoice total, unit_price*quantity where quantity is applicable."
+          },
+          "total_display": {
+            "type": "number",
+            "format": "double",
+            "example": 2,
+            "description": "Invoice total in the currency chosen."
+          },
+          "exchange_rate": {
+            "type": "number",
+            "format": "double",
+            "example": 1.12,
+            "description": "Exchange rate between currency chosen and USD."
+          },
+          "crypto_exchange_rate": {
+            "type": "number",
+            "format": "double",
+            "example": 176.38,
+            "description": "Exchange rate between the cryptocurrency chosen (if any) and USD."
+          },
+          "currency": {
+            "$ref": "#/components/schemas/currency"
+          },
+          "shop_id": {
+            "type": "integer",
+            "example": null,
+            "description": "The shop ID to which this invoice belongs."
+          },
+          "product_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "sample2bde8a50",
+            "description": "Unique ID of the product linked to this invoice, if any."
+          },
+          "gateway": {
+            "$ref": "#/components/schemas/gateway",
+            "description": "Gateway chosen for this invoice. If null, the customer will be asked for a gateway in the Sellix hosted invoice page."
+          },
+          "paypal_apm": {
+            "type": "string",
+            "enum": [
+              "bancontact",
+              "eps",
+              "trustly",
+              "mercado",
+              "paylater",
+              "sepa",
+              "venmo",
+              "blik",
+              "giropay",
+              "ideal",
+              "mybank",
+              "sofort",
+              "przelewy24",
+              "credit"
+            ],
+            "example": null,
+            "description": "If gateway is PAYPAL, a paypal_apm (PayPal Alternative Payment Method) can be specified. To retrieve the available PayPal APM for a specific customer session, please refer to the PayPal SDK using window.paypal.FUNDING and fundingSource to filter out available methods. You can also use our documentation on how to process white_label payments."
+          },
+          "stripe_apm": {
+            "type": "string",
+            "enum": [
+              "afterpay_clearpay",
+              "alipay",
+              "bancontact",
+              "au_becs_debit",
+              "boleto",
+              "eps",
+              "fpx",
+              "giropay",
+              "grabpay",
+              "ideal",
+              "klarna",
+              "oxxo",
+              "p24",
+              "sofort",
+              "wechat_pay"
+            ],
+            "example": null,
+            "description": "Stripe Alternative Payment Method name, such as iDEAL, used if gateway is STRIPE."
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 5,
+            "description": "Qauntity of product purchased."
+          },
+          "coupon_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": null,
+            "description": "Unique ID of the coupon, if used, for the discount."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "COMPLETED",
+              "VOIDED",
+              "WAITING_FOR_CONFIRMATIONS",
+              "PARTIAL",
+              "CUSTOMER_DISPUTE_ONGOING",
+              "REVERSED",
+              "REFUNDED",
+              "WAITING_SHOP_ACTION",
+              "PROCESSING"
+            ],
+            "example": "COMPLETED",
+            "description": "Status of the invoice."
+          },
+          "status_details": {
+            "type": "string",
+            "enum": ["PAYMENT_FAILED", "CART_PARTIAL_OUT_OF_STOCK"],
+            "example": null,
+            "description": "If CART_PARTIAL_OUT_OF_STOCK, the invoice has been completed but some products in the cart were out of stock."
+          },
+          "void_details": {
+            "type": "string",
+            "enum": [
+              "PRODUCT_SOLD_OUT",
+              "CART_PRODUCTS_SOLD_OUT"
+            ],
+            "example": null,
+            "description": "If the invoice is VOIDED and the product (or all the products in the cart) were out of stock, this additional status is set."
+          },
+          "discount": {
+            "type": "number",
+            "format": "double",
+            "example": 987,
+            "description": "If a coupon or volume_discount is used, the discount value presents the total amount of discount over the total cost of the invoice."
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the invoice."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Date, available if the blacklist has been edited."
+          },
+          "crypto_amount": {
+            "type": "number",
+            "format": "double",
+            "example": 0.014174,
+            "description": "Cryptocurrency amount converted based on crypto_exchange_rate."
+          },
+          "crypto_received": {
+            "type": "number",
+            "format": "double",
+            "example": 0.014174,
+            "description": "Cryptocurrency amount received, paid by the customer."
+          },
+          "crypto_confirmations_needed": {
+            "type": "integer",
+            "example": 1,
+            "description": "Crypto confirmations needed to process the invoice."
+          },   
+          "is_vpn_or_proxy": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether the customer used a VPN or proxy when purchasing the subscription"
+          },
+          "developer_invoice": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true, this invoice has been created through the Developers API."
+          },
+          "paypal_email_delivery": {
+            "type": "boolean",
+            "example": false,
+            "description": "If true and gateway is PAYPAL, the product will be shipped to the PayPal email on record instead of the customer email."
+          },
+          "fee_billed": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not a fee was billed to the customer"
+          },
+          "crypto_scheduled_payout": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the payout is scheduled for the cryptocurrency"
+          },
+          "shop_paypal_credit_card": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not to support credit cards on PayPal"
+          },
+          "shop_force_paypal_email_delivery": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not to deliver the product to the PayPal email address"
+          },
+          "paypal_fee": {
+            "type": "integer",
+            "example": 0,
+            "description": "This field is updated after the invoice is completed with the fee taken by PayPal over the invoice total."
+          },
+          "fee_percentage": {
+            "type": "integer",
+            "example": 0,
+            "description": "What cut does Sellix take out of the total. To learn more about Sellix fees please refer to https://sellix.io/fees."
+          },
+          "day_value": {
+            "type": "integer",
+            "description": "DEPRECATED: Day value, number.",
+            "deprecated": true
+          },
+          "year": {
+            "type": "integer",
+            "description": "DEPRECATED: Year number.",
+            "deprecated": true
+          },
+          "updated_by": {
+            "type": "integer",
+            "example": 1,
+            "description": "User ID of the user who updated the invoice."
           }
         }
       },
@@ -12757,6 +13051,11 @@
             "description": "ID of the subscription.",
             "example": "rec_sample-3afde4b6e1-82833e"
           },
+          "product_subscription_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID of product subscription for subscriptions v2"
+          },
           "shop_id": {
             "type": "integer",
             "example": 124,
@@ -12766,6 +13065,34 @@
             "type": "string",
             "description": "ID of the product subscription.",
             "example": "samplede6277597"
+          },
+          "product_plan_id": {
+            "type": "string",
+            "example": null,
+            "description": "ID of the subscriptions v2 active product plan"
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "ID of the store's customer.",
+            "example": "cst_sample6addc898a645"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["v1", "v2"],
+            "example":  "v1",
+            "description": "The subscription version"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "example": 162857125819,
+            "description": "Timestamp for the creation of the subscription."
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "description": "When this subscription was last updated.",
+            "example": 1641315120
           },
           "status": {
             "type": "string",
@@ -12782,28 +13109,14 @@
             "$ref": "#/components/schemas/gateway",
             "description": "Gateway chosen for this subscription. A new invoice monthly will be created using this gayeway."
           },
+          "origin": {
+            "type": "string",
+            "enum": ["STOREFRONT", "PAYMENT_LINK", "CHECKOUT"],
+            "example": "PAYMENT_LINK",
+            "description": "Origin of the subscription."
+          },
           "custom_fields": {
             "$ref": "#/components/schemas/custom_fields_object"
-          },
-          "customer_id": {
-            "type": "string",
-            "description": "ID of the store's customer.",
-            "example": "cst_sample6addc898a645"
-          },
-          "stripe_customer_id": {
-            "type": "string",
-            "description": "ID of the customer created on STRIPE.",
-            "example": "cus_samplegIE0YKwapE6"
-          },
-          "stripe_account": {
-            "type": "string",
-            "description": "ID of the Stripe connected account.",
-            "example": "acct_sampleuMKb2X7rAeMb"
-          },
-          "stripe_subscription_id": {
-            "type": "string",
-            "description": "ID of the Stripe subscription.",
-            "example": "sub_samplexpKb2X7rAeMbKdJc78AP"
           },
           "coupon_id": {
             "type": "string",
@@ -12831,17 +13144,17 @@
             "description": "If true, the renewal invoice has already been created.",
             "example": false
           },
-          "created_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 162857125819,
-            "description": "Timestamp for the creation of the subscription."
+          "payment_link_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "a264f2-20c91643cc-03d088",
+            "description": "The ID of the payment link used to pay the initial payment for this subscription"
           },
-          "updated_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "description": "When this subscription was last updated.",
-            "example": 1641315120
+          "status_details": {
+            "type": "string",
+            "enum": ["PAYMENT_FAILED", "CART_PARTIAL_OUT_OF_STOCK"],
+            "example": "PAYMENT_FAILED",
+            "description": "Details about the subscription status."
           },
           "canceled_at": {
             "type": "integer",
@@ -12849,10 +13162,43 @@
             "description": "When this subscription was canceled.",
             "example": null
           },
+          "stripe_customer_id": {
+            "type": "string",
+            "description": "ID of the customer created on STRIPE.",
+            "example": "cus_samplegIE0YKwapE6"
+          },
+          "stripe_account": {
+            "type": "string",
+            "description": "ID of the Stripe connected account.",
+            "example": "acct_sampleuMKb2X7rAeMb"
+          },
+          "stripe_subscription_id": {
+            "type": "string",
+            "description": "ID of the Stripe subscription.",
+            "example": "sub_samplexpKb2X7rAeMbKdJc78AP"
+          },
+          "paypal_account": {
+            "type": "string",
+            "example": null,
+            "description": "The ID of the PayPal account used to complete the subscription payments"
+          },
+          "paypal_subscription_id": {
+            "type": "string",
+            "example": null,
+            "description": "The ID of the PayPal subscription"
+          },
           "product_title": {
             "type": "string",
             "description": "Digital Software",
             "example": "The title of the product for this subscription."
+          },
+          "product_plan_title": {
+            "type": "string",
+            "example": null,
+            "description": "The title of the product plan for this subscription (only for type: v2)"
+          },
+          "cloudflare_image_id": {
+            "$ref": "#/components/schemas/cloudflare_image_id"
           },
           "customer_name": {
             "type": "string",
