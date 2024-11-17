@@ -9589,236 +9589,6 @@
           }
         }
       },
-      "payment_interval": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "example": 79,
-            "description": "Internal ID for the resource"
-          },
-          "uniqid": {
-            "type": "string",
-            "format": "uuid",
-            "example": "pay_int_e32fbf6c43e5bf68280c28",
-            "description": "Unique id for the payment interval; used throughout Sellix's API"
-          },
-          "product_subscription_id": {
-            "type": "integer",
-            "example": 50,
-            "description": "Internal ID for the product subscription"
-          },
-          "product_plan_subscription_id": {
-            "type": "integer",
-            "example": 74,
-            "description": "Internal ID for the subscription's product plan"
-          },
-          "invoice_uniqid": {
-            "type": "string",
-            "format": "uuid",
-            "example": "a8f4fe-0b58cd3f89-41cae2",
-            "description": "Unique ID of the invoice created for the payment interval."
-          },
-          "prev_payment_interval_id": {
-            "type": "integer",
-            "example": 0,
-            "description": "Internal ID for the previous payment interval"
-          },
-          "start_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730668596,
-            "description": "The timestamp for when the payment interval started"
-          },
-          "end_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730937599,
-            "description": "The timestamp for when the payment interval ended"
-          },
-          "interval_type": {
-            "type": "string",
-            "enum": ["PAYMENT"],
-            "example": "PAYMENT",
-            "description": "The type of interval"
-          },
-          "payment_type": {
-            "type": "string",
-            "enum": ["ADVANCE", "ARREARS"],
-            "example": "ADVANCE",
-            "description": "The billing type of the payment interval"
-          },
-          "payment_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730668596,
-            "description": "The timestamp for when the payment was made"
-          },
-          "payment_attempts": {
-            "type": "integer",
-            "example": 1,
-            "description": "The number of payment attempts"
-          },
-          "last_payment_attempt_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730668596,
-            "description": "The timestamp for the last payment attempt"
-          },
-          "last_payment_details": {
-            "type": "object",
-            "example": null,
-            "description": "Payment details for the last payment"
-          },
-          "status": {
-            "type": "string",
-            "enum": ["PENDING", "COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
-            "example": "PENDING",
-            "description": "The status of the payment interval"
-          },
-          "used_coupons": {
-            "type": "array",
-            "example": null,
-            "description": "Coupons used for the payment interval"
-          },
-          "used_customer_balance": {
-            "type": "number",
-            "format": "double",
-            "example": 0,
-            "description": "The amount of customer balance used for the payment interval"
-          },
-          "used_customer_balance_currency": {
-            "$ref": "#/components/schemas/currency"
-          },
-          "used_addons": {
-            "type": "array",
-            "example": null,
-            "description": "Addons used for the payment interval"
-          },
-          "trial_ending_email_sent": {
-            "type": "boolean",
-            "example": false,
-            "description": "Whether or not the trial ending email has been sent"
-          },
-          "upcoming_renewal_email_sent": {
-            "type": "boolean",
-            "example": false,
-            "description": "Whether or not the upcoming renewal email has been sent"
-          },
-          "start_event_processed": {
-            "type": "boolean",
-            "example": false,
-            "description": "Whether or not the start event has been processed"
-          },
-          "end_event_processed": {
-            "type": "boolean",
-            "example": false,
-            "description": "Whether or not the end event has been processed"
-          },
-          "completed_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": null,
-            "description": "The timestamp for when the payment interval was completed"
-          },
-          "next_interval_info": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["PAYMENT"],
-                "example": "PAYMENT",
-                "description": "The type of interval"
-              },
-              "end_date": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2024-11-10 23:59:59",
-                "description": "The timestamp for when the payment interval ended"
-              },
-              "start_date": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2024-11-07 00:00:00",
-                "description": "The timestamp for when the payment interval started"
-              },
-              "payment_date": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2024-11-07 00:00:00",
-                "description": "The timestamp for when the payment was made"
-              },
-              "payment_type": {
-                "type": "string",
-                "enum": ["ADVANCE", "ARREARS"],
-                "example": "ADVANCE",
-                "description": "The billing type of the payment interval"
-              }
-            }
-          },
-          "created_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730668597,
-            "description": "The timestamp for when the payment interval was created"
-          },
-          "updated_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730668609,
-            "description": "The timestamp for when the payment interval was last updated"
-          },
-          "auto_charge_block": {
-            "type": "integer",
-            "example": null,
-            "description": "The number of days before the payment interval is charged"
-          },
-          "invoice_status": {
-            "type": "string",
-            "enum": ["PENDING", "COMPLETED", "VOIDED", "WAITING_FOR_CONFIRMATIONS", "PARTIAL", "CUSTOMER_DISPUTE_ONGOING", "REVERSED", "REFUNDED", "WAITING_SHOP_ACTION", "PROCESSING"],
-            "example": "COMPLETED",
-            "description": "The status of the invoice"
-          },
-          "invoice_gateway": {
-            "$ref": "#/components/schemas/gateway"
-          },
-          "shop_id": {
-            "type": "integer",
-            "example": 433811,
-            "description": "ID of the Sellix shop the payment interval was created for."
-          },
-          "customer_id": {
-            "type": "string",
-            "example": "cst_8e025b000dee1a9fbbe481",
-            "description": "Unique ID used within Sellix to identify customers across the API."
-          },
-          "payment_method_id": {
-            "type": "integer",
-            "example": 38,
-            "description": "Internal Sellix ID for the payment method"
-          },
-          "plan_subscription_gateway": {
-            "$ref": "#/components/schemas/gateway"
-          },
-          "product_id": {
-            "type": "integer",
-            "example": 1277206,
-            "description": "Internal Sellix ID for the product"
-          },
-          "product_uniqid": {
-            "type": "string",
-            "format": "uuid",
-            "example": "67151e256f149",
-            "description": "Unique ID of the product"
-          },
-          "product_auto_payment_method_required": {
-            "type": "integer",
-            "enum": [0, 1],
-            "example": 1,
-            "description": "Whether or not the product requires an auto payment method"
-          }
-        }
-      },
       "payment_method": {
         "type": "object",
         "properties": {
@@ -11276,21 +11046,21 @@
           },
           "status": {
             "type": "string",
-            "enum": ["ACTIVE", "INACTIVE", "PENDING"],
+            "enum": ["ACTIVE", "INACTIVE", "PENDING", "CANCELED", "AWAIT_CANCELING"],
             "example": "PENDING",
             "description": "The status of the subscription"
           },
           "start_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730648592,
-            "description": "The timestamp of the subscription start date"
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-11-17 16:41:01",
+            "description": "The date-time object of the subscription start date"
           },
           "end_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730668592,
-            "description": "The timestamp of the subscription end date"
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-11-17 16:45:23",
+            "description": "The date-time object of the subscription end date"
           },
           "payment_method_id": {
             "type": "integer",
@@ -11512,87 +11282,37 @@
             "example": 162857125819,
             "description": "Date, available if the query has been updated."
           },
-          "product_plan": {
-            "$ref": "#/components/schemas/product_plan"
-          },
-          "gateways_available": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "example": [
-              "PAYPAL",
-              "STRIPE",
-              "MONERO"
-            ],
-            "description": "gateways available for the update invoice Developers API."
-          },
-          "shop_paypal_credit_card": {
-            "type": "integer",
-            "enum": [0, 1],
-            "example": 0,
-            "description": "Whether or not the shop accepts paypal credit card payments"
-          },
-          "shop_force_paypal_email_delivery": {
-            "type": "integer",
-            "enum": [0, 1],
-            "example": 1,
-            "description": "Whether or not the shop forces invoice delivery to the PayPal email"
-          },
-          "shop_payment_gateway_fees": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "example": 12011,
-                  "description": "The internal ID for the payment gateway fee"
-                },
-                "shop_id": {
-                  "type": "integer",
-                  "example": 433811,
-                  "description": "The internal shop ID to which this resource belongs."
-                },
-                "gateway": {
-                  "$ref": "#/components/schemas/gateway"
-                },
-                "percent_amount": {
-                  "type": "integer",
-                  "example": -8,
-                  "description": "The percentage amount of the fee"
-                },
-                "fixed_amount": {
-                  "type": "integer",
-                  "example": 0,
-                  "description": "The fixed amount of the fee"
-                },
-                "active_type": {
-                  "type": "string",
-                  "enum": ["PERCENT", "FIXED"],
-                  "example": "PERCENT",
-                  "description": "The type of fee to apply to the invoice"
-                },
-                "updated_at": {
-                  "type": "string",
-                  "format": "date-time",
-                  "example": "2024-10-26 15:25:52",
-                  "description": "The date-time object for the last time the gateway fee was updated"
-                },
-                "created_at": {
-                  "type": "string",
-                  "format": "date-time",
-                  "example": "2024-10-26 15:25:52",
-                  "description": "The date-time object for the creation of the gateway fee"
-                }
-              }
-            }
-          },
           "intervals": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/payment_interval"
             }
+          },
+          "stock": {
+            "type": "integer",
+            "example": 0,
+            "description": "The stock of the subscription plan"
+          },
+          "price": {
+            "type": "number",
+            "example": 5,
+            "description": "The price of the subscription plan"
+          },
+          "price_discount": {
+            "type": "number",
+            "example": 0,
+            "description": "The default discount applied to this plan"
+          },
+          "trial_period": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 0,
+            "description": "Whether a trial period is enabled for the subscription plan"
+          },
+          "recurring_interval_count": {
+            "type": "integer",
+            "example": 1,
+            "description": "How many intervals should pass before the customer is invoiced"
           }
         }
       },
@@ -11695,18 +11415,9 @@
             "description": "The ID of the product the subscription is for"
           },
           "plan": {
-            "type": "object",
-            "properties": {
-              "active": {
-                "$ref": "#/components/schemas/product_plan_subscription"
-              },
-              "past": {
-                "type": "array",
-                "description": "A list of past subscription plans. It will populate if the customer switches the plan of their subscription",
-                "items": {
-                  "type": "object"
-                }
-              }
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/product_plan_subscription"
             }
           }
         }
