@@ -3596,7 +3596,7 @@
                   },
                   "payment_method_uniqid": {
                     "type": "string",
-                    "example": "pm_86456a7715ef1f35de7851",
+                    "example": "pm_samplea7715ef1f35de7851",
                     "description": "The unique id of the customer's payment method to set for this endpoint."
                   }
                 }
@@ -6182,13 +6182,13 @@
           "created_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 162857125819,
+            "example": 1705146647,
             "description": "Timestamp for the creation of the feedback."
           },
           "updated_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 162857125819,
+            "example": 1711769254,
             "description": "Date, available if the product has been edited."
           },
           "product_title": {
@@ -6282,19 +6282,20 @@
           },
           "appeal_outcome": {
             "type": "string",
+            "enum": ["APPROVED", "NO_APPEAL_AVAILABLE"],
             "example": "NO_APPEAL_AVAILABLE",
             "description": "The outcome of the appeal."
           },
           "created_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 162857125819,
+            "example": 1705146647,
             "description": "Timestamp for the creation of the feedback."
           },
           "updated_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 162857125819,
+            "example": 1711769254,
             "description": "Date, available if the product has been edited."
           },
           "blocked": {
@@ -8163,7 +8164,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "546f3ede4f1ad",
+            "example": "samplede4f1ad",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -9496,6 +9497,26 @@
             "example": 0,
             "description": "Whether or not the invoice was created from a marketplace"
           },
+          "square_payment_id": {
+            "type": "string",
+            "example": null,
+            "description": "Payment ID for the squarespace payment method"
+          },
+          "volume_payment_id": {
+            "type": "string",
+            "example": null,
+            "description": "The payment ID for the volume payment gateway"
+          },
+          "volume_reference_id": {
+            "type": "string",
+            "example": null,
+            "description": "The reference ID for the volume payment gateway"
+          },
+          "product_plan_id": {
+            "type": "integer",
+            "example": null,
+            "description": "The internal ID of the Sellix product plan associated to the subscription v2 product"
+          },
           "name": {
             "type": "string",
             "example": "Sellix",
@@ -9672,7 +9693,7 @@
           },
           "uniqid": {
             "type": "string",
-            "example": "pm_d71038bf11c9e5406f8269",
+            "example": "pm_samplebf11c9e5406f8269",
             "description": "Unique identifier used throughout Sellix's API"
           },
           "title": {
@@ -10824,7 +10845,7 @@
           "uniqid": {
             "type": "string",
             "description": "The unique identifier for the payment plan.",
-            "example": "pp_b7dded91285bb657098ac0"
+            "example": "pp_sampled91285bb657098ac0"
           },
           "shop_id": {
             "type": "integer",
@@ -11010,7 +11031,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "pay_int_e32fbf6c43e5bf68280c28",
+            "example": "pay_int_samplef6c43e5bf68280c28",
             "description": "Unique id for the payment interval; used throughout Sellix's API"
           },
           "product_subscription_id": {
@@ -11026,7 +11047,7 @@
           "invoice_uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "a8f4fe-0b58cd3f89-41cae2",
+            "example": "sample-0b58cd3f89-41cae2",
             "description": "Unique ID of the invoice created for the payment interval."
           },
           "prev_payment_interval_id": {
@@ -11231,7 +11252,7 @@
           "product_uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "67151e256f149",
+            "example": "sample256f149",
             "description": "Unique ID of the product"
           },
           "product_auto_payment_method_required": {
@@ -11342,7 +11363,7 @@
           },
           "product_subscription_uniqid": {
             "type": "string",
-            "example": "sub_7451b916d925ae0ad1c1c7",
+            "example": "sub_sample916d925ae0ad1c1c7",
             "description": "The unique ID of the subscription plan"
           },
           "product_id": {
@@ -11352,12 +11373,12 @@
           },
           "product_uniqid": {
             "type": "string",
-            "example": "67151e256f149",
+            "example": "sample256f149",
             "description": "The external ID of the subscription product"
           },
           "product_plan_uniqid": {
             "type": "string",
-            "example": "pp_cce4a4821ad7610ad16bf9",
+            "example": "pp_sample4821ad7610ad16bf9",
             "description": "The external ID of the subscription product plan"
           },
           "id": {
@@ -11367,7 +11388,7 @@
           },
           "uniqid": {
             "type": "string",
-            "example": "sub_pp_568e7d30a88460e03901c6",
+            "example": "sub_pp_sampled30a88460e03901c6",
             "description": "The unique ID of the subscription plan"
           },
           "product_subscription_id": {
@@ -11667,7 +11688,7 @@
           },
           "uniqid": {
             "type": "string",
-            "example": "sub_7451b916d925ae0ad1c1c7",
+            "example": "sub_sample916d925ae0ad1c1c7",
             "description": "The ID of the product subscription"
           },
           "shop_id": {
@@ -11757,7 +11778,7 @@
           },
           "product_uniqid": {
             "type": "string",
-            "example": "67151e256f149",
+            "example": "sample256f149",
             "description": "The ID of the product the subscription is for"
           },
           "plan": {
