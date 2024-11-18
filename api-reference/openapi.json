@@ -4417,7 +4417,47 @@
           "groups_bound": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/miniGroup"
+              "type": "object",
+              "properties": {
+                "uniqid": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "sample29a0e39d",
+                  "description": "Unique ID of the resource, used as reference across the API."
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Digital goods to download",
+                  "description": "Group title."
+                },
+                "image_attachment": {
+                  "type": "string",
+                  "example": "sample9797bd6b36f54089a7f6151c56e7a902be4bdaa4204e63961625bb9cb54",
+                  "description": "DEPRECATED: Unique id of the image attachment for this product."
+                },
+                "created_at": {
+                  "type": "integer",
+                  "format": "timestamp",
+                  "example": 162857125819,
+                  "description": "Timestamp for the creation of the group."
+                },
+                "updated_at": {
+                  "type": "integer",
+                  "format": "timestamp",
+                  "example": 162857125819,
+                  "description": "Date, available if the group has been edited."
+                },
+                "group_id": {
+                  "type": "string",
+                  "example": "sample29a0e39d",
+                  "description": "The unique identifyer of the current group"
+                },
+                "category_id": {
+                  "type": "string",
+                  "example": "sample29a0e39d",
+                  "description": "The category the group is a part of"
+                }
+              }
             },
             "description": "Array of groups."
           },
@@ -4458,9 +4498,10 @@
             "$ref": "#/components/schemas/currency"
           },
           "unlisted": {
-            "type": "boolean",
-            "example": false,
-            "description": "If unlisted is true, the product is not shown in the storefront but can be bought through a direct link."
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 0,
+            "description": "Whether the product is listed on the storefront"
           },
           "title": {
             "type": "string",
@@ -4541,20 +4582,21 @@
             "description": "Sort order of this product."
           },
           "on_hold": {
-            "type": "boolean",
-            "example": false,
-            "description": "If on_hold is true, the product cannot be bought but is shown in the storefront."
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 0,
+            "description": "Whether the product cannot be bought but is shown in the storefront."
           },
           "created_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 162857125819,
+            "example": 1731571560,
             "description": "Timestamp for the creation of the product."
           },
           "updated_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 162857125819,
+            "example": 1731893694,
             "description": "Date, available if the product has been edited."
           },
           "image_name": {
@@ -8796,7 +8838,9 @@
             "description": "Group title."
           },
           "image_attachment": {
-            "$ref": "#/components/schemas/image_attachment"
+            "type": "string",
+            "example": "sample797bd6b36f54089a7f6151c56e7a902be4bdaa4204e63961625bb9cb54",
+            "description": "DEPRECATED: Unique id of the image attachment for this product."
           },
           "unlisted": {
             "type": "number",
