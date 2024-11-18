@@ -11967,6 +11967,21 @@
             "example": "PENDING",
             "description": "Status of the query. PENDING if the query has been created and awaits a reply from the merchant. CLOSED if the query has been closed by the merchant or the customer. SHOP_REPLY if the query has been replied by the merchant, CUSTOMER_REPLY if the query has been replied by the customer."
           },
+          "country": {
+            "type": "string",
+            "example": null,
+            "description": "The country the query was made from"
+          },
+          "priority": {
+            "type": "integer",
+            "example": null,
+            "description": "The priority of the support query"
+          },
+          "category": {
+            "type": "string",
+            "example": null,
+            "description": "The category of the support query"
+          },
           "day_value": {
             "type": "integer",
             "description": "Day value, number.",
@@ -11985,19 +12000,24 @@
           "created_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 162857125819,
+            "example": 1710791293,
             "description": "Timestamp for the creation of the query."
           },
           "updated_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": 0,
+            "example": 1711752964,
             "description": "Date, available if the query has been updated."
           },
           "updated_by": {
             "type": "integer",
-            "example": 1,
+            "example": 247994,
             "description": "User ID of the user who updated the query."
+          },
+          "last_message": {
+            "type": "string",
+            "example": "Thanks for the support",
+            "description": "The last message in the support query"
           }
         }
       },
