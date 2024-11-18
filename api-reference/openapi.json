@@ -4425,7 +4425,7 @@
           },
           "price_discount": {
             "type": "number",
-            "example": "0",
+            "example": 0,
             "description": "The discount price on the purchased goods."
           },
           "currency": {
@@ -4465,7 +4465,7 @@
           },
           "quantity_warning": {
             "type": "integer",
-            "example": "0",
+            "example": 0,
             "description": "At which product quantity should we send a webhook and email warning the merchant."
           },
           "custom_fields": {
@@ -5432,12 +5432,12 @@
                       },
                       "value": {
                         "type": "number",
-                        "example": "0",
+                        "example": 0,
                         "description": "The amount of the service fee."
                       },
                       "amount": {
                         "type": "number",
-                        "example": "0",
+                        "example": 0,
                         "description": "The amount of the service fee."
                       },
                       "currency": {
@@ -5468,7 +5468,7 @@
                     "properties": {
                       "amount": {
                         "type": "number",
-                        "example": "0",
+                        "example": 0,
                         "description": "The amount of the service fee."
                       },
                       "currency": {
@@ -5525,7 +5525,7 @@
                     "properties": {
                       "amount": {
                         "type": "number",
-                        "example": "0",
+                        "example": 0,
                         "description": "The amount of the service fee."
                       },
                       "currency": {
@@ -5616,7 +5616,7 @@
           },
           "price_discount": {
             "type": "number",
-            "example": "0",
+            "example": 0,
             "description": "The discount price on the purchased goods."
           },
           "affiliate_revenue_percent": {
@@ -5726,7 +5726,7 @@
           },
           "discord_remove_role": {
             "type": "number",
-            "example": "0",
+            "example": 0,
             "description": "Whether to remove a role from the user when added to the discord server."
           },
           "quantity_min": {
@@ -5743,7 +5743,7 @@
           },
           "quantity_warning": {
             "type": "integer",
-            "example": "0",
+            "example": 0,
             "description": "At which product quantity should we send a webhook and email warning the merchant."
           },
           "gateways": {
@@ -5794,7 +5794,7 @@
           },
           "bestseller": {
             "type": "number",
-            "example": "0",
+            "example": 0,
             "description": "DEPRECATED"
           },
           "sort_priority": {
@@ -5874,7 +5874,7 @@
           },
           "marketplace_category_id": {
             "type": "string",
-            "example": "0",
+            "example": 0,
             "description": "The category ID the product is a part of"
           },
           "telegram_group_id": {
@@ -5883,11 +5883,11 @@
           },
           "telegram_integration": {
             "type": "number",
-            "example": "0"
+            "example": 0
           },
           "telegram_optional": {
             "type": "number",
-            "example": "0"
+            "example": 0
           },
           "name": {
             "type": "string",
@@ -6023,7 +6023,7 @@
                 },
                 "fixed_amount": {
                   "type": "integer",
-                  "example": "0"
+                  "example": 0
                 },
                 "fixed_currency": {
                   "$ref": "#/components/schemas/currency"
@@ -6393,7 +6393,7 @@
           },
           "fixed_amount": {
             "type": "number",
-            "example": "0",
+            "example": 0,
             "description": "The fixed amount of the gateway fee."
           },
           "fixed_currency": {
@@ -6532,7 +6532,7 @@
           "products_bound": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/miniProduct"
+              "$ref": "#/components/schemas/product"
             }
           },
           "image_attachment_info": {
@@ -8402,7 +8402,7 @@
           },
           "discord_remove_role": {
             "type": "number",
-            "example": "0",
+            "example": 0,
             "description": "Whether to remove a role from the user when added to the discord server."
           },
           "quantity_min": {
@@ -8419,7 +8419,7 @@
           },
           "quantity_warning": {
             "type": "integer",
-            "example": "0",
+            "example": 0,
             "description": "At which product quantity should we send a webhook and email warning the merchant."
           },
           "gateways": {
@@ -8492,7 +8492,7 @@
           },
           "bestseller": {
             "type": "integer",
-            "example": "0",
+            "example": 0,
             "description": "DEPRECATED"
           },
           "sort_priority": {
@@ -8572,7 +8572,7 @@
           },
           "marketplace_category_id": {
             "type": "string",
-            "example": "0",
+            "example": 0,
             "description": "The category ID the product is a part of"
           },
           "telegram_group_id": {
@@ -8718,7 +8718,7 @@
                 },
                 "fixed_amount": {
                   "type": "integer",
-                  "example": "0"
+                  "example": 0
                 },
                 "fixed_currency": {
                   "$ref": "#/components/schemas/currency"
@@ -9224,7 +9224,7 @@
           "binance_payout": {
             "type": "integer",
             "enum": [0, 1],
-            "example": "0",
+            "example": 0,
             "description": "Whether or not the binance invoice was payed out"
           },
           "cashapp_qrcode": {
@@ -9379,7 +9379,7 @@
           },
           "to_process": {
             "type": "number",
-            "example": "0",
+            "example": 0,
             "description": "Amount of money left to process"
           },
           "status": {
@@ -9467,7 +9467,7 @@
           "is_marketplace": {
             "type": "integer",
             "enum": [0, 1],
-            "example": "0",
+            "example": 0,
             "description": "Whether or not the invoice was created from a marketplace"
           },
           "name": {
@@ -9549,7 +9549,7 @@
           },
           "quantity_warning": {
             "type": "integer",
-            "example": "0",
+            "example": 0,
             "description": "At which product quantity should we send a webhook and email warning the merchant."
           },
           "custom_fields": {
@@ -10098,8 +10098,9 @@
           },
           "trial_period": {
             "type": "integer",
-            "example": "0",
-            "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION."
+            "enum": [0, 1],
+            "example": 0,
+            "description": "Defines a trial period before billing the customer for product type SUBSCRIPTION. Will be null if product is not a subsription"
           },
           "setup_cost": {
             "type": "string",
@@ -10152,7 +10153,7 @@
           "discord_remove_role": {
             "type": "integer",
             "enum": [0, 1],
-            "example": "0",
+            "example": 0,
             "description": "Whether to remove a role from the user when added to the discord server."
           },
           "quantity_min": {
@@ -10169,7 +10170,7 @@
           },
           "quantity_warning": {
             "type": "integer",
-            "example": "0",
+            "example": 0,
             "description": "At which product quantity should we send a webhook and email warning the merchant."
           },
           "gateways": {
@@ -10245,7 +10246,7 @@
           },
           "bestseller": {
             "type": "number",
-            "example": "0",
+            "example": 0,
             "description": "DEPRECATED"
           },
           "sort_priority": {
@@ -10325,7 +10326,7 @@
           },
           "marketplace_category_id": {
             "type": "string",
-            "example": "0",
+            "example": 0,
             "description": "The category ID the product is a part of"
           },
           "telegram_group_id": {
@@ -10479,7 +10480,7 @@
                 },
                 "fixed_amount": {
                   "type": "integer",
-                  "example": "0"
+                  "example": 0
                 },
                 "fixed_currency": {
                   "$ref": "#/components/schemas/currency"
@@ -10636,6 +10637,11 @@
             "enum": [0, 1],
             "example": 1,
             "description": "Whether or not dark mode is enabled on the Sellix storefront"
+          },
+          "ui_style_configuration": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the UI style configuration is enabled on the Sellix storefront"
           },
           "vat_percentage": {
             "type": "string",
@@ -10849,7 +10855,8 @@
           },
           "trial_period": {
             "type": "integer",
-            "description": "Whether a trial period is enabled for the subscription plan",
+            "enum": [0, 1],
+            "description": "Whether a trial period is enabled for the subscription plan. Will be null if product is not a subscription",
             "example": 0
           },
           "recurring_interval": {
@@ -11597,7 +11604,7 @@
             "type": "integer",
             "enum": [0, 1],
             "example": 0,
-            "description": "Whether a trial period is enabled for the subscription plan"
+            "description": "Whether a trial period is enabled for the subscription plan."
           },
           "recurring_interval_count": {
             "type": "integer",
@@ -11935,7 +11942,7 @@
           "updated_at": {
             "type": "integer",
             "format": "timestamp",
-            "example": "0",
+            "example": 0,
             "description": "Date, available if the query has been updated."
           },
           "updated_by": {
@@ -14401,11 +14408,11 @@
                         },
                         "neutral": {
                           "type": "number",
-                          "example": "0"
+                          "example": 0
                         },
                         "negative": {
                           "type": "number",
-                          "example": "0"
+                          "example": 0
                         },
                         "total": {
                           "type": "number",
