@@ -1570,11 +1570,12 @@
                   "type": {
                     "type": "string",
                     "enum": [
-                      "SERIALS",
-                      "FILE",
+                      "INFO_CARD",
                       "SERVICE",
                       "DYNAMIC",
-                      "INFO_CARD",
+                      "FILE",
+                      "SERIALS",
+                      "GAMING_RCON",
                       "SUBSCRIPTION",
                       "SUBSCRIPTION_V2"
                     ],
@@ -1788,11 +1789,12 @@
                       "type": {
                         "type": "string",
                         "enum": [
-                          "SERIALS",
-                          "FILE",
+                          "INFO_CARD",
                           "SERVICE",
                           "DYNAMIC",
-                          "INFO_CARD",
+                          "FILE",
+                          "SERIALS",
+                          "GAMING_RCON",
                           "SUBSCRIPTION",
                           "SUBSCRIPTION_V2"
                         ],
@@ -2043,11 +2045,12 @@
                   "type": {
                     "type": "string",
                     "enum": [
-                      "SERIALS",
-                      "FILE",
+                      "INFO_CARD",
                       "SERVICE",
                       "DYNAMIC",
-                      "INFO_CARD",
+                      "FILE",
+                      "SERIALS",
+                      "GAMING_RCON",
                       "SUBSCRIPTION",
                       "SUBSCRIPTION_V2"
                     ],
@@ -2249,11 +2252,12 @@
                       "type": {
                         "type": "string",
                         "enum": [
-                          "SERIALS",
-                          "FILE",
+                          "INFO_CARD",
                           "SERVICE",
                           "DYNAMIC",
-                          "INFO_CARD",
+                          "FILE",
+                          "SERIALS",
+                          "GAMING_RCON",
                           "SUBSCRIPTION",
                           "SUBSCRIPTION_V2"
                         ],
@@ -4470,11 +4474,12 @@
           "type": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -5561,11 +5566,12 @@
           "type": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -5575,10 +5581,10 @@
           "subtype": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
               "SERVICE",
-              "DYNAMIC"
+              "DYNAMIC",
+              "FILE",
+              "SERIALS"
             ],
             "example": null,
             "description": "Product subtype, can be used only with type SUBSCRIPTION."
@@ -6725,11 +6731,12 @@
           "subtype": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -6836,11 +6843,12 @@
           "product_type": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -7789,11 +7797,12 @@
           "product_type": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -8192,11 +8201,12 @@
           "type": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -8206,10 +8216,10 @@
           "subtype": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
               "SERVICE",
-              "DYNAMIC"
+              "DYNAMIC",
+              "FILE",
+              "SERIALS"
             ],
             "example": null,
             "description": "Product subtype, can be used only with type SUBSCRIPTION."
@@ -8401,10 +8411,27 @@
           "custom_fields": {
             "$ref": "#/components/schemas/custom_fields_array"
           },
+          "rcon_commands": {
+            "type": "string",
+            "example": "[\"say hi\", \"say hi\"]",
+            "description": "Stringified array of the commands to be executed on the RCON server"
+          },
+          "rcon_execution_type": {
+            "type": "string",
+            "enum": ["AUTOMATIC", "MANUAL"],
+            "example": "AUTOMATIC",
+            "description": "The type of execution for the RCON commands. Only applies to RCON products"
+          },
+          "rcon_start_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-20 00:00:00",
+            "description": "The time for when the RCON product should start"
+          },
           "crypto_confirmations_needed": {
             "type": "integer",
             "example": 3,
-            "description": "Minimum number of confirmations for a crypto payment to be accepted."
+            "description": "Minimum number of confirmations for a crypto payment to be accepted"
           },
           "max_risk_level": {
             "type": "integer",
@@ -8807,11 +8834,12 @@
           "subtype": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -8866,11 +8894,12 @@
           "product_type": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -9512,11 +9541,12 @@
           "type": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -9911,11 +9941,12 @@
           "type": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
+              "INFO_CARD",
               "SERVICE",
               "DYNAMIC",
-              "INFO_CARD",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
               "SUBSCRIPTION",
               "SUBSCRIPTION_V2"
             ],
@@ -9925,10 +9956,10 @@
           "subtype": {
             "type": "string",
             "enum": [
-              "SERIALS",
-              "FILE",
               "SERVICE",
-              "DYNAMIC"
+              "DYNAMIC",
+              "FILE",
+              "SERIALS"
             ],
             "example": null,
             "description": "Product subtype, can be used only with type SUBSCRIPTION."
@@ -10135,19 +10166,21 @@
             "$ref": "#/components/schemas/custom_fields_array"
           },
           "rcon_commands": {
-            "type": "array",
-            "example": null
+            "type": "string",
+            "example": "[\"say hi\", \"say hi\"]",
+            "description": "Stringified array of the commands to be executed on the RCON server"
           },
           "rcon_execution_type": {
             "type": "string",
+            "enum": ["AUTOMATIC", "MANUAL"],
             "example": "AUTOMATIC",
-            "description": "The execution type of the RCON product"
+            "description": "The type of execution for the RCON commands. Only applies to RCON products"
           },
           "rcon_start_time": {
             "type": "string",
             "format": "date-time",
             "example": "2024-10-20 00:00:00",
-            "description": "The timestamp for when the RCON product should start"
+            "description": "The time for when the RCON product should start"
           },
           "crypto_confirmations_needed": {
             "type": "integer",
@@ -10855,6 +10888,16 @@
           },
           "product_type": {
             "type": "string",
+            "enum": [
+              "INFO_CARD",
+              "SERVICE",
+              "DYNAMIC",
+              "FILE",
+              "SERIALS",
+              "GAMING_RCON",
+              "SUBSCRIPTION",
+              "SUBSCRIPTION_V2"
+            ],
             "description": "The type of the product",
             "example": "SUBSCRIPTION_V2"
           },
