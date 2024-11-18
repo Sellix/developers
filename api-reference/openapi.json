@@ -6542,6 +6542,23 @@
             "type": "string",
             "example": "Sellix",
             "description": "The name of the store the group is on."
+          },
+          "theme": {
+            "type": "string",
+            "enum": ["dark"],
+            "example": "dark",
+            "description": "The theme of the group."
+          },
+          "dark_mode": {
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
+            "description": "Whether or not the group is in dark mode."
+          },
+          "ui_style_configuration": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether or not the group has a custom UI style configuration."
           }
         }
       },
