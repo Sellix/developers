@@ -123,8 +123,8 @@
       "group": "Customers",
       "pages": [
         "api-reference/customers/get-customer",
-        "api-reference/customers/post-customers",
         "api-reference/customers/list-customers",
+        "api-reference/customers/post-customers",
         "api-reference/customers/put-customers",
         "api-reference/customers/customer-balance",
         "api-reference/customers/payment-methods"
@@ -134,8 +134,8 @@
       "group": "Subscriptions (legacy)",
       "pages": [
         "api-reference/subscriptions/get-subscription",
-        "api-reference/subscriptions/post-subscriptions",
         "api-reference/subscriptions/list-subscriptions",
+        "api-reference/subscriptions/post-subscriptions",
         "api-reference/subscriptions/delete-subscriptions"
       ]
     },
@@ -143,8 +143,8 @@
       "group": "Subscriptions V2",
       "pages": [
         "api-reference/subscriptions-v2/get-subscription",
-        "api-reference/subscriptions-v2/post-subscriptions",
         "api-reference/subscriptions-v2/list-subscriptions",
+        "api-reference/subscriptions-v2/post-subscriptions",
         "api-reference/subscriptions-v2/put-subscriptions",
         "api-reference/subscriptions-v2/delete-subscriptions"
       ]
@@ -160,8 +160,8 @@
       "group": "Blacklists",
       "pages": [
         "api-reference/blacklists/get-blacklist",
-        "api-reference/blacklists/post-blacklists",
         "api-reference/blacklists/list-blacklists",
+        "api-reference/blacklists/post-blacklists",
         "api-reference/blacklists/put-blacklists",
         "api-reference/blacklists/delete-blacklists"
       ]
@@ -170,8 +170,8 @@
       "group": "Whitelists",
       "pages": [
         "api-reference/whitelists/get-whitelist",
-        "api-reference/whitelists/post-whitelists",
         "api-reference/whitelists/list-whitelists",
+        "api-reference/whitelists/post-whitelists",
         "api-reference/whitelists/put-whitelists",
         "api-reference/whitelists/delete-whitelists"
       ]
@@ -180,9 +180,9 @@
       "group": "Products",
       "pages": [
         "api-reference/products/get-product",
+        "api-reference/products/list-products",
         "api-reference/products/post-products",
         "api-reference/products/post-products-image",
-        "api-reference/products/list-products",
         "api-reference/products/put-products",
         "api-reference/products/put-products-image",
         "api-reference/products/delete-products"
@@ -192,8 +192,8 @@
       "group": "Categories",
       "pages": [
         "api-reference/categories/get-category",
-        "api-reference/categories/post-categories",
         "api-reference/categories/list-categories",
+        "api-reference/categories/post-categories",
         "api-reference/categories/put-categories",
         "api-reference/categories/delete-categories"
       ]
@@ -202,8 +202,8 @@
       "group": "Groups",
       "pages": [
         "api-reference/groups/get-group",
-        "api-reference/groups/post-groups",
         "api-reference/groups/list-groups",
+        "api-reference/groups/post-groups",
         "api-reference/groups/put-groups",
         "api-reference/groups/delete-groups"
       ]
@@ -212,8 +212,8 @@
       "group": "Coupons",
       "pages": [
         "api-reference/coupons/get-coupon",
-        "api-reference/coupons/post-coupons",
         "api-reference/coupons/list-coupons",
+        "api-reference/coupons/post-coupons",
         "api-reference/coupons/put-coupons",
         "api-reference/coupons/delete-coupons"
       ]

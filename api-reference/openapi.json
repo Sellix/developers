@@ -8085,7 +8085,7 @@
           "is_evm_approved": {
             "type": "boolean",
             "example": false,
-            "description": "TODO"
+            "description": "Whether or not the EVM transaction is approved"
           },
           "fee_billed": {
             "type": "boolean",
@@ -10838,8 +10838,8 @@
           },
           "status": {
             "type": "string",
-            "enum": ["ACTIVE", "INACTIVE"],
-            "description": "TODO",
+            "enum": ["ACTIVE", "INACTIVE", "COMPLETED", "PENDING", "CANCELED", "AWAIT_CANCELING"],
+            "description": "The status of the subscription",
             "example": "ACTIVE"
           },
           "stock": {
@@ -11093,7 +11093,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["PENDING", "COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
+            "enum": ["ACTIVE", "INACTIVE", "COMPLETED", "PENDING", "CANCELED", "AWAIT_CANCELING"],
             "example": "PENDING",
             "description": "The status of the payment interval"
           },
@@ -11387,7 +11387,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["ACTIVE", "INACTIVE", "PENDING", "CANCELED", "AWAIT_CANCELING"],
+            "enum": ["ACTIVE", "INACTIVE", "COMPLETED", "PENDING", "CANCELED", "AWAIT_CANCELING"],
             "example": "PENDING",
             "description": "The status of the subscription"
           },
@@ -11697,7 +11697,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["ACTIVE", "INACTIVE", "PENDING"],
+            "enum": ["ACTIVE", "INACTIVE", "COMPLETED", "PENDING", "CANCELED", "AWAIT_CANCELING"],
             "example": "PENDING",
             "description": "The status of the subscription"
           },
