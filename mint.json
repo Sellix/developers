@@ -144,6 +144,7 @@
       "pages": [
         "api-reference/subscriptions-v2/get-subscription",
         "api-reference/subscriptions-v2/post-subscriptions",
+        "api-reference/subscriptions-v2/list-subscriptions",
         "api-reference/subscriptions-v2/put-subscriptions",
         "api-reference/subscriptions-v2/delete-subscriptions"
       ]

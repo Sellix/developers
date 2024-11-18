@@ -3391,6 +3391,32 @@
       }
     },
     "/subscriptions_v2": {
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "listSubscriptionv2",
+        "description": "List the subscriptions on a specific store",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/listsubscriptionsV2"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          }
+        }
+      },
       "post": {
         "tags": [
           "Subscriptions V2"
@@ -11008,17 +11034,22 @@
             "example": 0,
             "description": "Internal ID for the previous payment interval"
           },
-          "start_date": {
+          "idx": {
             "type": "integer",
-            "format": "timestamp",
-            "example": 1730668596,
-            "description": "The timestamp for when the payment interval started"
+            "example": 1,
+            "description": "The index of the payment interval"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-11-17 14:09:41",
+            "description": "The time for when the payment interval started"
           },
           "end_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730937599,
-            "description": "The timestamp for when the payment interval ended"
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-11-18 14:09:40",
+            "description": "The time for when the payment interval ended"
           },
           "interval_type": {
             "type": "string",
@@ -11033,26 +11064,32 @@
             "description": "The billing type of the payment interval"
           },
           "payment_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730668596,
-            "description": "The timestamp for when the payment was made"
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-11-17 14:09:41",
+            "description": "The time for when the payment was made"
           },
           "payment_attempts": {
             "type": "integer",
-            "example": 1,
+            "example": 0,
             "description": "The number of payment attempts"
           },
           "last_payment_attempt_date": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": 1730668596,
-            "description": "The timestamp for the last payment attempt"
+            "type": "string",
+            "format": "date-time",
+            "example": null,
+            "description": "The time for the last payment attempt"
           },
           "last_payment_details": {
             "type": "object",
             "example": null,
             "description": "Payment details for the last payment"
+          },
+          "next_payment_attempt_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-11-17 14:09:41",
+            "description": "The time for the next payment interval"
           },
           "status": {
             "type": "string",
@@ -11090,19 +11127,21 @@
             "description": "Whether or not the upcoming renewal email has been sent"
           },
           "start_event_processed": {
-            "type": "boolean",
-            "example": false,
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 0,
             "description": "Whether or not the start event has been processed"
           },
           "end_event_processed": {
-            "type": "boolean",
-            "example": false,
+            "type": "integer",
+            "enum": [0, 1],
+            "example": 1,
             "description": "Whether or not the end event has been processed"
           },
           "completed_at": {
-            "type": "integer",
-            "format": "timestamp",
-            "example": null,
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-11-18 14:11:07",
             "description": "The timestamp for when the payment interval was completed"
           },
           "next_interval_info": {
@@ -11315,6 +11354,11 @@
             "type": "string",
             "example": "67151e256f149",
             "description": "The external ID of the subscription product"
+          },
+          "product_plan_uniqid": {
+            "type": "string",
+            "example": "pp_cce4a4821ad7610ad16bf9",
+            "description": "The external ID of the subscription product plan"
           },
           "id": {
             "type": "integer",
@@ -11645,6 +11689,11 @@
             "type": "integer",
             "example": 1277206,
             "description": "The internal ID of the product"
+          },
+          "product_plan_id": {
+            "type": "integer",
+            "example": 144,
+            "description": "The internal ID of the product subscription plan" 
           },
           "status": {
             "type": "string",
@@ -15567,6 +15616,49 @@
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/subscriptionListing"
+                      }
+                    }
+                  }
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "listsubscriptionsV2": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "subscriptions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/product_subscription"
                       }
                     }
                   }
