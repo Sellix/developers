@@ -10838,7 +10838,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["ACTIVE", "INACTIVE", "COMPLETED", "PENDING", "CANCELED", "AWAIT_CANCELING"],
+            "enum": ["PENDING","COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
             "description": "The status of the subscription",
             "example": "ACTIVE"
           },
@@ -11093,7 +11093,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["ACTIVE", "INACTIVE", "COMPLETED", "PENDING", "CANCELED", "AWAIT_CANCELING"],
+            "enum": ["PENDING","COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
             "example": "PENDING",
             "description": "The status of the payment interval"
           },
@@ -11387,7 +11387,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["ACTIVE", "INACTIVE", "COMPLETED", "PENDING", "CANCELED", "AWAIT_CANCELING"],
+            "enum": ["PENDING","COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
             "example": "PENDING",
             "description": "The status of the subscription"
           },
@@ -11697,7 +11697,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["ACTIVE", "INACTIVE", "COMPLETED", "PENDING", "CANCELED", "AWAIT_CANCELING"],
+            "enum": ["PENDING", "COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
             "example": "PENDING",
             "description": "The status of the subscription"
           },
