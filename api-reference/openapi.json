@@ -77,7 +77,7 @@
         "tags": [
           "Blacklists"
         ],
-        "operationId": "getBlacklists",
+        "operationId": "listBlacklists",
         "description": "List all the blacklists created on the current shop.",
         "parameters": [
           {
@@ -272,7 +272,7 @@
         "tags": [
           "Whitelists"
         ],
-        "operationId": "getWhitelists",
+        "operationId": "listWhitelists",
         "description": "List all the whitelists created on the current shop.",
         "parameters": [
           {
@@ -467,7 +467,7 @@
         "tags": [
           "Categories"
         ],
-        "operationId": "getCategories",
+        "operationId": "listCategories",
         "description": "List all the categories created on the current shop.",
         "parameters": [
           {
@@ -684,7 +684,7 @@
         "tags": [
           "Coupons"
         ],
-        "operationId": "getCoupons",
+        "operationId": "listCoupons",
         "description": "List all the coupons created on the current shop.",
         "parameters": [
           {
@@ -917,7 +917,7 @@
         "tags": [
           "Feedback"
         ],
-        "operationId": "feedbackListing",
+        "operationId": "listFeedback",
         "description": "List the feedback received on the current shop.",
         "parameters": [
           {
@@ -1015,7 +1015,7 @@
         "tags": [
           "Groups"
         ],
-        "operationId": "getGroups",
+        "operationId": "listGroups",
         "description": "List all the groups created on the current shop.",
         "parameters": [
           {
@@ -1214,7 +1214,7 @@
         "tags": [
           "Orders"
         ],
-        "operationId": "getOrders",
+        "operationId": "listOrders",
         "description": "List all the orders created on the current shop.",
         "parameters": [
           {
@@ -1455,7 +1455,7 @@
         "tags": [
           "Orders"
         ],
-        "operationId": "updateOrder",
+        "operationId": "updateOrderCustomFields",
         "description": "Update custom_field information for a specific order.",
         "requestBody": {
           "description": "order information to be updated in JSON format",
@@ -1509,7 +1509,7 @@
         "tags": [
           "Products"
         ],
-        "operationId": "getProducts",
+        "operationId": "listProducts",
         "description": "List all the products created on the current shop.",
         "parameters": [
           {
@@ -1742,7 +1742,7 @@
         "tags": [
           "Products"
         ],
-        "operationId": "createProduct",
+        "operationId": "createProductImage",
         "description": "Create a product with an image",
         "requestBody": {
           "description": "product JSON to be created",
@@ -2211,7 +2211,7 @@
         "tags": [
           "Products"
         ],
-        "operationId": "updateProduct",
+        "operationId": "updateProductImage",
         "description": "Update a product",
         "requestBody": {
           "description": "product JSON to be created",
@@ -2422,7 +2422,7 @@
         "tags": [
           "Queries"
         ],
-        "operationId": "getQueries",
+        "operationId": "listQueries",
         "description": "List all the queries created on the current shop.",
         "parameters": [
           {
@@ -2860,7 +2860,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "getCustomers",
+        "operationId": "listCustomers",
         "description": "List all the customers created on the current shop.",
         "parameters": [
           {
@@ -3254,7 +3254,7 @@
         "tags": [
           "Subscriptions"
         ],
-        "operationId": "getSubscriptions",
+        "operationId": "listSubscriptions",
         "description": "List all the subscriptions created on the current shop.",
         "parameters": [
           {
