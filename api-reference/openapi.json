@@ -10649,41 +10649,7 @@
           "addons": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "example": 987
-                },
-                "uniqid": {
-                  "type": "string",
-                  "example": "sample29a0e39d"
-                },
-                "shop_id": {
-                  "type": "integer",
-                  "example": 987,
-                  "description": "The shop ID to which this resource belongs."
-                },
-                "product_types": {
-                  "type": "array",
-                  "example": null
-                },
-                "title": {
-                  "type": "string",
-                  "example": "Sellix"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "A Sellix product description"
-                },
-                "price": {
-                  "type": "string",
-                  "example": "1.00"
-                },
-                "currency": {
-                  "$ref": "#/components/schemas/currency"
-                }
-              }
+              "$ref": "#/components/schemas/product_addons"
             }
           },
           "country_regulations": {
@@ -10752,7 +10718,10 @@
               },
               "tax_configuration_data": {
                 "type": "array",
-                "example": []
+                "example": [],
+                "items": {
+                  "type": "string"
+                }
               },
               "display_tax_on_storefront": {
                 "type": "integer",
@@ -10816,19 +10785,26 @@
             },
             "product_types": {
               "type": "array",
-              "example": null
+              "example": null,
+              "items": {
+                "type": "string"
+              },
+              "description": "The product types for the product addon"
             },
             "title": {
               "type": "string",
-              "example": "Sellix"
+              "example": "Sellix",
+              "description": "The title of the product addon"
             },
             "description": {
               "type": "string",
-              "example": "A Sellix product description"
+              "example": "A Sellix product description",
+              "description": "The description of the product addon"
             },
             "price": {
               "type": "string",
-              "example": "1.00"
+              "example": "1.00",
+              "description": "The price of the product addon"
             },
             "currency": {
               "$ref": "#/components/schemas/currency"
@@ -11165,6 +11141,9 @@
           "used_coupons": {
             "type": "array",
             "example": null,
+            "items": {
+              "type": "string"
+            },
             "description": "Coupons used for the payment interval"
           },
           "used_customer_balance": {
@@ -11179,6 +11158,9 @@
           "used_addons": {
             "type": "array",
             "example": null,
+            "items": {
+              "type": "string"
+            },
             "description": "Addons used for the payment interval"
           },
           "trial_ending_email_sent": {
@@ -14867,7 +14849,8 @@
               "properties": {
                 "status": {
                   "type": "integer",
-                  "example": 200
+                  "example": 200,
+                  "description": "The status of the response"
                 },
                 "data": {
                   "type": "object",
@@ -14893,7 +14876,7 @@
                       "description": "The current page if pagination was specified"
                     },
                     "limit": {
-                      "type": "number",
+                      "type": "integer",
                       "example": 25,
                       "description": "The total amount of invoices to display per page"
                     },
@@ -14914,6 +14897,9 @@
                     },
                     "fields": {
                       "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
                       "example": [ 78 ],
                       "description": "The total amount of fields returned"
                     },
