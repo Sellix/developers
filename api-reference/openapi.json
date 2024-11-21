@@ -2583,7 +2583,8 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "email"
+                  "email",
+                  "white_label"
                 ],
                 "properties": {
                   "title": {
