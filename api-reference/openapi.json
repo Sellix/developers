@@ -627,9 +627,6 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "title"
-                ],
                 "properties": {
                   "title": {
                     "type": "string",
