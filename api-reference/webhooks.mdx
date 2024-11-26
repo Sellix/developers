@@ -112,12 +112,59 @@ Each webhook request will feature a `X-Sellix-Event` header containing the webho
 | `subscription:renewed` | A subscription has been renewed, after receiving a new payment. |
 | `subscription:cancelled` | A subscription has been canceled, either due to not receiving a payment or by a manual action of the customer. |
 | `subscription:upcoming` | A customer will have to pay for one of your subscriptions in the next 72 hours. |
-| `order:paid:product` | This event is the same as order:paid, however the :product segment indicates that it originates from a webhook URL configured within a product, which is now deprecated |
+| `order:paid:product` | This event is the same as order:paid, however the :product segment indicates that it originates from a webhook URL configured within a product, which is now deprecated. |
 | `order:partial:product` | Similar to order:paid, this event is the same as its parent. |
 | `order:created:product` | Similar to order:paid, this event is the same as its parent. |
 | `order:disputed:product` | Similar to order:paid, this event is the same as its parent. |
 | `order:cancelled:product` | Similar to order:paid, this event is the same as its parent. |
 | `order:updated:product` | Similar to order:paid, this event is the same as its parent. |
+| `subscription-v2:started` | Triggered once when product subscription is created (not started yet). |
+| `subscription-v2:started` | Triggered once when product subscription start date arrives. |
+| `subscription-v2:ended` | Triggered once when product subscription end date arrives. |
+| `subscription-v2:canceled` | Triggered at the moment when product subscription is canceled. |
+| `subscription-v2:canceled-merchant` | Triggered when a product subscription is canceled by the merchant. |
+| `subscription-v2:canceled-customer` | Triggered when a product subscription is canceled by the customer. |
+| `subscription-v2:canceled-api` | Triggered when a product subscription is canceled by the developer. |
+| `subscription-v2:canceled-system` | Triggered when a product subscription is canceled by the system. |
+| `subscription-v2:plan:created` | Triggered once when a product plan subscription is created (not started yet). |
+| `subscription-v2:plan:started` | Triggered once when a product plan subscription start date arrives. |
+| `subscription-v2:plan:ended` | Triggered once when a product plan subscription end date arrives. |
+| `subscription-v2:plan:canceled` | Triggered at the moment when a product plan subscription is canceled. |
+| `subscription-v2:plan:canceled-merchant` | Triggered when a product plan subscription is canceled by the merchant. |
+| `subscription-v2:plan:canceled-customer` | Triggered when a product plan subscription is canceled by the customer. |
+| `subscription-v2:plan:canceled-api` | Triggered when a product plan subscription is canceled by the developer. |
+| `subscription-v2:plan:canceled-system` | Triggered when a product plan subscription is canceled by the system. |
+| `subscription-v2:plan:upgrade` | Triggered when a new plan subscription occurs (the new plan may be postponed until the current payment interval ends). |
+| `subscription-v2:plan:downgrade` | Triggered when a plan subscription is downgraded (the new plan may be postponed until the current payment interval ends). |
+| `subscription-v2:plan:gateway-changed` | Triggered when the customer changes the product plan subscription gateway. |
+| `subscription-v2:plan:payment-method-changed` | Triggered when the customer changes the product plan subscription payment method. |
+| `subscription-v2:plan:payment-succeeded` | Triggered when the payment for a plan succeeds. |
+| `subscription-v2:plan:payment-canceled` | Triggered when the payment for a plan is canceled. |
+| `subscription-v2:plan:payment-failed` | Triggered when the payment for a plan fails. |
+| `subscription-v2:trial-interval:created` | Triggered when a trial payment interval is created. |
+| `subscription-v2:trial-interval:started` | Triggered when a trial payment interval start date arrives. |
+| `subscription-v2:trial-interval:ended` | Triggered when a trial payment interval end date arrives. |
+| `subscription-v2:trial-interval:canceled` | Triggered when a trial payment interval is canceled. |
+| `subscription-v2:trial-interval:canceled-merchant` | Triggered when a trial payment interval is canceled by the merchant. |
+| `subscription-v2:trial-interval:canceled-customer` | Triggered when a trial payment interval is canceled by the customer. |
+| `subscription-v2:trial-interval:canceled-api` | Triggered when a trial payment interval is canceled by the developer. |
+| `subscription-v2:trial-interval:canceled-system` | Triggered when a trial payment interval is canceled by the system. |
+| `subscription-v2:payment-interval:created` | Triggered when a payment interval is created. |
+| `subscription-v2:payment-interval:started` | Triggered when a payment interval start date arrives. |
+| `subscription-v2:payment-interval:ended` | Triggered when a payment interval end date arrives. |
+| `subscription-v2:payment-interval:canceled` | Triggered when a payment interval is canceled. |
+| `subscription-v2:payment-interval:canceled-merchant` | Triggered when a payment interval is canceled by the merchant. |
+| `subscription-v2:payment-interval:canceled-customer` | Triggered when a payment interval is canceled by the customer. |
+| `subscription-v2:payment-interval:canceled-api` | Triggered when a payment interval is canceled by the developer. |
+| `subscription-v2:payment-interval:canceled-system` | Triggered when a payment interval is canceled by the system. |
+| `subscription-v2:payment-interval:upcoming` | Triggered when a payment interval's end date is in 1 week. |
+| `subscription-v2:payment-interval:payment-succeeded` | Triggered when a payment succeeds. |
+| `subscription-v2:payment-interval:payment-canceled` | Triggered when a payment is canceled. |
+| `subscription-v2:payment-interval:payment-failed` | Triggered when a payment fails. |
+| `subscription-v2:payment-interval:charge-retried` | Triggered when a charge is retried for a payment interval. |
+| `subscription-v2:payment-interval:charge-failed` | Triggered when a charge fails for a payment interval. |
+
+> **Note**: The "canceled" event is common for all types of cancellations and may be triggered by the customer, merchant, developer, or system.
 
 ## Logs
 

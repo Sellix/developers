@@ -1,0 +1,91 @@
+---
+title: 'Subscriptions V1 vs V2'
+description: 'A comparison between Subscriptions V2 and Legacy Subscriptions. Which one is right for you.'
+---
+
+# Comparing Legacy Subscriptions and Subscriptions V2
+
+Sellix offers two subscription models — [Legacy Subscriptions](https://docs.sellix.io/api-reference/subscriptions) and [Subscriptions V2](https://docs.sellix.io/api-reference/subscriptions-v2) — each tailored to different merchant needs. While Legacy Subscriptions provide fundamental recurring billing features, Subscriptions V2 introduces advanced options to support a broader range of business models.
+
+<Info title="Subscription Models Overview">
+Legacy Subscriptions are ideal for straightforward, interval-based billing, whereas Subscriptions V2 is a powerful upgrade offering enhanced flexibility, new billing intervals, and webhook support.
+</Info>
+
+---
+
+## Key Differences
+
+| Feature                        | Legacy Subscriptions                  | Subscriptions V2                           |
+|--------------------------------|---------------------------------------|--------------------------------------------|
+| **Billing Intervals**          | Daily, Weekly, Monthly, Yearly        | Flexible intervals with customizable counts (e.g., 3 days, 2 months) |
+| **Billing Types**              | Standard                              | Full or Prorated                           |
+| **Payment Types**              | At start                             | Advanced (start) or Arrears (end)          |
+| **Discounts**                  | No                                    | Yes, including discounts for pre-paid plans|
+| **Webhooks**                   | Basic events (e.g., created, updated) | 15+ events for detailed subscription lifecycle tracking |
+| **Flexible Renewal**           | Fixed interval only                   | Calendar or Anniversary                    |
+| **Add-ons & Upgrades**         | No                                    | Yes                                        |
+---
+
+## Subscription Models Overview
+
+### Legacy Subscriptions
+
+Legacy Subscriptions provide essential features for managing recurring payments. Merchants can set intervals and billing cycles, and the system sends invoices within 60 seconds of expiration. This model is efficient for straightforward subscription management.
+
+<Warning>
+Legacy Subscriptions are still supported but lack some of the advanced billing options available in Subscriptions V2.
+</Warning>
+
+#### Key Features
+- Supports intervals of **Daily, Weekly, Monthly, and Yearly**
+- Simple billing structure without add-ons or complex discounts
+- Limited webhook events:
+  - `subscription:trial:started`
+  - `subscription:trial:ended`
+  - `subscription:created`
+  - `subscription:renewed`
+  - `subscription:updated`
+  - `subscription:cancelled`
+- Subscriptions are renewed automatically; however, there are fewer customization options.
+
+<Info>
+  For a complete list of webhook events, refer to [our Webhook documentation](https://docs.sellix.io/api-reference/webhooks).
+</Info>
+
+### Subscriptions V2
+
+Subscriptions V2 is a robust, feature-rich model that allows merchants to leverage advanced billing capabilities. It supports flexible billing intervals, customizable billing types, and offers webhook events at every stage of the subscription lifecycle.
+
+<Callout type="success" title="Why Choose Subscriptions V2?">
+  With Subscriptions V2, you can set billing cycles that match your business needs, apply discounts, and automate tasks with comprehensive webhook events.
+</Callout>
+
+#### Key Features
+- **Flexible Billing Options**: Choose from **percentage-based, graduated, volume, and package billing** options.
+- **New Webhooks**: Over 15 events cover every stage, from subscription creation to payment success/failure, upgrades, downgrades, and cancellations.
+- **Calendar or Anniversary Renewal**: Renew subscriptions on fixed dates or based on individual start dates.
+- **Advanced Discounts**: Merchants can offer discounts for prepaid periods and apply custom billing cycles.
+- **Cryptocurrency Billing**: Supports EVM-based cryptocurrencies, making it easier for merchants to handle crypto payments.
+- **Stripe Payments**: Subscription logic is handled in-house, reducing Stripe fees for your recurring payments.
+
+<Note>
+  Subscriptions V2 also includes a billing portal for customers to manage, view, and cancel subscriptions, improving customer experience.
+</Note>
+
+---
+
+## Customer Portal Access
+
+Both models support a **customer billing portal** where users can manage their subscriptions. Subscriptions V2 enhances this experience with options for embedded cancellation buttons, upgrade/downgrade options, and a subscription card overview.
+
+![customer portal](https://cdn.sellix.io/static/documentation/images/customer-portal.png)
+
+---
+
+## Conclusion
+
+| Choose **Legacy Subscriptions** if...                               | Choose **Subscriptions V2** if...                                 |
+|---------------------------------------------------------------------|-------------------------------------------------------------------|
+| You need a simple, interval-based recurring billing solution.       | You require advanced billing options with flexible intervals.     |
+| You prefer a straightforward model without add-ons or custom billing cycles. | You need a flexible billing system with discounts and cryptocurrency support. |
+| You do not need detailed webhook events for every subscription stage. | You want real-time notifications with over 15 webhook events for lifecycle tracking. |

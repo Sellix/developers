@@ -1,0 +1,127 @@
+---
+title: 'Subscriptions V2'
+description: 'Manage recurring cryptocurrency and fiat payments through Sellix'
+---
+
+# Subscriptions V2 Overview
+
+Welcome to Sellix Subscriptions V2! This version brings enhanced flexibility and new features for managing subscriptions. With Subscriptions V2, merchants can add product plans, customize billing types, apply discounts, and leverage various webhook events for better automation.
+
+<Callout type="info" title="Why upgrade to V2?">
+  Subscriptions V2 introduces features such as prorated billing, true-up fees, flexible intervals, and custom billing cycles.
+</Callout>
+
+## Key Features
+- **Multiple Billing Options**: Choose from percentage-based, graduated, volume, and package billing.
+- **New Webhooks**: 15+ events for tracking subscription lifecycle, including payment success/failure, upgrades, and cancellations.
+- **Calendar or Anniversary Renewal**: Define subscription cycles based on fixed calendar dates or individual start dates.
+- **Flexible Plans**: Adjust billing intervals (daily, weekly, monthly, yearly) and provide discounts for pre-paid plans.
+
+# Creating Subscriptions in the Dashboard
+
+You can easily set up and manage subscriptions in your Sellix dashboard. Here’s how:
+
+<Steps>
+<Step title="Step 1">
+  Navigate to **Products > Subscriptions** in your dashboard.
+</Step>
+
+<Step title="Step 2">
+  Select **Create New Subscription** and fill in the necessary details:
+  - **Email**
+  - **Product ID**: ID of the subscriptions v2 product
+  - **Quantity**: Number of subscriptions to include in the invoice
+  - **Product Plan ID**: ID of the subscription plan
+</Step>
+
+<Step title="Step 3">
+  Configure additional settings such as add-ons, discounts, and renewal preferences.
+</Step>
+</Steps>
+
+<Warning>
+  Ensure that all required fields are completed before saving your subscription plan.
+</Warning>
+
+# Managing Subscriptions with the API
+
+Sellix provides API endpoints for programmatic management of subscriptions, enabling automation for tasks like creating, updating, and canceling subscriptions.
+
+## Creating a Subscription
+
+```curl
+POST /subscriptions-v2
+Headers: { "Authorization": "Bearer YOUR_API_KEY" }
+Body:
+{
+  "email": "sellix.customer@gmail.com",
+  "product_id": "67151e256f149",
+  "quantity": 1,
+  "product_plan_id": "pp_edfbee1654aba75fa7965a"
+}
+```
+
+### Available Fields
+- For a list of available fields, please check the [API Reference](https://docs.sellix.io/api-reference/subscriptions-v2/post-subscriptions).
+
+## Updating a Subscription
+
+Use the following endpoint to update a subscription:
+
+```curl
+PUT /subscriptions-v2/{subscription_id}
+Headers: { "Authorization": "Bearer YOUR_API_KEY" }
+Body:
+{
+  "gateway": "STRIPE",
+  "payment_method_uniqid": "pm_86456a7715ef1f35de7851",
+  "checkout_version": "v2"
+}
+```
+
+<Note>
+  Only specific fields can be updated once a subscription is active.
+</Note>
+
+
+# Webhook Events for Subscription Lifecycle
+
+Subscriptions V2 offers comprehensive webhook events to keep track of each stage in a subscription's lifecycle. Configure webhooks in your Sellix dashboard to receive notifications for various events.
+
+## Key Events
+- **subscription-v2:started**: Triggered when a subscription begins.
+- **subscription-v2:ended**: Triggered at the end of a subscription period.
+- **subscription-v2:canceled**: Triggered if a subscription is canceled.
+- **subscription-v2:plan:payment-succeeded**: Triggered when a payment is successfully processed.
+
+<Note>
+  Separate events are available for plan upgrades, downgrades, payment failures, and retries.
+</Note>
+
+For a full list of webhook events, visit the [Webhook Documentation](https://docs.sellix.io/api-reference/webhooks).
+
+
+# Advanced Subscription Features
+
+<Warning>
+  Some features are currently in development. Stay tuned for updates.
+</Warning>
+
+## Prorated Billing
+Allow partial charges based on remaining days in the period.
+
+## Discounts for Prepaid Periods
+Merchants can offer discounted rates for customers who prepay for multiple periods.
+
+## Cryptocurrency Billing
+Subscriptions V2 supports EVM-based cryptocurrencies for seamless payment automation.
+![crypto subs](https://cdn.sellix.io/static/documentation/images/crypto-subscriptions.png)
+
+## Embeddables
+Integrate sections like **Cancellation Button**, **Upgrade/Downgrade Options**, and **Subscription Card Overview** into your website.
+
+<Note>
+  Seat-based pricing, timezone configurations, and multi-currency support are coming soon.
+</Note>
+
+<Note>We also have our legacy subscription model. Please see a [comparison between our legacy subscriptions model and subscriptions v2](https://docs.sellix.io/api-reference/subscriptions-compare)</Note>
