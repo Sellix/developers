@@ -11644,6 +11644,8 @@
           },
           "affiliate_revenue_used_type": {
             "type": "string",
+            "enum": ["ONETIME_FULL", "ONETIME_LIMIT", "REPEAT_FULL", "REPEAT_LIMIT"],
+            "example": "REPEAT_LIMIT",
             "description": "The type of affiliate revenue used"
           },
           "start_event_processed": {
