@@ -12,10 +12,10 @@ We take care of the logic and backend operations as well as managing and updatin
 We currently support `Daily`, `Weekly`, `Monthly` and `Yearly` intervals with a minimum interval count of `1`. Subscription invoices to be paid are sent within 60 seconds of expiration, and webhook events are retried up to 5 times without delay from when an update or creation occurs.
 
 <CardGroup cols={2}>
-  <Card title="Get Subscriptions" icon="bars-staggered" href="/api-reference/subscriptions-v2/get-subscription">
+  <Card title="Get Subscriptions" icon="bars-staggered" href="/api-reference/subscriptions-2-0/get-subscription">
     Use our API to get the details of a subscription from one of your customers
   </Card>
-  <Card title="Create Subscription" icon="plus" href="/api-reference/subscriptions-v2/post-subscriptions">
+  <Card title="Create Subscription" icon="plus" href="/api-reference/subscriptions-2-0/post-subscriptions">
     Create a subscription and assign it to a customer of yours through our API
   </Card>
 </CardGroup>
@@ -24,7 +24,7 @@ We currently support `Daily`, `Weekly`, `Monthly` and `Yearly` intervals with a 
 
 Subscription webhooks are handled through our [Webhooks standard](/api-reference/webhooks).
 
-<Card title="Subscription Object" icon="brackets-curly" href="/api-reference/subscriptions-v2/get-subscription">
+<Card title="Subscription Object" icon="brackets-curly" href="/api-reference/subscriptions-2-0/get-subscription">
   Check out the subscription object, which will be sent through webhooks, by clicking here.
 </Card>
 
@@ -102,7 +102,7 @@ The events that you need to handle for Subscriptions are the following
 
 Every customer will have access to their customer billing portal, where they can view, cancel, and update any active subscription purchased from you or any other business on our platform.
 
-![customer portal](https://cdn.sellix.io/static/documentation/images/customer-portal.png)
+![customer portal](https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/documentation/images/customer-portal.png)
 
 They will authenticate using their personal email address, used to purchase your product subscription. The customer billing portal can be found at `YOUR_DOMAIN/customer/auth`
 
@@ -119,7 +119,7 @@ Three ways to integrate subscriptions into your website.
   You can embed subscription products on your website, and automatically set hidden custom fields to uniquely identify your customers when the webhook events are sent.
 </Card>
 
-<Card title="Developers API" icon="code" href="/api-reference/subscriptions-v2/post-subscriptions">
+<Card title="Developers API" icon="code" href="/api-reference/subscriptions-2-0/post-subscriptions">
   Brandless implementation with our API.
   Use your own logo and website to manage customers and subscriptions.
   Currently, the documentation is hosted on dev-openapi.sellix.io. However, it will soon be available on this page as well, with an improved document.
@@ -129,6 +129,6 @@ Three ways to integrate subscriptions into your website.
 
 From the get-go, we support subscriptions billed automatically through cryptocurrencies.
 
-![customer portal](https://cdn.sellix.io/static/documentation/images/crypto-subscriptions.png)
+![customer portal](https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/documentation/images/crypto-subscriptions.png)
 
 This works by approving X recurring payments on the customer's cryptocurrency wallet and automatically sending a transaction for each renewal period.

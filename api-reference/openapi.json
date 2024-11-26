@@ -11,7 +11,7 @@
     "version": "1.0.0",
     "title": "Sellix Developers API",
     "x-logo": {
-      "url": "https://cdn.sellix.io/static/logo/sellix-logo-black-smaller.png",
+      "url": "https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/logo/sellix-logo-black-smaller.png",
       "backgroundColor": "#FFFFFF",
       "altText": "Sellix logo",
       "href": "https://sellix.io"
@@ -2597,7 +2597,7 @@
                   "product_plans": {
                     "type": "object",
                     "example": {"sample2bde8a50": "pp_622886e03cbf6a40d5d1f0"},
-                    "description": "Required for subscriptions V2. Specified which plan to use for the invoice."
+                    "description": "Required for subscriptions 2.0. Specified which plan to use for the invoice."
                   },
                   "cart": {
                     "type": "object",
@@ -3417,7 +3417,7 @@
       },
       "post": {
         "tags": [
-          "Subscriptions V2"
+          "Subscriptions 2.0"
         ],
         "operationId": "createSubscriptionv2",
         "description": "Create a subscription invoice to a customer",
@@ -3553,7 +3553,7 @@
       },
       "delete": {
         "tags": [
-          "Subscriptions V2"
+          "Subscriptions 2.0"
         ],
         "operationId": "deleteSubscriptionv2",
         "description": "Cancel a subscription",
@@ -3576,7 +3576,7 @@
       },
       "put": {
         "tags": [
-          "Subscriptions V2"
+          "Subscriptions 2.0"
         ],
         "operationId": "updateSubscriptionv2",
         "description": "Cancel a subscription",
@@ -9557,7 +9557,7 @@
           "product_plan_id": {
             "type": "integer",
             "example": null,
-            "description": "The internal ID of the Sellix product plan associated to the subscription v2 product"
+            "description": "The internal ID of the Sellix product plan associated to the subscription 2.0 product"
           },
           "name": {
             "type": "string",
@@ -12102,7 +12102,7 @@
           "product_subscription_id": {
             "type": "string",
             "example": null,
-            "description": "ID of product subscription for subscriptions v2"
+            "description": "ID of product subscription for subscriptions 2.0"
           },
           "shop_id": {
             "type": "integer",
@@ -12117,7 +12117,7 @@
           "product_plan_id": {
             "type": "string",
             "example": null,
-            "description": "ID of the subscriptions v2 active product plan"
+            "description": "ID of the subscriptions 2.0 active product plan"
           },
           "customer_id": {
             "type": "string",
@@ -13181,7 +13181,7 @@
           "product_subscription_id": {
             "type": "string",
             "example": null,
-            "description": "ID of product subscription for subscriptions v2"
+            "description": "ID of product subscription for subscriptions 2.0"
           },
           "shop_id": {
             "type": "integer",
@@ -13196,7 +13196,7 @@
           "product_plan_id": {
             "type": "string",
             "example": null,
-            "description": "ID of the subscriptions v2 active product plan"
+            "description": "ID of the subscriptions 2.0 active product plan"
           },
           "customer_id": {
             "type": "string",
