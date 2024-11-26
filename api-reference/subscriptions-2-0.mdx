@@ -17,32 +17,6 @@ This version brings enhanced flexibility and new features for managing subscript
 - **Calendar or Anniversary Renewal**: Define subscription cycles based on fixed calendar dates or individual start dates.
 - **Flexible Plans**: Adjust billing intervals (daily, weekly, monthly, yearly) and provide discounts for pre-paid plans.
 
-# Creating Subscriptions in the Dashboard
-
-You can easily set up and manage subscriptions in your Sellix dashboard. Here’s how:
-
-<Steps>
-<Step title="Step 1">
-  Navigate to **Products > Subscriptions** in your dashboard.
-</Step>
-
-<Step title="Step 2">
-  Select **Create New Subscription** and fill in the necessary details:
-  - **Email**
-  - **Product ID**: ID of the subscriptions 2.0 product
-  - **Quantity**: Number of subscriptions to include in the invoice
-  - **Product Plan ID**: ID of the subscription plan
-</Step>
-
-<Step title="Step 3">
-  Configure additional settings such as add-ons, discounts, and renewal preferences.
-</Step>
-</Steps>
-
-<Warning>
-  Ensure that all required fields are completed before saving your subscription plan.
-</Warning>
-
 # Managing Subscriptions with the API
 
 Sellix provides API endpoints for programmatic management of subscriptions, enabling automation for tasks like creating, updating, and canceling subscriptions.
@@ -50,7 +24,7 @@ Sellix provides API endpoints for programmatic management of subscriptions, enab
 ## Creating a Subscription
 
 ```curl
-POST /subscriptions-2-0
+POST /subscriptions_v2
 Headers: { "Authorization": "Bearer YOUR_API_KEY" }
 Body:
 {
@@ -60,16 +34,12 @@ Body:
   "product_plan_id": "pp_edfbee1654aba75fa7965a"
 }
 ```
-
-### Available Fields
-- For a list of available fields, please check the [API Reference](https://docs.sellix.io/api-reference/subscriptions-2-0/post-subscriptions).
-
 ## Updating a Subscription
 
 Use the following endpoint to update a subscription:
 
 ```curl
-PUT /subscriptions-2-0/{subscription_id}
+PUT /subscriptions_v2/{subscription_id}
 Headers: { "Authorization": "Bearer YOUR_API_KEY" }
 Body:
 {
@@ -78,6 +48,10 @@ Body:
   "checkout_version": "2.0"
 }
 ```
+
+### Available Fields
+- For a list of available fields, please check the [API Reference](https://docs.sellix.io/api-reference/subscriptions-2-0/post-subscriptions).
+
 
 <Note>
   Only specific fields can be updated once a subscription is active.
@@ -89,10 +63,11 @@ Body:
 Subscriptions 2.0 offers comprehensive webhook events to keep track of each stage in a subscription's lifecycle. Configure webhooks in your Sellix dashboard to receive notifications for various events.
 
 ## Key Events
-- **subscription-2-0:started**: Triggered when a subscription begins.
-- **subscription-2-0:ended**: Triggered at the end of a subscription period.
-- **subscription-2-0:canceled**: Triggered if a subscription is canceled.
-- **subscription-2-0:plan:payment-succeeded**: Triggered when a payment is successfully processed.
+- **subscription-v2:trial-interval:started**: Triggered when a trial period begins.
+- **subscription-v2:started**: Triggered when a subscription begins.
+- **subscription-v2:ended**: Triggered at the end of a subscription period.
+- **subscription-v2:canceled**: Triggered if a subscription is canceled.
+- **subscription-v2:plan:payment-succeeded**: Triggered when a payment is successfully processed.
 
 <Note>
   Separate events are available for plan upgrades, downgrades, payment failures, and retries.
