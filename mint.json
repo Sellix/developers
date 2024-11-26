@@ -53,13 +53,13 @@
       "pages": [
         "introduction",
         "no-code",
-        "sellix-hosted"
+        "sellix-hosted",
+        "platforms"
       ]
     },
     {
       "group": "Products",
       "pages": [
-        "products/platforms",
         "products/wallet-and-crypto",
         "products/embed",
         "products/links",
