@@ -14,6 +14,17 @@
       "to": "#dbd8fc"
     }
   },
+  "layout": "solidSidenav",
+  "sidebar": {
+    "items": "card"
+  },
+  "topbar": {
+    "style": "gradient"
+  },
+  "search": {
+    "location": "side"
+  },
+  "rounded": "default",
   "topbarLinks": [
     {
       "name": "Support",
@@ -238,7 +249,7 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/SellixEcommerce",
+    "twitter": "https://twitter.com/SellixPay",
     "github": "https://github.com/sellix",
     "linkedin": "https://www.linkedin.com/company/sellix-srl"
   }
