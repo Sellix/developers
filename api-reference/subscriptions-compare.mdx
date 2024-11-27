@@ -6,13 +6,9 @@ description: 'A comparison between Subscriptions (legacy) and 2.0. Which one is 
 # Comparing Subscriptions (legacy) and Subscriptions 2.0
 
 Sellix offers two subscription models — [Subscriptions (legacy)](https://docs.sellix.io/api-reference/subscriptions) and [Subscriptions 2.0](https://docs.sellix.io/api-reference/subscriptions-2-0) — each tailored to different merchant needs. While Subscriptions (legacy) provide fundamental recurring billing features, Subscriptions 2.0 introduces advanced options to support a broader range of business models.
-
-<Info title="Subscription Models Overview">
-Subscriptions (legacy) are ideal for straightforward, interval-based billing, whereas Subscriptions 2.0 is a powerful upgrade offering enhanced flexibility, new billing intervals, and webhook support.
+<Info>
+While Subscriptions (legacy) products are still available for use, we recommend all new subscriptions be created using Subscriptions 2.0 for continual support and updates.
 </Info>
-
----
-
 ## Key Differences
 
 | Feature                        | Subscriptions (legacy)                  | Subscriptions 2.0                           |
@@ -24,14 +20,10 @@ Subscriptions (legacy) are ideal for straightforward, interval-based billing, wh
 | **Webhooks**                   | Basic events (e.g., created, updated) | 15+ events for detailed subscription lifecycle tracking |
 | **Flexible Renewal**           | Fixed interval only                   | Calendar or Anniversary                    |
 | **Add-ons & Upgrades**         | No                                    | Yes                                        |
----
-
 ## Subscription Models Overview
-
 ### Subscriptions (legacy)
 
 Subscriptions (legacy) provide essential features for managing recurring payments. Merchants can set intervals and billing cycles, and the system sends invoices within 60 seconds of expiration. This model is efficient for straightforward subscription management.
-
 <Warning>
 Subscriptions (legacy) are still supported but lack some of the advanced billing options available in Subscriptions 2.0.
 </Warning>
@@ -53,12 +45,11 @@ Subscriptions (legacy) are still supported but lack some of the advanced billing
 </Info>
 
 ### Subscriptions 2.0
-
 Subscriptions 2.0 is a robust, feature-rich model that allows merchants to leverage advanced billing capabilities. It supports flexible billing intervals, customizable billing types, and offers webhook events at every stage of the subscription lifecycle.
 
-<Callout type="success" title="Why Choose Subscriptions 2.0?">
+<Tip>
   With Subscriptions 2.0, you can set billing cycles that match your business needs, apply discounts, and automate tasks with comprehensive webhook events.
-</Callout>
+</Tip>
 
 #### Key Features
 - **Flexible Billing Options**: Choose from **percentage-based, graduated, volume, and package billing** options.
@@ -69,18 +60,14 @@ Subscriptions 2.0 is a robust, feature-rich model that allows merchants to lever
 - **Stripe Payments**: Subscription logic is handled in-house, reducing Stripe fees for your recurring payments.
 
 <Note>
-  Subscriptions 2.0 also includes a billing portal for customers to manage, view, and cancel subscriptions, improving customer experience.
+  Subscriptions 2.0 also allows customers to manage their subscriptiosn through our customer billing portal.
 </Note>
-
----
 
 ## Customer Portal Access
 
 Both models support a **customer billing portal** where users can manage their subscriptions. Subscriptions 2.0 enhances this experience with options for embedded cancellation buttons, upgrade/downgrade options, and a subscription card overview.
 
 ![customer portal](https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/documentation/images/customer-portal.png)
-
----
 
 ## Conclusion
 
