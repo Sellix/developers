@@ -3,69 +3,187 @@ title: 'Subscriptions 2.0'
 description: 'Manage recurring, tiered and custom billing payments through Sellix with Cryptos and Fiat'
 ---
 
-# Subscriptions 2.0 Overview
+# Overview
 
-The subscriptions 2.0 mode brings enhanced flexibility and new features for managing subscriptions: merchants can customize product plans and billing types, apply discounts, prorate susbcription fees, upgrade/downgrade plans and leverage new webhook events for better automation and server logic.
+Subscriptions 2.0 bring enhanced flexibility and new features for managing subscriptions: merchants can customize product plans and billing types, apply discounts, prorate susbcription fees, upgrade/downgrade plans and leverage new webhook events for better automation and server logic.
 
-## Key Features
-- **Multiple Billing Options**: Choose from percentage-based, graduated, volume, and package billing.
-- **New Webhooks**: 15+ events for tracking subscription lifecycle, including payment success/failure, upgrades, and cancellations.
-- **Calendar or Anniversary Renewal**: Define subscription cycles based on fixed calendar dates or individual start dates.
-- **Flexible Plans**: Adjust billing intervals (daily, weekly, monthly, yearly) and provide discounts for pre-paid plans.
+## Features
+
+With a complete revamp over Subscriptions (legacy), Subscriptions 2.0 now supports a lot of new features that were not available with the previous version.
+
+### Essentials
+
+Here's what's importanrt for most businesses when using Subscriptions 2.0.
+
+<CardGroup cols={2}>
+  <Card title="Multiple Billing Options" icon="rectangle-vertical-history">
+    Choose from standard subscriptions to percentage-based, graduated, volume, and package billing
+  </Card>
+  <Card title="New Webhooks" icon="sparkles">
+    15+ events for tracking subscription lifecycle, including payment success/failure, upgrades, and cancellations
+  </Card>
+  <Card title="Calendar or Anniversary Renewals" icon="calendar">
+    Adjust billing intervals (daily, weekly, monthly, yearly) and provide discounts for pre-paid plans
+  </Card>
+  <Card title="Flexible Plans" icon="shuffle">
+    Use our API to get the details of a subscription from one of your customers
+  </Card>
+</CardGroup>
+
+<Card title="Trials" icon="vials">
+  Specify any trial period and force customers to save a payment method before starting the trial
+</Card>
+
+### Full list
+
+Released in October 2024, Subscriptions 2.0 are in contiuous development and new features are being added on a regular basis.
+
+<Info>
+  This list is not ranked by priority and/or importance.
+
+  <Tooltip tip="Just like this.">You can hover on every underlined text to see a tooltip with more information about the feature.</Tooltip>
+</Info>
+
+| Name                                                                 | Status                                                                     | ETA
+| -------------------------------------                                | -------------------------------------                                      | ------------------------------------- |
+| <Tooltip tip="Instead of relying on recurring bills and automations from Stripe, Subscriptions 2.0 save the payment method on file for the customer and automatically charge it during renewals, custom actions or configurations by the merchant. The overall fee for accepting subscriptions is also decreased as this is not part of Stripe Billing, but it's handled by Sellix.">Save and Carge cards</Tooltip> | Live | - |
+| <Tooltip tip="Specify any additional payment that can be added for a single month or for a longer period of time, giving your customers a way to add optionals to your subscriptions.">Add-ons</Tooltip> | Live | - |
+| <Tooltip tip="Customers can change the payment method on file through the subscriptions, without having to cancel it.">Change payment method during subscription</Tooltip> | <Tooltip tip="The customer can visit the customer portal to change the payment method. If current invoice is in PENDING state, then the new method will be charged for invoice as well.">Live</Tooltip> | - |
+| <Tooltip tip="Coupons are enabled for any payment method used for Subscriptions 2.0, unlike (legacy) for which they were only working on Stripe and Cryptos.">Coupons</Tooltip> | Live | - |
+| <Tooltip tip="Just like the previous version, Subscriptions 2.0 support any type of billing interval with no limitations between Stripe, PayPal and Sellix Payments.">Daily/Weekly/Monthly/Yearly</Tooltip> | Live | - |
+| <Tooltip tip="You can specify any trial period and force customers to save a payment method before starting the trial.">Trials</Tooltip> | Live | - |
+| <Tooltip tip="Subscriptions 2.0 bring 15+ new webhook events that enable developers to fully customize and automate their payment flow. Notably, we now have separate events for when the subscription expires and when it is cancelled, separating the user action versus the actual cancellation and expiration of the subscription. These new events also include upgrades, downgrades, changes, failed payments and more.">Full Webhook events</Tooltip> | Live | - |
+| <Tooltip tip="During subscription cancellation, customers are asked to specify a reason for the cancellation, helping merchants improve their service and provide better support to their customers.">Subscription cancellation reason</Tooltip> | Live | - |
+| <Tooltip tip="Just like legacy subscriptions, Subscriptions 2.0 support Files, Dynamic Products, Serials and more.">Support for subtypes</Tooltip> | Live | - |
+| <Tooltip tip="Available at https://docs.sellix.io/api-reference/subscriptions-2-0">New developer documentation</Tooltip> | Live | - |
+| <Tooltip tip="Subscriptions 2.0 will continue to support our automated billing system for EVM-based cryptocurrencies. Sellix takes an allowance from the customer preferred address, it then uses it to automatically create a cryptocurrency transaction to charge the subscription.">Cryptocurrency allowance</Tooltip> | Live | - |
+| <Tooltip tip="Add support for PayPal billing besides Credit Cards and Cryptocurrencies.">PayPal</Tooltip> | Coming Soon | Pending PayPal |
+| <Tooltip tip="Subscriptions 2.0 now support customer balance to automatically pay for recurring periods. Merchants can also issue refunds or amounts for prorated charges to the customer balance.">Use customer balance and issue refunds to the customer balance</Tooltip> | <Tooltip tip="The customer balance can be used in four different ways: ONETIME_FULL, ONETIME_LIMIT, REPEAT_FULL, REPEAT_LIMIT.">Coming Soon</Tooltip> | Q1 2025 |
+| <Tooltip tip="Customization of when the subscriptions payments will be charged with the payment method on file is now available. You can decide for the subscription to start immediately, at the beginning of the month or at any other day.">Subscription charge date</Tooltip> | Coming Soon | Q1 2025 |
+| <Tooltip tip="Customers can automatically upgrade and downgrade between plans through the self-service customer portal accessible at YOURDOMAIN.COM/customer/portal or YOURNAME.mysellix.io/customer/portal. Upgrades and Downgrades take into consideration the time passed, the price and any difference between them with prorated charges.">Upgrades, Downgrades and Prorated charges</Tooltip> | <Tooltip tip="Upgrade/downgrade works but only through shop page. Customer can select the same product and subscribe to the another plan. Depends on price existing plan will be upgraded or downgraded. If it is `UPGRADE` and `billing_type` is PRORATED, the unused price from old subscription will be calculated and added to the customer balance. If `billing_type` is PRORATED and `renew_type` is `CALENDAR` then the new subscription's price will be calculated based on the remaining days of the current period.">Coming Soon</Tooltip> | Q1 2025 |
+| <Tooltip tip="Merchants can configure and offer a discount for customers who pay for multiple recurring periods upfront.">Discount for pre-paid period</Tooltip> | Coming Soon | Q1 2025 |
+| <Tooltip tip="Customers can retry a failed payment manually through the customer portal. Merchants can also issue a retry manually or through the developer API.">Manual payment retries</Tooltip> | Coming Soon | Q1 2025 |
+| <Tooltip tip="Merchants can choose to publicly display all the available coupons for a product directly on Sellix embeds, checkout pages and storefronts. This way customers can immediately select them. It's a nice way to increase conversion rates.">List available coupons publicly</Tooltip> | Coming Soon | Q1 2025 |
+| <Tooltip tip="Similar to a one-period only add on, you can add an additional setup fee when the subscription starts.">First period fee</Tooltip> | Coming Soon | Q1 2025 |
+| <Tooltip tip="Through the developer API merchants can create subscriptions with different pricing models compared to standard recurring billings. We now provide support for percentage-based payments, graduated/package/volume billing and more.">Percentage, Graduated, Package and Volume billing</Tooltip> | Coming Soon | Q2 2025 |
+| <Tooltip tip="Configure your subscriptions in a way that each recurring period offers a discount for the next period, encouraging customers to keep their subscription going.">Progressive payments</Tooltip> | Coming Soon | Q2 2025 |
+| <Tooltip tip="Add support for seat-based pricing, allowing merchants to configure products that are charged per seat.">Seat-based pricing</Tooltip> | Coming Soon | Q2 2025 |
+| <Tooltip tip="Charge and settle payments in the merchant or customer timezone, depending on the merchant's preference.">Timezones</Tooltip> | Coming Soon | Q2 2025 |
+| <Tooltip tip="For rate-based subscriptions (such as AI-platforms, Cloud providers, etc), you can now configure a true-up fee that will be charged if the customer does not reach the spending minimum for a recurring period. For example, if after 30 days your customer has 1000x $0.01 charges but the minimum spend is $100, the true-up fee will be $90.">True-up fee</Tooltip> | Coming Soon | Q2 2025 |
+| <Tooltip tip="Graduated, Volume and Package billing support entries up to fifteen decimals, which are then rounded to two decimals when charging the customer.">Up to fifteen decimals</Tooltip> | Coming Soon | Q3 2025 |
+| <Tooltip tip="Merchants can manually edit any ongoing customer plan, changing the price, billing interval, billing cycle and more.">Edit any customer plan</Tooltip> | Coming Soon | Q2 2025 |
+| <Tooltip tip="Expand support for the discord integration with multiple roles based on plan and handle upgrade/downgrade plan role changes.">Discord integration - multiple roles</Tooltip> | Coming Soon | Q3 2025 |
+| <Tooltip tip="Enable customers and merchants to change the linked Discord/Telegram account for a subscription. Doing so removes the old account and assigns the new account the role instead.">Change Discord/Telegram account linked to Subscription</Tooltip> | Coming Soon | Q3 2025 |
+| <Tooltip tip="Through the Sellix SDK and API merchanst can embed sections of the customer portal inside their websites.">Embeddables</Tooltip> | Coming Soon | Q3 2025 |
+| <Tooltip tip="Ability to edit all the metrics for Volume, Package, etc billing if the customer has not been charged yet.">Edit all the metrics retroactively for invoices not finalized</Tooltip> | Coming Soon | Q3 2025 |
+| <Tooltip tip="Support charges in multiple currencies based on customer localization.">Multiple currencies</Tooltip> | Coming Soon | Q3 2025 |
+| <Tooltip tip="Create Package, Volume and Graduated billing metrics with custom names.">Custom charges name</Tooltip> | Coming Soon | Q3 2025 |
+| <Tooltip tip="Allow customers to add multiple subscriptions to their cart and checkout with a single payment.">Cart system</Tooltip> | Coming Soon | Q3 2025 |
+| <Tooltip tip="Provide a tool to convert existing Subs (legacy) products to Subs 2.0.">Convert from Subs (legacy) to Subs 2.0</Tooltip> | Coming Soon | Q3 2025 |
 
 # Managing Subscriptions with the API
 
 Sellix provides API endpoints for programmatic management of subscriptions, enabling automation for tasks like creating, updating, and canceling subscriptions.
 
-## Creating a Subscription
-```curl
-POST /subscriptions_v2
-Headers: { "Authorization": "Bearer YOUR_API_KEY" }
-Body:
-{
-  "email": "sellix.customer@gmail.com",
-  "product_id": "67151e256f149",
-  "quantity": 1,
-  "product_plan_id": "pp_edfbee1654aba75fa7965a"
-}
-```
-## Updating a Subscription
-```curl
-PUT /subscriptions_v2/{subscription_id}
-Headers: { "Authorization": "Bearer YOUR_API_KEY" }
-Body:
-{
-  "gateway": "STRIPE",
-  "payment_method_uniqid": "pm_86456a7715ef1f35de7851",
-  "checkout_version": "2.0"
-}
-```
+<CardGroup cols={2}>
+  <Card title="Get Subscriptions" icon="bars-staggered" href="/api-reference/subscriptions-2-0/get-subscription">
+    Use our API to get the details of a subscription from one of your customers
+  </Card>
+  <Card title="Create Subscription" icon="plus" href="/api-reference/subscriptions-2-0/post-subscriptions">
+    Create a subscription and assign it to a customer of yours through our API
+  </Card>
+</CardGroup>
 
-### Available Fields
-- For a list of available fields, please check the [API Reference](https://docs.sellix.io/api-reference/subscriptions-2-0/post-subscriptions).
-
-<Note>
-  Only specific fields can be updated once a subscription is active.
-</Note>
+<Card title="Update Subscription" icon="pencil" href="/api-reference/subscriptions-2-0/put-subscription">
+  Update a subscription and assign it to a customer of yours through our API
+</Card>
 
 # Webhook Events for Subscription Lifecycle
+
 Subscriptions 2.0 offers comprehensive webhook events to keep track of each stage in a subscription's lifecycle. Configure webhooks in your Sellix dashboard to receive notifications for various events.
 
+## Journey
+
+<Steps>
+  <Step title="Trial Started">
+    Event `subscription:trial:started`
+    
+    Optional, sent only if the product has a trial period enabled.
+
+    A trial for one of your product subscriptions has been started. We will not create an invoice for this event.
+
+    If this webhook is sent, it’s preceded by a `subscription:created` event with a unique status
+
+    <Card title="Keep in mind" icon="lightbulb" iconType="duotone" color="#ca8b04">
+      Although a subscription has been created, an invoice for it has not been created. `TRIALING` means that the subscription has been created in a trialing state, waiting for `subscription:trial:ended`.
+    </Card>
+
+    <Info>Please note that if the product has a trial period, the trial period must be used.</Info>
+  </Step>
+  <Step title="Trial Ended">
+    Event `subscription:trial:ended`
+
+    Optional, sent only if the product has a trial period enabled and it has come to an end.
+
+    A trial for one of your product subscription has ended, we will create an invoice in relation to this event.
+  </Step>
+  <Step title="Subscription Created">
+    Event `subscription:created`
+
+    If the product has a trial period, this webhook has already been sent. If not, it is sent right after an invoice `PRODUCT_SUBSCRIPTION` has been successfully paid.
+
+    Once your customer's subscription has been started and the payment has succeeded, you should implement any logic that you might deem necessary to activate the subscription.
+
+    We highly suggest the usage of our custom fields to act as a metadata object in order to recognize which customer purchased your subscription and activate it for them.
+  </Step>
+  <Step title="Subscription Updated">
+    Event `subscription:updated`
+    
+    If the customer updates his preferred gateway for the subscription through the Customer Billing Portal, you will receive a webhook event with the updated subscription object.
+  </Step>
+  <Step title="Subscription Cancelled">
+    Event `subscription:cancelled`
+    
+    Should you or the customer decide to cancel the subscription, this webhook event is sent.
+
+    A subscription is canceled if the payment fails, or is not sent within your settings’ grace period (in days). We handle every email for payment failures and renewal updates. You can also update customer notification settings on the [Subscription settings page](https://dashboard.sellix.io/settings/subscriptions) (access it through your Profile > Settings).
+  </Step>
+  <Step title="Subscription Upcoming">
+    Event `subscription:upcoming`
+    
+    The event is sent a few days before a subscription is about to be renewed
+  </Step>
+  <Step title="Subscription Renewed">
+    Event `subscription:renewed`
+    
+    When the payment for a subscription renewal happens, this webhook is sent to let you know that everything went well. You do not need to be listening to this event specifically as you can manage your subscriptions through only the `created` and `cancelled` events.
+  </Step>
+</Steps>
+
 ## Key Events
-- **subscription-v2:trial-interval:started**: Triggered when a trial period begins.
-- **subscription-v2:started**: Triggered when a subscription begins.
-- **subscription-v2:ended**: Triggered at the end of a subscription period.
-- **subscription-v2:canceled**: Triggered if a subscription is canceled.
-- **subscription-v2:plan:payment-succeeded**: Triggered when a payment is successfully processed.
 
-<Note>
+<Info>
+  For a full list of webhook events, visit the [Webhook Documentation](/api-reference/webhooks).
+</Info>
+
+| Event                                    | Description                                         |
+| ---------------------------------------- | --------------------------------------------------- |
+| `subscription-v2:trial-interval:started` | Triggered when a trial period begins.               |
+| `subscription-v2:started`                | Triggered when a subscription begins.               |
+| `subscription-v2:ended`                  | Triggered at the end of a subscription period.      |
+| `subscription-v2:canceled`               | Triggered if a subscription is canceled.            |
+| `subscription-v2:plan:payment-succeeded` | Triggered when a payment is successfully processed. |
+
+<Tip>
   Separate events are available for plan upgrades, downgrades, payment failures, and retries.
-</Note>
-
-For a full list of webhook events, visit the [Webhook Documentation](https://docs.sellix.io/api-reference/webhooks).
+</Tip>
 
 # Advanced Subscription Features
+
+Here's a brief list of other cool features, for a full overview see the [full list here](#full-list).
+
 ## Billing Options
+
 Subscriptions 2.0 supports a new and improved billing system with advanced customization options. Each subscription plan can have separate billing settings.
 - **Payment Type:** Choose whether customers are charged in `ADVANCE` (at the start of the billing cycle), or `ARREARS` (at the end of the billing cycle; good for usage based subscriptions).
 - **Renew Type:** Choose whether the subscription is renewed on the first of every month (`CALENDAR`), or on the anniversary of the subscription start date (`ANNIVERSARY`).
@@ -78,7 +196,9 @@ Customers can change their gateway, payment method, payment plan, and more witho
 Subscriptions 2.0 support the customer balance, allowing customers to use funds in their customer portal to pay for subscription fees
 
 ## Subscription Addons
-Specify any additional payment that can be added for a single month or for a longer period of time, giving your customers a way to add optional benefits or perks to your subscriptions.
-  - Addons have an optional field called **All Recurring Bill Invoices** similarly to coupons. if it is checked, then the addon will be applied to all invoices created for the subscription, otherwise only for the first invoice.
 
-<Note>We also have our legacy subscription model. Please see a [comparison between our Subscriptions (legacy) model and subscriptions 2.0](https://docs.sellix.io/api-reference/subscriptions-compare)</Note>
+Specify any additional payment that can be added for a single month or for a longer period of time, giving your customers a way to add optional benefits or perks to your subscriptions.
+
+<Info>
+  Addons have an optional field called **All Recurring Bill Invoices** similarly to coupons. if it is checked, then the addon will be applied to all invoices created for the subscription, otherwise only for the first invoice.
+</Info>
