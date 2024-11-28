@@ -2,3 +2,6 @@
 title: "Create Subscription"
 openapi: post /subscriptions_v2
 ---
+
+If a customer already has a subscription that is not `CANCELED` or `EXPIRED`, the endpoint will return the `uniqid` for that subscription.
+You can create a checkout session for any subscription throught the following URL: `https://checkout.sellix.io/subscription-v2/{subscription.uniqid}`
