@@ -104,63 +104,231 @@ Subscriptions 2.0 offers comprehensive webhook events to keep track of each stag
 
 ### Journey
 
-<Warning>This journey is a work in progress, it's not final. Expected to be completed soon, check back in a few days.</Warning>
+<Warning>
+  This journey is a work in progress, it's not final. Expected to be completed soon, check back in a few days.
+</Warning>
 
-<Steps>
-  <Step title="Trial Started">
-    Event `subscription:trial:started`
-    
-    Optional, sent only if the product has a trial period enabled.
+<Tabs>
+  <Tab title="Basic Jounrey">
+    <Steps>
+      <Step title="Subscription Started">
+        Event `subscription-v2:started`
 
-    A trial for one of your product subscriptions has been started. We will not create an invoice for this event.
+        This event is triggered when the status of the subscription goes from `PENDING` to `ACTIVE`, meaing once your customer's subscription has been started and the payment has succeeded. You can use this event to implement any logic that should be executed once the subscription is purchased.
+        
+        We **highly suggest the usage of our custom fields to act as a metadata object** in order to recognize which customer purchased your subscription and activate it for them.
 
-    If this webhook is sent, it’s preceded by a `subscription:created` event with a unique status
+        This webhook event is typically preceeded by the `subscription-v2:created` event, which is sent when the subscription is created with a status of `PENDING`.
 
-    <Card title="Keep in mind" icon="lightbulb" iconType="duotone" color="#ca8b04">
-      Although a subscription has been created, an invoice for it has not been created. `TRIALING` means that the subscription has been created in a trialing state, waiting for `subscription:trial:ended`.
-    </Card>
+        When a subscription first starts, the following events will be triggered alongside this one, each with their respective `created` event:
+        - `subscription-v2:plan:started`: Triggered every time a payment plan for a subscription is started.
+        - `subscription-v2:payment-interval:started`: Treated every time a payment interval for a subscription is started.
+      </Step>
+      <Step title="Subscription Canceled">
+        Event `subscription-v2:canceled`
+        
+        Subscription cancelation by either the customer or the merchant triggers this event. The status of the subscription will be `CANCELED` or `AWAIT_CANCELING`.
+        One of the following events will be sent alongside this one:
+        - `subscription-v2:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard.
+        - `subscription-v2:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the customer dashboard.
+        - `subscription-v2:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint.
+      </Step>
+      <Step title="Upcoming Payment">
+        Event `subscription-v2:payment-interval:upcoming`
 
-    <Info>Please note that if the product has a trial period, the trial period must be used.</Info>
-  </Step>
-  <Step title="Trial Ended">
-    Event `subscription:trial:ended`
+      The event is sent a week before the current payment interval's end. 
+      </Step>
+      <Step title="Subscription Renewal">
+        Event `subscription-v2:ended`
 
-    Optional, sent only if the product has a trial period enabled and it has come to an end.
+        The first part of the renewal process is ending the previous `plan` and `payment_interval`. These events will be triggered as part of that process:
+        - `subscription-v2:plan:ended`: When the subscription's plan has reached the end of its current interval.
+        - `subscription-v2:payment-interval:ended`: When the subscription's payment interval has ended.
 
-    A trial for one of your product subscriptions has ended, we will create an invoice in relation to this event.
-  </Step>
-  <Step title="Subscription Created">
-    Event `subscription:created`
+        The second part is creating a new `payment_` and `plan_` for the subscription. These events will be triggered as part of that process:
+        - `subscription-v2:plan:payment-succeeded`: When the payment for the subscription plan has been successfully processed.
+        - `subscription-v2:payment-interval:payment-succeeded`: When the payment interval for the subscription has been successfully processed.
+      </Step>
+      <Step title="Subscription Failed">
+        Event `subscription-v2:plan:payment-failed`
 
-    If the product has a trial period, this webhook has already been sent. If not, it is sent right after an invoice `PRODUCT_SUBSCRIPTION` has been successfully paid.
+        The payment for the subscription has failed. The subscription will remain `ACTIVE` and the payment will be retried at a later time. A CRON job will cancel subscriptions with invoice's that were `VOID`ed
+        If the payment is not updated, the subscription will be canceled and the `subscription-v2:canceled` event will be triggered. 
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="with Trial">
+    <Steps>
+      <Step title="Trial Started">
+        Event `subscription-v2:trial-interval:started`
+        *Only sent if a trial period is configured for this subscription product*
 
-    Once your customer's subscription has been started and the payment has succeeded, you should implement any logic that you might deem necessary to activate the subscription.
+        The trial period for a subscription has started. No invoice has been created yet.
+        If this webhook is sent, it is preceded by a `subscription-v2:trial-interval:created` event with a unique status.
 
-    We highly suggest the usage of our custom fields to act as a metadata object in order to recognize which customer purchased your subscription and activate it for them.
-  </Step>
-  <Step title="Subscription Updated">
-    Event `subscription:updated`
-    
-    If the customer updates his preferred gateway for the subscription through the Customer Billing Portal, you will receive a webhook event with the updated subscription object.
-  </Step>
-  <Step title="Subscription Cancelled">
-    Event `subscription:cancelled`
-    
-    Should you or the customer decide to cancel the subscription, this webhook event is sent.
+        <Tip>
+          The subscription status will be `ACTIVE` during the trial period, but the current interval during the trial will have a `payment_type` of `TRIAL`
+        </Tip>
 
-    A subscription is canceled if the payment fails, or is not sent within your settings’ grace period (in days). We handle every email for payment failures and renewal updates. You can also update customer notification settings on the [Subscription settings page](https://dashboard.sellix.io/settings/subscriptions) (access it through your Profile > Settings).
-  </Step>
-  <Step title="Subscription Upcoming">
-    Event `subscription:upcoming`
-    
-    The event is sent a few days before a subscription is about to be renewed
-  </Step>
-  <Step title="Subscription Renewed">
-    Event `subscription:renewed`
-    
-    When the payment for a subscription renewal happens, this webhook is sent to let you know that everything went well. You do not need to be listening to this event specifically as you can manage your subscriptions through only the `created` and `cancelled` events.
-  </Step>
-</Steps>
+        <Note>Please note that if the product has a trial period, the trial period cannot be circumvented.</Note>
+      </Step>
+      <Step title="Trial Canceled">
+        Event `subscription-v2:trial-interval:canceled`
+        *Only sent if a trial period is configured for this subscription product*
+
+        The trial period for a subscription has been canceled. One of the following events will be sent alongside this one:
+        - `subscription-v2:trial-interval:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard.
+        - `subscription-v2:trial-interval:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the customer dashboard.
+        - `subscription-v2:trial-interval:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint.
+      </Step>
+      <Step title="Trial Ended">
+        Event `subscription-v2:trial-interval:ended`
+        *Only sent if a trial period is configured for this subscription product*
+
+        The trial period for a subscription has ended.
+        Immediately after this event is triggered, the `subscription-v2:payment-interval:started` will be sent indicating that the first payment interval has been requested. **This does not mean that the payment was received**.
+      </Step>
+      <Step title="Subscription Started">
+        Event `subscription-v2:started`
+
+        This event is triggered when the status of the subscription goes from `PENDING` to `ACTIVE`, meaing once your customer's subscription has been started and the payment has succeeded. You can use this event to implement any logic that should be executed once the subscription is purchased.
+        
+        We **highly suggest the usage of our custom fields to act as a metadata object** in order to recognize which customer purchased your subscription and activate it for them.
+
+        This webhook event is typically preceeded by the `subscription-v2:created` event, which is sent when the subscription is created with a status of `PENDING`.
+
+        When a subscription first starts, the following events will be triggered alongside this one, each with their respective `created` event:
+        - `subscription-v2:plan:started`: Triggered every time a payment plan for a subscription is started.
+        - `subscription-v2:payment-interval:started`: Treated every time a payment interval for a subscription is started.
+      </Step>
+      <Step title="Subscription Canceled">
+        Event `subscription-v2:canceled`
+        
+        Subscription cancelation by either the customer or the merchant triggers this event. The status of the subscription will be `CANCELED` or `AWAIT_CANCELING`.
+        One of the following events will be sent alongside this one:
+        - `subscription-v2:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard.
+        - `subscription-v2:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the customer dashboard.
+        - `subscription-v2:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint.
+      </Step>
+      <Step title="Upcoming Payment">
+        Event `subscription-v2:payment-interval:upcoming`
+
+      The event is sent a week before the current payment interval's end. 
+      </Step>
+      <Step title="Subscription Renewal">
+        Event `subscription-v2:ended`
+
+        The first part of the renewal process is ending the previous `plan` and `payment_interval`. These events will be triggered as part of that process:
+        - `subscription-v2:plan:ended`: When the subscription's plan has reached the end of its current interval.
+        - `subscription-v2:payment-interval:ended`: When the subscription's payment interval has ended.
+
+        The second part is creating a new `payment_` and `plan_` for the subscription. These events will be triggered as part of that process:
+        - `subscription-v2:plan:payment-succeeded`: When the payment for the subscription plan has been successfully processed.
+        - `subscription-v2:payment-interval:payment-succeeded`: When the payment interval for the subscription has been successfully processed.
+      </Step>
+      <Step title="Subscription Failed">
+        Event `subscription-v2:plan:payment-failed`
+
+        The payment for the subscription has failed. The subscription will remain `ACTIVE` and the payment will be retried at a later time. A CRON job will cancel subscriptions with invoice's that were `VOID`ed
+        If the payment is not updated, the subscription will be canceled and the `subscription-v2:canceled` event will be triggered. 
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Advanced Journey">
+    <Steps>
+      <Step title="Trial Started">
+        Event `subscription-v2:trial-interval:started`
+        *Only sent if a trial period is configured for this subscription product*
+
+        The trial period for a subscription has started. No invoice has been created yet.
+        If this webhook is sent, it is preceded by a `subscription-v2:trial-interval:created` event with a unique status.
+
+        <Tip>
+          The subscription status will be `ACTIVE` during the trial period, but the current interval during the trial will have a `payment_type` of `TRIAL`
+        </Tip>
+
+        <Note>Please note that if the product has a trial period, the trial period cannot be circumvented.</Note>
+      </Step>
+      <Step title="Trial Canceled">
+        Event `subscription-v2:trial-interval:canceled`
+        *Only sent if a trial period is configured for this subscription product*
+
+        The trial period for a subscription has been canceled. One of the following events will be sent alongside this one:
+        - `subscription-v2:trial-interval:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard.
+        - `subscription-v2:trial-interval:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the customer dashboard.
+        - `subscription-v2:trial-interval:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint.
+      </Step>
+      <Step title="Trial Ended">
+        Event `subscription-v2:trial-interval:ended`
+        *Only sent if a trial period is configured for this subscription product*
+
+        The trial period for a subscription has ended.
+        Immediately after this event is triggered, the `subscription-v2:payment-interval:started` will be sent indicating that the first payment interval has been requested. **This does not mean that the payment was received**.
+      </Step>
+      <Step title="Subscription Started">
+        Event `subscription-v2:started`
+
+        This event is triggered when the status of the subscription goes from `PENDING` to `ACTIVE`, meaing once your customer's subscription has been started and the payment has succeeded. You can use this event to implement any logic that should be executed once the subscription is purchased.
+        
+        We **highly suggest the usage of our custom fields to act as a metadata object** in order to recognize which customer purchased your subscription and activate it for them.
+
+        This webhook event is typically preceeded by the `subscription-v2:created` event, which is sent when the subscription is created with a status of `PENDING`.
+
+        When a subscription first starts, the following events will be triggered alongside this one, each with their respective `created` event:
+        - `subscription-v2:plan:started`: Triggered every time a payment plan for a subscription is started.
+        - `subscription-v2:payment-interval:started`: Treated every time a payment interval for a subscription is started.
+      </Step>
+      <Step title="Subscription Gateway Changes">
+        Event `subscription-v2:plan:gateway-changed`
+        
+        Changing the gateway for a subscription will not create a new subscription. The recurring invoice will be charged through the new gateway.
+        If the customer updates his preferred gateway for the subscription through embeddables or the Customer Billing Portal, you will receive a webhook event with the updated subscription object.
+
+        This event can be triggered alongside the `subscription-v2:plan:payment-method-changed` event.
+      </Step>
+      <Step title="Subscription Updates">
+        Event `subscription-v2:plan:upgrade` or `subscription-v2:plan:downgrade`
+
+        When the customer or merchant changes the plan of their subscription, one of these events will be triggered. 
+        When a subscription plan changes, the following events will be triggered alongside this one:
+        - `subscription-v2:plan:started`: Triggered alongside `subscription-v2:plan:created` every time a new plan is selected for the subscription
+        - `subscription-v2:ended`: Upgrades and downgrades will complete the subscription plan, which sends this event.
+        - `subscription-v2:plan:ended`: Triggers whenever the subscription plan changes
+      </Step>
+      <Step title="Subscription Canceled">
+        Event `subscription-v2:canceled`
+        
+        Subscription cancelation by either the customer or the merchant triggers this event. The status of the subscription will be `CANCELED` or `AWAIT_CANCELING`.
+        One of the following events will be sent alongside this one:
+        - `subscription-v2:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard.
+        - `subscription-v2:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the customer dashboard.
+        - `subscription-v2:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint.
+      </Step>
+      <Step title="Subscription Renewal Approaching">
+        Event `subscription-v2:payment-interval:upcoming`
+
+      The event is sent a week before the current payment interval's end. 
+      </Step>
+      <Step title="Subscription Renewal">
+        Event `subscription-v2:ended`
+
+        The first part of the renewal process is ending the previous `plan` and `payment_interval`. These events will be triggered as part of that process:
+        - `subscription-v2:plan:ended`: When the subscription's plan has reached the end of its current interval.
+        - `subscription-v2:payment-interval:ended`: When the subscription's payment interval has ended.
+
+        The second part is creating a new `payment_` and `plan_` for the subscription. These events will be triggered as part of that process:
+        - `subscription-v2:plan:payment-succeeded`: When the payment for the subscription plan has been successfully processed.
+        - `subscription-v2:payment-interval:payment-succeeded`: When the payment interval for the subscription has been successfully processed.
+      </Step>
+      <Step title="Subscription Failed">
+        Event `subscription-v2:plan:payment-failed`
+
+        The payment for the subscription has failed. The subscription will remain `ACTIVE` and the payment will be retried at a later time. A CRON job will cancel subscriptions with invoice's that were `VOID`ed
+        If the payment is not updated, the subscription will be canceled and the `subscription-v2:canceled` event will be triggered. 
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
 
 ### Key Events
 

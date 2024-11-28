@@ -11132,7 +11132,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["PENDING","COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
+            "enum": ["PENDING", "ACTIVE", "AWAIT_CANCELING", "CANCELED", "COMPLETED"],
             "example": "PENDING",
             "description": "The status of the payment interval"
           },
@@ -11218,9 +11218,9 @@
               },
               "payment_type": {
                 "type": "string",
-                "enum": ["ADVANCE", "ARREARS"],
-                "example": "ADVANCE",
-                "description": "The billing type of the payment interval"
+                "enum": ["TRIAL", "PAYMENT"],
+                "example": "PAYMENT",
+                "description": "The type of interval this is."
               }
             }
           },
