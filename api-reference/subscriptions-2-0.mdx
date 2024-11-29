@@ -129,7 +129,7 @@ Subscriptions 2.0 offers comprehensive webhook events to keep track of each stag
 
     The trial period for a subscription has been canceled. One of the following events will be sent alongside this one:
     - `subscription-v2:trial-interval:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard.
-    - `subscription-v2:trial-interval:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the customer dashboard.
+    - `subscription-v2:trial-interval:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the Customer Billing Portal.
     - `subscription-v2:trial-interval:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint.
   </Step>
   <Step title="Trial Ended">
@@ -156,14 +156,14 @@ Subscriptions 2.0 offers comprehensive webhook events to keep track of each stag
     Event: `subscription-v2:plan:gateway-changed`
     
     Changing the gateway for a subscription will not create a new subscription. The recurring invoice will be charged through the new gateway.
-    If the customer updates his preferred gateway for the subscription through embeddables or the Customer Billing Portal, you will receive a webhook event with the updated subscription object.
+    If the customer updates his preferred gateway for the subscription through our API via the `PUT /subscriptions_v2/{uniqid}` endpoint, embeddables or the Customer Billing Portal, you will receive a webhook event with the updated subscription object.
 
     This event can be triggered alongside the `subscription-v2:plan:payment-method-changed` event.
   </Step>
   <Step title="Subscription Updates">
     Events: `subscription-v2:plan:upgrade` or `subscription-v2:plan:downgrade`
 
-    When the customer or merchant changes the plan of their subscription, one of these events will be triggered. 
+    When the customer or merchant changes the plan of their subscription via the `POST /subscriptions_v2` endpoint, embeddables, the Customer Billing Portal, or the merchant dashboard, one of these events will be triggered. 
     When a subscription plan changes, the following events will be triggered alongside this one:
     - `subscription-v2:plan:started`: Triggered alongside `subscription-v2:plan:created` every time a new plan is selected for the subscription
     - `subscription-v2:ended`: Upgrades and downgrades will complete the subscription plan, which sends this event.
@@ -175,7 +175,7 @@ Subscriptions 2.0 offers comprehensive webhook events to keep track of each stag
     Subscription cancelation by either the customer or the merchant triggers this event. The status of the subscription will be `CANCELED` or `AWAIT_CANCELING`.
     One of the following events will be sent alongside this one:
     - `subscription-v2:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard. The `subscription-v2:plan:canceled-merchant` event is also sent.
-    - `subscription-v2:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the customer dashboard. The `subscription-v2:plan:canceled-customer` event is also sent.
+    - `subscription-v2:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the Customer Billing Portal. The `subscription-v2:plan:canceled-customer` event is also sent.
     - `subscription-v2:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint. The `subscription-v2:plan:canceled-api` event is also sent.
     
     The following events, which are sent when Sellix recieves Stripe payment intent updates, are also sent: `subscription-v2:payment-interval:canceled`, `subscription-v2:payment-interval:canceled-merchant`, `subscription-v2:payment-interval:canceled-customer`, `subscription-v2:payment-interval:canceled-api` and `subscription-v2:payment-interval:payment-canceled` events are also sent.
