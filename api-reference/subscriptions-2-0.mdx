@@ -247,11 +247,35 @@ Specify any additional payment that can be added for a single month or for a lon
   Addons have an optional field called **All Recurring Bill Invoices** similarly to coupons. if it is checked, then the addon will be applied to all invoices created for the subscription, otherwise only for the first invoice.
 </Info>
 
+<Frame>
+  <img
+    className="block"
+    src="/images/subs_v2_addons.png"
+    alt="Customer Billing Portal"
+  />
+</Frame>
+
+### Upgrades/Downgrades
+
+Upgrades and Downgrades can happen when a customer changes their subscription plan, when a merchant changes a customer's subscription plan, or when a customer resubscribes to an existing subscription with a different plan. Both upgrades and downgrades will change the renewal date of a subscription.
+- `DOWNGRADE`: The current plan will remain `ACTIVE`. A new plan will be created with the `PENDING` status and will not be `ACTIVE` until the current plan has ended.
+- `UPGRADE`: The current plan will be `COMPLETED`, and any unused time will be credited to the customer's balance. The new plan will be activated immediately after the payment is received.
+<Info>
+  To upgrade a subscription via our API, you can use the `POST /subscriptions_v2` endpoint with the same `email` to overwrite the existing subscription. The subscription will be upgraded/downgraded based on the new plan's price.
+</Info>
+
 ## Customer Billing Portal
 
 Every customer will have access to their customer billing portal, where they can view, cancel, and update any active subscription purchased from you or any other business on our platform.
 
-![customer portal](https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/documentation/images/customer-portal.png)
+<Frame>
+  <img
+    className="block"
+    src="https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/documentation/images/customer-portal.png"
+    alt="Customer Billing Portal"
+  />
+</Frame>
+
 
 They will authenticate using their personal email address, used to purchase your product subscription. The customer billing portal can be found at `YOUR_DOMAIN/customer/auth`
 
