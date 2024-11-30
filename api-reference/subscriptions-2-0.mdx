@@ -179,7 +179,7 @@ Subscriptions 2.0 offers comprehensive webhook events to keep track of each stag
     - `subscription-v2:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the Customer Billing Portal. The `subscription-v2:plan:canceled-customer` event is also sent.
     - `subscription-v2:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint. The `subscription-v2:plan:canceled-api` event is also sent.
     
-    The following events, which are sent when Sellix recieves Stripe payment intent updates, are also sent: `subscription-v2:payment-interval:canceled`, `subscription-v2:payment-interval:canceled-merchant`, `subscription-v2:payment-interval:canceled-customer`, `subscription-v2:payment-interval:canceled-api` and `subscription-v2:payment-interval:payment-canceled` events are also sent.
+    The following events are also sent: `subscription-v2:payment-interval:canceled`, `subscription-v2:payment-interval:canceled-merchant`, `subscription-v2:payment-interval:canceled-customer`, `subscription-v2:payment-interval:canceled-api` and `subscription-v2:payment-interval:payment-canceled`
   </Step>
   <Step title="Upcoming Payment">
     Event `subscription-v2:payment-interval:upcoming`
