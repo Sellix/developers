@@ -14,6 +14,9 @@
       "to": "#dbd8fc"
     }
   },
+  "feedback": {
+    "thumbsRating": true
+  },
   "layout": "solidSidenav",
   "sidebar": {
     "items": "card"
