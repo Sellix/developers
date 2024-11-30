@@ -46,7 +46,7 @@ Released in October 2024, Subscriptions 2.0 are in continuous development and ne
 
 | Name                                                                 | Status                                                                     | ETA
 | -------------------------------------                                | -------------------------------------                                      | ------------------------------------- |
-| <Tooltip tip="Instead of relying on recurring bills and automations from Stripe, Subscriptions 2.0 save the payment method on file for the customer and automatically charge it during renewals, custom actions or configurations by the merchant. The overall fee for accepting subscriptions is also decreased as this is not part of Stripe Billing, but it's handled by Sellix.">Save and Charge cards</Tooltip> | Live | - |
+| <Tooltip tip="Instead of relying on recurring bills and automations from Stripe, Subscriptions 2.0 save the payment method on file for the customer and automatically charge it during renewals, custom actions or configurations by the merchant. The overall fee for accepting subscriptions is also decreased as this is not part of Stripe Billing, but is handled by Sellix.">Save and Charge cards</Tooltip> | Live | - |
 | <Tooltip tip="Specify any additional payment that can be added for a single month or for a longer period of time, giving your customers a way to add optionals to your subscriptions.">Add-ons</Tooltip> | Live | - |
 | <Tooltip tip="Customers can change the payment method on file through the subscriptions, without having to cancel it.">Change payment method during subscription</Tooltip> | <Tooltip tip="The customer can visit the customer portal to change the payment method. If current invoice is in PENDING state, then the new method will be charged for invoice as well.">Live</Tooltip> | - |
 | <Tooltip tip="Coupons are enabled for any payment method used for Subscriptions 2.0, unlike (legacy) for which they were only working on Stripe and Cryptos.">Coupons</Tooltip> | Live | - |
@@ -104,61 +104,103 @@ Subscriptions 2.0 offers comprehensive webhook events to keep track of each stag
 
 ### Journey
 
-<Warning>This journey is a work in progress, it's not final. Expected to be completed soon, check back in a few days.</Warning>
+<Warning>
+  This journey is a work in progress, it's not final. Expected to be completed soon, check back in a few days.
+</Warning>
+
 
 <Steps>
   <Step title="Trial Started">
-    Event `subscription:trial:started`
-    
-    Optional, sent only if the product has a trial period enabled.
+    Event: `subscription-v2:trial-interval:started`
+    *Only sent if a trial period is configured for this subscription product*
 
-    A trial for one of your product subscriptions has been started. We will not create an invoice for this event.
+    The trial period for a subscription has started. No invoice has been created yet.
+    If this webhook is sent, it is preceded by a `subscription-v2:trial-interval:created` event with a unique status.
 
-    If this webhook is sent, it’s preceded by a `subscription:created` event with a unique status
+    <Tip>
+      The subscription status will be `ACTIVE` during the trial period, but the current interval during the trial will have a `payment_type` of `TRIAL`
+    </Tip>
 
-    <Card title="Keep in mind" icon="lightbulb" iconType="duotone" color="#ca8b04">
-      Although a subscription has been created, an invoice for it has not been created. `TRIALING` means that the subscription has been created in a trialing state, waiting for `subscription:trial:ended`.
-    </Card>
+    <Note>Please note that if the product has a trial period, the trial period cannot be circumvented.</Note>
+  </Step>
+  <Step title="Trial Canceled">
+    Event: `subscription-v2:trial-interval:canceled`
+    *Only sent if a trial period is configured for this subscription product*
 
-    <Info>Please note that if the product has a trial period, the trial period must be used.</Info>
+    The trial period for a subscription has been canceled. One of the following events will be sent alongside this one:
+    - `subscription-v2:trial-interval:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard.
+    - `subscription-v2:trial-interval:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the Customer Billing Portal.
+    - `subscription-v2:trial-interval:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint.
   </Step>
   <Step title="Trial Ended">
-    Event `subscription:trial:ended`
+    Event: `subscription-v2:trial-interval:ended`
+    *Only sent if a trial period is configured for this subscription product*
 
-    Optional, sent only if the product has a trial period enabled and it has come to an end.
-
-    A trial for one of your product subscriptions has ended, we will create an invoice in relation to this event.
+    The trial period for a subscription has ended.
+    Immediately after this event is triggered, the `subscription-v2:payment-interval:started` and `subscription-v2:payment-interval:created` events will be sent indicating that the first payment interval has been requested. **This does not mean that the payment was received**.
   </Step>
-  <Step title="Subscription Created">
-    Event `subscription:created`
+  <Step title="Subscription Started">
+    Event: `subscription-v2:started`
 
-    If the product has a trial period, this webhook has already been sent. If not, it is sent right after an invoice `PRODUCT_SUBSCRIPTION` has been successfully paid.
-
-    Once your customer's subscription has been started and the payment has succeeded, you should implement any logic that you might deem necessary to activate the subscription.
-
-    We highly suggest the usage of our custom fields to act as a metadata object in order to recognize which customer purchased your subscription and activate it for them.
-  </Step>
-  <Step title="Subscription Updated">
-    Event `subscription:updated`
+    This event is triggered when the status of the subscription goes from `PENDING` to `ACTIVE`, meaing once your customer's subscription has been started and the payment has succeeded. You can use this event to implement any logic that should be executed once the subscription is purchased.
     
-    If the customer updates his preferred gateway for the subscription through the Customer Billing Portal, you will receive a webhook event with the updated subscription object.
-  </Step>
-  <Step title="Subscription Cancelled">
-    Event `subscription:cancelled`
-    
-    Should you or the customer decide to cancel the subscription, this webhook event is sent.
+    We **highly suggest the usage of our custom fields to act as a metadata object** in order to recognize which customer purchased your subscription and activate it for them.
 
-    A subscription is canceled if the payment fails, or is not sent within your settings’ grace period (in days). We handle every email for payment failures and renewal updates. You can also update customer notification settings on the [Subscription settings page](https://dashboard.sellix.io/settings/subscriptions) (access it through your Profile > Settings).
+    This webhook event is typically preceeded by the `subscription-v2:created` event, which is sent when the subscription is created with a status of `PENDING`.
+
+    When a subscription first starts, the following events will be triggered alongside this one, each with their respective `created` event:
+    - `subscription-v2:plan:started`: Triggered every time a payment plan for a subscription is started.
+    - `subscription-v2:payment-interval:started`: Treated every time a payment interval for a subscription is started.
   </Step>
-  <Step title="Subscription Upcoming">
-    Event `subscription:upcoming`
+  <Step title="Subscription Gateway Changes">
+    Event: `subscription-v2:plan:gateway-changed`
     
-    The event is sent a few days before a subscription is about to be renewed
+    Changing the gateway for a subscription will not create a new subscription. The recurring invoice will be charged through the new gateway.
+    If the customer updates his preferred gateway for the subscription through our API via the `PUT /subscriptions_v2/{uniqid}` endpoint, embeddables or the Customer Billing Portal, you will receive a webhook event with the updated subscription object.
+
+    This event can be triggered alongside the `subscription-v2:plan:payment-method-changed` event.
   </Step>
-  <Step title="Subscription Renewed">
-    Event `subscription:renewed`
+  <Step title="Subscription Updates">
+    Events: `subscription-v2:plan:upgrade` or `subscription-v2:plan:downgrade`
+
+    When the customer or merchant changes the plan of their subscription via the `POST /subscriptions_v2` endpoint, embeddables, the Customer Billing Portal, or the merchant dashboard, one of these events will be triggered. 
+    When a subscription plan changes, the following events will be triggered alongside this one:
+    - `subscription-v2:plan:started`: Triggered alongside `subscription-v2:plan:created` every time a new plan is selected for the subscription
+    - `subscription-v2:ended`: Upgrades and downgrades will complete the subscription plan, which sends this event.
+    - `subscription-v2:plan:ended`: Triggers whenever the subscription plan changes
+  </Step>
+  <Step title="Subscription Canceled">
+    Events: `subscription-v2:canceled` and `subscription-v2:plan:canceled` and `subscription-v2:plan:payment-canceled`
     
-    When the payment for a subscription renewal happens, this webhook is sent to let you know that everything went well. You do not need to be listening to this event specifically as you can manage your subscriptions through only the `created` and `cancelled` events.
+    Subscription cancelation by either the customer or the merchant triggers this event. The status of the subscription will be `CANCELED` or `AWAIT_CANCELING`.
+    One of the following events will be sent alongside this one:
+    - `subscription-v2:canceled-merchant`: When the subscription is canceled by the merchant through their Sellix dashboard. The `subscription-v2:plan:canceled-merchant` event is also sent.
+    - `subscription-v2:canceled-customer`: When the subscription is canceled by the customer through an embeddable or the Customer Billing Portal. The `subscription-v2:plan:canceled-customer` event is also sent.
+    - `subscription-v2:canceled-api`: When the subscription is canceled by calling the `DELETE /subscriptions_v2/{uniqid}` endpoint. The `subscription-v2:plan:canceled-api` event is also sent.
+    
+    The following events, which are sent when Sellix recieves Stripe payment intent updates, are also sent: `subscription-v2:payment-interval:canceled`, `subscription-v2:payment-interval:canceled-merchant`, `subscription-v2:payment-interval:canceled-customer`, `subscription-v2:payment-interval:canceled-api` and `subscription-v2:payment-interval:payment-canceled` events are also sent.
+  </Step>
+  <Step title="Upcoming Payment">
+    Event `subscription-v2:payment-interval:upcoming`
+
+  The event is sent a week before the current payment interval's end. 
+  </Step>
+  <Step title="Subscription Renewal">
+    Event `subscription-v2:ended`
+
+    The first part of the renewal process is ending the previous `plan` and `payment_interval`. These events will be triggered as part of that process:
+    - `subscription-v2:plan:ended`: When the subscription's plan has reached the end of its current interval.
+    - `subscription-v2:payment-interval:ended`: When the subscription's payment interval has ended.
+
+    The second part is creating a new `payment_` and `plan_` for the subscription. These events will be triggered as part of that process:
+    - `subscription-v2:plan:payment-succeeded`: When the payment for the subscription plan has been successfully processed.
+    - `subscription-v2:payment-interval:payment-succeeded`: When the payment interval for the subscription has been successfully processed.
+  </Step>
+  <Step title="Subscription Failed">
+    Event: `subscription-v2:plan:payment-failed`
+
+    The payment for the subscription has failed. The subscription will remain `ACTIVE` and the payment will be retried at a later time. When the payment is retried, the `subscription-v2:payment-interval:charge-retried` event will be triggered, and if the retry does not succeed, the `subscription-v2:payment-interval:charge-failed` and `subscription-v2:payment-interval:payment-failed` events may be sent
+    If the payment is not updated, the subscription will be canceled and the `subscription-v2:canceled` event will be triggered. 
   </Step>
 </Steps>
 
@@ -205,11 +247,35 @@ Specify any additional payment that can be added for a single month or for a lon
   Addons have an optional field called **All Recurring Bill Invoices** similarly to coupons. if it is checked, then the addon will be applied to all invoices created for the subscription, otherwise only for the first invoice.
 </Info>
 
+<Frame>
+  <img
+    className="block"
+    src="/images/subs_v2_addons.png"
+    alt="Customer Billing Portal"
+  />
+</Frame>
+
+### Upgrades/Downgrades
+
+Upgrades and Downgrades can happen when a customer changes their subscription plan, when a merchant changes a customer's subscription plan, or when a customer resubscribes to an existing subscription with a different plan. Both upgrades and downgrades will change the renewal date of a subscription.
+- `DOWNGRADE`: The current plan will remain `ACTIVE`. A new plan will be created with the `PENDING` status and will not be `ACTIVE` until the current plan has ended.
+- `UPGRADE`: The current plan will be `COMPLETED`, and any unused time will be credited to the customer's balance. The new plan will be activated immediately after the payment is received.
+<Info>
+  To upgrade a subscription via our API, you can use the `POST /subscriptions_v2` endpoint with the same `email` to overwrite the existing subscription. The subscription will be upgraded/downgraded based on the new plan's price.
+</Info>
+
 ## Customer Billing Portal
 
 Every customer will have access to their customer billing portal, where they can view, cancel, and update any active subscription purchased from you or any other business on our platform.
 
-![customer portal](https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/documentation/images/customer-portal.png)
+<Frame>
+  <img
+    className="block"
+    src="https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/documentation/images/customer-portal.png"
+    alt="Customer Billing Portal"
+  />
+</Frame>
+
 
 They will authenticate using their personal email address, used to purchase your product subscription. The customer billing portal can be found at `YOUR_DOMAIN/customer/auth`
 

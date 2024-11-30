@@ -3466,7 +3466,7 @@
                   },
                   "product_id": {
                     "type": "string",
-                    "example": "67151e256f149",
+                    "example": "sample256f149",
                     "description": "The unique ID of the product to create a subscription for."
                   },
                   "quantity": {
@@ -3483,17 +3483,14 @@
                     "type": "object",
                     "additionalProperties": {
                       "type": "string"
-                    }
+                    },
+                    "example": {"sample256f149": "sample12345,sample98765"},
+                    "description": "Key should be productId. Value should be a string of comma separated addon ids."
                   },
                   "coupon_code": {
-                    "type": "integer",
-                    "example": 4,
-                    "description": "The coupon code to apply to the subscription."
-                  },
-                  "discord_integration_code": {
                     "type": "string",
-                    "example": null,
-                    "description": "The code for the Sellix discord integration. Will be null if discord integration is not enabled."
+                    "example": "CHRISTMAS",
+                    "description": "The coupon code to apply to the subscription."
                   },
                   "custom_fields": {
                     "type": "object",
@@ -11132,7 +11129,7 @@
           },
           "status": {
             "type": "string",
-            "enum": ["PENDING","COMPLETED", "CANCELED", "AWAIT_CANCELING", "ACTIVE"],
+            "enum": ["PENDING", "ACTIVE", "AWAIT_CANCELING", "CANCELED", "COMPLETED"],
             "example": "PENDING",
             "description": "The status of the payment interval"
           },
@@ -11218,9 +11215,9 @@
               },
               "payment_type": {
                 "type": "string",
-                "enum": ["ADVANCE", "ARREARS"],
-                "example": "ADVANCE",
-                "description": "The billing type of the payment interval"
+                "enum": ["TRIAL", "PAYMENT"],
+                "example": "PAYMENT",
+                "description": "The type of interval this is."
               }
             }
           },

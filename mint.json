@@ -102,9 +102,8 @@
         "api-reference/licenses",
         "api-reference/payment-methods",
         "api-reference/prefilled-links",
-        "api-reference/disputes",
-        "api-reference/values"
-      ]
+        "api-reference/disputes"
+    ]
     },
     {
       "group": "Information",

@@ -2,3 +2,13 @@
 title: "Create Subscription"
 openapi: post /subscriptions_v2
 ---
+
+<Warning>
+If a customer has an active subscription with the same plan, the `uniqid` of the existing subscription will be returned.
+</Warning>
+<Warning>
+If a customer has an active subscription with a different plan, the existing subscription will be **upgraded**/**downgraded** to match the new plan.
+</Warning>
+<Note>
+You can create a checkout session for any subscription throught the following URL: `https://checkout.sellix.io/subscription-v2/{data.subscription_id}`
+</Note>

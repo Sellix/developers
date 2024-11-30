@@ -2,3 +2,7 @@
 title: "Cancel Subscription"
 openapi: delete /subscriptions_v2/{id}
 ---
+
+<Warning>
+This endpoint does not immediately cancel the subscription. Instead, it changes the status to `AWAIT_CANCELING`, and sets it to stop renewing once the current payment interval ends.
+</Warning>
