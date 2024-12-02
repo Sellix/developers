@@ -1589,6 +1589,10 @@
                     "type": "string",
                     "example": "Software Activation Keys"
                   },
+                  "slug": {
+                    "type": "string",
+                    "example": "product-slug"
+                  },
                   "price": {
                     "type": "number",
                     "format": "double",
@@ -1807,6 +1811,10 @@
                       "title": {
                         "type": "string",
                         "example": "Software Activation Keys"
+                      },
+                      "slug": {
+                        "type": "string",
+                        "example": "product-slug"
                       },
                       "price": {
                         "type": "number",
@@ -2064,6 +2072,10 @@
                     "type": "string",
                     "example": "Software Activation Keys"
                   },
+                  "slug": {
+                    "type": "string",
+                    "example": "product-slug"
+                  },
                   "price": {
                     "type": "number",
                     "format": "double",
@@ -2270,6 +2282,10 @@
                       "title": {
                         "type": "string",
                         "example": "Software Activation Keys"
+                      },
+                      "slug": {
+                        "type": "string",
+                        "example": "product-slug"
                       },
                       "price": {
                         "type": "number",
