@@ -1,0 +1,22 @@
+---
+title: 'Create sub-account'
+openapi: post /wallet/merchant
+---
+
+## Sub-accounts
+
+You should create a sub-account for each person or business using your platform (your merchants). Sub-accounts should not be used for customers of your customers.
+
+You are then able to create payments on behalf of the sub-account, manage the funds in their wallet and do any custom operation you want.
+
+## Compliance
+
+In the Sellix Custodial version, each sub-account needs to pass Sellix's compliance process, which includes either KYC or KYB and AML checks pursuant to the regulations of the country of the sub-account.
+
+Sellix handles the compliance process automatically at no additional expense to you, the process is required before payments can be created on behalf of the sub-account.
+
+The compliance process is done through the custody dashboard, you can get the link to redirect the sub-account to by calling the endpoint.
+
+<Card title="Get Custody Dashboard Link" icon="link" href="/platforms/sub-accounts/get-custody-dashboard-link">
+  Get a link to the custody dashboard for a sub-account
+</Card>

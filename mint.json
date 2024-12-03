@@ -42,6 +42,10 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "Platforms",
+      "url": "platforms"
     }
   ],
   "anchors": [
@@ -67,8 +71,7 @@
       "pages": [
         "introduction",
         "no-code",
-        "sellix-hosted",
-        "platforms"
+        "sellix-hosted"
       ]
     },
     {
@@ -248,6 +251,26 @@
         "api-reference/queries/post-queriesreply",
         "api-reference/queries/post-queriesclose",
         "api-reference/queries/post-queriesreopen"
+      ]
+    },
+    {
+      "group": "Platforms",
+      "pages": [
+        "platforms/introduction",
+        "platforms/integration"
+      ]
+    },
+    {
+      "group": "Sub-accounts",
+      "pages": [
+        "platforms/sub-accounts/create",
+        "platforms/sub-accounts/get-custody-dashboard-link"
+      ]
+    },
+    {
+      "group": "Payments",
+      "pages": [
+        "platforms/payments/create"
       ]
     }
   ],

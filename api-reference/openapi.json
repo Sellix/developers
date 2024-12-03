@@ -72,6 +72,46 @@
     }
   ],
   "paths": {
+    "/wallet/merchant": {
+      "post": {
+        "tags": [
+          "Sub-accounts"
+        ],
+        "operationId": "createSubAccount",
+        "description": "Create a sub-account linked to your platform main account",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/wallet/merchant/custody-dashboard-link/{sub-account-id}": {
+      "post": {
+        "tags": [
+          "Sub-accounts"
+        ],
+        "operationId": "createSubAccount",
+        "description": "Create a sub-account linked to your platform main account",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sub-account-id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
     "/blacklists": {
       "get": {
         "tags": [
