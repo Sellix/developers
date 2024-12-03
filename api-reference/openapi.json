@@ -4779,20 +4779,54 @@
           "products_bound_extended": {
             "type": "array",
             "items": {
-              "type": "string"
-            },
-            "description": "Details about the products in the products_bound field.",
-            "example": [
-              {
-                "uniqid": "sample....",
-                "title": "Sample Product",
-                "price": "1.00",
-                "price_display": "1.00",
-                "currency": "EUR",
-                "slug": "sample-product",
-                "type": "SERVICE"
+              "type": "object",
+              "properties": {
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample....",
+                  "description": "The uniqid of the product"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Sample Product",
+                  "description": "The title of the product"
+                },
+                "price": {
+                  "type": "string",
+                  "example": "1.00",
+                  "description": "The price of the product"
+                },
+                "price_display": {
+                  "type": "string",
+                  "example": "1.00",
+                  "description": "The price of the product that is displayed (includes fees or discounts)"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                },
+                "slug": {
+                  "type": "string",
+                  "example": "sample-product",
+                  "description": "The slug of the product"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "INFO_CARD",
+                    "SERVICE",
+                    "DYNAMIC",
+                    "FILE",
+                    "SERIALS",
+                    "GAMING_RCON",
+                    "SUBSCRIPTION",
+                    "SUBSCRIPTION_V2"
+                  ],
+                  "example": "SERVICE",
+                  "description": "Product type"
+                }
               }
-            ]
+            },
+            "description": "Details about the products in the products_bound field."
           },
           "products_count": {
             "type": "integer",
