@@ -40,16 +40,16 @@
   },
   "tabs": [
     {
+      "name": "API Reference",
+      "url": "api-reference"
+    },
+    {
       "name": "Accept->Settle",
       "url": "accept-settle"
     },
     {
       "name": "Platforms",
       "url": "platforms"
-    },
-    {
-      "name": "API Reference",
-      "url": "api-reference"
     }
   ],
   "anchors": [
@@ -267,7 +267,7 @@
       ]
     },
     {
-      "group": "Payments",
+      "group": "Platform Payments",
       "pages": [
         "platforms/payments/create"
       ]
