@@ -40,12 +40,16 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "Accept->Settle",
+      "url": "accept-settle"
     },
     {
       "name": "Platforms",
       "url": "platforms"
+    },
+    {
+      "name": "API Reference",
+      "url": "api-reference"
     }
   ],
   "anchors": [
@@ -55,14 +59,9 @@
       "url": "https://sellix.io/discord"
     },
     {
-      "name": "Help Docs",
+      "name": "Support",
       "icon": "newspaper",
       "url": "https://help.sellix.io"
-    },
-    {
-      "name": "GitHub",
-      "icon": "github",
-      "url": "https://github.com/sellix"
     }
   ],
   "navigation": [
@@ -271,6 +270,13 @@
       "group": "Payments",
       "pages": [
         "platforms/payments/create"
+      ]
+    },
+    {
+      "group": "Accept->Settle",
+      "pages": [
+        "accept-settle/introduction",
+        "accept-settle/integration"
       ]
     }
   ],
