@@ -8205,7 +8205,7 @@
             "example": false,
             "description": "Whether or not to deliver the product to the PayPal email address"
           }
-        }
+       }
       },
       "license": {
         "type": "object",

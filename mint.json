@@ -128,6 +128,7 @@
     {
       "group": "Orders",
       "pages": [
+        "api-reference/orders/model",
         "api-reference/orders/get-order",
         "api-reference/orders/list-orders",
         "api-reference/orders/replace-order",
@@ -138,6 +139,7 @@
     {
       "group": "Customers",
       "pages": [
+        "api-reference/customers/model",
         "api-reference/customers/get-customer",
         "api-reference/customers/list-customers",
         "api-reference/customers/post-customers",
@@ -149,16 +151,18 @@
     {
       "group": "Subscriptions 2.0",
       "pages": [
-        "api-reference/subscriptions-2-0/get-subscription",
-        "api-reference/subscriptions-2-0/list-subscriptions",
-        "api-reference/subscriptions-2-0/post-subscriptions",
-        "api-reference/subscriptions-2-0/put-subscriptions",
-        "api-reference/subscriptions-2-0/delete-subscriptions"
+        "api-reference/subscriptions-v2/model",
+        "api-reference/subscriptions-v2/get-subscription",
+        "api-reference/subscriptions-v2/list-subscriptions",
+        "api-reference/subscriptions-v2/post-subscriptions",
+        "api-reference/subscriptions-v2/put-subscriptions",
+        "api-reference/subscriptions-v2/delete-subscriptions"
       ]
     },
     {
       "group": "Subscriptions (legacy)",
       "pages": [
+        "api-reference/subscriptions/model",
         "api-reference/subscriptions/get-subscription",
         "api-reference/subscriptions/list-subscriptions",
         "api-reference/subscriptions/post-subscriptions",
@@ -168,6 +172,7 @@
     {
       "group": "Licenses",
       "pages": [
+        "api-reference/licenses/model",
         "api-reference/licenses/check-license",
         "api-reference/licenses/set-hardware-id"
       ]
@@ -175,6 +180,7 @@
     {
       "group": "Blacklists",
       "pages": [
+        "api-reference/blacklists/model",
         "api-reference/blacklists/get-blacklist",
         "api-reference/blacklists/list-blacklists",
         "api-reference/blacklists/post-blacklists",
@@ -185,6 +191,7 @@
     {
       "group": "Whitelists",
       "pages": [
+        "api-reference/whitelists/model",
         "api-reference/whitelists/get-whitelist",
         "api-reference/whitelists/list-whitelists",
         "api-reference/whitelists/post-whitelists",
@@ -195,6 +202,7 @@
     {
       "group": "Products",
       "pages": [
+        "api-reference/products/model",
         "api-reference/products/get-product",
         "api-reference/products/list-products",
         "api-reference/products/post-products",
@@ -207,6 +215,7 @@
     {
       "group": "Categories",
       "pages": [
+        "api-reference/categories/model",
         "api-reference/categories/get-category",
         "api-reference/categories/list-categories",
         "api-reference/categories/post-categories",
@@ -217,6 +226,7 @@
     {
       "group": "Groups",
       "pages": [
+        "api-reference/groups/model",
         "api-reference/groups/get-group",
         "api-reference/groups/list-groups",
         "api-reference/groups/post-groups",
@@ -227,6 +237,7 @@
     {
       "group": "Coupons",
       "pages": [
+        "api-reference/coupons/model",
         "api-reference/coupons/get-coupon",
         "api-reference/coupons/list-coupons",
         "api-reference/coupons/post-coupons",
@@ -237,6 +248,7 @@
     {
       "group": "Feedback",
       "pages": [
+        "api-reference/feedback/model",
         "api-reference/feedback/get-feedback",
         "api-reference/feedback/list-feedback",
         "api-reference/feedback/post-feedbackreply"
@@ -245,6 +257,7 @@
     {
       "group": "Queries",
       "pages": [
+        "api-reference/queries/model",
         "api-reference/queries/get-query",
         "api-reference/queries/list-queries",
         "api-reference/queries/post-queriesreply",
