@@ -6833,7 +6833,7 @@
           "recurring_billing_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sub_pp_568e7d30a88460e03901c6",
+            "example": "sub_pp_....",
             "description": "Unique ID of the recurring bill."
           },
           "payout_configuration": {
@@ -15856,17 +15856,42 @@
                 },
                 "data": {
                   "type": "object",
-                  "required": [
-                    "invoice"
-                  ],
                   "properties": {
                     "subscription_id": {
                       "type": "string",
+                      "example": "sub_...",
                       "description": "Subscription ID."
+                    }, 
+                    "subscription": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "sub_...",
+                          "description": "Subscription uniqid"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "https://checkout.sellix.io/subscription-v2/sub_....",
+                          "description": "A URL to the object."
+                        }
+                      }
+                    },
+                    "invoice": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "sample-....-....",
+                          "description": "Invoice uniqid for the subscription"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "https://checkout.sellix.io/invoice/sample-....-....",
+                          "description": "A URL to the object."
+                        }
+                      }
                     }
-                  },
-                  "example": {
-                    "subscription_id": "sub_7451b916d925ae0ad1c1c7"
                   }
                 },
                 "error": {
