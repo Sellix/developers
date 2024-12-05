@@ -3354,7 +3354,7 @@
         }
       }
     },
-    "/subscriptions/{id}": {
+    "/subscriptions/{uniqid}": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -3538,7 +3538,7 @@
         }
       }
     },
-    "/subscriptions_v2/{id}": {
+    "/subscriptions_v2/{uniqid}": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -9803,7 +9803,7 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_00d4b22a76640d5967d36e",
+            "example": "cst_....",
             "description": "Unique ID used within Sellix to identify customers across the API."
           },
           "gateway": {
@@ -11305,7 +11305,7 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_8e025b000dee1a9fbbe481",
+            "example": "cst_....",
             "description": "Unique ID used within Sellix to identify customers across the API."
           },
           "payment_method_id": {
@@ -11430,7 +11430,7 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_8e025b000dee1a9fbbe481",
+            "example": "cst_....",
             "description": "The ID of the customer who purchased the subscription plan"
           },
           "product_subscription_uniqid": {
@@ -11772,7 +11772,7 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_8e025b000dee1a9fbbe481",
+            "example": "cst_....",
             "description": "The ID of the customer who made the purchase"
           },
           "customer_email": {
@@ -14414,7 +14414,7 @@
                   "properties": {
                     "customer_id": {
                       "type": "string",
-                      "example": "cst_87b8as6ba9125",
+                      "example": "cst_....",
                       "description": "Customer ID"
                     }
                   }
