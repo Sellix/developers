@@ -1,0 +1,588 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "description": "Sellix Developers API V1 platform endpoints",
+      "url": "https://dev.sellix.io/v1"
+    }
+  ],
+  "info": {
+    "description": "Sellix public API for developers to access platform resources",
+    "version": "1.0.0",
+    "title": "Sellix Developers Platform API",
+    "x-logo": {
+      "url": "https://sellix.io/cdn-cgi/image/q=65/https://cdn.sellix.io/static/logo/sellix-logo-black-smaller.png",
+      "backgroundColor": "#FFFFFF",
+      "altText": "Sellix logo",
+      "href": "https://sellix.io"
+    }
+  },
+  "tags": [
+    {
+      "name": "Platform Payments",
+      "description": "Platform Payment Endpoints"
+    },
+    {
+      "name": "Sub-accounts",
+      "description": "Sub account endpoints"
+    }
+  ],
+  "paths": {
+    "/payments?sub-account=true": {
+      "post": {
+        "tags": [
+          "Platform Payments"
+        ],
+        "operationId": "createSubAccountPayment",
+        "description": "Create a payment from a sub account",
+        "requestBody": {
+          "description": "payment JSON to be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "platform_on_behalf_of",
+                  "email",
+                  "white_label"
+                ],
+                "properties": {
+                  "platform_on_behalf_of": {
+                    "type": "string",
+                    "example": "<sub-account-id>",
+                    "description": "The ID of the sub account on behalf of which the payment is being made"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Platform Payment",
+                    "description": "The title of the purchase"
+                  },
+                  "value": {
+                    "type": "number",
+                    "format": "double",
+                    "example": 2.5,
+                    "description": "The amount the customer should pay for this invoice"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": [
+                      "CAD",
+                      "HKD",
+                      "ISK",
+                      "PHP",
+                      "DKK",
+                      "HUF",
+                      "CZK",
+                      "GBP",
+                      "RON",
+                      "SEK",
+                      "IDR",
+                      "INR",
+                      "BRL",
+                      "RUB",
+                      "HRK",
+                      "JPY",
+                      "THB",
+                      "CHF",
+                      "EUR",
+                      "MYR",
+                      "BGN",
+                      "TRY",
+                      "CNY",
+                      "NOK",
+                      "NZD",
+                      "ZAR",
+                      "USD",
+                      "MXN",
+                      "SGD",
+                      "AUD",
+                      "ILS",
+                      "KRW",
+                      "PLN"
+                    ],
+                    "example": "EUR",
+                    "description": "Required if product_id and cart are null, defines the currency of value."
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "customer@gmail.com",
+                    "description": "Email of the customer. Should you want to handle emails on your own, pass to this field a company email to which PDF receipts of orders will be sent for accounting and log purposes."
+                  },
+                  "white_label": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "This must always be true"
+                  },
+                  "custom_fields": {
+                    "$ref": "#/components/schemas/custom_fields_object"
+                  },
+                  "webhook": {
+                    "type": "string",
+                    "example": "https://webhook.sellix.io/api/v1/example",
+                    "description": "Webhook URL to which updates regarding this payment (invoice) will be sent."
+                  },
+                  "return_url": {
+                    "type": "string",
+                    "example": "https://sample.sellix.io/return",
+                    "description": "The URL to redirect the customer to after confirming the payment"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/payment"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/wallet/merchant": {
+      "post": {
+        "tags": [
+          "Sub-accounts"
+        ],
+        "operationId": "createSubAccount",
+        "description": "Create a sub-account linked to your platform main account",
+        "requestBody": {
+          "description": "sub account information",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email"],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "merchant@merchant.com",
+                    "description": "The email for the sub account"
+                  },
+                  "custom_fields": {
+                    "$ref": "#/components/schemas/custom_fields_object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/merchantCreated"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/wallet/merchant/custody-dashboard-link/{sub-account-id}": {
+      "post": {
+        "tags": [
+          "Sub-accounts"
+        ],
+        "operationId": "getSubDashboardLink",
+        "description": "Create a sub-account linked to your platform main account",
+        "requestBody": {
+          "description": "sub account information",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "compliance_type": {
+                    "type": "string",
+                    "enum": ["KYC", "KYB", "IDK"],
+                    "example": "KYC",
+                    "description": "The type of compliance for the sub account"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          },
+          {
+            "$ref": "#/components/parameters/sub_account_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/merchantLink"
+          },
+          "400": {
+            "$ref": "#/components/responses/invalidCompliance"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/unknownMerchant"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "custom_fields_object": {
+        "type": "object",
+        "example": {
+          "username": "sellix-user"
+        },
+        "description": "key-value JSON having as key the custom field name and as value the custom field value inserted by the customer. Custom fields can both be used as inputs from the customers but also as metadata for invoices, letting you pass hidden fields for internal referencing."
+      }
+    },
+    "parameters": {
+      "sub_account_id": {
+        "in": "path",
+        "name": "sub_account_id",
+        "schema": {
+          "type": "string"
+        },
+        "required": true,
+        "example": "sample6978a0e39d",
+        "description": "ID of the sub account"
+      },
+      "merchant": {
+        "in": "header",
+        "name": "X-Sellix-Merchant",
+        "schema": {
+          "type": "string"
+        },
+        "required": false,
+        "example": "Sellix",
+        "description": "The name of the store to perform actions on via the API"
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "resource retrieved",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "<error-message>"
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "UNAUTHORIZED",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 401
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Unauthorized (#003)."
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "string",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "NOT_FOUND",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 404
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "<resource> Not Found"
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "merchantCreated": {
+        "description": "MERCHANT_CREATED",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "plat_....",
+                      "description": "The ID of the merchant sub account"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "merchantName",
+                      "description": "The name of the merchant sub account"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "merchant@merchant.com",
+                      "description": "The email for the merchant sub account"
+                    },
+                    "custom_fields": {
+                      "type": "object",
+                      "example": null,
+                      "description": "The custom fields for the merchant sub account"
+                    },
+                    "token": {
+                      "type": "string",
+                      "example": "platform_token_....",
+                      "description": "The token for the merchant sub account"
+                    },
+                    "expire_at": {
+                      "type": "integer",
+                      "format": "timestamp",
+                      "example": 0,
+                      "description": "The expiration date for the merchant sub account"
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "merchantLink": {
+        "description": "MERCHANT_CREATED",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "link": {
+                      "type": "string",
+                      "example": "https://custody.sellix.io/dashboard?token=..."
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                }
+              }
+            }
+          }
+        }
+      },
+      "invalidCompliance": {
+        "description": "invalid compliance",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "Invalid compliance type, must be KYC|KYB|IDK"
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "unknownMerchant": {
+        "description": "unknown sub account id",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 404
+                },
+                "data": {
+                  "type": "object",
+                  "example": null
+                },
+                "error": {
+                  "type": "string",
+                  "example": "A platform merchant with this ID doesn't exist"
+                },
+                "message": {
+                  "type": "string",
+                  "example": null
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "payment": {
+        "description": "payment creation response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "example": "https://checkout.sellix.io/payment/<uniqid>",
+                  "description": "This can be iframed using embed.sellix.io/invoice/<uniqid>"
+                },
+                "uniqid": {
+                  "type": "string",
+                  "example": "<uniqid>"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

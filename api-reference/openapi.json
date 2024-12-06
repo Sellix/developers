@@ -72,46 +72,6 @@
     }
   ],
   "paths": {
-    "/wallet/merchant": {
-      "post": {
-        "tags": [
-          "Sub-accounts"
-        ],
-        "operationId": "createSubAccount",
-        "description": "Create a sub-account linked to your platform main account",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/200"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          }
-        }
-      }
-    },
-    "/wallet/merchant/custody-dashboard-link/{sub-account-id}": {
-      "post": {
-        "tags": [
-          "Sub-accounts"
-        ],
-        "operationId": "createSubAccount",
-        "description": "Create a sub-account linked to your platform main account",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/sub-account-id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/200"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          }
-        }
-      }
-    },
     "/blacklists": {
       "get": {
         "tags": [
@@ -566,7 +526,7 @@
                       "type": "string"
                     },
                     "example": [
-                      "sample8718521"
+                      "sample...."
                     ]
                   },
                   "groups_bound": {
@@ -686,7 +646,7 @@
                       "type": "string"
                     },
                     "example": [
-                      "sample8718521"
+                      "sample...."
                     ]
                   },
                   "groups_bound": {
@@ -801,7 +761,7 @@
                       "type": "string"
                     },
                     "example": [
-                      "sample8718521"
+                      "sample...."
                     ]
                   }
                 }
@@ -920,7 +880,7 @@
                       "type": "string"
                     },
                     "example": [
-                      "sample8718521"
+                      "sample...."
                     ]
                   }
                 }
@@ -1111,7 +1071,7 @@
                       "type": "string"
                     },
                     "example": [
-                      "sample8718521"
+                      "sample...."
                     ]
                   }
                 }
@@ -1225,7 +1185,7 @@
                       "type": "string"
                     },
                     "example": [
-                      "sample8718521"
+                      "sample...."
                     ]
                   }
                 }
@@ -1589,6 +1549,10 @@
                     "type": "string",
                     "example": "Software Activation Keys"
                   },
+                  "slug": {
+                    "type": "string",
+                    "example": "product-slug"
+                  },
                   "price": {
                     "type": "number",
                     "format": "double",
@@ -1807,6 +1771,10 @@
                       "title": {
                         "type": "string",
                         "example": "Software Activation Keys"
+                      },
+                      "slug": {
+                        "type": "string",
+                        "example": "product-slug"
                       },
                       "price": {
                         "type": "number",
@@ -2064,6 +2032,10 @@
                     "type": "string",
                     "example": "Software Activation Keys"
                   },
+                  "slug": {
+                    "type": "string",
+                    "example": "product-slug"
+                  },
                   "price": {
                     "type": "number",
                     "format": "double",
@@ -2270,6 +2242,10 @@
                       "title": {
                         "type": "string",
                         "example": "Software Activation Keys"
+                      },
+                      "slug": {
+                        "type": "string",
+                        "example": "product-slug"
                       },
                       "price": {
                         "type": "number",
@@ -2631,12 +2607,12 @@
                   },
                   "product_id": {
                     "type": "string",
-                    "example": "sample2bde8a50",
+                    "example": "sample....",
                     "description": "If specified value, currency and custom_fields will be taken from the product details."
                   },
                   "product_plans": {
                     "type": "object",
-                    "example": {"sample2bde8a50": "pp_622886e03cbf6a40d5d1f0"},
+                    "example": {"sample....": "pp_622886e03cbf6a40d5d1f0"},
                     "description": "Required for subscriptions 2.0. Specified which plan to use for the invoice."
                   },
                   "cart": {
@@ -2657,7 +2633,7 @@
                             "uniqid": {
                               "type": "string",
                               "format": "uuid",
-                              "example": "sample2bde8a50",
+                              "example": "sample....",
                               "description": "Unique ID of the product."
                             },
                             "unit_quantity": {
@@ -2808,7 +2784,8 @@
                   },
                   "webhook": {
                     "type": "string",
-                    "description": "DEPRECATED: Webhook URL to which updates regarding this payment (invoice) will be sent."
+                    "example": "https://webhook.sellix.io/api/v1/example",
+                    "description": "Webhook URL to which updates regarding this payment (invoice) will be sent."
                   },
                   "white_label": {
                     "type": "boolean",
@@ -3348,7 +3325,7 @@
                   "customer_id": {
                     "type": "string",
                     "description": "ID of the store customer.",
-                    "example": "cst_sampleaddc898a645"
+                    "example": "cst_...."
                   },
                   "gateway": {
                     "$ref": "#/components/schemas/gateway",
@@ -3377,7 +3354,7 @@
         }
       }
     },
-    "/subscriptions/{id}": {
+    "/subscriptions/{uniqid}": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -3506,7 +3483,7 @@
                   },
                   "product_id": {
                     "type": "string",
-                    "example": "sample256f149",
+                    "example": "sample....",
                     "description": "The unique ID of the product to create a subscription for."
                   },
                   "quantity": {
@@ -3524,7 +3501,7 @@
                     "additionalProperties": {
                       "type": "string"
                     },
-                    "example": {"sample256f149": "sample12345,sample98765"},
+                    "example": {"sample....": "sample....,sample...."},
                     "description": "Key should be productId. Value should be a string of comma separated addon ids."
                   },
                   "coupon_code": {
@@ -3561,7 +3538,7 @@
         }
       }
     },
-    "/subscriptions_v2/{id}": {
+    "/subscriptions_v2/{uniqid}": {
       "get": {
         "tags": [
           "Subscriptions"
@@ -3631,7 +3608,7 @@
                   },
                   "payment_method_uniqid": {
                     "type": "string",
-                    "example": "pm_samplea7715ef1f35de7851",
+                    "example": "pm_....",
                     "description": "The unique id of the customer's payment method to set for this endpoint."
                   }
                 }
@@ -3826,7 +3803,7 @@
           },
           "invoice_id": {
             "type": "string",
-            "example": "sample-3ddfc9dc3d-ab2e36",
+            "example": "sample-....-....",
             "description": "Unique ID of the invoice this AML transaction is linked to."
           },
           "origin": {
@@ -4229,7 +4206,7 @@
           },
           "recurring_billing_id": {
             "type": "string",
-            "example": "rec_sample-4caac117ca-abeb80",
+            "example": "rec_....",
             "description": "The recurring billing ID of the approval."
           },
           "allowance": {
@@ -4261,7 +4238,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "scope": {
@@ -4347,7 +4324,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the bundle, used as reference across the API."
           },
           "shop_id": {
@@ -4397,7 +4374,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -4457,7 +4434,7 @@
                 "uniqid": {
                   "type": "string",
                   "format": "uuid",
-                  "example": "sample29a0e39d",
+                  "example": "sample....",
                   "description": "Unique ID of the resource, used as reference across the API."
                 },
                 "title": {
@@ -4467,7 +4444,7 @@
                 },
                 "image_attachment": {
                   "type": "string",
-                  "example": "sample9797bd6b36f54089a7f6151c56e7a902be4bdaa4204e63961625bb9cb54",
+                  "example": "sample........",
                   "description": "DEPRECATED: Unique id of the image attachment for this product."
                 },
                 "created_at": {
@@ -4484,12 +4461,12 @@
                 },
                 "group_id": {
                   "type": "string",
-                  "example": "sample29a0e39d",
+                  "example": "sample....",
                   "description": "The unique identifyer of the current group"
                 },
                 "category_id": {
                   "type": "string",
-                  "example": "sample29a0e39d",
+                  "example": "sample....",
                   "description": "The category the group is a part of"
                 }
               }
@@ -4509,7 +4486,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "price": {
@@ -4649,19 +4626,19 @@
           },
           "category_id": {
             "type": "string",
-            "example": "sample29a0e39d",
+            "example": "sample29asample....0e39d",
             "description": "The category the product is a part of"
           },
           "product_id": {
             "type": "string",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "The id of the current product"
           }
         }
       },
       "cloudflare_image_id": {
         "type": "string",
-        "example": "sample-c4f1-4f7c-9a1d-89120ed0c800",
+        "example": "sample-......",
         "description": "The cloudflare image ID of this product, replaces image_attachment and image_name. Format https://imagedelivery.net/95QNzrEeP7RU5l5WdbyrKw/<cloudflare_image_id>/<variant_name> where variant_name can be shopItem, avatar, icon, imageAvatarFeedback, public, productImageCart."
       },
       "coupon": {
@@ -4675,7 +4652,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -4796,26 +4773,60 @@
             },
             "description": "Array of product uniqids. Differs from the categories API as this endpoint does not need specific details about a product. Use the products API to get details about a single product.",
             "example": [
-              "sample56f391049"
+              "sample...."
             ]
           },
           "products_bound_extended": {
             "type": "array",
             "items": {
-              "type": "string"
-            },
-            "description": "Details about the products in the products_bound field.",
-            "example": [
-              {
-                "uniqid": "sample56f391049",
-                "title": "Sample Product",
-                "price": "1.00",
-                "price_display": "1.00",
-                "currency": "EUR",
-                "slug": "sample-product",
-                "type": "SERVICE"
+              "type": "object",
+              "properties": {
+                "uniqid": {
+                  "type": "string",
+                  "example": "sample....",
+                  "description": "The uniqid of the product"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Sample Product",
+                  "description": "The title of the product"
+                },
+                "price": {
+                  "type": "string",
+                  "example": "1.00",
+                  "description": "The price of the product"
+                },
+                "price_display": {
+                  "type": "string",
+                  "example": "1.00",
+                  "description": "The price of the product that is displayed (includes fees or discounts)"
+                },
+                "currency": {
+                  "$ref": "#/components/schemas/currency"
+                },
+                "slug": {
+                  "type": "string",
+                  "example": "sample-product",
+                  "description": "The slug of the product"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "INFO_CARD",
+                    "SERVICE",
+                    "DYNAMIC",
+                    "FILE",
+                    "SERIALS",
+                    "GAMING_RCON",
+                    "SUBSCRIPTION",
+                    "SUBSCRIPTION_V2"
+                  ],
+                  "example": "SERVICE",
+                  "description": "Product type"
+                }
               }
-            ]
+            },
+            "description": "Details about the products in the products_bound field."
           },
           "products_count": {
             "type": "integer",
@@ -4835,7 +4846,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -5304,14 +5315,26 @@
         "example": {
           "username": "sellix-user"
         },
-        "description": "key-value JSON having as key the custom field name and as value the custom field value inserted by the customer. Custom fields can both be used as inputs from the customers but also as metadata for invoices, letting you pass hidden fields for internal referencing."
+        "description": "The custom fields passed by the user at checkout. The type is `map<string, string>`"
+      },
+      "custom_fields": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/custom_fields_object"
+          },
+          {
+            "type": "array",
+            "example": [],
+            "description": "Will be `[]` if the custom fields were passed by the user, but are empty, or `null` if they were never passed"
+          }
+        ]
       },
       "customer": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "example": "cst_sample37atm91892",
+            "example": "cst_....",
             "description": "Customer ID"
           },
           "shop_id": {
@@ -5409,7 +5432,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "example": "cst_sample37atm91892",
+            "example": "cst_....",
             "description": "Customer ID"
           },
           "shop_id": {
@@ -5653,7 +5676,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "slug": {
@@ -5799,7 +5822,7 @@
           },
           "stripe_price_id": {
             "type": "string",
-            "example": "price_sample2X7rAeMb7AM5APEU",
+            "example": "price_....",
             "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
           },
           "discord_integration": {
@@ -6097,7 +6120,7 @@
                 },
                 "uniqid": {
                   "type": "string",
-                  "example": "sample29a0e39d",
+                  "example": "sample....",
                   "description": "The unique id of the category"
                 }
               }
@@ -6209,19 +6232,19 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-a0bb9d70a9-9e852a",
+            "example": "sample-....-....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "product_id": {
             "type": "string",
             "format": "uuid",
-            "example": "samplea0bb9d70a9",
+            "example": "sample....",
             "description": "Unique ID of the product for which this feedback has been posted."
           },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-cc39109624-03b70b",
+            "example": "sample-....-....",
             "description": "Unique ID of the invoice for which this feedback has been posted."
           },
           "blocked": {
@@ -6310,19 +6333,19 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-a0bb9d70a9-9e852a",
+            "example": "sample-....-....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-cc39109624-03b70b",
+            "example": "sample-....-....",
             "description": "Unique ID of the invoice for which this feedback has been posted."
           },
           "product_id": {
             "type": "string",
             "format": "uuid",
-            "example": "samplea0bb9d70a9",
+            "example": "sample....",
             "description": "Unique ID of the product for which this feedback has been posted."
           },
           "product_title": {
@@ -6588,7 +6611,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -6677,7 +6700,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -6791,7 +6814,7 @@
           },
           "product_id": {
             "type": "string",
-            "example": "sample29a0e39d"
+            "example": "sample...."
           },
           "size": {
             "type": "integer",
@@ -6816,13 +6839,13 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-3ddfc9dc3d-ab2e36",
+            "example": "sample-....-....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "recurring_billing_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sub_pp_568e7d30a88460e03901c6",
+            "example": "sub_pp_....",
             "description": "Unique ID of the recurring bill."
           },
           "payout_configuration": {
@@ -6886,9 +6909,12 @@
             "description": "Invoice total in the currency chosen."
           },
           "product_variants": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/product_variant"
+            "type": "object",
+            "properties": {
+              "{product_id}": {
+                "description": "The id of the product the plan belongs to",
+                "$ref": "#/components/schemas/product_variant"
+              }
             }
           },
           "exchange_rate": {
@@ -6937,7 +6963,7 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_sample86f8ac433f4a084",
+            "example": "cst_....",
             "description": "ID of the customer."
           },
           "affliate_revenue_customer_id": {
@@ -6953,7 +6979,7 @@
           "product_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample2bde8a50",
+            "example": "sample....",
             "description": "Unique ID of the product linked to this invoice, if any."
           },
           "product_title": {
@@ -7216,7 +7242,7 @@
             "description": "Unique ID of the coupon, if used, for the discount."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "developer_invoice": {
             "type": "boolean",
@@ -7353,7 +7379,7 @@
             },
             "example": [
               {
-                "uniqid": "sample079ee22",
+                "uniqid": "sample....",
                 "url": "https://dev.sellix.io/v1/webhook",
                 "event": "order:paid",
                 "retries": 1,
@@ -7451,14 +7477,14 @@
             "example": [
               {
                 "id": 10726392,
-                "invoice_id": "sample-3ddfc9dc3d-ab2e36",
+                "invoice_id": "sample-....-....",
                 "status": "PENDING",
                 "details": "The invoice has been created and we are now waiting to receive a payment.",
                 "created_at": 1640777609
               },
               {
                 "id": 10726409,
-                "invoice_id": "sample-3ddfc9dc3d-ab2e36",
+                "invoice_id": "sample-....-....",
                 "status": "COMPLETED",
                 "details": "The invoice has been flagged as completed and the product has been shipped.",
                 "created_at": 1640777796
@@ -7637,7 +7663,7 @@
           },
           "invoice_id": {
             "type": "string",
-            "example": "sample-3ddfc9dc3d-ab2e36",
+            "example": "sample-....-....",
             "description": "Unique ID of the invoice this status is linked to."
           },
           "status": {
@@ -7823,7 +7849,7 @@
           },
           "request_id": {
             "type": "string",
-            "example": "sampleN0vmX",
+            "example": "sample....",
             "description": "IP request ID used for internal reference."
           }
         },
@@ -7840,7 +7866,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-3ddfc9dc3d-ab2e36",
+            "example": "sample-....-....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "total": {
@@ -7868,9 +7894,12 @@
             "description": "Exchange rate between the cryptocurrency chosen (if any) and USD."
           },
           "product_variants": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/product_variant"
+            "type": "object",
+            "properties": {
+              "{product_id}": {
+                "description": "The id of the product the plan belongs to",
+                "$ref": "#/components/schemas/product_variant"
+              }
             }
           },
           "currency": {
@@ -7907,7 +7936,7 @@
           "product_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample2bde8a50",
+            "example": "sample....",
             "description": "Unique ID of the product linked to this invoice, if any."
           },
           "product_title": {
@@ -8055,7 +8084,7 @@
             "description": "If coupon_id is specified, coupon_code contains the code used during the checkout."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "developer_invoice": {
             "type": "boolean",
@@ -8228,7 +8257,7 @@
             "example": false,
             "description": "Whether or not to deliver the product to the PayPal email address"
           }
-        }
+       }
       },
       "license": {
         "type": "object",
@@ -8241,7 +8270,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "samplede4f1ad",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -8251,13 +8280,13 @@
           },
           "product_id": {
             "type": "string",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "The product ID to which this license belongs."
           },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-3ddfc9dc3d-ab2e3",
+            "example": "sample-....-....",
             "description": "Unique ID of the invoice this license is linked to."
           },
           "license_key": {
@@ -8306,7 +8335,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "slug": {
@@ -8476,7 +8505,7 @@
           },
           "stripe_price_id": {
             "type": "string",
-            "example": "price_sample2X7rAeMb7AM5APEU",
+            "example": "price_....",
             "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
           },
           "discord_integration": {
@@ -8793,7 +8822,7 @@
                 },
                 "uniqid": {
                   "type": "string",
-                  "example": "sample29a0e39d",
+                  "example": "sample....",
                   "description": "The unique id of the category"
                 }
               }
@@ -8859,7 +8888,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -8874,7 +8903,7 @@
           },
           "image_attachment": {
             "type": "string",
-            "example": "sample797bd6b36f54089a7f6151c56e7a902be4bdaa4204e63961625bb9cb54",
+            "example": "sample........",
             "description": "DEPRECATED: Unique id of the image attachment for this product."
           },
           "unlisted": {
@@ -8901,12 +8930,12 @@
           },
           "category_id": {
             "type": "string",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "The category the group is a part of"
           },
           "group_id": {
             "type": "string",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "The unique identifyer of the current group"
           }
         }
@@ -8922,7 +8951,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-3ddfc9dc3d-ab2e36",
+            "example": "sample-....-....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "recurring_billing_id": {
@@ -8991,24 +9020,27 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_sample86f8ac433f4a084",
+            "example": "cst_....",
             "description": "ID of the customer."
           },
           "product_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample2bde8a50",
+            "example": "sample....",
             "description": "Unique ID of the product linked to this invoice, if any."
           },
           "product_variants": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/product_variant"
+            "type": "object",
+            "properties": {
+              "{product_id}": {
+                "description": "The id of the product the plan belongs to",
+                "$ref": "#/components/schemas/product_variant"
+              }
             }
           },
           "affiliate_revenue_customer_id": {
             "type": "string",
-            "example": "cst_sample86f8ac433f4a084",
+            "example": "cst_....",
             "description": "ID of the customer who is affiliated to the purchase."
           },
           "product_addons": {
@@ -9448,7 +9480,7 @@
             "description": "Customer User Agent."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "developer_invoice": {
             "type": "boolean",
@@ -9619,7 +9651,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "price": {
@@ -9747,12 +9779,12 @@
           },
           "product_id": {
             "type": "string",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "The uniqid of the product"
           },
           "group_id": {
             "type": "string",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "If the product is in a group, this is the group_id of that group."
           },
           "average_score": {
@@ -9772,7 +9804,7 @@
           },
           "uniqid": {
             "type": "string",
-            "example": "pm_samplebf11c9e5406f8269",
+            "example": "pm_....",
             "description": "Unique identifier used throughout Sellix's API"
           },
           "title": {
@@ -9792,7 +9824,7 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_00d4b22a76640d5967d36e",
+            "example": "cst_....",
             "description": "Unique ID used within Sellix to identify customers across the API."
           },
           "gateway": {
@@ -9847,18 +9879,18 @@
             "properties": {
               "url": {
                 "type": "string",
-                "example": "https://sellix.io/payment/sample-4caac117ca-abeb80",
+                "example": "https://sellix.io/payment/sample-....-....",
                 "description": "Sellix hosted payment page."
               },
               "uniqid": {
                 "type": "string",
                 "format": "uuid",
-                "example": "sample-4caac117ca-abeb80",
+                "example": "sample-....-....",
                 "description": "Unique ID of the invoice created for the payment."
               },
               "url_branded": {
                 "type": "string",
-                "example": "https://storename.mysellix.io/invoice/sample-4caac117ca-abeb80",
+                "example": "https://storename.mysellix.io/invoice/sample-....-....",
                 "description": "Sellix hosted payment page with url unique to your shop."
               }
             }
@@ -9900,7 +9932,7 @@
             },
             "example": {
               "invoice": {
-                "uniqid": "sample-4caac117ca-abeb80",
+                "uniqid": "sample-....-....",
                 "...": null
               }
             }
@@ -9929,13 +9961,13 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "example": "PP-D-sample1379",
+            "example": "PP-D-sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-bd73112377-6c0064",
+            "example": "sample-....-....",
             "description": "Unique ID of the invoice linked to this dispute."
           },
           "shop_id": {
@@ -10068,7 +10100,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "slug": {
@@ -10245,7 +10277,7 @@
           },
           "stripe_price_id": {
             "type": "string",
-            "example": "price_sample2X7rAeMb7AM5APEU",
+            "example": "price_....",
             "description": "When a product SUBSCRIPTION is created and the gateway STRIPE chosen, a Stripe price is automatically created on the connected account."
           },
           "discord_integration": {
@@ -10576,7 +10608,7 @@
                 },
                 "uniqid": {
                   "type": "string",
-                  "example": "sample29a0e39d",
+                  "example": "sample....",
                   "description": "The unique id of the category"
                 }
               }
@@ -10811,7 +10843,7 @@
             },
             "uniqid": {
               "type": "string",
-              "example": "sample29a0e39d"
+              "example": "sample...."
             },
             "shop_id": {
               "type": "integer",
@@ -10858,7 +10890,7 @@
           "invoice_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-3ddfc9dc3d-ab2e3",
+            "example": "sample-....-....",
             "description": "Unique ID of the invoice this download is linked to."
           },
           "customer_ip": {
@@ -10900,7 +10932,7 @@
           "uniqid": {
             "type": "string",
             "description": "The unique identifier for the payment plan.",
-            "example": "pp_sampled91285bb657098ac0"
+            "example": "pp_...."
           },
           "shop_id": {
             "type": "integer",
@@ -10910,7 +10942,7 @@
           "product_id": {
             "type": "integer",
             "description": "ID of the product subscription.",
-            "example": "samplede6277597"
+            "example": "sample...."
           },
           "status": {
             "type": "string",
@@ -11086,7 +11118,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "pay_int_samplef6c43e5bf68280c28",
+            "example": "pay_int_....",
             "description": "Unique id for the payment interval; used throughout Sellix's API"
           },
           "product_subscription_id": {
@@ -11102,7 +11134,7 @@
           "invoice_uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-0b58cd3f89-41cae2",
+            "example": "sample-....-....",
             "description": "Unique ID of the invoice created for the payment interval."
           },
           "prev_payment_interval_id": {
@@ -11294,7 +11326,7 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_8e025b000dee1a9fbbe481",
+            "example": "cst_....",
             "description": "Unique ID used within Sellix to identify customers across the API."
           },
           "payment_method_id": {
@@ -11313,7 +11345,7 @@
           "product_uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample256f149",
+            "example": "sample....",
             "description": "Unique ID of the product"
           },
           "product_auto_payment_method_required": {
@@ -11419,12 +11451,12 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_8e025b000dee1a9fbbe481",
+            "example": "cst_....",
             "description": "The ID of the customer who purchased the subscription plan"
           },
           "product_subscription_uniqid": {
             "type": "string",
-            "example": "sub_sample916d925ae0ad1c1c7",
+            "example": "sub_....",
             "description": "The unique ID of the subscription plan"
           },
           "product_id": {
@@ -11434,12 +11466,12 @@
           },
           "product_uniqid": {
             "type": "string",
-            "example": "sample256f149",
+            "example": "sample....",
             "description": "The external ID of the subscription product"
           },
           "product_plan_uniqid": {
             "type": "string",
-            "example": "pp_sample4821ad7610ad16bf9",
+            "example": "pp_....",
             "description": "The external ID of the subscription product plan"
           },
           "id": {
@@ -11449,7 +11481,7 @@
           },
           "uniqid": {
             "type": "string",
-            "example": "sub_pp_sampled30a88460e03901c6",
+            "example": "sub_pp_....",
             "description": "The unique ID of the subscription plan"
           },
           "product_subscription_id": {
@@ -11558,7 +11590,7 @@
             }
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
 
           "developer_invoice": {
@@ -11751,7 +11783,7 @@
           },
           "uniqid": {
             "type": "string",
-            "example": "sub_sample916d925ae0ad1c1c7",
+            "example": "sub_....",
             "description": "The ID of the product subscription"
           },
           "shop_id": {
@@ -11761,7 +11793,7 @@
           },
           "customer_id": {
             "type": "string",
-            "example": "cst_8e025b000dee1a9fbbe481",
+            "example": "cst_....",
             "description": "The ID of the customer who made the purchase"
           },
           "customer_email": {
@@ -11841,7 +11873,7 @@
           },
           "product_uniqid": {
             "type": "string",
-            "example": "sample256f149",
+            "example": "sample....",
             "description": "The ID of the product the subscription is for"
           },
           "plan": {
@@ -11930,7 +11962,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-9fb8da67ba-0aa7b6",
+            "example": "sample-....-....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -12016,7 +12048,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-9fb8da67ba-0aa7b6",
+            "example": "sample-....-....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -12135,8 +12167,8 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "ID of the subscription.",
-            "example": "rec_sample-3afde4b6e1-82833e"
+            "description": "ID of the legacy subscription",
+            "example": "rec_...."
           },
           "product_subscription_id": {
             "type": "string",
@@ -12151,7 +12183,7 @@
           "product_id": {
             "type": "string",
             "description": "ID of the product subscription.",
-            "example": "samplede6277597"
+            "example": "sample...."
           },
           "product_plan_id": {
             "type": "string",
@@ -12161,7 +12193,7 @@
           "customer_id": {
             "type": "string",
             "description": "ID of the store's customer.",
-            "example": "cst_sample6addc898a645"
+            "example": "cst_...."
           },
           "type": {
             "type": "string",
@@ -12197,7 +12229,7 @@
             "description": "Gateway chosen for this subscription. A new invoice monthly will be created using this gayeway."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "coupon_id": {
             "type": "string",
@@ -12240,17 +12272,17 @@
           "stripe_customer_id": {
             "type": "string",
             "description": "ID of the customer created on STRIPE.",
-            "example": "cus_samplegIE0YKwapE6"
+            "example": "cus_...."
           },
           "stripe_account": {
             "type": "string",
             "description": "ID of the Stripe connected account.",
-            "example": "acct_sampleuMKb2X7rAeMb"
+            "example": "acct_...."
           },
           "stripe_subscription_id": {
             "type": "string",
             "description": "ID of the Stripe subscription.",
-            "example": "sub_samplexpKb2X7rAeMbKdJc78AP"
+            "example": "sub_...."
           },
           "paypal_account": {
             "type": "string",
@@ -12365,12 +12397,12 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample-7f4b51efed-9ebee5",
+            "example": "sample-....-....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "recurring_billing_id": {
             "type": "string",
-            "example": "rec_sample-3afde4b6e1-82833e",
+            "example": "rec_....",
             "description": "The Id of the legacy subscription"
           },
           "total": {
@@ -12408,7 +12440,7 @@
           "product_id": {
             "type": "string",
             "format": "uuid",
-            "example": "sample2bde8a50",
+            "example": "sample....",
             "description": "Unique ID of the product linked to this invoice, if any."
           },
           "gateway": {
@@ -13148,7 +13180,7 @@
             },
             "example": {
               "url": "https://sellix.io/payment/sample-4caac117ca-abeb80",
-              "uniqid": "sample-4caac117ca-abeb80"
+              "uniqid": "sample-....-...."
             }
           },
           "error": {
@@ -13188,7 +13220,7 @@
               }
             },
             "example": {
-              "subscription_id": "rec_sample-4caac117ca-abeb80"
+              "subscription_id": "rec_...."
             }
           },
           "error": {
@@ -13214,8 +13246,8 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "ID of the subscription.",
-            "example": "rec_sample-3afde4b6e1-82833e"
+            "description": "ID of the legacy subscription",
+            "example": "rec_...."
           },
           "product_subscription_id": {
             "type": "string",
@@ -13230,7 +13262,7 @@
           "product_id": {
             "type": "string",
             "description": "ID of the product subscription.",
-            "example": "samplede6277597"
+            "example": "sample...."
           },
           "product_plan_id": {
             "type": "string",
@@ -13240,7 +13272,7 @@
           "customer_id": {
             "type": "string",
             "description": "ID of the store's customer.",
-            "example": "cst_sample6addc898a645"
+            "example": "cst_...."
           },
           "type": {
             "type": "string",
@@ -13282,7 +13314,7 @@
             "description": "Origin of the subscription."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "coupon_id": {
             "type": "string",
@@ -13331,17 +13363,17 @@
           "stripe_customer_id": {
             "type": "string",
             "description": "ID of the customer created on STRIPE.",
-            "example": "cus_samplegIE0YKwapE6"
+            "example": "cus_...."
           },
           "stripe_account": {
             "type": "string",
             "description": "ID of the Stripe connected account.",
-            "example": "acct_sampleuMKb2X7rAeMb"
+            "example": "acct_...."
           },
           "stripe_subscription_id": {
             "type": "string",
             "description": "ID of the Stripe subscription.",
-            "example": "sub_samplexpKb2X7rAeMbKdJc78AP"
+            "example": "sub_...."
           },
           "paypal_account": {
             "type": "string",
@@ -13429,7 +13461,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the webhook, used as reference across the API."
           },
           "url": {
@@ -13509,7 +13541,7 @@
           "uniqid": {
             "type": "string",
             "format": "uuid",
-            "example": "sample29a0e39d",
+            "example": "sample....",
             "description": "Unique ID of the resource, used as reference across the API."
           },
           "shop_id": {
@@ -13581,7 +13613,7 @@
           "type": "string"
         },
         "required": true,
-        "example": "sample6978a0e39d",
+        "example": "sample....",
         "description": "ID of the resource"
       },
       "id_or_email": {
@@ -13591,7 +13623,7 @@
           "type": "string"
         },
         "required": true,
-        "example": "sample6978a0e39d",
+        "example": "sample....",
         "description": "ID or email associated with the customer"
       },
       "merchant": {
@@ -13632,7 +13664,7 @@
           "type": "string"
         },
         "required": true,
-        "example": "sample29a0e39d",
+        "example": "sample....",
         "description": "Uniqid of the resource"
       }
     },
@@ -13860,7 +13892,7 @@
                   "properties": {
                     "uniqid": {
                       "type": "string",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -13997,7 +14029,7 @@
                   "properties": {
                     "uniqid": {
                       "type": "string",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -14105,7 +14137,7 @@
                   "properties": {
                     "uniqid": {
                       "type": "string",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -14178,7 +14210,7 @@
                   "properties": {
                     "uniqid": {
                       "type": "string",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -14287,7 +14319,7 @@
                     "uniqid": {
                       "type": "string",
                       "description": "The ID of the coupon",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -14403,7 +14435,7 @@
                   "properties": {
                     "customer_id": {
                       "type": "string",
-                      "example": "cst_87b8as6ba9125",
+                      "example": "cst_....",
                       "description": "Customer ID"
                     }
                   }
@@ -14716,7 +14748,7 @@
                   "properties": {
                     "uniqid": {
                       "type": "string",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -14824,7 +14856,7 @@
                   "properties": {
                     "uniqid": {
                       "type": "string",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -15316,7 +15348,7 @@
                     "uniqid": {
                       "type": "string",
                       "description": "The ID of the new product",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -15358,7 +15390,7 @@
                     "uniqid": {
                       "type": "string",
                       "description": "The ID of the product",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
@@ -15845,17 +15877,42 @@
                 },
                 "data": {
                   "type": "object",
-                  "required": [
-                    "invoice"
-                  ],
                   "properties": {
                     "subscription_id": {
                       "type": "string",
+                      "example": "sub_...",
                       "description": "Subscription ID."
+                    }, 
+                    "subscription": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "sub_...",
+                          "description": "Subscription uniqid"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "https://checkout.sellix.io/subscription-v2/sub_....",
+                          "description": "A URL to the object."
+                        }
+                      }
+                    },
+                    "invoice": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "sample-....-....",
+                          "description": "Invoice uniqid for the subscription"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "https://checkout.sellix.io/invoice/sample-....-....",
+                          "description": "A URL to the object."
+                        }
+                      }
                     }
-                  },
-                  "example": {
-                    "subscription_id": "sub_7451b916d925ae0ad1c1c7"
                   }
                 },
                 "error": {
@@ -15931,7 +15988,7 @@
                   "properties": {
                     "uniqid": {
                       "type": "string",
-                      "example": "sample29a0e39d"
+                      "example": "sample...."
                     }
                   }
                 },
