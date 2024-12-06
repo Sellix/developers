@@ -5315,7 +5315,19 @@
         "example": {
           "username": "sellix-user"
         },
-        "description": "key-value JSON having as key the custom field name and as value the custom field value inserted by the customer. Custom fields can both be used as inputs from the customers but also as metadata for invoices, letting you pass hidden fields for internal referencing."
+        "description": "The custom fields passed by the user at checkout. The type is `map<string, string>`"
+      },
+      "custom_fields": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/custom_fields_object"
+          },
+          {
+            "type": "array",
+            "example": [],
+            "description": "Will be `[]` if the custom fields were passed by the user, but are empty, or `null` if they were never passed"
+          }
+        ]
       },
       "customer": {
         "type": "object",
@@ -6897,9 +6909,12 @@
             "description": "Invoice total in the currency chosen."
           },
           "product_variants": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/product_variant"
+            "type": "object",
+            "properties": {
+              "{product_id}": {
+                "description": "The id of the product the plan belongs to",
+                "$ref": "#/components/schemas/product_variant"
+              }
             }
           },
           "exchange_rate": {
@@ -7227,7 +7242,7 @@
             "description": "Unique ID of the coupon, if used, for the discount."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "developer_invoice": {
             "type": "boolean",
@@ -7879,9 +7894,12 @@
             "description": "Exchange rate between the cryptocurrency chosen (if any) and USD."
           },
           "product_variants": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/product_variant"
+            "type": "object",
+            "properties": {
+              "{product_id}": {
+                "description": "The id of the product the plan belongs to",
+                "$ref": "#/components/schemas/product_variant"
+              }
             }
           },
           "currency": {
@@ -8066,7 +8084,7 @@
             "description": "If coupon_id is specified, coupon_code contains the code used during the checkout."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "developer_invoice": {
             "type": "boolean",
@@ -9012,9 +9030,12 @@
             "description": "Unique ID of the product linked to this invoice, if any."
           },
           "product_variants": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/product_variant"
+            "type": "object",
+            "properties": {
+              "{product_id}": {
+                "description": "The id of the product the plan belongs to",
+                "$ref": "#/components/schemas/product_variant"
+              }
             }
           },
           "affiliate_revenue_customer_id": {
@@ -9459,7 +9480,7 @@
             "description": "Customer User Agent."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "developer_invoice": {
             "type": "boolean",
@@ -11569,7 +11590,7 @@
             }
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
 
           "developer_invoice": {
@@ -12208,7 +12229,7 @@
             "description": "Gateway chosen for this subscription. A new invoice monthly will be created using this gayeway."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "coupon_id": {
             "type": "string",
@@ -13293,7 +13314,7 @@
             "description": "Origin of the subscription."
           },
           "custom_fields": {
-            "$ref": "#/components/schemas/custom_fields_object"
+            "$ref": "#/components/schemas/custom_fields"
           },
           "coupon_id": {
             "type": "string",
