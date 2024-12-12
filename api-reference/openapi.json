@@ -3593,7 +3593,7 @@
           "Subscriptions 2.0"
         ],
         "operationId": "updateSubscriptionv2",
-        "description": "Cancel a subscription",
+        "description": "Update a subscription",
         "requestBody": {
           "description": "subscription update JSON",
           "required": true,
