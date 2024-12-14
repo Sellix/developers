@@ -1,6 +1,6 @@
 ---
 title: 'Create sub-account payment'
-openapi: post /payments
+openapi: post /payments?sub-account=true
 ---
 
 <Info>
@@ -8,3 +8,7 @@ openapi: post /payments
 
   The only difference is that you need to specify the `platform_on_behalf_of` field with the sub-account ID.
 </Info>
+
+<Warning>
+  The `sub-account` query parameter is not required and will not change the response.
+</Warning>
