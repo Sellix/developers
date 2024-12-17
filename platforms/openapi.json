@@ -269,7 +269,7 @@
     "parameters": {
       "sub_account_id": {
         "in": "path",
-        "name": "sub_account_id",
+        "name": "sub-account-id",
         "schema": {
           "type": "string"
         },
