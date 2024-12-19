@@ -2679,7 +2679,7 @@
                   "credit_card": {
                     "type": "boolean",
                     "example": null,
-                    "description": "If gatewa is PAYPAL and no paypal_apm is passed, specify credit_card true to land the customer on the PayPal managed credit card page instead of the onboarding login"
+                    "description": "If gateway is PAYPAL and no paypal_apm is passed, specify credit_card true to land the customer on the PayPal managed credit card page instead of the onboarding login"
                   },
                   "lex_payment_method": {
                     "type": "string",
