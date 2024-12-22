@@ -4,7 +4,6 @@ description: 'Manage recurring, tiered and custom billing payments through Selli
 ---
 
 ## Overview
-
 Subscriptions 2.0 bring enhanced flexibility and new features for managing subscriptions: merchants can customize product plans and billing types, apply discounts, prorate subscription fees, upgrade/downgrade plans and leverage new webhook events for better automation and server logic.
 
 <Info>
@@ -14,11 +13,9 @@ Subscriptions 2.0 bring enhanced flexibility and new features for managing subsc
 </Info>
 
 ## Features
-
 With a complete revamp over Subscriptions (legacy), Subscriptions 2.0 now supports a lot of new features that were not available with the previous version.
 
 ### Essentials
-
 Here's what's important for most businesses when using Subscriptions 2.0.
 
 <CardGroup cols={2}>
@@ -87,8 +84,22 @@ Released in October 2024, Subscriptions 2.0 are in continuous development and ne
 | 33 | <Tooltip tip="Allow customers to add multiple subscriptions to their cart and checkout with a single payment.">Cart system</Tooltip> | Coming Soon | Q3 2025 |
 | 34 | <Tooltip tip="Provide a tool to convert existing Subs (legacy) products to Subs 2.0.">Convert from Subs (legacy) to Subs 2.0</Tooltip> | Coming Soon | Q3 2025 |
 
-## Managing Subscriptions with the API
+## Creating a Subscription 2.0 Product
+To create a subscription 2.0 product on the Sellix dashboard, go to "Products"->"Products"->"+ Create"->"Subscription Product 2.0" or click [this link](https://dashboard.sellix.io/products/new?isSubscription=2).
+Subscription 2.0 products have more customization options compared to our other product types. 
+When creating subsctipion plans, you can find a variety of customizable fields to configure your subsciption product:
+- **Plan Name:** The name for the subscription product plan
+- **Price:** The price for the subscription product plan
+- **Add Price Discount:** An optional discount for the subscription product plan that is automatically applied to all invoices made for the plan
+- **Short Description:** A short description for the subscription product plan
+- **Recurring Interval:** Whether the subscription should renew every `DAY`, `WEEK`, `MONTH`, or `YEAR`
+- **Recurring Interval Count:** How many `Recurring Interval`s should pass before the subscription renews
+- **Trial Period:** The length of the trial period for the subscription product plan (`0` for no trial period)
+- **Payment Type:** Whether the subscription should be paid at the start (`ADVANCE`) or end (`ARREARS`) of the billing cycle
+- **Renew Type:** Whether the subscription should renew at the start of every month (`CALENDAR`) or on the anniversary of the subscription start date (`ANNIVERSARY`)
+- **Billing Type:** If the `Renew Type` is set to `CALENDAR`, whether the subscription price should be paid in `FULL` or `PRORATED` based on the amount of days remaining in the current billing cycle
 
+## Managing Subscriptions with the API
 Sellix provides API endpoints for programmatic management of subscriptions, enabling automation for tasks like creating, updating, and canceling subscriptions.
 
 <CardGroup cols={2}>
@@ -105,11 +116,9 @@ Sellix provides API endpoints for programmatic management of subscriptions, enab
 </Card>
 
 ## Webhook Events for Subscription Lifecycle
-
 Subscriptions 2.0 offers comprehensive webhook events to keep track of each stage in a subscription's lifecycle. Configure webhooks in your Sellix dashboard to receive notifications for various events.
 
 ### Journey
-
 <Steps>
   <Step title="Trial Started">
     Event: `subscription-v2:trial-interval:started`
@@ -206,7 +215,6 @@ Subscriptions 2.0 offers comprehensive webhook events to keep track of each stag
 </Steps>
 
 ### Key Events
-
 <Info>
   For a full list of webhook events, visit the [Webhook Documentation](/api-reference/webhooks).
 </Info>
@@ -224,11 +232,9 @@ Subscriptions 2.0 offers comprehensive webhook events to keep track of each stag
 </Tip>
 
 ## Advanced Subscription Features
-
 Here's a brief list of other cool features, for a full overview see the [full list here](#full-list).
 
 ### Billing Options
-
 Subscriptions 2.0 supports a new and improved billing system with advanced customization options. Each subscription plan can have separate billing settings.
 - **Payment Type:** Choose whether customers are charged in `ADVANCE` (at the start of the billing cycle), or `ARREARS` (at the end of the billing cycle; good for usage based subscriptions).
 - **Renew Type:** Choose whether the subscription is renewed on the first of every month (`CALENDAR`), or on the anniversary of the subscription start date (`ANNIVERSARY`).
@@ -241,7 +247,6 @@ Customers can change their gateway, payment method, payment plan, and more witho
 Subscriptions 2.0 support the customer balance, allowing customers to use funds in their customer portal to pay for subscription fees
 
 ### Subscription Addons
-
 Specify any additional payment that can be added for a single month or for a longer period of time, giving your customers a way to add optional benefits or perks to your subscriptions.
 
 <Info>
@@ -257,7 +262,6 @@ Specify any additional payment that can be added for a single month or for a lon
 </Frame>
 
 ### Upgrades/Downgrades
-
 Upgrades and Downgrades can happen when a customer changes their subscription plan, when a merchant changes a customer's subscription plan, or when a customer resubscribes to an existing subscription with a different plan. Both upgrades and downgrades will change the renewal date of a subscription.
 - `DOWNGRADE`: The current plan will remain `ACTIVE`. A new plan will be created with the `PENDING` status and will not be `ACTIVE` until the current plan has ended.
 - `UPGRADE`: The current plan will be `COMPLETED`, and any unused time will be credited to the customer's balance. The new plan will be activated immediately after the payment is received.
@@ -266,7 +270,6 @@ Upgrades and Downgrades can happen when a customer changes their subscription pl
 </Info>
 
 ## Customer Billing Portal
-
 Every customer will have access to their customer billing portal, where they can view, cancel, and update any active subscription purchased from you or any other business on our platform.
 
 <Frame>
@@ -281,7 +284,6 @@ Every customer will have access to their customer billing portal, where they can
 They will authenticate using their personal email address, used to purchase your product subscription. The customer billing portal can be found at `YOUR_DOMAIN/customer/auth`
 
 ## Integrations
-
 Three ways to integrate subscriptions into your website.
 
 <Card title="Sellix Hosted Experience" icon="browser" href="https://dashboard.sellix.io/products">
@@ -300,7 +302,6 @@ Three ways to integrate subscriptions into your website.
 </Card>
 
 ## Cryptocurrencies
-
 From the get-go, we support subscriptions billed automatically through cryptocurrencies.
 
 <Frame>
