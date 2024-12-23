@@ -88,16 +88,16 @@ Released in October 2024, Subscriptions 2.0 are in continuous development and ne
 To create a subscription 2.0 product on the Sellix dashboard, go to "Products"->"Products"->"+ Create"->"Subscription Product 2.0" or click [this link](https://dashboard.sellix.io/products/new?isSubscription=2).
 Subscription 2.0 products have more customization options compared to our other product types. 
 When creating subsctipion plans, you can find a variety of customizable fields to configure your subsciption product:
-- **Plan Name:** The name for the subscription product plan
-- **Price:** The price for the subscription product plan
-- **Add Price Discount:** An optional discount for the subscription product plan that is automatically applied to all invoices made for the plan
-- **Short Description:** A short description for the subscription product plan
-- **Recurring Interval:** Whether the subscription should renew every `DAY`, `WEEK`, `MONTH`, or `YEAR`
-- **Recurring Interval Count:** How many `Recurring Interval`s should pass before the subscription renews
-- **Trial Period:** The length of the trial period for the subscription product plan (`0` for no trial period)
-- **Payment Type:** Whether the subscription should be paid at the start (`ADVANCE`) or end (`ARREARS`) of the billing cycle
-- **Renew Type:** Whether the subscription should renew at the start of every month (`CALENDAR`) or on the anniversary of the subscription start date (`ANNIVERSARY`)
-- **Billing Type:** If the `Renew Type` is set to `CALENDAR`, whether the subscription price should be paid in `FULL` or `PRORATED` based on the amount of days remaining in the current billing cycle
+- **Plan Name:** The name for the subscription product plan.
+- **Price:** The price for the subscription product plan.
+- **Add Price Discount:** An optional discount for the subscription product plan that is automatically applied to all invoices made for the plan.
+- **Short Description:** A short description for the subscription product plan.
+- **Recurring Interval:** Whether the subscription should renew every `DAY`, `WEEK`, `MONTH`, or `YEAR`.
+- **Recurring Interval Count:** How many `Recurring Interval`s should pass before the subscription renews.
+- **Trial Period:** The length of the trial period for the subscription product plan (`0` for no trial period).
+- **Payment Type:** Whether the subscription should be paid at the start (`ADVANCE`) or end (`ARREARS`) of the billing cycle.
+- **Renew Type:** Whether the subscription should renew at the start of every calendar period (`CALENDAR`) or on the anniversary of the subscription start date (`ANNIVERSARY`).
+- **Billing Type:** Whether the subscription price should be paid in `FULL` or `PRORATED` based on the amount of days remaining in the current billing cycle.
 
 ## Managing Subscriptions with the API
 Sellix provides API endpoints for programmatic management of subscriptions, enabling automation for tasks like creating, updating, and canceling subscriptions.
