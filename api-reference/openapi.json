@@ -3374,7 +3374,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
@@ -3400,7 +3400,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
@@ -3558,7 +3558,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
@@ -3584,7 +3584,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
@@ -3629,7 +3629,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
