@@ -2615,6 +2615,14 @@
                     "example": {"sample....": "pp_622886e03cbf6a40d5d1f0"},
                     "description": "Required for subscriptions 2.0. Specified which plan to use for the invoice"
                   },
+                  "product_variants": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "example": {"sample....": "sample...."},
+                    "description": "Key should be productId. Value should be the variant uniqid"
+                  },
                   "cart": {
                     "type": "object",
                     "required": [
@@ -3366,7 +3374,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
@@ -3392,7 +3400,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
@@ -3550,7 +3558,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
@@ -3576,7 +3584,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
@@ -3621,7 +3629,7 @@
             "$ref": "#/components/parameters/merchant"
           },
           {
-            "$ref": "#/components/parameters/id"
+            "$ref": "#/components/parameters/uniqid"
           }
         ],
         "responses": {
