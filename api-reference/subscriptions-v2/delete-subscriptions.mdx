@@ -3,6 +3,9 @@ title: "Cancel Subscription"
 openapi: delete /subscriptions_v2/{uniqid}
 ---
 
+<Note>
+The `uniqid` path parameter is the `.uniqid` field for the subscription object. It should start with `sub_`
+</Note>
 <Warning>
 This endpoint does not immediately cancel the subscription. Instead, it changes the status to `AWAIT_CANCELING`, and sets it to stop renewing once the current payment interval ends.
 </Warning>
