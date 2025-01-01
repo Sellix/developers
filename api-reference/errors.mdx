@@ -65,3 +65,17 @@ If you are on the standard version, payment endpoints are highly restricted comp
 | `Tier 1` | 75 req/10s |
 | `Tier 2` | 100 req/10s |
 | `Tier 3` | 500 req/10s |
+
+### Pending orders
+
+A pending order is an order that has been created but has not been paid yet.
+For orders with a payment method chosen, they are voided within 24 hours.
+For orders without a payment method chosen, they are voided within 14 days.
+
+There is a limit on how many pending orders you can have, both for your store and for single customers.
+
+These limits are increased based on how many successful orders you have in the past and a few other factors that are not publicly disclosed.
+
+Improving the trustworthiness of your store will help you get a higher limit.
+
+If you're planning to launch on Sellix with a high number of initial clients and are unsure as to how many pending orders you're expecting, please reach out to us at sales@sellix.io or through our [Discord community](https://sellix.io/discord).
