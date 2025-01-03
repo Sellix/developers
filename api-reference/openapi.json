@@ -2790,6 +2790,57 @@
                     },
                     "description": "Customer details to be used by our fraud shield in order to score potential fraud attempts"
                   },
+                  "tax_data": {
+                    "type": "object",
+                    "properties": {
+                      "country_code": {
+                        "type": "string",
+                        "example": "US",
+                        "description": "2 character country ISO code"
+                      },
+                      "vat_number": {
+                        "type": "string",
+                        "example": null,
+                        "description": "The VAT number for your business"
+                      },
+                      "sdi_code": {
+                        "type": "string",
+                        "example": null,
+                        "description": "Only for businesses registered in Italy"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": ["PERSON", "BUSINESS"],
+                        "example": "PERSON",
+                        "description": "Whether you are registered as a business or person"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "First Name",
+                        "description": "The first name of the storefront owner"
+                      },
+                      "surname": {
+                        "type": "string",
+                        "example": "Last Name",
+                        "description": "The last name of the storefront owner"
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": "New York City",
+                        "description": "The name of the city you are registered in"
+                      },
+                      "postcode": {
+                        "type": "string",
+                        "example": "10001",
+                        "description": "The postal code for your business"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "1234 FakeAddress St",
+                        "description": "The address of your business"
+                      }
+                    }
+                  },
                   "webhook": {
                     "type": "string",
                     "example": "https://webhook.sellix.io/api/v1/example",
