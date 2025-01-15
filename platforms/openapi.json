@@ -264,7 +264,7 @@
                     "type": "string",
                     "enum": ["KYC", "KYB", "IDK"],
                     "example": "KYC",
-                    "description": "The type of compliance for the sub account"
+                    "description": "The compliance type for the sub-account. Pass `IDK` if you'd like the client to choose between Business and Individual verification. Use `KYB` for companies and `KYC` for persons."
                   }
                 }
               }
