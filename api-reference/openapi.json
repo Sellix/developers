@@ -3636,6 +3636,26 @@
           },
           {
             "$ref": "#/components/parameters/uniqid"
+          },
+          {
+            "in": "query",
+            "name": "cancel_reason_id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": false,
+            "example": 1,
+            "description": "The id of the cancel reason"
+          },
+          {
+            "in": "query",
+            "name": "cancel_reason_comment",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "example": "The subscription was too expensive!",
+            "description": "Text comment for the cancellation. This field should be Base64 encoded before sending"
           }
         ],
         "responses": {
@@ -3689,6 +3709,31 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    },
+    "/dicts/subscription_cancel_reasons": {
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "listSubscriptionCancelReasons",
+        "description": "List the optional reasons a customer can select to cancel a subscription",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/merchant"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/listSubscriptionCancelReasons"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -15977,6 +16022,73 @@
                           "example": "https://checkout.sellix.io/invoice/sample-....-....",
                           "description": "A URL to the object"
                         }
+                      }
+                    }
+                  }
+                },
+                "error": {
+                  "type": "string",
+                  "example": null
+                },
+                "message": {
+                  "type": "string",
+                  "example": "<success-message>"
+                },
+                "env": {
+                  "type": "string",
+                  "example": "production"
+                },
+                "log": {
+                  "type": "object",
+                  "example": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "listSubscriptionCancelReasons": {
+        "description": "subscription creation response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 200
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1,
+                        "description": "ID of the resource"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "PRICE_TOO_HIGH",
+                        "description": "The name of the cancellation reason"
+                      },
+                      "sort": {
+                        "type": "integer",
+                        "example": 1,
+                        "description": "The sort order of the cancellation reason"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-11-28 12:28:01",
+                        "description": "Datetime for what the resource was created"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-11-28 12:28:01",
+                        "description": "Datetime for what the resource was last updated"
                       }
                     }
                   }

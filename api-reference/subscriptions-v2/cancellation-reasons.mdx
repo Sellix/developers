@@ -1,0 +1,41 @@
+---
+title: "Cancellation Reasons"
+openapi: get /dicts/subscription_cancel_reasons
+---
+
+<Note>
+The cancellation reasons are currently hard coded values. They can be used in the `DELETE /subscriptions_v2/{uniqid}` endpoint to provide a reason for the cancellation.
+</Note>
+
+| Name                       | Description                                                                             |
+|----------------------------|-----------------------------------------------------------------------------------------|
+| PRICE_TOO_HIGH             | The subscription cost is too expensive for me.                                          |
+| LACK_OF_FEATURES           | The product/service doesn't offer the features or functionality I expected or need.     |
+| POOR_CUSTOMER_SUPPORT      | I'm not happy with the quality of customer service or support I received.               |
+| TOO_MANY_ISSUES            | I've encountered too many technical problems, bugs, or downtime.                        |
+| NO_LONGER_NEEDED           | I no longer need the product or service due to changes in my circumstances or needs.    |
+| FOUND_BETTER_ALTERNATIVE   | I've found a better or more suitable alternative product/service.                       |
+| NOT_ENOUGH_USAGE           | I didn't use the product or service enough to justify the subscription cost.            |
+| TEMPORARY_BREAK            | I'm taking a break and may consider resubscribing in the future.                        |
+| SIGNUP_MISTAKE             | I signed up for the subscription by mistake or unintentionally.                         |
+| COMPLEX_TO_USE             | The product/service is too complex or difficult for me to use effectively.              |
+| BETTER_PRICE_ELSEWHERE     | I found the same or similar service/product at a better price elsewhere.                |
+| POOR_PERFORMANCE           | The product/service didn't perform as well as I expected in terms of speed, reliability, or quality. |
+| BILLING_ISSUES             | I had issues with billing, such as incorrect charges or difficulties with payment.      |
+| LACK_OF_CUSTOMIZATION      | The product/service doesn't offer enough customization or personalization options for my needs. |
+| PRIVACY_CONCERNS           | I'm concerned about how my data is being used or stored.                                |
+| POOR_CONTENT               | The quality or relevance of content provided by the service didn't meet my expectations.|
+| MOVED_TO_COMPETITOR        | I switched to a competitor's service due to dissatisfaction or a better offer.          |
+| LIMITED_DEVICE_SUPPORT     | The product/service isn't available or doesn't perform well on my preferred device(s).  |
+| NO_RECURRING_NEED          | I only needed the subscription for a one-time need and don't foresee needing it again.  |
+| SUBSCRIPTION_CONFUSION     | I was confused about the terms of the subscription, such as renewal dates or cancellation policies. |
+| BAD_ONBOARDING             | I had a poor onboarding experience, which led to my dissatisfaction with the service.   |
+| HIGH_COMPETITION           | The market is saturated with similar services, making it easy for me to switch.         |
+| NEGATIVE_REVIEWS           | I canceled because of negative reviews or feedback I encountered online or from others. |
+| CONTENT_NOT_RELEVANT       | The content or service no longer aligns with my interests or needs.                     |
+| FAMILY_OR_FRIEND_RECOMMENDATION | I canceled based on the recommendation of family or friends who suggested an alternative or advised against the service. |
+| INACTIVE_ACCOUNT           | I haven't been actively using my account, so I chose to cancel instead of keeping an inactive subscription. |
+| LACK_OF_TRUST              | I've lost trust in the company or service due to various reasons, like scandals, breaches, or poor ethics. |
+| DIFFICULT_CANCELLATION_PROCESS | I anticipate difficulty in canceling the subscription later, so I'm choosing to cancel now. |
+| NO_REFUND_POLICY           | I'm unhappy with the refund policy or lack of one, and I'm canceling to avoid potential future issues. |
+| OTHER                      | I have another reason not covered by these options.                                     |
